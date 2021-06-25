@@ -7,18 +7,41 @@
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
                 </svg>
-                Dashboard
-                <span class="badge badge-info">NEW</span>
+                {{ trans('menus.backend.dashboard.title') }}
             </a>
         </li>
 
-        <li class="c-sidebar-nav-title">Theme</li>
+{{--        <li class="c-sidebar-nav-title">--}}
+{{--            {{ trans('menus.backend.general.title') }}--}}
+{{--        </li>--}}
+{{--        <li class="c-sidebar-nav-item">--}}
+{{--            <a class="c-sidebar-nav-link" href="#">--}}
+{{--                <svg class="c-sidebar-nav-icon">--}}
+{{--                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>--}}
+{{--                </svg>--}}
+{{--                {{ trans('menus.backend.general.languages.title') }}--}}
+{{--            </a>--}}
+{{--        </li>--}}
+
+{{--        <li class="c-sidebar-nav-item">--}}
+{{--            <a class="c-sidebar-nav-link" href="#">--}}
+{{--                <svg class="c-sidebar-nav-icon">--}}
+{{--                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>--}}
+{{--                </svg>--}}
+{{--                {{ trans('menus.backend.general.countries.title') }}--}}
+{{--            </a>--}}
+{{--        </li>--}}
+
+        <li class="c-sidebar-nav-title">
+            {{ trans('menus.backend.tecdoc.title') }}
+        </li>
+
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="#">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
                 </svg>
-                Colors
+                {{ trans('menus.backend.general.languages.title') }}
             </a>
         </li>
 
@@ -27,27 +50,49 @@
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
                 </svg>
-                Typography
+                {{ trans('menus.backend.general.countries.title') }}
             </a>
         </li>
 
-        <li class="c-sidebar-nav-title">Components</li>
         <li class="c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-dropdown-toggle" href="#">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
                 </svg>
-                Base
+                {{ trans('menus.backend.tecdoc.cars.title') }}
             </a>
 
             <ul class="c-sidebar-nav-dropdown-items">
-                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> Breadcrumb</a></li>
-                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> Cards</a></li>
-                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> Carousel</a></li>
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> {{ trans('menus.backend.tecdoc.cars.manufacturers.title') }}</a></li>
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> {{ trans('menus.backend.tecdoc.cars.models.title') }}</a></li>
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> {{ trans('menus.backend.tecdoc.cars.vehicles.title') }}</a></li>
             </ul>
         </li>
 
+        <li class="c-sidebar-nav-dropdown">
+            <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
+                </svg>
+                {{ trans('menus.backend.tecdoc.articles.title') }}
+            </a>
+
+{{--            <ul class="c-sidebar-nav-dropdown-items">--}}
+{{--                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> Breadcrumb</a></li>--}}
+{{--                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> Cards</a></li>--}}
+{{--                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> Carousel</a></li>--}}
+{{--            </ul>--}}
+        </li>
+
         <li class="c-sidebar-nav-divider"></li>
+
+
+
+
+
+
+
+
 
         <li class="c-sidebar-nav-title">Labels</li>
         <li class="c-sidebar-nav-item c-d-compact-none c-d-minimized-none">
