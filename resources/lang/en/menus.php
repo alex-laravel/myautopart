@@ -19,7 +19,11 @@ return [
         ],
 
         'general' => [
-            'title' => 'General',
+            'title' => 'General'
+        ],
+
+        'tecdoc' => [
+            'title' => 'TecDoc',
             'languages' => [
                 'title' => 'Languages',
                 'main' => 'Languages',
@@ -35,11 +39,15 @@ return [
                 'create' => 'Create Country',
                 'edit' => 'Edit Country',
                 'view' => 'View Country',
-            ]
-        ],
-
-        'tecdoc' => [
-            'title' => 'TecDoc',
+            ],
+            'country-groups' => [
+                'title' => 'Country Groups',
+                'main' => 'Country Groups',
+                'all' => 'All Country Groups',
+                'create' => 'Create Country Group',
+                'edit' => 'Edit Country Group',
+                'view' => 'View Country Group',
+            ],
             'cars' => [
                 'title' => 'Cars',
                 'manufacturers' => [
@@ -53,7 +61,23 @@ return [
                 ],
             ],
             'articles' => [
-                'title' => 'Articles'
+                'title' => 'Articles',
+                'brands' => [
+                    'title' => 'Brands',
+                    'main' => 'Brands',
+                    'all' => 'All Brands',
+                    'create' => 'Create Brand',
+                    'edit' => 'Edit Brand',
+                    'view' => 'View Brand',
+                ],
+                'brand-addresses' => [
+                    'title' => 'Brand Addresses',
+                    'main' => 'Brand Addresses',
+                    'all' => 'All Brand Addresses',
+                    'create' => 'Create Brand Address',
+                    'edit' => 'Edit Brand Address',
+                    'view' => 'View Brand Address',
+                ]
             ]
         ]
     ]

@@ -37,20 +37,29 @@
         </li>
 
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.languages.index') }}">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
                 </svg>
-                {{ trans('menus.backend.general.languages.title') }}
+                {{ trans('menus.backend.tecdoc.languages.title') }}
             </a>
         </li>
 
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.countries.index') }}">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
                 </svg>
-                {{ trans('menus.backend.general.countries.title') }}
+                {{ trans('menus.backend.tecdoc.countries.title') }}
+            </a>
+        </li>
+
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.country-groups.index') }}">
+                <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+                </svg>
+                {{ trans('menus.backend.tecdoc.country-groups.title') }}
             </a>
         </li>
 
@@ -63,9 +72,9 @@
             </a>
 
             <ul class="c-sidebar-nav-dropdown-items">
-                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> {{ trans('menus.backend.tecdoc.cars.manufacturers.title') }}</a></li>
-                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> {{ trans('menus.backend.tecdoc.cars.models.title') }}</a></li>
-                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> {{ trans('menus.backend.tecdoc.cars.vehicles.title') }}</a></li>
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.manufacturers.index') }}"> {{ trans('menus.backend.tecdoc.cars.manufacturers.title') }}</a></li>
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.models.index') }}"> {{ trans('menus.backend.tecdoc.cars.models.title') }}</a></li>
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.vehicles.index') }}"> {{ trans('menus.backend.tecdoc.cars.vehicles.title') }}</a></li>
             </ul>
         </li>
 
@@ -77,11 +86,11 @@
                 {{ trans('menus.backend.tecdoc.articles.title') }}
             </a>
 
-{{--            <ul class="c-sidebar-nav-dropdown-items">--}}
-{{--                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> Breadcrumb</a></li>--}}
-{{--                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> Cards</a></li>--}}
-{{--                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="#"> Carousel</a></li>--}}
-{{--            </ul>--}}
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.brands.index') }}"> {{ trans('menus.backend.tecdoc.articles.brands.title') }}</a></li>
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.brand-addresses.index') }}"> {{ trans('menus.backend.tecdoc.articles.brand-addresses.title') }}</a></li>
+{{--                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.countries.index') }}"> Carousel</a></li>--}}
+            </ul>
         </li>
 
         <li class="c-sidebar-nav-divider"></li>

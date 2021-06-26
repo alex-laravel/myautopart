@@ -14,7 +14,17 @@
 
             <div class="c-body">
                 <main class="c-main">
-                    @yield('content')
+                    <div class="container-fluid">
+                        <div class="fade-in">
+                            <section class="content-header">
+                                @yield('header')
+                            </section>
+
+                            <section class="content">
+                                @yield('content')
+                            </section>
+                        </div>
+                    </div>
                 </main>
                 @include('backend.include.footer')
             </div>
