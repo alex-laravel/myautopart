@@ -3,5 +3,55 @@
 @section('title', 'Frontend')
 
 @section('content')
-    Frontend Page
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-12 my-4">
+                <strong class="d-block">Мои Автомобили:</strong>
+
+                @if (count($garageVehicles))
+                    @foreach ($garageVehicles as $garageVehicle)
+                        <div class="card my-2 p-2">
+                            <div class="d-inline-block text-end pb-2">
+                                @if($garageVehicle['selected'])
+                                    <span class="badge bg-success" style="width: 24px">A</span>
+                                @else
+                                    <a href="{{ route('frontend.garage.vehicle.activate', [$garageVehicle['manufacturerId'], $garageVehicle['modelSeriesId'], $garageVehicle['vehicleId']]) }}" class="badge bg-secondary" style="width: 24px">A</a>
+                                @endif
+
+                                <a href="{{ route('frontend.garage.vehicle.delete', [$garageVehicle['manufacturerId'], $garageVehicle['modelSeriesId'], $garageVehicle['vehicleId']]) }}" class="badge bg-danger" style="width: 24px">D</a>
+                            </div>
+
+                            <small class="d-block">{{ $garageVehicle['manufacturerName'] }} {{ $garageVehicle['modelSeriesName'] }} {{ $garageVehicle['vehicleName'] }}</small>
+                        </div>
+                    @endforeach
+                @else
+                    <small class="d-block">нет выбранных автомобилей</small>
+                @endif
+            </div>
+        </div>
+
+        <h1>Обзор по Марке</h1>
+
+        <div class="row">
+            @foreach ($manufactures as $manufacture)
+                <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">
+                    <a href="auto/{{ $manufacture->manuId }}" class="d-block">
+                        <img src="{{ asset('assets/manufacturers/' . Str::slug($manufacture->manuName) . '.png') }}" alt=""><p>{{ $manufacture->manuName }}</p>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+
+        <h2>Обзор по категориям</h2>
+
+        <div class="row">
+            @foreach ($categories as $category)
+                <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">
+                    <a href="#" class="d-block">
+                        <p>{{ $category->shortCutName }}</p>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection

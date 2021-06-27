@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Auto Service Providers
+         */
+        App\Providers\AutoFacadesServiceProvider::class,
     ],
 
     /*
@@ -228,6 +232,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Auto Facades
+         */
+        'Garage' => \App\Facades\Garage::class,
     ],
 
 ];
