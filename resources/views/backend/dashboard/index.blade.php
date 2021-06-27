@@ -1,9 +1,16 @@
 @extends('backend.layout.main')
 
-@section('title', 'Backend')
+@section('title', trans('labels.backend.brands.management'))
+
+{{--@section('header')--}}
+{{--    <h1>--}}
+{{--        <i class="fas fa-tachometer-alt"></i>--}}
+{{--        {{ config('app.name') }}--}}
+{{--        <small>{{ trans('menus.backend.dashboard.title') }}</small>--}}
+{{--    </h1>--}}
+{{--@endsection--}}
 
 @section('content')
-
     <div class="container-fluid">
         <div class="fade-in">
             <div class="row">

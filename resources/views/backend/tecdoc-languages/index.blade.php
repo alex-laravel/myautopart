@@ -3,7 +3,10 @@
 @section('title', trans('labels.backend.languages.management'))
 
 @section('header')
-    <h1>{{ trans('labels.backend.languages.management') }}</h1>
+    <h1>
+        <i class="fas fa-globe-americas"></i>
+        {{ trans('labels.backend.languages.management') }}
+    </h1>
 @endsection
 
 @section('content')

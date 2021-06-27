@@ -4,33 +4,10 @@
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('backend.dashboard') }}">
-                <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
-                </svg>
+                <i class="fas fa-tachometer-alt"></i>
                 {{ trans('menus.backend.dashboard.title') }}
             </a>
         </li>
-
-{{--        <li class="c-sidebar-nav-title">--}}
-{{--            {{ trans('menus.backend.general.title') }}--}}
-{{--        </li>--}}
-{{--        <li class="c-sidebar-nav-item">--}}
-{{--            <a class="c-sidebar-nav-link" href="#">--}}
-{{--                <svg class="c-sidebar-nav-icon">--}}
-{{--                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>--}}
-{{--                </svg>--}}
-{{--                {{ trans('menus.backend.general.languages.title') }}--}}
-{{--            </a>--}}
-{{--        </li>--}}
-
-{{--        <li class="c-sidebar-nav-item">--}}
-{{--            <a class="c-sidebar-nav-link" href="#">--}}
-{{--                <svg class="c-sidebar-nav-icon">--}}
-{{--                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>--}}
-{{--                </svg>--}}
-{{--                {{ trans('menus.backend.general.countries.title') }}--}}
-{{--            </a>--}}
-{{--        </li>--}}
 
         <li class="c-sidebar-nav-title">
             {{ trans('menus.backend.tecdoc.title') }}
@@ -38,36 +15,28 @@
 
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('backend.languages.index') }}">
-                <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
-                </svg>
+                <i class="fas fa-globe-americas"></i>
                 {{ trans('menus.backend.tecdoc.languages.title') }}
             </a>
         </li>
 
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('backend.countries.index') }}">
-                <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
-                </svg>
+                <i class="far fa-flag"></i>
                 {{ trans('menus.backend.tecdoc.countries.title') }}
             </a>
         </li>
 
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('backend.country-groups.index') }}">
-                <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
-                </svg>
+                <i class="fas fa-flag-usa"></i>
                 {{ trans('menus.backend.tecdoc.country-groups.title') }}
             </a>
         </li>
 
         <li class="c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
-                </svg>
+                <i class="fas fa-car"></i>
                 {{ trans('menus.backend.tecdoc.cars.title') }}
             </a>
 
@@ -80,9 +49,7 @@
 
         <li class="c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
-                </svg>
+                <i class="fas fa-tools"></i>
                 {{ trans('menus.backend.tecdoc.articles.title') }}
             </a>
 

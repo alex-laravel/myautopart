@@ -3,7 +3,10 @@
 @section('title', trans('labels.backend.brand-addresses.management'))
 
 @section('header')
-    <h1>{{ trans('labels.backend.brand-addresses.management') }}</h1>
+    <h1>
+        <i class="fas fa-tools"></i>
+        {{ trans('labels.backend.brand-addresses.management') }}
+    </h1>
 @endsection
 
 @section('content')

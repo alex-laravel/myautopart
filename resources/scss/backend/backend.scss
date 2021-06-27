@@ -5,7 +5,11 @@
 @import "variables";
 
 // Import styles
-@import "node_modules/@coreui/coreui/scss/coreui";
+@import '~@coreui/coreui/scss/coreui';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 // If you want to add something do it here
 @import "custom";

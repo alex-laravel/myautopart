@@ -3,7 +3,10 @@
 @section('title', trans('labels.backend.manufacturers.management'))
 
 @section('header')
-    <h1>{{ trans('labels.backend.manufacturers.management') }}</h1>
+    <h1>
+        <i class="fas fa-car"></i>
+        {{ trans('labels.backend.manufacturers.management') }}
+    </h1>
 @endsection
 
 @section('content')
