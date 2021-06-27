@@ -1,5 +1,5 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-    <div class="c-sidebar-brand">AP</div>
+    <div class="c-sidebar-brand">{{ config('app.name') }}</div>
 
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">

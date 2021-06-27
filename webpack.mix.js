@@ -15,7 +15,9 @@ mix
     .sass('resources/scss/frontend/frontend.scss', 'public/css/frontend.css')
     .sass('resources/scss/backend/backend.scss', 'public/css/backend.css')
     .js('resources/js/frontend/frontend.js', 'public/js/frontend.js')
-    .js('resources/js/backend/backend.js', 'public/js/backend.js');
+    .js('resources/js/backend/backend.js', 'public/js/backend.js')
+    .copy('node_modules/datatables.net-dt/css/jquery.dataTables.css', 'public/css/backend.datatable.css')
+    .copy('node_modules/datatables.net/js/jquery.dataTables.js', 'public/js/backend.datatable.js');
 
 //mix.copy('resources/vendors/pace-progress/css/pace.min.css', 'public/css');
 //mix.copy('node_modules/@coreui/chartjs/dist/css/coreui-chartjs.css', 'public/css');
@@ -55,20 +57,6 @@ mix
 // mix.copy('node_modules/@coreui/icons/sprites/', 'public/icons/sprites');
 //images
 // mix.copy('resources/assets', 'public/assets');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if (mix.inProduction()) {

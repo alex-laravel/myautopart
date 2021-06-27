@@ -2,5 +2,7 @@
     "/js/frontend.js": "/js/frontend.js",
     "/js/backend.js": "/js/backend.js",
     "/css/backend.css": "/css/backend.css",
-    "/css/frontend.css": "/css/frontend.css"
+    "/css/frontend.css": "/css/frontend.css",
+    "/css/backend.datatable.css": "/css/backend.datatable.css",
+    "/js/backend.datatable.js": "/js/backend.datatable.js"
 }
