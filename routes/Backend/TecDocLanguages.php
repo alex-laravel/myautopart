@@ -9,5 +9,7 @@ use Illuminate\Support\Facades\Route;
  */
 Route::group(['prefix' => ''], function () {
     Route::post('languages/get', [LanguageAjaxController::class, 'get'])->name('ajax.languages.get');
+
+    Route::get('languages/sync', [LanguageController::class, 'sync'])->name('languages.sync');
     Route::resource('languages', LanguageController::class);
 });

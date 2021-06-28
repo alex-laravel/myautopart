@@ -16,7 +16,11 @@
 @section('content')
     <div class="card card-accent-info mt-3">
         <div class="card-header">
-            <h4>{{ trans('labels.backend.languages.list') }}</h4>
+            <h4 class="d-inline">{{ trans('labels.backend.languages.list') }}</h4>
+
+            <div class="float-right">
+                @include('backend.tecdoc-languages.partials.header-buttons')
+            </div>
         </div>
 
         <div class="card-body">

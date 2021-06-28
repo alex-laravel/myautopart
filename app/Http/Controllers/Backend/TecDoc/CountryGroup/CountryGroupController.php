@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backend\TecDoc\CountryGroup;
 use App\Http\Controllers\Controller;
 use App\Models\TecDoc\CountryGroup;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class CountryGroupController extends Controller
 {
@@ -14,7 +16,7 @@ class CountryGroupController extends Controller
      */
     public function index()
     {
-        return view('backend.tecdoc-county-groups.index');
+        return view('backend.tecdoc-country-groups.index');
     }
 
     /**
@@ -81,5 +83,31 @@ class CountryGroupController extends Controller
     public function destroy(CountryGroup $countryGroup)
     {
         //
+    }
+
+    /**
+     * @return RedirectResponse
+     */
+    public function sync()
+    {
+        Artisan::call('tecdoc:country-groups');
+
+        $output = Artisan::output();
+        $output = json_decode($output, true);
+
+        if (!$this->hasSuccessResponse($output)) {
+            return redirect()->back();
+        }
+
+        $output = $this->getResponseDataAsArray($output);
+
+        if (empty($output)) {
+            return redirect()->back();
+        }
+
+        CountryGroup::truncate();
+        CountryGroup::insert($output);
+
+        return redirect()->back();
     }
 }

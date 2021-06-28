@@ -56,7 +56,6 @@
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.brands.index') }}"> {{ trans('menus.backend.tecdoc.articles.brands.title') }}</a></li>
                 <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.brand-addresses.index') }}"> {{ trans('menus.backend.tecdoc.articles.brand-addresses.title') }}</a></li>
-{{--                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.countries.index') }}"> Carousel</a></li>--}}
             </ul>
         </li>
 
@@ -70,76 +69,76 @@
 
 
 
-        <li class="c-sidebar-nav-title">Labels</li>
-        <li class="c-sidebar-nav-item c-d-compact-none c-d-minimized-none">
-            <a class="c-sidebar-nav-label" href="#">
-                <svg class="c-sidebar-nav-icon text-danger">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bookmark"></use>
-                </svg>
-                Label danger
-            </a>
-        </li>
+{{--        <li class="c-sidebar-nav-title">Labels</li>--}}
+{{--        <li class="c-sidebar-nav-item c-d-compact-none c-d-minimized-none">--}}
+{{--            <a class="c-sidebar-nav-label" href="#">--}}
+{{--                <svg class="c-sidebar-nav-icon text-danger">--}}
+{{--                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bookmark"></use>--}}
+{{--                </svg>--}}
+{{--                Label danger--}}
+{{--            </a>--}}
+{{--        </li>--}}
 
-        <li class="c-sidebar-nav-item c-d-compact-none c-d-minimized-none">
-            <a class="c-sidebar-nav-label" href="#">
-                <svg class="c-sidebar-nav-icon text-info">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bookmark"></use>
-                </svg>
-                Label info
-            </a>
-        </li>
+{{--        <li class="c-sidebar-nav-item c-d-compact-none c-d-minimized-none">--}}
+{{--            <a class="c-sidebar-nav-label" href="#">--}}
+{{--                <svg class="c-sidebar-nav-icon text-info">--}}
+{{--                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bookmark"></use>--}}
+{{--                </svg>--}}
+{{--                Label info--}}
+{{--            </a>--}}
+{{--        </li>--}}
 
-        <li class="c-sidebar-nav-item c-d-compact-none c-d-minimized-none">
-            <a class="c-sidebar-nav-label" href="#">
-                <svg class="c-sidebar-nav-icon text-warning">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bookmark"></use>
-                </svg>
-                Label warning
-            </a>
-        </li>
+{{--        <li class="c-sidebar-nav-item c-d-compact-none c-d-minimized-none">--}}
+{{--            <a class="c-sidebar-nav-label" href="#">--}}
+{{--                <svg class="c-sidebar-nav-icon text-warning">--}}
+{{--                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bookmark"></use>--}}
+{{--                </svg>--}}
+{{--                Label warning--}}
+{{--            </a>--}}
+{{--        </li>--}}
 
-        <li class="c-sidebar-nav-divider"></li>
+{{--        <li class="c-sidebar-nav-divider"></li>--}}
 
-        <li class="c-sidebar-nav-title">System Utilization</li>
-        <li class="c-sidebar-nav-item px-3 c-d-compact-none c-d-minimized-none">
-            <div class="text-uppercase mb-1">
-                <small><b>CPU Usage</b></small>
-            </div>
+{{--        <li class="c-sidebar-nav-title">System Utilization</li>--}}
+{{--        <li class="c-sidebar-nav-item px-3 c-d-compact-none c-d-minimized-none">--}}
+{{--            <div class="text-uppercase mb-1">--}}
+{{--                <small><b>CPU Usage</b></small>--}}
+{{--            </div>--}}
 
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <small class="text-muted">348 Processes. 1/4 Cores.</small>
-        </li>
-        <li class="c-sidebar-nav-item px-3 c-d-compact-none c-d-minimized-none">
-            <div class="text-uppercase mb-1">
-                <small><b>Memory Usage</b></small>
-            </div>
+{{--            <div class="progress progress-xs">--}}
+{{--                <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--}}
+{{--            </div>--}}
+{{--            <small class="text-muted">348 Processes. 1/4 Cores.</small>--}}
+{{--        </li>--}}
+{{--        <li class="c-sidebar-nav-item px-3 c-d-compact-none c-d-minimized-none">--}}
+{{--            <div class="text-uppercase mb-1">--}}
+{{--                <small><b>Memory Usage</b></small>--}}
+{{--            </div>--}}
 
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <small class="text-muted">11444GB/16384MB</small>
-        </li>
+{{--            <div class="progress progress-xs">--}}
+{{--                <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>--}}
+{{--            </div>--}}
+{{--            <small class="text-muted">11444GB/16384MB</small>--}}
+{{--        </li>--}}
 
-        <li class="c-sidebar-nav-item px-3 mb-3 c-d-compact-none c-d-minimized-none">
-            <div class="text-uppercase mb-1">
-                <small><b>SSD 1 Usage</b></small>
-            </div>
+{{--        <li class="c-sidebar-nav-item px-3 mb-3 c-d-compact-none c-d-minimized-none">--}}
+{{--            <div class="text-uppercase mb-1">--}}
+{{--                <small><b>SSD 1 Usage</b></small>--}}
+{{--            </div>--}}
 
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <small class="text-muted">243GB/256GB</small>
-        </li>
+{{--            <div class="progress progress-xs">--}}
+{{--                <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>--}}
+{{--            </div>--}}
+{{--            <small class="text-muted">243GB/256GB</small>--}}
+{{--        </li>--}}
 
-        <div class="ps__rail-x" style="left: 0px; bottom: -502px;">
-            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-        </div>
+{{--        <div class="ps__rail-x" style="left: 0px; bottom: -502px;">--}}
+{{--            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>--}}
+{{--        </div>--}}
 
-        <div class="ps__rail-y" style="top: 502px; height: 800px; right: 0px;">
-            <div class="ps__thumb-y" tabindex="0" style="top: 309px; height: 491px;"></div>
-        </div>
+{{--        <div class="ps__rail-y" style="top: 502px; height: 800px; right: 0px;">--}}
+{{--            <div class="ps__thumb-y" tabindex="0" style="top: 309px; height: 491px;"></div>--}}
+{{--        </div>--}}
     </ul>
 
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
