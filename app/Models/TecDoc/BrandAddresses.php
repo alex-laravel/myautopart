@@ -23,16 +23,24 @@ class BrandAddresses extends Model
      * @var array
      */
     protected $fillable = [
+        'brandId',
         'addressName',
         'addressType',
         'city',
+        'city2',
+        'email',
         'fax',
         'logoDocId',
+        'mailbox',
         'name',
+        'name2',
         'phone',
         'street',
+        'street2',
         'wwwURL',
         'zip',
         'zipCountryCode',
+        'zipMailbox',
+        'zipSpecial',
     ];
 }

@@ -16,7 +16,11 @@
 @section('content')
     <div class="card card-accent-info mt-3">
         <div class="card-header">
-            <h4>{{ trans('labels.backend.brands.list') }}</h4>
+            <h4 class="d-inline-block">{{ trans('labels.backend.brands.list') }}</h4>
+
+            <div class="float-right">
+                @include('backend.tecdoc-brands.partials.header-buttons')
+            </div>
         </div>
 
         <div class="card-body">
@@ -30,6 +34,13 @@
                 </tr>
                 </thead>
             </table>
+
+            <strong class="d-block">NOTES:</strong>
+            <small>??? articleCountry</small><br>
+            <small>UA 910</small><br>
+            <small>NL 910</small><br>
+            <small>PL 910</small><br>
+            <small>RU 910</small><br>
         </div>
     </div>
 @endsection
@@ -43,7 +54,7 @@
                 serverSide: true,
                 pageLength: 25,
                 ajax: {
-                    headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
                     url: '{{ route('backend.ajax.brands.get') }}',
                     type: 'post'
                 },

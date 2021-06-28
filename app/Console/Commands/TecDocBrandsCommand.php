@@ -2,19 +2,20 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
-class TecDocBrandAddressesCommand extends TecDocCommand
+class TecDocBrandsCommand extends Command
 {
     /**
      * @var string
      */
-    protected $signature = 'tecdoc:brand-addresses {brandId}';
+    protected $signature = 'tecdoc:brands';
 
     /**
      * @var string
      */
-    protected $description = 'Generate TecDoc Brand Addresses';
+    protected $description = 'Sync TecDoc Brands';
 
     /**
      * @return void
@@ -29,14 +30,11 @@ class TecDocBrandAddressesCommand extends TecDocCommand
      */
     public function handle()
     {
-        $brandId = (int)$this->argument('brandId');
-
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
-            'getAmBrandAddress' => [
+            'getAmBrands' => [
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),
-                'articleCountry' => config('tecdoc.api.country'),
-                'brandNo' => $brandId,
+                'articleCountry' => config('tecdoc.api.language'),
             ]
         ]);
 

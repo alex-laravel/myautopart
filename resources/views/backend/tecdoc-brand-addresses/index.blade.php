@@ -16,7 +16,11 @@
 @section('content')
     <div class="card card-accent-info mt-3">
         <div class="card-header">
-            <h4>{{ trans('labels.backend.brand-addresses.list') }}</h4>
+            <h4 class="d-inline-block">{{ trans('labels.backend.brand-addresses.list') }}</h4>
+
+            <div class="float-right">
+                @include('backend.tecdoc-brand-addresses.partials.header-buttons')
+            </div>
         </div>
 
         <div class="card-body">
@@ -24,20 +28,31 @@
                 <thead>
                 <tr>
                     <th>ID</th>
+                    <th>brandId</th>
                     <th>addressName</th>
                     <th>addressType</th>
                     <th>city</th>
-                    <th>fax</th>
+{{--                    <th>city2</th>--}}
+                    <th>email</th>
+{{--                    <th>fax</th>--}}
                     <th>logoDocId</th>
+                    <th>mailbox</th>
                     <th>name</th>
+{{--                    <th>name2</th>--}}
                     <th>phone</th>
-                    <th>street</th>
+{{--                    <th>street</th>--}}
+{{--                    <th>street2</th>--}}
                     <th>wwwURL</th>
-                    <th>zip</th>
-                    <th>zipCountryCode</th>
+{{--                    <th>zip</th>--}}
+{{--                    <th>zipCountryCode</th>--}}
+{{--                    <th>zipMailbox</th>--}}
+{{--                    <th>zipSpecial</th>--}}
                 </tr>
                 </thead>
             </table>
+
+            <strong class="d-block">NOTES:</strong>
+            <small>??? articleCountry</small><br>
         </div>
     </div>
 @endsection
@@ -57,17 +72,25 @@
                 },
                 columns: [
                     {data: 'id', name: 'td_brand_addresses.id'},
+                    {data: 'brandId', name: 'td_brand_address.brandId'},
                     {data: 'addressName', name: 'td_brand_address.addressName'},
                     {data: 'addressType', name: 'td_brand_address.addressType'},
                     {data: 'city', name: 'td_brand_address.city'},
-                    {data: 'fax', name: 'td_brand_address.fax'},
+                    // {data: 'city2', name: 'td_brand_address.city2'},
+                    {data: 'email', name: 'td_brand_address.email'},
+                    // {data: 'fax', name: 'td_brand_address.fax'},
                     {data: 'logoDocId', name: 'td_brand_address.logoDocId'},
+                    {data: 'mailbox', name: 'td_brand_address.mailbox'},
                     {data: 'name', name: 'td_brand_address.name'},
+                    // {data: 'name2', name: 'td_brand_address.name2'},
                     {data: 'phone', name: 'td_brand_address.phone'},
-                    {data: 'street', name: 'td_brand_address.street'},
-                    {data: 'wwwURL', name: 'td_brand_address.wwwURL'},
-                    {data: 'zip', name: 'td_brand_address.zip'},
-                    {data: 'zipCountryCode', name: 'td_brand_address.zipCountryCode'}
+                    // {data: 'street', name: 'td_brand_address.street'},
+                    // {data: 'street2', name: 'td_brand_address.street2'},
+                    {data: 'wwwURL', name: 'td_brand_address.wwwURL'}
+                    // {data: 'zip', name: 'td_brand_address.zip'},
+                    // {data: 'zipCountryCode', name: 'td_brand_address.zipCountryCode'},
+                    // {data: 'zipMailbox', name: 'td_brand_address.zipMailbox'},
+                    // {data: 'zipSpecial', name: 'td_brand_address.zipSpecial'}
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500
