@@ -28,6 +28,11 @@ class VehicleAjaxController extends Controller
      */
     public function get()
     {
-        return datatables()->of($this->vehicleRepository->getData())->make(true);
+        return datatables()->of($this->vehicleRepository->getData())
+            ->editColumn('carType', function ($vehicle) {
+                return $vehicle->carTypeLabel;
+            })
+            ->rawColumns(['carType'])
+            ->make(true);
     }
 }

@@ -28,6 +28,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
+                    <th>slug</th>
                     <th>manuId</th>
                     <th>modelId</th>
                     <th>carId</th>
@@ -37,6 +38,12 @@
                 </tr>
                 </thead>
             </table>
+
+            <strong class="d-block">NOTES:</strong>
+            <small>??? carType - P|O|L|POL</small><br>
+            <small>??? countriesCarSelection</small><br>
+            <small>??? countryGroupFlag</small><br>
+            <small>??? favouredList</small><br>
         </div>
     </div>
 @endsection
@@ -56,6 +63,7 @@
                 },
                 columns: [
                     {data: 'id', name: 'td_vehicles.id'},
+                    {data: 'slug', name: 'td_vehicles.slug'},
                     {data: 'manuId', name: 'td_vehicles.manuId'},
                     {data: 'modelId', name: 'td_vehicles.modelId'},
                     {data: 'carId', name: 'td_vehicles.carId'},

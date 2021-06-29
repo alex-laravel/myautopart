@@ -9,7 +9,7 @@ class TecDocVehiclesCommand extends TecDocCommand
     /**
      * @var string
      */
-    protected $signature = 'tecdoc:vehicles';
+    protected $signature = 'tecdoc:vehicles {manufacturerId} {modelId}';
 
     /**
      * @var string
@@ -29,10 +29,18 @@ class TecDocVehiclesCommand extends TecDocCommand
      */
     public function handle()
     {
+        $manufacturerId = (int)$this->argument('manufacturerId');
+        $modelId = (int)$this->argument('modelId');
+
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
-            'getCountries' => [
+            'getVehicleIdsByCriteria' => [
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),
+                'countriesCarSelection' => config('tecdoc.api.country'),
+                'carType' => self::TEC_DOC_TARGET_TYPE_PASSENGER . self::TEC_DOC_TARGET_TYPE_COMMERCIAL . self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT,
+                'manuId' => $manufacturerId,
+                'modId' => $modelId,
+                'favouredList' => null
             ]
         ]);
 
