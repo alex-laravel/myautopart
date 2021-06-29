@@ -61,8 +61,15 @@
         </li>
 
         <li class="c-sidebar-nav-divider"></li>
+        <li class="c-sidebar-nav-divider"></li>
+        <li class="c-sidebar-nav-divider"></li>
 
-
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.version.index') }}">
+                <i class="fas fa-code-branch"></i>
+                {{ trans('menus.backend.tecdoc.version.title') }}
+            </a>
+        </li>
 
 
 

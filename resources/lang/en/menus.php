@@ -91,6 +91,10 @@ return [
                     'edit' => 'Edit Brand Address',
                     'view' => 'View Brand Address',
                 ]
+            ],
+
+            'version' => [
+                'title' => 'Version',
             ]
         ]
     ]

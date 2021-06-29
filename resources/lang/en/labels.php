@@ -216,5 +216,26 @@ return [
             ],
         ],
 
+        'version' => [
+            'management' => 'Versions Management',
+            'list' => 'List of Versions',
+            'create' => 'Create Version',
+            'edit' => 'Edit Version',
+            'view' => 'View Version',
+            'table' => [
+
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+
+                    ],
+                ],
+            ],
+        ]
     ]
 ];

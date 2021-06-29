@@ -47,4 +47,16 @@ abstract class TecDocCommand extends Command
     {
         return is_array($response['data']) && array_key_exists('array', $response['data']) ? $response['data']['array'] : [];
     }
+
+    //$response->body();
+    //$response->json();
+    //$response->collect();
+    //$response->status();
+    //$response->ok();
+    //$response->successful();
+    //$response->failed();
+    //$response->serverError();
+    //$response->clientError();
+    //$response->header($header);
+    //$response->headers();
 }
