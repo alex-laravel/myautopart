@@ -9,5 +9,7 @@ use Illuminate\Support\Facades\Route;
  */
 Route::group(['prefix' => ''], function () {
     Route::post('manufacturers/get', [ManufacturerAjaxController::class, 'get'])->name('ajax.manufacturers.get');
+
+    Route::get('manufacturers/sync', [ManufacturerController::class, 'sync'])->name('manufacturers.sync');
     Route::resource('manufacturers', ManufacturerController::class);
 });

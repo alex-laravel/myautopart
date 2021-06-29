@@ -17,9 +17,11 @@ class CreateManufacturerTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('manuId');
             $table->string('manuName', 150);
+            $table->string('linkingTargetTypes', 5);
             $table->string('slug', 150);
-            $table->boolean('isVisible');
+            $table->boolean('favorFlag');
             $table->boolean('isPopular');
+            $table->boolean('isVisible');
         });
     }
 

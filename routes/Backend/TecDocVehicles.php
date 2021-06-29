@@ -9,5 +9,7 @@ use Illuminate\Support\Facades\Route;
  */
 Route::group(['prefix' => ''], function () {
     Route::post('vehicles/get', [VehicleAjaxController::class, 'get'])->name('ajax.vehicles.get');
+
+    Route::get('vehicles/sync', [VehicleController::class, 'sync'])->name('vehicles.sync');
     Route::resource('vehicles', VehicleController::class);
 });

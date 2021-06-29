@@ -4,17 +4,17 @@ namespace App\Console\Commands;
 
 use Illuminate\Support\Facades\Http;
 
-class TecDocBrandsCommand extends TecDocCommand
+class TecDocModelsCommand extends TecDocCommand
 {
     /**
      * @var string
      */
-    protected $signature = 'tecdoc:brands';
+    protected $signature = 'tecdoc:models';
 
     /**
      * @var string
      */
-    protected $description = 'Sync TecDoc Brands';
+    protected $description = 'Sync TecDoc Models';
 
     /**
      * @return void
@@ -30,10 +30,9 @@ class TecDocBrandsCommand extends TecDocCommand
     public function handle()
     {
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
-            'getAmBrands' => [
+            'getCountries' => [
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),
-                'articleCountry' => config('tecdoc.api.language'),
             ]
         ]);
 

@@ -17,16 +17,58 @@ class Manufacturer extends Model
     protected $fillable = [
         'manuId',
         'manuName',
+        'linkingTargetTypes',
+        'favorFlag',
         'slug',
-        'isVisible',
         'isPopular',
+        'isVisible',
     ];
 
     /**
      * @var array
      */
     protected $casts = [
-        'isVisible' => 'boolean',
+        'favorFlag' => 'boolean',
         'isPopular' => 'boolean',
+        'isVisible' => 'boolean',
     ];
+
+
+    /**
+     * @return string
+     */
+    public function getLinkingTargetTypesLabelAttribute()
+    {
+        return '<span class="badge badge-dark">' . $this->linkingTargetTypes . '</span>';
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsFavoriteLabelAttribute()
+    {
+        return $this->favorFlag
+            ? '<span class="badge badge-info">F</span>'
+            : '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsPopularLabelAttribute()
+    {
+        return $this->isPopular
+            ? '<span class="badge badge-success">Yes</span>'
+            : '<span class="badge badge-warning">No</span>';
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsVisibleLabelAttribute()
+    {
+        return $this->isVisible
+            ? '<span class="badge badge-success">Yes</span>'
+            : '<span class="badge badge-warning">No</span>';
+    }
 }

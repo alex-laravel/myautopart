@@ -16,7 +16,11 @@
 @section('content')
     <div class="card card-accent-info mt-3">
         <div class="card-header">
-            <h4>{{ trans('labels.backend.manufacturers.list') }}</h4>
+            <h4 class="d-inline-block">{{ trans('labels.backend.manufacturers.list') }}</h4>
+
+            <div class="float-right">
+                @include('backend.tecdoc-manufacturers.partials.header-buttons')
+            </div>
         </div>
 
         <div class="card-body">
@@ -24,14 +28,32 @@
                 <thead>
                 <tr>
                     <th>ID</th>
+                    <th>slug</th>
                     <th>manuId</th>
                     <th>manuName</th>
-                    <th>slug</th>
+                    <th>linkingTargetTypes</th>
+                    <th>favorFlag</th>
+                    <th>isPopular</th>
                     <th>isVisible</th>
-                    <th>manuName</th>
                 </tr>
                 </thead>
             </table>
+
+            <strong class="d-block">NOTES:</strong>
+            <small>??? linkingTargetType - P|O|PO</small><br>
+            <small>??? country</small><br>
+            <small>??? countryGroupFlag</small><br>
+            <small>P 302</small><br>
+            <small>O 146</small><br>
+            <small>PO 423</small><br><br>
+            <small>BY 414</small><br>
+            <small>GB 446</small><br>
+            <small>DE 415</small><br>
+            <small>GE 414</small><br>
+            <small>RU 448</small><br>
+            <small>SU 448</small><br>
+            <small>UA 423</small><br>
+            <small>US 253</small><br>
         </div>
     </div>
 @endsection
@@ -51,11 +73,13 @@
                 },
                 columns: [
                     {data: 'id', name: 'td_manufacturers.id'},
+                    {data: 'slug', name: 'td_manufacturers.slug'},
                     {data: 'manuId', name: 'td_manufacturers.manuId'},
                     {data: 'manuName', name: 'td_manufacturers.manuName'},
-                    {data: 'slug', name: 'td_manufacturers.slug'},
-                    {data: 'isVisible', name: 'td_manufacturers.isVisible'},
-                    {data: 'isPopular', name: 'td_manufacturers.isPopular'}
+                    {data: 'linkingTargetTypes', name: 'td_manufacturers.linkingTargetTypes'},
+                    {data: 'favorFlag', name: 'td_manufacturers.favorFlag'},
+                    {data: 'isPopular', name: 'td_manufacturers.isPopular'},
+                    {data: 'isVisible', name: 'td_manufacturers.isVisible'}
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500
