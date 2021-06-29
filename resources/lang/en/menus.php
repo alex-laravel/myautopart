@@ -24,6 +24,7 @@ return [
 
         'tecdoc' => [
             'title' => 'TecDoc',
+
             'languages' => [
                 'title' => 'Languages',
                 'main' => 'Languages',
@@ -32,6 +33,7 @@ return [
                 'edit' => 'Edit Language',
                 'view' => 'View Language',
             ],
+
             'countries' => [
                 'title' => 'Countries',
                 'main' => 'Countries',
@@ -40,6 +42,7 @@ return [
                 'edit' => 'Edit Country',
                 'view' => 'View Country',
             ],
+
             'country-groups' => [
                 'title' => 'Country Groups',
                 'main' => 'Country Groups',
@@ -48,20 +51,29 @@ return [
                 'edit' => 'Edit Country Group',
                 'view' => 'View Country Group',
             ],
+
             'cars' => [
                 'title' => 'Cars',
+
                 'manufacturers' => [
                     'title' => 'Manufacturers',
                 ],
+
                 'models' => [
                     'title' => 'Models',
                 ],
+
                 'vehicles' => [
                     'title' => 'Vehicles',
+                ],
+
+                'vehicle-details' => [
+                    'title' => 'Vehicle Details',
                 ],
             ],
             'articles' => [
                 'title' => 'Articles',
+
                 'brands' => [
                     'title' => 'Brands',
                     'main' => 'Brands',
@@ -70,6 +82,7 @@ return [
                     'edit' => 'Edit Brand',
                     'view' => 'View Brand',
                 ],
+
                 'brand-addresses' => [
                     'title' => 'Brand Addresses',
                     'main' => 'Brand Addresses',

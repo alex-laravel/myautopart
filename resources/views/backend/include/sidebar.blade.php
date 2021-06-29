@@ -44,6 +44,7 @@
                 <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.manufacturers.index') }}"> {{ trans('menus.backend.tecdoc.cars.manufacturers.title') }}</a></li>
                 <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.models.index') }}"> {{ trans('menus.backend.tecdoc.cars.models.title') }}</a></li>
                 <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.vehicles.index') }}"> {{ trans('menus.backend.tecdoc.cars.vehicles.title') }}</a></li>
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.vehicle-details.index') }}"> {{ trans('menus.backend.tecdoc.cars.vehicle-details.title') }}</a></li>
             </ul>
         </li>
 

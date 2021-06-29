@@ -50,14 +50,21 @@ return [
             ],
             'cars' => [
                 'title' => 'Автомобили',
+
                 'manufacturers' => [
                     'title' => 'Производители',
                 ],
+
                 'models' => [
                     'title' => 'Модели',
                 ],
+
                 'vehicles' => [
                     'title' => 'Транспортные Средства',
+                ],
+
+                'vehicle-details' => [
+                    'title' => 'Обзор Транспортных Средств',
                 ],
             ],
             'articles' => [
