@@ -25,6 +25,18 @@ class TecDocManufacturersCommand extends TecDocCommand
     }
 
     /**
+     * getManufacturers():
+     *
+     * Correct linking target type:
+     * linkingTargetType=P -> passenger cars
+     * linkingTargetType=O -> commercial vehicles
+     * linkingTargetType=PO -> both passenger cars and commercial vehicles
+
+     * Favor handling:
+     * favouredList=NULL -> all vehicles
+     * favouredList=1 -> favorites only
+     * favouredList=0 -> Rest
+     *
      * @return void
      */
     public function handle()
@@ -41,14 +53,3 @@ class TecDocManufacturersCommand extends TecDocCommand
         $this->line($response->body());
     }
 }
-
-//getManufacturers():
-//Correct linking target type:
-//linkingTargetType=P -> passenger cars
-//linkingTargetType=O -> commercial vehicles
-//linkingTargetType=PO -> both passenger cars and commercial vehicles
-//
-//Favor handling:
-//favouredList=NULL -> all vehicles
-//favouredList=1 -> favorites only
-//favouredList=0 -> Rest

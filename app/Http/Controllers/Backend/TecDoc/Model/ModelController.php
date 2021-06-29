@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Backend\TecDoc\Model;
 
 use App\Http\Controllers\Controller;
+use App\Models\TecDoc\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 
 class ModelController extends Controller
 {
@@ -83,5 +87,58 @@ class ModelController extends Controller
     public function destroy(ModelSeries $modelSeries)
     {
         //
+    }
+
+    /**
+     * @return RedirectResponse
+     */
+    public function sync()
+    {
+        ini_set('max_execution_time', 0);
+
+        ModelSeries::truncate();
+
+        $manufacturerIds = Manufacturer::get()->pluck('manuId')->toArray();
+
+        foreach ($manufacturerIds as $manufacturerId) {
+            Artisan::call('tecdoc:models', [
+                'manufacturerId' => $manufacturerId
+            ]);
+
+            $output = Artisan::output();
+            $output = json_decode($output, true);
+
+            if (!$this->hasSuccessResponse($output)) {
+                return redirect()->back();
+            }
+
+            $output = $this->getResponseDataAsArray($output);
+
+            if (empty($output)) {
+                return redirect()->back();
+            }
+
+            foreach ($output as &$model) {
+                $model['manuId'] = $manufacturerId;
+
+                if (!isset($model['yearOfConstrFrom'])) {
+                    $model['yearOfConstrFrom'] = null;
+                }
+
+                if (!isset($model['yearOfConstrTo'])) {
+                    $model['yearOfConstrTo'] = null;
+                }
+
+                $model['isPopular'] = $model['favorFlag'];
+                $model['isVisible'] = true;
+                $model['slug'] = Str::slug($model['modelname']);
+            }
+
+            ModelSeries::insert($output);
+
+//            \Log::info('MODELS FOR MANUFACTURER ID [' . $manufacturerId . '] CREATED!');
+        }
+
+        return redirect()->back();
     }
 }

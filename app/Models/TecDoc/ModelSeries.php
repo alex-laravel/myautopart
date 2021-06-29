@@ -19,6 +19,19 @@ class ModelSeries extends Model
         'modelId',
         'modelname',
         'yearOfConstrFrom',
-        'yearOfConstrTo'
+        'yearOfConstrTo',
+        'favorFlag',
+        'isPopular',
+        'isVisible',
+        'slug',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'favorFlag' => 'boolean',
+        'isPopular' => 'boolean',
+        'isVisible' => 'boolean',
     ];
 }

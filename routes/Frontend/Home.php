@@ -15,9 +15,6 @@ Route::get('/auto/{manufacturer}/{model}/{vehicle}', [AutoController::class, 've
 
 Route::get('/tecdoc/api/version', \App\Http\Controllers\TecDoc\TecDocApiVersionController::class);
 
-//Route::get('/tecdoc/api/manufacturers', \App\Http\Controllers\TecDoc\TecDocApiManufacturersController::class);
-//Route::get('/tecdoc/api/models', \App\Http\Controllers\TecDoc\TecDocApiModelSeriesController::class);
-//Route::get('/tecdoc/api/vehicles', \App\Http\Controllers\TecDoc\TecDocApiVehiclesController::class);
 //Route::get('/tecdoc/api/vehicle-details', \App\Http\Controllers\TecDoc\TecDocApiVehicleDetailsController::class);
 
 Route::get('/garage/{manufacturerId}/{modelSeriesId}/{vehicleId}/add', [\App\Http\Controllers\Auto\GarageController::class, 'vehicleAdd'])->name('garage.vehicle.add');

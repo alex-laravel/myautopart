@@ -20,6 +20,10 @@ class CreateModelSeriesTable extends Migration
             $table->string('modelname', 150);
             $table->unsignedInteger('yearOfConstrFrom')->nullable();
             $table->unsignedInteger('yearOfConstrTo')->nullable();
+            $table->boolean('favorFlag');
+            $table->boolean('isPopular');
+            $table->boolean('isVisible');
+            $table->string('slug', 150);
         });
     }
 

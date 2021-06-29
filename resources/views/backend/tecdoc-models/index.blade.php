@@ -28,6 +28,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
+                    <th>slug</th>
                     <th>manuId</th>
                     <th>modelId</th>
                     <th>modelname</th>
@@ -36,6 +37,11 @@
                 </tr>
                 </thead>
             </table>
+
+            <strong class="d-block">NOTES:</strong>
+            <small>??? linkingTargetType - P|O|PO</small><br>
+            <small>??? country</small><br>
+            <small>??? countryGroupFlag</small><br>
         </div>
     </div>
 @endsection
@@ -55,6 +61,7 @@
                 },
                 columns: [
                     {data: 'id', name: 'td_model_series.id'},
+                    {data: 'slug', name: 'td_model_series.slug'},
                     {data: 'manuId', name: 'td_model_series.manuId'},
                     {data: 'modelId', name: 'td_model_series.modelId'},
                     {data: 'modelname', name: 'td_model_series.modelname'},
