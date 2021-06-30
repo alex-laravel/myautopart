@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Facades\Garage;
 use App\Http\Controllers\Controller;
 use App\Models\TecDoc\Manufacturer;
-use App\Models\TecDoc\ShortCuts;
+use App\Models\TecDoc\ShortCut\ShortCut;
 use Illuminate\Contracts\View\View;
 
 class HomeController extends Controller
@@ -267,7 +267,7 @@ class HomeController extends Controller
 
         $manufactures = Manufacturer::whereIn('manuName', $allBrands)->orderBy('manuName')->get();
 
-        $categories = ShortCuts::get();
+        $categories = ShortCut::get();
 
         //        Garage::clearVehicles();
 

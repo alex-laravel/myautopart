@@ -60,6 +60,13 @@
             </ul>
         </li>
 
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.short-cuts.index') }}">
+                <i class="fab fa-buromobelexperte"></i>
+                {{ trans('menus.backend.tecdoc.short-cuts.title') }}
+            </a>
+        </li>
+
         <li class="c-sidebar-nav-divider"></li>
         <li class="c-sidebar-nav-divider"></li>
         <li class="c-sidebar-nav-divider"></li>

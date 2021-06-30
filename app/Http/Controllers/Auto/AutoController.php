@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Auto;
 
-use App\Facades\Garage;
 use App\Http\Controllers\Controller;
 use App\Models\TecDoc\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
-use App\Models\TecDoc\ShortCuts;
 use App\Models\TecDoc\Vehicle;
 use Illuminate\Contracts\View\View;
 

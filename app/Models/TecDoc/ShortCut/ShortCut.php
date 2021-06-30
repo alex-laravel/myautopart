@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\TecDoc;
+namespace App\Models\TecDoc\ShortCut;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShortCuts extends Model
+class ShortCut extends Model
 {
     use HasFactory;
 

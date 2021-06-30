@@ -2,9 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\TecDoc\GenericArticles;
-use App\Models\TecDoc\ShortCuts;
-use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
 class TecDocShortCutsCommand extends TecDocCommand
@@ -46,25 +43,12 @@ class TecDocShortCutsCommand extends TecDocCommand
                 'lang' => config('tecdoc.api.language'),
                 'articleCountry' => config('tecdoc.api.country'),
                 'linkingTargetType' => self::TEC_DOC_TARGET_TYPE_PASSENGER,
+
+//                'linked' => true,
+//                'linkingTargetId' => 2,
             ]
         ]);
 
-//        var_dump($response->body());
-
-        $response = $response->json();
-
-        if (!$this->hasSuccessResponse($response)) {
-            return;
-        }
-
-        $response = $this->getResponseDataAsArray($response);
-
-        if (empty($response)) {
-            return;
-        }
-
-        ShortCuts::insert($response);
-
-        $this->info('Completed!');
+        $this->line($response->body());
     }
 }

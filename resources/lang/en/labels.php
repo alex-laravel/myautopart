@@ -216,6 +216,28 @@ return [
             ],
         ],
 
+        'short-cuts' => [
+            'management' => 'Short Cuts Management',
+            'list' => 'List of Short Cuts',
+            'create' => 'Create Short Cut',
+            'edit' => 'Edit Short Cut',
+            'view' => 'View Short Cut',
+            'table' => [
+
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+
+                    ],
+                ],
+            ],
+        ],
+
         'version' => [
             'management' => 'Versions Management',
             'list' => 'List of Versions',

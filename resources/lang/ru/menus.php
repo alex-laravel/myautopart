@@ -87,6 +87,10 @@ return [
                 ]
             ],
 
+            'short-cuts' => [
+                'title' => 'Категории',
+            ],
+
             'version' => [
                 'title' => 'Версия',
             ]

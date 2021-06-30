@@ -93,6 +93,10 @@ return [
                 ]
             ],
 
+            'short-cuts' => [
+                'title' => 'Short Cuts',
+            ],
+
             'version' => [
                 'title' => 'Version',
             ]

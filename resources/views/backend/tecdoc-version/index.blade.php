@@ -8,7 +8,7 @@
 
 @section('header')
     <h1>
-        <i class="fas fa-car"></i>
+        <i class="fas fa-code-branch"></i>
         {{ trans('labels.backend.version.management') }}
     </h1>
 @endsection
