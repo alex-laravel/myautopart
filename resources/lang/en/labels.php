@@ -238,6 +238,28 @@ return [
             ],
         ],
 
+        'assembly-groups' => [
+            'management' => 'Assembly Groups Management',
+            'list' => 'List of Assembly Groups',
+            'create' => 'Create Assembly Group',
+            'edit' => 'Edit Assembly Group',
+            'view' => 'View Assembly Group',
+            'table' => [
+
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+
+                    ],
+                ],
+            ],
+        ],
+
         'version' => [
             'management' => 'Versions Management',
             'list' => 'List of Versions',
@@ -255,9 +277,9 @@ return [
                 'content' => [
                     'overview' => [
 
-                    ],
-                ],
-            ],
+                    ]
+                ]
+            ]
         ]
     ]
 ];

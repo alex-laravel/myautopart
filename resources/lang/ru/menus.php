@@ -91,6 +91,10 @@ return [
                 'title' => 'Категории',
             ],
 
+            'assembly-groups' => [
+                'title' => 'Сборочные Группы',
+            ],
+
             'version' => [
                 'title' => 'Версия',
             ]

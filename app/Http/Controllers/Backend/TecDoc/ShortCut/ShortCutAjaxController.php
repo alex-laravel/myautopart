@@ -26,6 +26,14 @@ class ShortCutAjaxController extends Controller
      */
     public function get()
     {
-        return datatables()->of($this->shortCutRepository->getData())->make(true);
+        return datatables()->of($this->shortCutRepository->getData())
+            ->editColumn('linkingTargetType', function ($shortCut) {
+                return $shortCut->linkingTargetTypeLabel;
+            })
+            ->editColumn('isVisible', function ($shortCut) {
+                return $shortCut->isVisibleLabel;
+            })
+            ->rawColumns(['linkingTargetType', 'isVisible'])
+            ->make(true);
     }
 }

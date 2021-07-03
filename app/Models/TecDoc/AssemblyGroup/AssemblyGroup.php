@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\TecDoc\ShortCut;
+namespace App\Models\TecDoc\AssemblyGroup;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShortCut extends Model
+class AssemblyGroup extends Model
 {
     use HasFactory;
 
@@ -17,15 +17,18 @@ class ShortCut extends Model
     /**
      * @var string
      */
-    protected $table = 'td_short_cuts';
+    protected $table = 'td_assembly_groups';
 
     /**
      * @var array
      */
     protected $fillable = [
-        'shortCutId',
-        'shortCutName',
+        'assemblyGroupNodeId',
+        'assemblyGroupName',
         'linkingTargetType',
+        'shortCutId',
+        'parentNodeId',
+        'hasChilds',
         'isVisible',
     ];
 
@@ -33,6 +36,7 @@ class ShortCut extends Model
      * @var array
      */
     protected $casts = [
+        'hasChilds' => 'boolean',
         'isVisible' => 'boolean',
     ];
 
@@ -42,6 +46,16 @@ class ShortCut extends Model
     public function getLinkingTargetTypeLabelAttribute()
     {
         return '<span class="badge badge-dark">' . $this->linkingTargetType . '</span>';
+    }
+
+    /**
+     * @return string
+     */
+    public function getHasChildsLabelAttribute()
+    {
+        return $this->hasChilds
+            ? '<span class="badge badge-success">Yes</span>'
+            : '<span class="badge badge-warning">No</span>';
     }
 
     /**

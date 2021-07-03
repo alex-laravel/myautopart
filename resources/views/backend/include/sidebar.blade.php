@@ -55,16 +55,11 @@
             </a>
 
             <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.short-cuts.index') }}"> {{ trans('menus.backend.tecdoc.short-cuts.title') }}</a></li>
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.assembly-groups.index') }}"> {{ trans('menus.backend.tecdoc.assembly-groups.title') }}</a></li>
                 <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.brands.index') }}"> {{ trans('menus.backend.tecdoc.articles.brands.title') }}</a></li>
                 <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('backend.brand-addresses.index') }}"> {{ trans('menus.backend.tecdoc.articles.brand-addresses.title') }}</a></li>
             </ul>
-        </li>
-
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('backend.short-cuts.index') }}">
-                <i class="fab fa-buromobelexperte"></i>
-                {{ trans('menus.backend.tecdoc.short-cuts.title') }}
-            </a>
         </li>
 
         <li class="c-sidebar-nav-divider"></li>

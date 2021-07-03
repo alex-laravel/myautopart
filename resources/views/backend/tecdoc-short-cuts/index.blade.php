@@ -8,7 +8,7 @@
 
 @section('header')
     <h1>
-        <i class="fab fa-buromobelexperte"></i>
+        <i class="fas fa-tools"></i>
         {{ trans('labels.backend.short-cuts.management') }}
     </h1>
 @endsection
@@ -30,6 +30,8 @@
                     <th>ID</th>
                     <th>shortCutId</th>
                     <th>shortCutName</th>
+                    <th>linkingTargetType</th>
+                    <th>isVisible</th>
                 </tr>
                 </thead>
             </table>
@@ -63,7 +65,9 @@
                 columns: [
                     {data: 'id', name: 'td_short_cuts.id'},
                     {data: 'shortCutId', name: 'td_short_cuts.shortCutId'},
-                    {data: 'shortCutName', name: 'td_short_cuts.shortCutName'}
+                    {data: 'shortCutName', name: 'td_short_cuts.shortCutName'},
+                    {data: 'linkingTargetType', name: 'td_short_cuts.linkingTargetType'},
+                    {data: 'isVisible', name: 'td_short_cuts.isVisible'}
                 ],
                 order: [[0, 'asc']],
                 searchDelay: 500

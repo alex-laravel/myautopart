@@ -1,22 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Backend\TecDoc\ShortCut;
+namespace App\Http\Controllers\Backend\TecDoc\AssemblyGroup;
 
 use App\Http\Controllers\Backend\TecDoc\TecDocController;
-use App\Models\TecDoc\ShortCut\ShortCut;
+use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
-class ShortCutController extends TecDocController
+class AssemblyGroupController extends TecDocController
 {
     /**
+     * Display a listing of the resource.
+     *
      * @return View
      */
     public function index()
     {
-        return view('backend.tecdoc-short-cuts.index');
+        return view('backend.tecdoc-assembly-groups.index');
     }
 
     /**
@@ -43,10 +45,10 @@ class ShortCutController extends TecDocController
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\TecDoc\ShortCut\ShortCut $shortCut
+     * @param \App\Models\TecDoc\AssemblyGroup\AssemblyGroup $assemblyGroup
      * @return \Illuminate\Http\Response
      */
-    public function show(ShortCut $shortCut)
+    public function show(AssemblyGroup $assemblyGroup)
     {
         //
     }
@@ -54,10 +56,10 @@ class ShortCutController extends TecDocController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\TecDoc\ShortCut\ShortCut $shortCut
+     * @param \App\Models\TecDoc\AssemblyGroup\AssemblyGroup $assemblyGroup
      * @return \Illuminate\Http\Response
      */
-    public function edit(ShortCut $shortCut)
+    public function edit(AssemblyGroup $assemblyGroup)
     {
         //
     }
@@ -66,10 +68,10 @@ class ShortCutController extends TecDocController
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\TecDoc\ShortCut\ShortCut $shortCut
+     * @param \App\Models\TecDoc\AssemblyGroup\AssemblyGroup $assemblyGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ShortCut $shortCut)
+    public function update(Request $request, AssemblyGroup $assemblyGroup)
     {
         //
     }
@@ -77,44 +79,50 @@ class ShortCutController extends TecDocController
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\TecDoc\ShortCut\ShortCut $shortCut
+     * @param \App\Models\TecDoc\AssemblyGroup\AssemblyGroup $assemblyGroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ShortCut $shortCut)
+    public function destroy(AssemblyGroup $assemblyGroup)
     {
         //
     }
+
 
     /**
      * @return RedirectResponse
      */
     public function sync()
     {
-        ShortCut::truncate();
+        AssemblyGroup::truncate();
 
+//        foreach (ShortCut::get() as $shortCut) {
         foreach (self::$allowedTargetTypes as $linkingTargetType) {
-            Artisan::call('tecdoc:short-cuts', [
-                'linkingTargetType' => $linkingTargetType
+            Artisan::call('tecdoc:assembly-groups', [
+                'linkingTargetType' => $linkingTargetType,
+                'shortCutId' => 0
             ]);
 
             $output = Artisan::output();
             $output = json_decode($output, true);
 
             if (!$this->hasSuccessResponse($output)) {
-                continue;
+                return redirect()->back();
             }
 
             $output = $this->getResponseDataAsArray($output);
 
             if (empty($output)) {
-                continue;
+                return redirect()->back();
             }
 
-            foreach ($output as &$shortCut) {
-                $shortCut['linkingTargetType'] = $linkingTargetType;
+            foreach ($output as &$assemblyGroup) {
+                $assemblyGroup['shortCutId'] = null;
+                $assemblyGroup['parentNodeId'] = isset($assemblyGroup['parentNodeId']) ? $assemblyGroup['parentNodeId'] : null;
+                $assemblyGroup['linkingTargetType'] = $linkingTargetType;
             }
 
-            ShortCut::insert($output);
+            AssemblyGroup::insert($output);
+//        }
         }
 
         return redirect()->back();

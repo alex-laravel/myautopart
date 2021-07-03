@@ -97,6 +97,10 @@ return [
                 'title' => 'Short Cuts',
             ],
 
+            'assembly-groups' => [
+                'title' => 'Assembly Groups',
+            ],
+
             'version' => [
                 'title' => 'Version',
             ]
