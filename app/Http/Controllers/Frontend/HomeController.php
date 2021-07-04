@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Facades\Garage;
 use App\Http\Controllers\Controller;
+use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
 use App\Models\TecDoc\Manufacturer;
 use App\Models\TecDoc\ShortCut\ShortCut;
 use Illuminate\Contracts\View\View;
@@ -265,17 +266,45 @@ class HomeController extends Controller
             'ZHONGXING (ZX AUTO)',
         ];
 
-        $manufactures = Manufacturer::whereIn('manuName', $allBrands)->orderBy('manuName')->get();
-
-        $categories = ShortCut::get();
-
         //        Garage::clearVehicles();
+
+        $manufactures = Manufacturer::whereIn('manuName', $allBrands)->orderBy('manuName')->get();
+        $categories = ShortCut::orderBy('shortCutName')->get();
+        $assemblyGroups = AssemblyGroup::orderBy('assemblyGroupName')->get()->toArray();
+
+        $assemblyGroupsTree = $this->generateAssemblyGroupsTree($assemblyGroups);
 
         return view('frontend.home.index', [
             'garageVehicles' => Garage::getVehicles(),
             'brands' => $allBrands,
             'manufactures' => $manufactures,
             'categories' => $categories,
+            'assemblyGroups' => $assemblyGroupsTree,
         ]);
+    }
+
+    /**
+     * @param array $assemblyGroups
+     * @param integer $parentId
+     * @return array
+     */
+    private function generateAssemblyGroupsTree(&$assemblyGroups, $parentId = null)
+    {
+        $assemblyGroupsTree = [];
+
+        foreach ($assemblyGroups as $assemblyGroup) {
+            if ($assemblyGroup['parentNodeId'] == $parentId) {
+                $children = $this->generateAssemblyGroupsTree($assemblyGroups, $assemblyGroup['assemblyGroupNodeId']);
+
+                if ($children) {
+                    $assemblyGroup['children'] = $children;
+                }
+
+                $assemblyGroupsTree[$assemblyGroup['assemblyGroupNodeId']] = $assemblyGroup;
+                unset($assemblyGroups[$assemblyGroup['assemblyGroupNodeId']]);
+            }
+        }
+
+        return $assemblyGroupsTree;
     }
 }

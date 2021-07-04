@@ -48,10 +48,22 @@
             @foreach ($categories as $category)
                 <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">
                     <a href="#" class="d-block">
-                        <p>{{ $category->shortCutName }}</p>
+                        <p>{{ $category->shortCutName }} {{ $category->linkingTargetType }}</p>
                     </a>
                 </div>
             @endforeach
         </div>
+
+        <h2>Обзор по сборочным группам</h2>
+
+        @if (count($assemblyGroups) > 0)
+            <ul>
+                @foreach ($assemblyGroups as $assemblyGroup)
+                    @include('frontend.home.partials.assembly-group-child', $assemblyGroup)
+                @endforeach
+            </ul>
+        @else
+            NO ASSEMBLY GROUPS
+        @endif
     </div>
 @endsection
