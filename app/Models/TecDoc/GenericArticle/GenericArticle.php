@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\TecDoc;
+namespace App\Models\TecDoc\GenericArticle;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GenericArticles extends Model
+class GenericArticle extends Model
 {
     use HasFactory;
 
@@ -27,6 +27,7 @@ class GenericArticles extends Model
         'assemblyGroup',
         'designation',
         'masterDesignation',
-        'usageDesignation'
+        'usageDesignation',
+        'searchTreeNodeId'
     ];
 }

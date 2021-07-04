@@ -260,6 +260,28 @@ return [
             ],
         ],
 
+        'generic-articles' => [
+            'management' => 'Generic Articles Management',
+            'list' => 'List of Generic Articles',
+            'create' => 'Create Generic Article',
+            'edit' => 'Edit Generic Article',
+            'view' => 'View Generic Article',
+            'table' => [
+
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+
+                    ],
+                ],
+            ],
+        ],
+
         'version' => [
             'management' => 'Versions Management',
             'list' => 'List of Versions',

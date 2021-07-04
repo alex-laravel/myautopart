@@ -95,6 +95,10 @@ return [
                 'title' => 'Сборочные Группы',
             ],
 
+            'generic-articles' => [
+                'title' => 'Общие Статьи',
+            ],
+
             'version' => [
                 'title' => 'Версия',
             ]

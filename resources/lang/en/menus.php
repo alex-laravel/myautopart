@@ -101,6 +101,10 @@ return [
                 'title' => 'Assembly Groups',
             ],
 
+            'generic-articles' => [
+                'title' => 'Generic Articles',
+            ],
+
             'version' => [
                 'title' => 'Version',
             ]
