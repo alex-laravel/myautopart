@@ -30,4 +30,14 @@ class TecDocController extends Controller
         self::TEC_DOC_TARGET_TYPE_BODY,
         self::TEC_DOC_TARGET_TYPE_UNIVERSAL
     ];
+
+    /**
+     * @var string[]
+     */
+    public static $allowedVehicleTargetTypes = [
+        self::TEC_DOC_TARGET_TYPE_PASSENGER,
+        self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
+        self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT,
+        self::TEC_DOC_TARGET_TYPE_UNIVERSAL
+    ];
 }

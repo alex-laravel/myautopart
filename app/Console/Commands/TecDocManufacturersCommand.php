@@ -9,7 +9,7 @@ class TecDocManufacturersCommand extends TecDocCommand
     /**
      * @var string
      */
-    protected $signature = 'tecdoc:manufacturers';
+    protected $signature = 'tecdoc:manufacturers {linkingTargetType}';
 
     /**
      * @var string
@@ -41,12 +41,14 @@ class TecDocManufacturersCommand extends TecDocCommand
      */
     public function handle()
     {
+        $linkingTargetType = $this->argument('linkingTargetType');
+
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
             'getManufacturers2' => [
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),
                 'country' => config('tecdoc.api.country'),
-                'linkingTargetType' => self::TEC_DOC_TARGET_TYPE_PASSENGER.self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
+                'linkingTargetType' => $linkingTargetType,
             ]
         ]);
 

@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\TecDoc\ArticleIdsWithState;
+use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
 use App\Models\TecDoc\Brand;
+use App\Models\TecDoc\GenericArticle\GenericArticle;
 use App\Models\TecDoc\Vehicle;
 use Illuminate\Support\Facades\Http;
 
@@ -34,31 +36,35 @@ class TecDocArticleIdsWithStateCommand extends TecDocCommand
     {
         ini_set('max_execution_time', 0);
 
-        $vehicleIds = Vehicle::orderBy('carId')->get()->pluck('carId')->toArray();
-        $brandIds = Brand::get()->pluck('brandId')->toArray();
+//        ArticleIdsWithState::truncate();
 
-        foreach ($vehicleIds as $vehicleId) {
-            foreach (array_chunk($brandIds, 30) as $brandIdsChunk) {
+        $vehicles = Vehicle::orderBy('carId')->get();
+        $genericArticleIds = GenericArticle::orderBy('genericArticleId')->get()->pluck('genericArticleId')->toArray();
+//        $assemblyGroupIds = AssemblyGroup::get()->pluck('assemblyGroupNodeId')->toArray();
+
+        foreach ($vehicles as $vehicle) {
+            foreach (array_chunk($genericArticleIds, 24) as $genericArticleChunk) {
+//            foreach ($assemblyGroupIds as $assemblyGroupId) {
+                $this->info('Processing for Car ID [' . $vehicle->carId . '] AND chunk Generic Articles [' . implode(",", $genericArticleChunk) . ']!');
+
                 $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
                     'getArticleIdsWithState' => [
-                        'articleCountry' => config('tecdoc.api.country'),
-                        'lang' => config('tecdoc.api.language'),
-                        'linkingTargetType' => 'P',
-                        'linkingTargetId' => $vehicleId,
-                        'brandNo' => [
-                            'array' => $brandIdsChunk
-                        ],
                         'provider' => config('tecdoc.api.provider'),
-                        'sort' => 1,
+                        'lang' => config('tecdoc.api.language'),
+                        'articleCountry' => config('tecdoc.api.country'),
+                        'linkingTargetId' => $vehicle->carId,
+                        'linkingTargetType' => $vehicle->carType,
+//                        'assemblyGroupNodeId' => $assemblyGroupId,
+                        'genericArticleId' => [
+                            'array' => $genericArticleChunk
+                        ],
+                        'sort' => 2,
                     ]
                 ]);
-
-    //        var_dump($response->body());
 
                 $response = $response->json();
 
                 if (!$this->hasSuccessResponse($response)) {
-                    var_dump($response['status'], $response['statusText']);
                     $this->warn($response['status'] . ' - ' . $response['statusText']);
                     continue;
                 }
@@ -71,15 +77,17 @@ class TecDocArticleIdsWithStateCommand extends TecDocCommand
                 }
 
                 foreach ($response as &$article) {
-                    $article['carId'] = $vehicleId;
+                    $article['carId'] = $vehicle->carId;
+                    $article['carType'] = $vehicle->carType;
+                    $article['assemblyGroupNodeId'] = 0;
                 }
 
                 ArticleIdsWithState::insert($response);
             }
+//            }
 
-            $this->info('Done for Car ID ['. $vehicleId .']!');
+            $this->info('Done for Car ID [' . $vehicle->carId . ']!');
         }
-
 
         $this->info('Completed!');
     }

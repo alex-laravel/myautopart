@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Support\Facades\Http;
 
-class TecDocAssemblyGroupCommand extends TecDocCommand
+class TecDocAssemblyGroupsCommand extends TecDocCommand
 {
     /**
      * @var string

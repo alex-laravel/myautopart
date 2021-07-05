@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend\TecDoc\Manufacturer;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\TecDoc\TecDocController;
 use App\Models\TecDoc\Manufacturer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 
-class ManufacturerController extends Controller
+class ManufacturerController extends TecDocController
 {
     /**
      * Display a listing of the resource.
@@ -93,29 +93,39 @@ class ManufacturerController extends Controller
      */
     public function sync()
     {
-        Artisan::call('tecdoc:manufacturers');
-
-        $output = Artisan::output();
-        $output = json_decode($output, true);
-
-        if (!$this->hasSuccessResponse($output)) {
-            return redirect()->back();
-        }
-
-        $output = $this->getResponseDataAsArray($output);
-
-        if (empty($output)) {
-            return redirect()->back();
-        }
-
-        foreach ($output as &$manufacturer) {
-            $manufacturer['slug'] = Str::slug($manufacturer['manuName']);
-            $manufacturer['isPopular'] = $manufacturer['favorFlag'];
-            $manufacturer['isVisible'] = true;
-        }
-
         Manufacturer::truncate();
-        Manufacturer::insert($output);
+
+        foreach (self::$allowedVehicleTargetTypes as $linkingTargetType) {
+            Artisan::call('tecdoc:manufacturers', [
+                'linkingTargetType' => $linkingTargetType
+            ]);
+
+            $output = Artisan::output();
+            $output = json_decode($output, true);
+
+            if (!$this->hasSuccessResponse($output)) {
+                \Log::alert('Command [tecdoc:manufacturers] failed.');
+                \Log::alert($output);
+                continue;
+            }
+
+            $output = $this->getResponseDataAsArray($output);
+
+            if (empty($output)) {
+                \Log::alert('Command [tecdoc:manufacturers] has empty response for linkingTargetType [' . $linkingTargetType . '].');
+                continue;
+            }
+
+            foreach ($output as &$manufacturer) {
+                $manufacturer['manuName'] = isset($manufacturer['manuName']) ? $manufacturer['manuName'] : '';
+                $manufacturer['slug'] = Str::slug($manufacturer['manuName']);
+                $manufacturer['isPopular'] = $manufacturer['favorFlag'];
+                $manufacturer['isVisible'] = true;
+            }
+
+
+            Manufacturer::insert($output);
+        }
 
         return redirect()->back();
     }

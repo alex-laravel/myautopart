@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Support\Facades\Http;
 
-class TecDocGenericArticleCommand extends TecDocCommand
+class TecDocGenericArticlesCommand extends TecDocCommand
 {
     /**
      * @var string
