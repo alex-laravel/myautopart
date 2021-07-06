@@ -14,7 +14,9 @@
 @endsection
 
 @section('content')
-    <form class="form-horizontal" action="{{ route('backend.manufacturers.sync') }}" method="get">
+    <form class="form-horizontal" action="{{ route('backend.manufacturers.sync') }}" method="post">
+        @csrf
+
         <div class="card card-accent-info mt-3">
             <div class="card-header">
                 <h4 class="d-inline-block">{{ trans('labels.general.synchronize') }}</h4>
@@ -129,22 +131,6 @@
                 </tr>
                 </thead>
             </table>
-
-            <strong class="d-block">NOTES:</strong>
-            <small>??? linkingTargetType - P|O|PO</small><br>
-            <small>??? country</small><br>
-            <small>??? countryGroupFlag</small><br>
-            <small>P 302</small><br>
-            <small>O 146</small><br>
-            <small>PO 423</small><br><br>
-            <small>BY 414</small><br>
-            <small>GB 446</small><br>
-            <small>DE 415</small><br>
-            <small>GE 414</small><br>
-            <small>RU 448</small><br>
-            <small>SU 448</small><br>
-            <small>UA 423</small><br>
-            <small>US 253</small><br>
         </div>
     </div>
 @endsection

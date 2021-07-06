@@ -14,13 +14,72 @@
 @endsection
 
 @section('content')
+    <form class="form-horizontal" action="{{ route('backend.models.sync') }}" method="post">
+        @csrf
+
+        <div class="card card-accent-info mt-3">
+            <div class="card-header">
+                <h4 class="d-inline-block">{{ trans('labels.general.synchronize') }}</h4>
+
+                <div class="float-right">
+                    <button class="btn btn-block btn-primary" type="submit">{{ trans('buttons.general.synchronize') }}</button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-md-3">
+                        <strong>{{ trans('menus.backend.tecdoc.countries.title') }}</strong>
+                    </div>
+
+                    <div class="col-md-9">
+                        @if (count($countries))
+                            <select class="form-control" id="country" name="country">
+                                <option value="">Please select</option>
+                                @foreach ($countries as $country)
+                                    @if (!old('country') && $country->countryCode === $defaultLanguage)
+                                        <option value="{{ $country->countryCode }}" selected>{{ $country->countryCode }} - {{ $country->countryName }}</option>
+                                    @elseif (old('country') === $country->countryCode)
+                                        <option value="{{ $country->countryCode }}" selected>{{ $country->countryCode }} - {{ $country->countryName }}</option>
+                                    @else
+                                        <option value="{{ $country->countryCode }}">{{ $country->countryCode }} - {{ $country->countryName }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        @else
+                            <small class="d-block">нет вариантов для стран</small>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-3">
+                        <strong>{{ trans('menus.backend.tecdoc.country-groups.title') }}</strong>
+                    </div>
+
+                    <div class="col-md-9">
+                        @if (count($countryGroups))
+                            <select class="form-control" id="countryGroup" name="countryGroup">
+                                <option value="">Please select</option>
+                                @foreach ($countryGroups as $countryGroup)
+                                    @if ($countryGroup->tecdocCode == old('countryGroup'))
+                                        <option value="{{ $countryGroup->tecdocCode }}" selected>{{ $countryGroup->tecdocCode }} - {{ $countryGroup->countryName }}</option>
+                                    @else
+                                        <option value="{{ $countryGroup->tecdocCode }}">{{ $countryGroup->tecdocCode }} - {{ $countryGroup->countryName }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        @else
+                            <small class="d-block">нет вариантов для групп стран</small>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
     <div class="card card-accent-info mt-3">
         <div class="card-header">
             <h4 class="d-inline-block">{{ trans('labels.backend.models.list') }}</h4>
-
-            <div class="float-right">
-                @include('backend.tecdoc-models.partials.header-buttons')
-            </div>
         </div>
 
         <div class="card-body">
@@ -37,11 +96,6 @@
                 </tr>
                 </thead>
             </table>
-
-            <strong class="d-block">NOTES:</strong>
-            <small>??? linkingTargetType - P|O|PO</small><br>
-            <small>??? country</small><br>
-            <small>??? countryGroupFlag</small><br>
         </div>
     </div>
 @endsection

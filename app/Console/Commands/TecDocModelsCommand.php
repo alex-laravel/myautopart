@@ -9,7 +9,7 @@ class TecDocModelsCommand extends TecDocCommand
     /**
      * @var string
      */
-    protected $signature = 'tecdoc:models {manufacturerId}';
+    protected $signature = 'tecdoc:models {manufacturerId} {linkingTargetType} {country} {countryGroup}';
 
     /**
      * @var string
@@ -41,13 +41,21 @@ class TecDocModelsCommand extends TecDocCommand
     public function handle()
     {
         $manufacturerId = (int)$this->argument('manufacturerId');
+        $country = $this->argument('country');
+        $countryGroup = $this->argument('countryGroup');
+        $linkingTargetType = $this->argument('linkingTargetType');
+
+        $countryGroupFlag = !empty($countryGroup);
+
+        \Log::debug('CALL COMMAND [tecdoc:models] [' . $manufacturerId . '] [' . $country . '] [' . $countryGroup . '] [' . $linkingTargetType . ']');
 
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
             'getModelSeries2' => [
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),
-                'country' => config('tecdoc.api.country'),
-                'linkingTargetType' => self::TEC_DOC_TARGET_TYPE_PASSENGER.self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
+                'country' => $countryGroupFlag ? $countryGroup : $country,
+                'countryGroupFlag' => $countryGroupFlag,
+                'linkingTargetType' => $linkingTargetType,
                 'manuId' => $manufacturerId,
             ]
         ]);

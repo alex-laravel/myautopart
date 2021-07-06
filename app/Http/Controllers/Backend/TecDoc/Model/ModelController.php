@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend\TecDoc\Model;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Model\ModelSynchronizeRequest;
+use App\Models\TecDoc\Country;
+use App\Models\TecDoc\CountryGroup;
 use App\Models\TecDoc\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
 use Illuminate\Contracts\View\View;
@@ -20,7 +23,11 @@ class ModelController extends Controller
      */
     public function index()
     {
-        return view('backend.tecdoc-models.index');
+        return view('backend.tecdoc-models.index', [
+            'countries' => Country::orderBy('countryCode')->get(),
+            'countryGroups' => CountryGroup::orderBy('tecdocCode')->get(),
+            'defaultLanguage' => config('tecdoc.api.country'),
+        ]);
     }
 
     /**
@@ -90,36 +97,40 @@ class ModelController extends Controller
     }
 
     /**
+     * @param ModelSynchronizeRequest $request
      * @return RedirectResponse
      */
-    public function sync()
+    public function sync(ModelSynchronizeRequest $request)
     {
         ini_set('max_execution_time', 0);
 
         ModelSeries::truncate();
 
-        $manufacturerIds = Manufacturer::get()->pluck('manuId')->toArray();
+        $manufacturers = Manufacturer::orderBy('manuId')->get();
 
-        foreach ($manufacturerIds as $manufacturerId) {
+        foreach ($manufacturers as $manufacturer) {
             Artisan::call('tecdoc:models', [
-                'manufacturerId' => $manufacturerId
+                'manufacturerId' => $manufacturer->manuId,
+                'country' => $request->input('country'),
+                'countryGroup' => $request->input('countryGroup'),
+                'linkingTargetType' => $manufacturer->linkingTargetTypes
             ]);
 
             $output = Artisan::output();
             $output = json_decode($output, true);
 
             if (!$this->hasSuccessResponse($output)) {
-                return redirect()->back();
+                continue;
             }
 
             $output = $this->getResponseDataAsArray($output);
 
             if (empty($output)) {
-                return redirect()->back();
+                continue;
             }
 
             foreach ($output as &$model) {
-                $model['manuId'] = $manufacturerId;
+                $model['manuId'] = $manufacturer->manuId;
 
                 if (!isset($model['yearOfConstrFrom'])) {
                     $model['yearOfConstrFrom'] = null;
@@ -135,8 +146,6 @@ class ModelController extends Controller
             }
 
             ModelSeries::insert($output);
-
-//            \Log::info('MODELS FOR MANUFACTURER ID [' . $manufacturerId . '] CREATED!');
         }
 
         return redirect()->back();
