@@ -14,7 +14,7 @@ return [
     */
 
     'general' => [
-
+        'synchronize' => 'Синхронизация с TecDoc Catalogue'
     ],
 
     'backend' => [

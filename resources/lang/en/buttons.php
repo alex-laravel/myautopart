@@ -19,6 +19,7 @@ return [
 //        'clone' => 'Clone',
 //        'view' => 'View',
         'save' => 'Save',
+        'synchronize' => 'Synchronize',
 //        'back' => 'Back',
 //        'cancel' => 'Cancel',
 //        'continue' => 'Continue',

@@ -21,6 +21,7 @@
                             </section>
 
                             <section class="content">
+                                @include('backend.include.messages')
                                 @yield('content')
                             </section>
                         </div>

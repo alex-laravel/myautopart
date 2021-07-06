@@ -9,6 +9,37 @@ class Manufacturer extends Model
 {
     use HasFactory;
 
+    const TEC_DOC_TARGET_TYPE_PASSENGER = 'P';
+    const TEC_DOC_TARGET_TYPE_COMMERCIAL = 'O';
+    const TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT = 'L';
+    const TEC_DOC_TARGET_TYPE_AXLES = 'A';
+    const TEC_DOC_TARGET_TYPE_MOTOR = 'M';
+    const TEC_DOC_TARGET_TYPE_BODY = 'K';
+    const TEC_DOC_TARGET_TYPE_UNIVERSAL = 'U';
+
+    /**
+     * @var string[]
+     */
+    public static $allowedTargetTypes = [
+        self::TEC_DOC_TARGET_TYPE_PASSENGER,
+        self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
+        self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT,
+        self::TEC_DOC_TARGET_TYPE_AXLES,
+        self::TEC_DOC_TARGET_TYPE_MOTOR,
+        self::TEC_DOC_TARGET_TYPE_BODY,
+        self::TEC_DOC_TARGET_TYPE_UNIVERSAL
+    ];
+
+    /**
+     * @var string[]
+     */
+    public static $allowedVehicleTargetTypes = [
+        self::TEC_DOC_TARGET_TYPE_PASSENGER,
+        self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
+        self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT,
+        self::TEC_DOC_TARGET_TYPE_UNIVERSAL
+    ];
+
     protected $table = 'td_manufacturers';
 
     /**

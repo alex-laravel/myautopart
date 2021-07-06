@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend\TecDoc\Manufacturer;
 
 use App\Http\Controllers\Backend\TecDoc\TecDocController;
+use App\Http\Requests\Backend\Manufacturer\ManufacturerSynchronizeRequest;
+use App\Models\TecDoc\Country;
+use App\Models\TecDoc\CountryGroup;
 use App\Models\TecDoc\Manufacturer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +22,13 @@ class ManufacturerController extends TecDocController
      */
     public function index()
     {
-        return view('backend.tecdoc-manufacturers.index');
+        return view('backend.tecdoc-manufacturers.index', [
+            'countries' => Country::orderBy('countryCode')->get(),
+            'countryGroups' => CountryGroup::orderBy('tecdocCode')->get(),
+            'manufacturers' => self::$allowedTargetTypes,
+            'defaultLanguage' => config('tecdoc.api.country'),
+            'defaultManufacturers' => self::$allowedVehicleTargetTypes,
+        ]);
     }
 
     /**
@@ -89,15 +98,20 @@ class ManufacturerController extends TecDocController
     }
 
     /**
+     * @param ManufacturerSynchronizeRequest $request
      * @return RedirectResponse
      */
-    public function sync()
+    public function sync(ManufacturerSynchronizeRequest $request)
     {
         Manufacturer::truncate();
 
-        foreach (self::$allowedVehicleTargetTypes as $linkingTargetType) {
+        $manufacturers = $request->input('manufacturers');
+
+        foreach ($manufacturers as $linkingTargetType) {
             Artisan::call('tecdoc:manufacturers', [
-                'linkingTargetType' => $linkingTargetType
+                'country' => $request->input('country'),
+                'countryGroup' => $request->input('countryGroup'),
+                'linkingTargetType' => $linkingTargetType,
             ]);
 
             $output = Artisan::output();
