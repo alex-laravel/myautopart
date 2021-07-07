@@ -18,6 +18,7 @@ class CreateModelSeriesTable extends Migration
             $table->unsignedInteger('manuId');
             $table->unsignedInteger('modelId');
             $table->string('modelname', 150);
+            $table->string('linkingTargetType', 5);
             $table->unsignedInteger('yearOfConstrFrom')->nullable();
             $table->unsignedInteger('yearOfConstrTo')->nullable();
             $table->boolean('favorFlag');

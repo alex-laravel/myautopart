@@ -77,6 +77,7 @@
             </div>
         </div>
     </form>
+
     <div class="card card-accent-info mt-3">
         <div class="card-header">
             <h4 class="d-inline-block">{{ trans('labels.backend.models.list') }}</h4>
@@ -93,6 +94,7 @@
                     <th>modelname</th>
                     <th>yearOfConstrFrom</th>
                     <th>yearOfConstrTo</th>
+                    <th>linkingTargetType</th>
                 </tr>
                 </thead>
             </table>
@@ -120,7 +122,8 @@
                     {data: 'modelId', name: 'td_model_series.modelId'},
                     {data: 'modelname', name: 'td_model_series.modelname'},
                     {data: 'yearOfConstrFrom', name: 'td_model_series.yearOfConstrFrom'},
-                    {data: 'yearOfConstrTo', name: 'td_model_series.yearOfConstrTo'}
+                    {data: 'yearOfConstrTo', name: 'td_model_series.yearOfConstrTo'},
+                    {data: 'linkingTargetType', name: 'td_model_series.linkingTargetType'}
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500

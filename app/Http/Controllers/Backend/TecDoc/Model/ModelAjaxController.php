@@ -28,6 +28,11 @@ class ModelAjaxController extends Controller
      */
     public function get()
     {
-        return datatables()->of($this->modelRepository->getData())->make(true);
+        return datatables()->of($this->modelRepository->getData())
+            ->editColumn('linkingTargetType', function ($model) {
+                return $model->linkingTargetTypeLabel;
+            })
+            ->rawColumns(['linkingTargetType'])
+            ->make(true);
     }
 }

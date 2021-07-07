@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend\TecDoc\Vehicle;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Vehicle\VehicleSynchronizeRequest;
+use App\Models\TecDoc\Country;
+use App\Models\TecDoc\CountryGroup;
 use App\Models\TecDoc\ModelSeries;
 use App\Models\TecDoc\Vehicle;
 use Illuminate\Contracts\View\View;
@@ -20,7 +23,11 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        return view('backend.tecdoc-vehicles.index');
+        return view('backend.tecdoc-vehicles.index', [
+            'countries' => Country::orderBy('countryCode')->get(),
+            'countryGroups' => CountryGroup::orderBy('tecdocCode')->get(),
+            'defaultLanguage' => config('tecdoc.api.country'),
+        ]);
     }
 
     /**
@@ -90,9 +97,10 @@ class VehicleController extends Controller
     }
 
     /**
+     * @param VehicleSynchronizeRequest $request
      * @return RedirectResponse
      */
-    public function sync()
+    public function sync(VehicleSynchronizeRequest $request)
     {
         ini_set('max_execution_time', 0);
 
@@ -102,6 +110,9 @@ class VehicleController extends Controller
             Artisan::call('tecdoc:vehicles', [
                 'manufacturerId' => $modelSeries->manuId,
                 'modelId' => $modelSeries->modelId,
+                'country' => $request->input('country'),
+                'countryGroup' => $request->input('countryGroup'),
+                'linkingTargetType' => $modelSeries->linkingTargetType,
             ]);
 
             $output = Artisan::output();

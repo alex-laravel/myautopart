@@ -18,6 +18,7 @@ class ModelSeries extends Model
         'manuId',
         'modelId',
         'modelname',
+        'linkingTargetType',
         'yearOfConstrFrom',
         'yearOfConstrTo',
         'favorFlag',
@@ -34,4 +35,12 @@ class ModelSeries extends Model
         'isPopular' => 'boolean',
         'isVisible' => 'boolean',
     ];
+
+    /**
+     * @return string
+     */
+    public function getLinkingTargetTypeLabelAttribute()
+    {
+        return '<span class="badge badge-dark">' . $this->linkingTargetType . '</span>';
+    }
 }

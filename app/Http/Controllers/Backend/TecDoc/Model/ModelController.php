@@ -131,6 +131,7 @@ class ModelController extends Controller
 
             foreach ($output as &$model) {
                 $model['manuId'] = $manufacturer->manuId;
+                $model['linkingTargetType'] = $manufacturer->linkingTargetTypes;
 
                 if (!isset($model['yearOfConstrFrom'])) {
                     $model['yearOfConstrFrom'] = null;

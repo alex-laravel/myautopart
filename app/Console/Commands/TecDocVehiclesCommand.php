@@ -9,7 +9,7 @@ class TecDocVehiclesCommand extends TecDocCommand
     /**
      * @var string
      */
-    protected $signature = 'tecdoc:vehicles {manufacturerId} {modelId}';
+    protected $signature = 'tecdoc:vehicles {manufacturerId} {modelId} {$linkingTargetType} {country} {countryGroup}';
 
     /**
      * @var string
@@ -31,13 +31,21 @@ class TecDocVehiclesCommand extends TecDocCommand
     {
         $manufacturerId = (int)$this->argument('manufacturerId');
         $modelId = (int)$this->argument('modelId');
+        $country = $this->argument('country');
+        $countryGroup = $this->argument('countryGroup');
+        $linkingTargetType = $this->argument('linkingTargetType');
+
+        $countryGroupFlag = !empty($countryGroup);
+
+        \Log::debug('CALL COMMAND [tecdoc:models] [' . $manufacturerId . '] [' . $modelId . '] [' . $country . '] [' . $countryGroup . '] [' . $linkingTargetType . ']');
 
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
             'getVehicleIdsByCriteria' => [
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),
-                'countriesCarSelection' => config('tecdoc.api.country'),
-                'carType' => self::TEC_DOC_TARGET_TYPE_PASSENGER . self::TEC_DOC_TARGET_TYPE_COMMERCIAL . self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT,
+                'countriesCarSelection' => $countryGroupFlag ? $countryGroup : $country,
+                'countryGroupFlag' => $countryGroupFlag,
+                'carType' => $linkingTargetType,
                 'manuId' => $manufacturerId,
                 'modId' => $modelId,
                 'favouredList' => null
