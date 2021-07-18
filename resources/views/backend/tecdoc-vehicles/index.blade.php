@@ -81,10 +81,6 @@
     <div class="card card-accent-info mt-3">
         <div class="card-header">
             <h4 class="d-inline-block">{{ trans('labels.backend.vehicles.list') }}</h4>
-
-            <div class="float-right">
-                @include('backend.tecdoc-vehicles.partials.header-buttons')
-            </div>
         </div>
 
         <div class="card-body">

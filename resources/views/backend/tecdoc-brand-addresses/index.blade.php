@@ -8,7 +8,7 @@
 
 @section('header')
     <h1>
-        <i class="fas fa-tools"></i>
+        <i class="far fa-building"></i>
         {{ trans('labels.backend.brand-addresses.management') }}
     </h1>
 @endsection
