@@ -1,6 +1,8 @@
 {
+    "/js/auth.js": "/js/auth.js",
     "/js/frontend.js": "/js/frontend.js",
     "/js/backend.js": "/js/backend.js",
+    "/css/auth.css": "/css/auth.css",
     "/css/backend.css": "/css/backend.css",
     "/css/frontend.css": "/css/frontend.css",
     "/css/backend.datatable.css": "/css/backend.datatable.css",

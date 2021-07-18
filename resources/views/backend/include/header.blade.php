@@ -68,26 +68,23 @@
             Lock Account
         </a>
 
-        <a class="dropdown-item" href="#">
-            <svg class="c-icon mr-2">
-              <use xlink:href="{{ url('/icons/sprites/free.svg#cil-account-logout') }}"></use>
-            </svg>
-            <form action="{{ url('/logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-ghost-dark btn-block">
-                    Logout
-                </button>
-            </form>
+        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fas fa-sign-out-alt mr-2"></i>
+            {{ __('Logout') }}
         </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
     </div>
   </li>
 </ul>
 
     <div class="c-subheader px-3">
-      <ol class="breadcrumb border-0 m-0">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item"><a href="/">Admin</a></li>
-        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-      </ol>
+{{--      <ol class="breadcrumb border-0 m-0">--}}
+{{--        <li class="breadcrumb-item"><a href="/">Home</a></li>--}}
+{{--        <li class="breadcrumb-item"><a href="/">Admin</a></li>--}}
+{{--        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>--}}
+{{--      </ol>--}}
     </div>
 </header>
