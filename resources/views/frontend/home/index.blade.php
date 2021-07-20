@@ -75,9 +75,7 @@
                 @endforeach
             </ul>
         @else
-            <div class="col-12">
-                <small class="d-block">нет сборочных групп</small>
-            </div>
+            <small class="d-block">нет сборочных групп</small>
         @endif
     </div>
 @endsection
