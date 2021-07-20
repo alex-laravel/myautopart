@@ -10,6 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => ''], function () {
     Route::post('countries/get', [CountryAjaxController::class, 'get'])->name('ajax.countries.get');
 
-    Route::get('countries/sync', [CountryController::class, 'sync'])->name('countries.sync');
+    Route::post('countries/sync', [CountryController::class, 'sync'])->name('countries.sync');
     Route::resource('countries', CountryController::class);
 });

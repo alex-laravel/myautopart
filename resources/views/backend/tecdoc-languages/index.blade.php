@@ -14,6 +14,23 @@
 @endsection
 
 @section('content')
+    <form class="form-horizontal" action="{{ route('backend.languages.sync') }}" method="post">
+        @csrf
+
+        <div class="card card-accent-success mt-3">
+            <div class="card-header">
+                <h4 class="d-inline-block">{{ trans('labels.general.synchronize') }}</h4>
+
+                <div class="float-right">
+                    <button class="btn btn-block btn-primary" type="submit">{{ trans('buttons.general.synchronize') }}</button>
+                </div>
+            </div>
+
+            <div class="card-body">
+            </div>
+        </div>
+    </form>
+
     <div class="card card-accent-info mt-3">
         <div class="card-header">
             <h4 class="d-inline">{{ trans('labels.backend.languages.list') }}</h4>
