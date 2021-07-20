@@ -42,7 +42,9 @@
                     </div>
                 @endforeach
             @else
-                <small class="d-block">нет марок</small>
+                <div class="col-12">
+                    <small class="d-block">нет марок</small>
+                </div>
             @endif
         </div>
 
@@ -58,7 +60,9 @@
                     </div>
                 @endforeach
             @else
-                <small class="d-block">нет категорий</small>
+                <div class="col-12">
+                    <small class="d-block">нет категорий</small>
+                </div>
             @endif
         </div>
 
@@ -71,7 +75,9 @@
                 @endforeach
             </ul>
         @else
-            нет сборочных групп
+            <div class="col-12">
+                <small class="d-block">нет сборочных групп</small>
+            </div>
         @endif
     </div>
 @endsection
