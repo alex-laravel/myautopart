@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-xl-3 col-lg-4 col-md-6 col-12 my-4">
-                <strong class="d-block">Мои Автомобили:</strong>
+                <strong class="d-block">Мои автомобили:</strong>
 
                 @if (count($garageVehicles))
                     @foreach ($garageVehicles as $garageVehicle)
@@ -30,40 +30,48 @@
             </div>
         </div>
 
-        <h1>Обзор по Марке</h1>
+        <h1>Обзор по марке</h1>
 
-        <div class="row">
-            @foreach ($manufactures as $manufacture)
-                <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">
-                    <a href="auto/{{ $manufacture->manuId }}" class="d-block">
-                        <img src="{{ asset('assets/manufacturers/' . Str::slug($manufacture->manuName) . '.png') }}" alt=""><p>{{ $manufacture->manuName }}</p>
-                    </a>
-                </div>
-            @endforeach
+        <div class="row mb-4">
+            @if (count($manufactures))
+                @foreach ($manufactures as $manufacture)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">
+                        <a href="auto/{{ $manufacture->manuId }}" class="d-block">
+                            <img src="{{ asset('assets/manufacturers/' . Str::slug($manufacture->manuName) . '.png') }}" alt=""><p>{{ $manufacture->manuName }}</p>
+                        </a>
+                    </div>
+                @endforeach
+            @else
+                <small class="d-block">нет марок</small>
+            @endif
         </div>
 
         <h2>Обзор по категориям</h2>
 
-        <div class="row">
-            @foreach ($categories as $category)
-                <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">
-                    <a href="#" class="d-block">
-                        <p>{{ $category->shortCutName }} {{ $category->linkingTargetType }}</p>
-                    </a>
-                </div>
-            @endforeach
+        <div class="row mb-4">
+            @if (count($categories))
+                @foreach ($categories as $category)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">
+                        <a href="#" class="d-block">
+                            <p>{{ $category->shortCutName }} {{ $category->linkingTargetType }}</p>
+                        </a>
+                    </div>
+                @endforeach
+            @else
+                <small class="d-block">нет категорий</small>
+            @endif
         </div>
 
         <h2>Обзор по сборочным группам</h2>
 
-        @if (count($assemblyGroups) > 0)
+        @if (count($assemblyGroups))
             <ul>
                 @foreach ($assemblyGroups as $assemblyGroup)
                     @include('frontend.home.partials.assembly-group-child', $assemblyGroup)
                 @endforeach
             </ul>
         @else
-            NO ASSEMBLY GROUPS
+            нет сборочных групп
         @endif
     </div>
 @endsection
