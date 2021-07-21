@@ -27,7 +27,7 @@
   <li class="c-header-nav-item dropdown">
       <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
           <div class="c-avatar">
-              <img class="c-avatar-img" src="{{ url('/assets/img/avatars/6.jpg') }}" alt="">
+              <img class="c-avatar-img" src="{{ url('/assets/img/avatars/avatar-default.png') }}" alt="">
           </div>
       </a>
 

@@ -17,7 +17,7 @@
     <form class="form-horizontal" action="{{ route('backend.manufacturers.sync') }}" method="post">
         @csrf
 
-        <div class="card card-accent-info mt-3">
+        <div class="card card-accent-success mt-3">
             <div class="card-header">
                 <h4 class="d-inline-block">{{ trans('labels.general.synchronize') }}</h4>
 

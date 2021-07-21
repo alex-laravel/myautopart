@@ -10,6 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => ''], function () {
     Route::post('version/get', [VersionAjaxController::class, 'get'])->name('ajax.version.get');
 
-    Route::get('version/sync', [VersionController::class, 'sync'])->name('version.sync');
+    Route::post('version/sync', [VersionController::class, 'sync'])->name('version.sync');
     Route::resource('version', VersionController::class);
 });

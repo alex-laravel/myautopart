@@ -10,6 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => ''], function () {
     Route::post('vehicle-details/get', [VehicleDetailsAjaxController::class, 'get'])->name('ajax.vehicle-details.get');
 
-    Route::get('vehicle-details/sync', [VehicleDetailsController::class, 'sync'])->name('vehicle-details.sync');
+    Route::post('vehicle-details/sync', [VehicleDetailsController::class, 'sync'])->name('vehicle-details.sync');
     Route::resource('vehicle-details', VehicleDetailsController::class);
 });

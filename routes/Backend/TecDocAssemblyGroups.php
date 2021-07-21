@@ -10,6 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => ''], function () {
     Route::post('assembly-groups/get', [AssemblyGroupAjaxController::class, 'get'])->name('ajax.assembly-groups.get');
 
-    Route::get('assembly-groups/sync', [AssemblyGroupController::class, 'sync'])->name('assembly-groups.sync');
+    Route::post('assembly-groups/sync', [AssemblyGroupController::class, 'sync'])->name('assembly-groups.sync');
     Route::resource('assembly-groups', AssemblyGroupController::class);
 });

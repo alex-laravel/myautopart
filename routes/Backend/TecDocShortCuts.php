@@ -10,6 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => ''], function () {
     Route::post('short-cuts/get', [ShortCutAjaxController::class, 'get'])->name('ajax.short-cuts.get');
 
-    Route::get('short-cuts/sync', [ShortCutController::class, 'sync'])->name('short-cuts.sync');
+    Route::post('short-cuts/sync', [ShortCutController::class, 'sync'])->name('short-cuts.sync');
     Route::resource('short-cuts', ShortCutController::class);
 });

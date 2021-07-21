@@ -10,6 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => ''], function () {
     Route::post('generic-articles/get', [GenericArticleAjaxController::class, 'get'])->name('ajax.generic-articles.get');
 
-    Route::get('generic-articles/sync', [GenericArticleController::class, 'sync'])->name('generic-articles.sync');
+    Route::post('generic-articles/sync', [GenericArticleController::class, 'sync'])->name('generic-articles.sync');
     Route::resource('generic-articles', GenericArticleController::class);
 });
