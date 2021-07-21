@@ -9,7 +9,7 @@ class TecDocVehiclesCommand extends TecDocCommand
     /**
      * @var string
      */
-    protected $signature = 'tecdoc:vehicles {manufacturerId} {modelId} {$linkingTargetType} {country} {countryGroup}';
+    protected $signature = 'tecdoc:vehicles {manufacturerId} {modelId} {linkingTargetType} {country} {countryGroup}';
 
     /**
      * @var string
