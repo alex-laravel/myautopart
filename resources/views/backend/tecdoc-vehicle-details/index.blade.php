@@ -62,11 +62,11 @@
                 </thead>
             </table>
 
-            <strong class="d-block">NOTES:</strong>
-            <small>??? country</small><br>
-            <small>??? countryGroupFlag</small><br>
-            <small>??? countriesCarSelection</small><br>
-            <small>??? articleCountry</small><br>
+{{--            <strong class="d-block">NOTES:</strong>--}}
+{{--            <small>??? country</small><br>--}}
+{{--            <small>??? countryGroupFlag</small><br>--}}
+{{--            <small>??? countriesCarSelection</small><br>--}}
+{{--            <small>??? articleCountry</small><br>--}}
         </div>
     </div>
 @endsection

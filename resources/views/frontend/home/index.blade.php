@@ -1,5 +1,26 @@
 @extends('frontend.layout.main')
 
+@section('styles')
+    <style>
+        .card-brand {
+
+        }
+
+        .card-brand img {
+            display: inline-block;
+            width: 100px;
+            vertical-align: -17px;
+        }
+
+        .card-brand p {
+            display: inline-block;
+            width: calc(100% - 100px);
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    </style>
+@endsection
+
 @section('title', 'Frontend')
 
 @section('content')
@@ -15,7 +36,7 @@
                                 @if($garageVehicle['selected'])
                                     <span class="badge bg-success" style="width: 24px">A</span>
                                 @else
-                                    <a href="{{ route('frontend.garage.vehicle.activate', [$garageVehicle['manufacturerId'], $garageVehicle['modelSeriesId'], $garageVehicle['vehicleId']]) }}" class="badge bg-secondary" style="width: 24px">A</a>
+                                    <a href="{{ route('frontend.garage.vehicle.activate', [$garageVehicle['manufacturerId'], $garageVehicle['modelSeriesId'], $garageVehicle['vehicleId']]) }}" class="badge bg-dark" style="width: 24px">A</a>
                                 @endif
 
                                 <a href="{{ route('frontend.garage.vehicle.delete', [$garageVehicle['manufacturerId'], $garageVehicle['modelSeriesId'], $garageVehicle['vehicleId']]) }}" class="badge bg-danger" style="width: 24px">D</a>
