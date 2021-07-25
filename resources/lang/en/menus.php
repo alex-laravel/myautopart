@@ -108,6 +108,19 @@ return [
             'version' => [
                 'title' => 'Version',
             ]
+        ],
+
+        'shop' => [
+            'title' => 'Shop',
+
+            'distributors' => [
+                'title' => 'Distributors',
+                'all' => 'All Distributors',
+                'create' => 'Create Distributor',
+                'edit' => 'Edit Distributor',
+                'main' => 'Distributors',
+                'view' => 'View Distributor',
+            ],
         ]
     ]
 ];

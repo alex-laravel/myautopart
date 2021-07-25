@@ -14,6 +14,7 @@ return [
     */
 
     'general' => [
+        'actions' => 'Actions',
         'synchronize' => 'Synchronize with TecDoc Catalogue'
     ],
 
@@ -302,6 +303,36 @@ return [
                     ]
                 ]
             ]
-        ]
+        ],
+
+        'distributors' => [
+            'management' => 'Distributors Management',
+            'list' => 'List of Distributors',
+            'create' => 'Create Distributor',
+            'edit' => 'Edit Distributor',
+            'view' => 'View Distributor',
+            'table' => [
+                'id' => 'ID',
+                'title' => 'Title',
+                'description' => 'Description',
+                'created_at' => 'Created At',
+                'updated_at' => 'Last Update',
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+                        'id' => 'ID',
+                        'title' => 'Title',
+                        'description' => 'Description',
+                        'created_at' => 'Created At',
+                        'updated_at' => 'Last Update',
+                    ],
+                ],
+            ],
+        ],
     ]
 ];

@@ -73,10 +73,6 @@
             </ul>
         </li>
 
-        <li class="c-sidebar-nav-divider"></li>
-        <li class="c-sidebar-nav-divider"></li>
-        <li class="c-sidebar-nav-divider"></li>
-
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('backend.version.index') }}">
                 <i class="fas fa-code-branch"></i>
@@ -84,8 +80,18 @@
             </a>
         </li>
 
+        <li class="c-sidebar-nav-divider"></li>
 
+        <li class="c-sidebar-nav-title">
+            {{ trans('menus.backend.shop.title') }}
+        </li>
 
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.distributors.index') }}">
+                <i class="fas fa-warehouse"></i>
+                {{ trans('menus.backend.shop.distributors.title') }}
+            </a>
+        </li>
 
 
 

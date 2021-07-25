@@ -14,6 +14,7 @@ return [
     */
 
     'general' => [
+        'actions' => 'Действия',
         'synchronize' => 'Синхронизация с TecDoc Catalogue'
     ],
 
@@ -302,6 +303,36 @@ return [
                     ],
                 ],
             ],
-        ]
+        ],
+
+        'distributors' => [
+            'management' => 'Управление Дистрибьюторами',
+            'list' => 'Список Дистрибьюторов',
+            'create' => 'Создать Дистрибьютор',
+            'edit' => 'Редактировать Дистрибьютор',
+            'view' => 'Обзор Дистрибьютора',
+            'table' => [
+                'id' => 'ID',
+                'title' => 'Имя',
+                'description' => 'Описание',
+                'created_at' => 'Создано',
+                'updated_at' => 'Последнее обновление',
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Обзор',
+                ],
+
+                'content' => [
+                    'overview' => [
+                        'id' => 'ID',
+                        'title' => 'Имя',
+                        'description' => 'Описание',
+                        'created_at' => 'Создано',
+                        'updated_at' => 'Последнее обновление',
+                    ],
+                ],
+            ],
+        ],
     ]
 ];

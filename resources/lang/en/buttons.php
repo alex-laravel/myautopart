@@ -14,14 +14,15 @@
 return [
     'general' => [
         'create' => 'Create',
+        'edit' => 'Edit',
 //        'update' => 'Update',
         'delete' => 'Delete',
 //        'clone' => 'Clone',
-//        'view' => 'View',
+        'view' => 'View',
         'save' => 'Save',
         'synchronize' => 'Synchronize',
-//        'back' => 'Back',
-//        'cancel' => 'Cancel',
+        'cancel' => 'Cancel',
+        'back' => 'Back',
 //        'continue' => 'Continue',
     ]
 ];
