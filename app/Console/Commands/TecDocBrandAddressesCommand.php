@@ -31,6 +31,8 @@ class TecDocBrandAddressesCommand extends TecDocCommand
     {
         $brandId = (int)$this->argument('brandId');
 
+        \Log::debug('CALL COMMAND [tecdoc:brand-addresses] [' . $brandId . ']');
+
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
             'getAmBrandAddress' => [
                 'provider' => config('tecdoc.api.provider'),

@@ -108,13 +108,15 @@ class BrandAddressController extends Controller
             $output = json_decode($output, true);
 
             if (!$this->hasSuccessResponse($output)) {
-                return redirect()->back();
+                \Log::alert('FAIL BRAND ADDRESS RESPONSE FOR BRAND ID [' . $brandId . ']!');
+                continue;
             }
 
             $output = $this->getResponseDataAsArray($output);
 
             if (empty($output)) {
-                return redirect()->back();
+                \Log::alert('EMPTY BRAND ADDRESS RESPONSE FOR BRAND ID [' . $brandId . ']!');
+                continue;
             }
 
             foreach ($output as &$brandAddress) {
@@ -174,11 +176,11 @@ class BrandAddressController extends Controller
                 if (!isset($brandAddress['zipSpecial'])) {
                     $brandAddress['zipSpecial'] = null;
                 }
+
+                \Log::info('BRAND ADDRESS [' . $brandId . '] CREATED!');
             }
 
             BrandAddresses::insert($output);
-
-//            \Log::info('BRAND ADDRESS [' . $brandId . '] CREATED!');
         }
 
         return redirect()->back();

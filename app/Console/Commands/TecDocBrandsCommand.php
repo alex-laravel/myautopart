@@ -29,6 +29,8 @@ class TecDocBrandsCommand extends TecDocCommand
      */
     public function handle()
     {
+        \Log::debug('CALL COMMAND [tecdoc:brands]');
+
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
             'getAmBrands' => [
                 'provider' => config('tecdoc.api.provider'),

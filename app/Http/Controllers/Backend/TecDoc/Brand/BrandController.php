@@ -98,17 +98,21 @@ class BrandController extends Controller
         $output = json_decode($output, true);
 
         if (!$this->hasSuccessResponse($output)) {
+            \Log::alert('FAIL BRANDS RESPONSE!');
             return redirect()->back();
         }
 
         $output = $this->getResponseDataAsArray($output);
 
         if (empty($output)) {
+            \Log::alert('EMPTY BRANDS RESPONSE!');
             return redirect()->back();
         }
 
         Brand::truncate();
         Brand::insert($output);
+
+        \Log::info('BRANDS CREATED!');
 
         return redirect()->back();
     }
