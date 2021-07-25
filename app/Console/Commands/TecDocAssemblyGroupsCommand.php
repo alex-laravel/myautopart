@@ -29,8 +29,7 @@ class TecDocAssemblyGroupsCommand extends TecDocCommand
      */
     public function handle()
     {
-//        $shortCutId = (int)$this->argument('shortCutId');
-//
+        $shortCutId = (int)$this->argument('shortCutId');
         $linkingTargetType = $this->argument('linkingTargetType');
 
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
@@ -38,8 +37,8 @@ class TecDocAssemblyGroupsCommand extends TecDocCommand
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),
                 'linkingTargetType' => $linkingTargetType,
+                'shortCutId' => $shortCutId,
                 'childNodes' => true,
-//                'shortCutId' => $shortCutId
             ]
         ]);
 

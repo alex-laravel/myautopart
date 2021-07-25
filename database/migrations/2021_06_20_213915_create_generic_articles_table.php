@@ -20,7 +20,6 @@ class CreateGenericArticlesTable extends Migration
             $table->string('designation', 250)->nullable();
             $table->string('masterDesignation', 250)->nullable();
             $table->string('usageDesignation', 250)->nullable();
-            $table->unsignedInteger('searchTreeNodeId')->nullable();
         });
     }
 

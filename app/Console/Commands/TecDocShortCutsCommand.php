@@ -39,6 +39,8 @@ class TecDocShortCutsCommand extends TecDocCommand
     {
         $linkingTargetType = $this->argument('linkingTargetType');
 
+        \Log::debug('CALL COMMAND [tecdoc:short-cuts] [' . $linkingTargetType . ']');
+
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
             'getShortCuts2' => [
                 'provider' => config('tecdoc.api.provider'),

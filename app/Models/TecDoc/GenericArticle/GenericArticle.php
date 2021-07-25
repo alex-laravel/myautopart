@@ -27,7 +27,6 @@ class GenericArticle extends Model
         'assemblyGroup',
         'designation',
         'masterDesignation',
-        'usageDesignation',
-        'searchTreeNodeId'
+        'usageDesignation'
     ];
 }

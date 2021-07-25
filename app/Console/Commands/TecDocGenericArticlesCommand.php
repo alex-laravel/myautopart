@@ -30,11 +30,13 @@ class TecDocGenericArticlesCommand extends TecDocCommand
      */
     public function handle()
     {
+        \Log::debug('CALL COMMAND [tecdoc:generic-articles]');
+
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
             'getGenericArticles' => [
-                'articleCountry' => config('tecdoc.api.country'),
-                'lang' => config('tecdoc.api.language'),
                 'provider' => config('tecdoc.api.provider'),
+                'lang' => config('tecdoc.api.language'),
+                'articleCountry' => config('tecdoc.api.country'),
                 'searchTreeNodes' => true
             ]
         ]);

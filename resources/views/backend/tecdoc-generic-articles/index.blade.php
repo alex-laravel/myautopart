@@ -53,13 +53,6 @@
                 </tr>
                 </thead>
             </table>
-
-{{--            <strong class="d-block">NOTES:</strong>--}}
-{{--            <small>??? articleCountry</small><br>--}}
-{{--            <small>UA 910</small><br>--}}
-{{--            <small>NL 910</small><br>--}}
-{{--            <small>PL 910</small><br>--}}
-{{--            <small>RU 910</small><br>--}}
         </div>
     </div>
 @endsection

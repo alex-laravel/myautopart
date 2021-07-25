@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\TecDoc\AssemblyGroup;
 
 use App\Http\Controllers\Backend\TecDoc\TecDocController;
 use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
+use App\Models\TecDoc\ShortCut\ShortCut;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -95,34 +96,37 @@ class AssemblyGroupController extends TecDocController
     {
         AssemblyGroup::truncate();
 
-//        foreach (ShortCut::get() as $shortCut) {
+
         foreach (self::$allowedTargetTypes as $linkingTargetType) {
-            Artisan::call('tecdoc:assembly-groups', [
-                'linkingTargetType' => $linkingTargetType,
-                'shortCutId' => 0
-            ]);
+            foreach (ShortCut::get() as $shortCut) {
+                Artisan::call('tecdoc:assembly-groups', [
+                    'shortCutId' => $shortCut->shortCutId,
+                    'linkingTargetType' => $linkingTargetType
+                ]);
 
-            $output = Artisan::output();
-            $output = json_decode($output, true);
+                $output = Artisan::output();
+                $output = json_decode($output, true);
 
-            if (!$this->hasSuccessResponse($output)) {
-                return redirect()->back();
+                if (!$this->hasSuccessResponse($output)) {
+                    \Log::alert('FAIL ASSEMBLY GROUPS RESPONSE FOR SHORT CUT ID [' . $shortCut->shortCutId . ']!');
+                    continue;
+                }
+
+                $output = $this->getResponseDataAsArray($output);
+
+                if (empty($output)) {
+                    \Log::alert('EMPTY ASSEMBLY GROUPS RESPONSE FOR SHORT CUT ID [' . $shortCut->shortCutId . ']!');
+                    continue;
+                }
+
+                foreach ($output as &$assemblyGroup) {
+                    $assemblyGroup['shortCutId'] = $shortCut->shortCutId;
+                    $assemblyGroup['parentNodeId'] = isset($assemblyGroup['parentNodeId']) ? $assemblyGroup['parentNodeId'] : null;
+                    $assemblyGroup['linkingTargetType'] = $linkingTargetType;
+                }
+
+                AssemblyGroup::insert($output);
             }
-
-            $output = $this->getResponseDataAsArray($output);
-
-            if (empty($output)) {
-                return redirect()->back();
-            }
-
-            foreach ($output as &$assemblyGroup) {
-                $assemblyGroup['shortCutId'] = null;
-                $assemblyGroup['parentNodeId'] = isset($assemblyGroup['parentNodeId']) ? $assemblyGroup['parentNodeId'] : null;
-                $assemblyGroup['linkingTargetType'] = $linkingTargetType;
-            }
-
-            AssemblyGroup::insert($output);
-//        }
         }
 
         return redirect()->back();

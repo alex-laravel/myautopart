@@ -101,12 +101,14 @@ class ShortCutController extends TecDocController
             $output = json_decode($output, true);
 
             if (!$this->hasSuccessResponse($output)) {
+                \Log::alert('FAIL SHORT CUTS RESPONSE FOR linkingTargetType [' . $linkingTargetType . ']!');
                 continue;
             }
 
             $output = $this->getResponseDataAsArray($output);
 
             if (empty($output)) {
+                \Log::alert('EMPTY SHORT CUTS RESPONSE FOR linkingTargetType [' . $linkingTargetType . ']!');
                 continue;
             }
 

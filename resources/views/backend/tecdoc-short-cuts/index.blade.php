@@ -54,6 +54,9 @@
             </table>
 
             <strong class="d-block">NOTES:</strong>
+            <small>??? articleCountry</small><br>
+
+            <strong class="d-block">NOTES:</strong>
             <small>P - 17</small><br>
             <small>O - 16</small><br>
             <small>L - 17</small><br>

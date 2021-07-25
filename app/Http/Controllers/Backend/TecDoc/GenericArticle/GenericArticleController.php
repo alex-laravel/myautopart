@@ -98,18 +98,24 @@ class GenericArticleController extends TecDocController
         $output = json_decode($output, true);
 
         if (!$this->hasSuccessResponse($output)) {
+            \Log::alert('FAIL GENERIC ARTICLES RESPONSE!');
             return redirect()->back();
         }
 
         $output = $this->getResponseDataAsArray($output);
 
         if (empty($output)) {
+            \Log::alert('EMPTY GENERIC ARTICLES RESPONSE!');
             return redirect()->back();
         }
 
         GenericArticle::truncate();
 
         foreach ($output as &$genericArticle) {
+            if (!array_key_exists('genericArticleId', $genericArticle)) {
+                $genericArticle['genericArticleId'] = null;
+            }
+
             if (!array_key_exists('assemblyGroup', $genericArticle)) {
                 $genericArticle['assemblyGroup'] = null;
             }
@@ -126,18 +132,15 @@ class GenericArticleController extends TecDocController
                 $genericArticle['usageDesignation'] = null;
             }
 
-            if (!array_key_exists('searchTreeNodeId', $genericArticle)) {
-                $genericArticle['searchTreeNodeId'] = null;
-            }
-
             GenericArticle::create([
                 'genericArticleId' => $genericArticle['genericArticleId'],
                 'assemblyGroup' => $genericArticle['assemblyGroup'],
                 'designation' => $genericArticle['designation'],
                 'masterDesignation' => $genericArticle['masterDesignation'],
-                'usageDesignation' => $genericArticle['usageDesignation'],
-                'searchTreeNodeId' => $genericArticle['searchTreeNodeId']
+                'usageDesignation' => $genericArticle['usageDesignation']
             ]);
+
+            \Log::info('GENERIC ARTICLES FOR GENERIC ARTICLE ID [' . $genericArticle['genericArticleId'] . '] CREATED!');
         }
 
 //        GenericArticle::insert($output);
