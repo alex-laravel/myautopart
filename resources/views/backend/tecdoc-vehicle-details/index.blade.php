@@ -22,7 +22,7 @@
                 <h4 class="d-inline-block">{{ trans('labels.general.synchronize') }}</h4>
 
                 <div class="float-right">
-                    <button class="btn btn-block btn-primary" type="submit">{{ trans('buttons.general.synchronize') }} 1000</button>
+                    <button class="btn btn-block btn-primary" type="submit">{{ trans('buttons.general.synchronize') }}</button>
                 </div>
             </div>
 
@@ -62,11 +62,9 @@
                 </thead>
             </table>
 
-{{--            <strong class="d-block">NOTES:</strong>--}}
-{{--            <small>??? country</small><br>--}}
-{{--            <small>??? countryGroupFlag</small><br>--}}
-{{--            <small>??? countriesCarSelection</small><br>--}}
-{{--            <small>??? articleCountry</small><br>--}}
+            <strong class="d-block">NOTES:</strong>
+            <small>??? countriesCarSelection</small><br>
+            <small>??? articleCountry</small><br>
         </div>
     </div>
 @endsection

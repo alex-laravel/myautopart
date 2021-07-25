@@ -97,7 +97,7 @@ class VehicleDetailsController extends Controller
 
         VehicleDetails::truncate();
 
-        $vehicleIds = Vehicle::orderBy('carId')->skip(0)->take(1000)->get()->pluck('carId')->toArray();
+        $vehicleIds = Vehicle::orderBy('carId')->get()->pluck('carId')->toArray();
 
         foreach (array_chunk($vehicleIds, 24) as $vehicleIdsChunk) {
             Artisan::call('tecdoc:vehicle-details', [
@@ -108,20 +108,20 @@ class VehicleDetailsController extends Controller
             $output = json_decode($output, true);
 
             if (!$this->hasSuccessResponse($output)) {
-                \Log::alert('FAIL RESPONSE!');
+                \Log::alert('FAIL RESPONSE FOR CAR CHUNK [' . implode(",", $vehicleIdsChunk) . ']!');
                 continue;
             }
 
             $output = $this->getResponseDataAsArray($output);
 
             if (empty($output)) {
-                \Log::alert('EMPTY RESPONSE!');
+                \Log::alert('EMPTY RESPONSE FOR CAR CHUNK [' . implode(",", $vehicleIdsChunk) . ']!');
                 continue;
             }
 
             foreach ($output as &$vehicle) {
                 if (!isset($vehicle['vehicleDetails'])) {
-                    \Log::alert('INVALID FORMAT RESPONSE!');
+                    \Log::alert('INVALID FORMAT RESPONSE FOR CAR CHUNK [' . implode(",", $vehicleIdsChunk) . '] AND CAR ID [' . 1 . ']!');
                     continue;
                 }
 

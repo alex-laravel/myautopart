@@ -22,7 +22,7 @@
                 <h4 class="d-inline-block">{{ trans('labels.general.synchronize') }}</h4>
 
                 <div class="float-right">
-                    <button class="btn btn-block btn-primary" type="submit" disabled>{{ trans('buttons.general.synchronize') }}</button>
+                    <button class="btn btn-block btn-primary" type="submit">{{ trans('buttons.general.synchronize') }}</button>
                 </div>
             </div>
 
