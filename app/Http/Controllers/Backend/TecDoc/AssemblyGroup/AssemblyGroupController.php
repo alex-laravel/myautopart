@@ -96,11 +96,12 @@ class AssemblyGroupController extends TecDocController
     {
         AssemblyGroup::truncate();
 
+        $shortCutIds = ShortCut::orderBy('shortCutId')->get()->pluck('shortCutId')->toArray();
 
-        foreach (self::$allowedTargetTypes as $linkingTargetType) {
-            foreach (ShortCut::get() as $shortCut) {
+        foreach ($shortCutIds as $shortCutId) {
+            foreach (self::$allowedShortCutsTypes as $linkingTargetType) {
                 Artisan::call('tecdoc:assembly-groups', [
-                    'shortCutId' => $shortCut->shortCutId,
+                    'shortCutId' => $shortCutId,
                     'linkingTargetType' => $linkingTargetType
                 ]);
 
@@ -108,19 +109,19 @@ class AssemblyGroupController extends TecDocController
                 $output = json_decode($output, true);
 
                 if (!$this->hasSuccessResponse($output)) {
-                    \Log::alert('FAIL ASSEMBLY GROUPS RESPONSE FOR SHORT CUT ID [' . $shortCut->shortCutId . ']!');
+                    \Log::alert('FAIL ASSEMBLY GROUPS RESPONSE FOR SHORT CUT ID [' . $shortCutId . '] AND linkingTargetType [' . $linkingTargetType . ']!');
                     continue;
                 }
 
                 $output = $this->getResponseDataAsArray($output);
 
                 if (empty($output)) {
-                    \Log::alert('EMPTY ASSEMBLY GROUPS RESPONSE FOR SHORT CUT ID [' . $shortCut->shortCutId . ']!');
+                    \Log::alert('EMPTY ASSEMBLY GROUPS RESPONSE FOR SHORT CUT ID [' . $shortCutId . '] AND linkingTargetType [' . $linkingTargetType . ']!');
                     continue;
                 }
 
                 foreach ($output as &$assemblyGroup) {
-                    $assemblyGroup['shortCutId'] = $shortCut->shortCutId;
+                    $assemblyGroup['shortCutId'] = $shortCutId;
                     $assemblyGroup['parentNodeId'] = isset($assemblyGroup['parentNodeId']) ? $assemblyGroup['parentNodeId'] : null;
                     $assemblyGroup['linkingTargetType'] = $linkingTargetType;
                 }

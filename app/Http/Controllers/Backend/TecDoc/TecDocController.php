@@ -34,9 +34,28 @@ class TecDocController extends Controller
     /**
      * @var string[]
      */
+    public static $allowedShortCutsTypes = [
+        self::TEC_DOC_TARGET_TYPE_PASSENGER,
+        self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
+        self::TEC_DOC_TARGET_TYPE_UNIVERSAL
+    ];
+
+    /**
+     * @var string[]
+     */
     public static $allowedVehicleTargetTypes = [
         self::TEC_DOC_TARGET_TYPE_PASSENGER,
         self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
         self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT
+    ];
+
+    /**
+     * @var string[]
+     */
+    public static $allowedArticleTargetTypes = [
+        self::TEC_DOC_TARGET_TYPE_PASSENGER,
+        self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
+        self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT,
+        self::TEC_DOC_TARGET_TYPE_UNIVERSAL
     ];
 }

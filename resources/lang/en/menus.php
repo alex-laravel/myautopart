@@ -105,6 +105,10 @@ return [
                 'title' => 'Generic Articles',
             ],
 
+            'direct-articles' => [
+                'title' => 'Direct Articles',
+            ],
+
             'version' => [
                 'title' => 'Version',
             ]

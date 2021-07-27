@@ -92,7 +92,7 @@ class ShortCutController extends TecDocController
     {
         ShortCut::truncate();
 
-        foreach (self::$allowedTargetTypes as $linkingTargetType) {
+        foreach (self::$allowedShortCutsTypes as $linkingTargetType) {
             Artisan::call('tecdoc:short-cuts', [
                 'linkingTargetType' => $linkingTargetType
             ]);

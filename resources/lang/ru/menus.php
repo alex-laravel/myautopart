@@ -99,6 +99,10 @@ return [
                 'title' => 'Общие Статьи',
             ],
 
+            'direct-articles' => [
+                'title' => 'Непосредственные Статьи',
+            ],
+
             'version' => [
                 'title' => 'Версия',
             ]

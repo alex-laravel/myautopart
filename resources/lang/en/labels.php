@@ -261,6 +261,28 @@ return [
             ],
         ],
 
+        'direct-articles' => [
+            'management' => 'Direct Articles Management',
+            'list' => 'List of Direct Articles',
+            'create' => 'Create Direct Article',
+            'edit' => 'Edit Direct Article',
+            'view' => 'View Direct Article',
+            'table' => [
+
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+
+                    ],
+                ],
+            ],
+        ],
+
         'generic-articles' => [
             'management' => 'Generic Articles Management',
             'list' => 'List of Generic Articles',
