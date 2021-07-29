@@ -356,5 +356,77 @@ return [
                 ],
             ],
         ],
+
+        'distributor-storages' => [
+            'management' => 'Управление Складами',
+            'list' => 'Список Складов',
+            'create' => 'Создать Склад',
+            'edit' => 'Редактировать Склад',
+            'view' => 'Обзор Склада',
+            'table' => [
+                'id' => 'ID',
+                'title' => 'Название',
+                'description' => 'Описание',
+                'delivery_days' => 'Доставка (дней)',
+                'distributor' => 'Дистрибьютор',
+                'import_sequence_number' => 'Импорт позиция',
+                'created_at' => 'Создано',
+                'updated_at' => 'Последнее обновление',
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Обзор',
+                ],
+
+                'content' => [
+                    'overview' => [
+                        'id' => 'ID',
+                        'title' => 'Название',
+                        'description' => 'Описание',
+                        'delivery_days' => 'Доставка (дней)',
+                        'distributor' => 'Дистрибьютор',
+                        'import_sequence_number' => 'Импорт позиция',
+                        'created_at' => 'Создано',
+                        'updated_at' => 'Последнее обновление',
+                    ],
+                ],
+            ],
+        ],
+
+        'distributor-products' => [
+            'management' => 'Управление Продуктами',
+            'list' => 'Список Продуктов',
+            'create' => 'Создать Продукт',
+            'edit' => 'Редактировать Продукт',
+            'view' => 'Обзор Продукта',
+            'table' => [
+                'id' => 'ID',
+                'original_product_no' => 'Оригинальный номер продукта',
+                'original_product_name' => 'Оригинальный имя продукта',
+                'original_brand_name' => 'Оригинальный имя бренда',
+                'price' => 'Цена',
+                'quantity' => 'Наличие',
+                'created_at' => 'Создано',
+                'updated_at' => 'Последнее обновление',
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Обзор',
+                ],
+
+                'content' => [
+                    'overview' => [
+                        'id' => 'ID',
+                        'original_product_no' => 'Оригинальный номер продукта',
+                        'original_product_name' => 'Оригинальный имя продукта',
+                        'original_brand_name' => 'Оригинальный имя бренда',
+                        'price' => 'Цена',
+                        'quantity' => 'Наличие',
+                        'created_at' => 'Создано',
+                        'updated_at' => 'Последнее обновление',
+                    ],
+                ],
+            ],
+        ],
     ]
 ];

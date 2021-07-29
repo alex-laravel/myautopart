@@ -356,5 +356,77 @@ return [
                 ],
             ],
         ],
+
+        'distributor-storages' => [
+            'management' => 'Distributor Storages Management',
+            'list' => 'List of Distributor Storages',
+            'create' => 'Create Distributor Storage',
+            'edit' => 'Edit Distributor Storage',
+            'view' => 'View Distributor Storage',
+            'table' => [
+                'id' => 'ID',
+                'title' => 'Title',
+                'description' => 'Description',
+                'delivery_days' => 'Delivery (days)',
+                'distributor' => 'Distributor',
+                'import_sequence_number' => 'Import sequence number',
+                'created_at' => 'Created At',
+                'updated_at' => 'Last Update',
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+                        'id' => 'ID',
+                        'title' => 'Title',
+                        'description' => 'Description',
+                        'delivery_days' => 'Delivery (days)',
+                        'distributor' => 'Distributor',
+                        'import_sequence_number' => 'Import sequence number',
+                        'created_at' => 'Created At',
+                        'updated_at' => 'Last Update',
+                    ],
+                ],
+            ],
+        ],
+
+        'distributor-products' => [
+            'management' => 'Distributor Products Management',
+            'list' => 'List of Distributor Products',
+            'create' => 'Create Distributor Product',
+            'edit' => 'Edit Distributor Product',
+            'view' => 'View Distributor Product',
+            'table' => [
+                'id' => 'ID',
+                'original_product_no' => 'Original Product No',
+                'original_product_name' => 'Original Product Name',
+                'original_brand_name' => 'Original Brand Name',
+                'price' => 'Price',
+                'quantity' => 'Quantity',
+                'created_at' => 'Created At',
+                'updated_at' => 'Last Update',
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+                        'id' => 'ID',
+                        'original_product_no' => 'Original Product No',
+                        'original_product_name' => 'Original Product Name',
+                        'original_brand_name' => 'Original Brand Name',
+                        'price' => 'Price',
+                        'quantity' => 'Quantity',
+                        'created_at' => 'Created At',
+                        'updated_at' => 'Last Update',
+                    ],
+                ],
+            ],
+        ],
     ]
 ];

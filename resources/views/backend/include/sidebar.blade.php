@@ -94,6 +94,20 @@
             </a>
         </li>
 
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.distributor-storages.index') }}">
+                <i class="fas fa-warehouse"></i>
+                {{ trans('menus.backend.shop.distributor-storages.title') }}
+            </a>
+        </li>
+
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.distributor-products.index') }}">
+                <i class="fas fa-warehouse"></i>
+                {{ trans('menus.backend.shop.distributor-products.title') }}
+            </a>
+        </li>
+
 
 
 

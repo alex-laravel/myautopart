@@ -9,6 +9,7 @@ class Distributor extends Model
 {
     use HasFactory;
     use DistributorAttribute;
+    use DistributorRelationship;
 
     protected $table = 'sh_distributors';
 

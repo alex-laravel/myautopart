@@ -23,6 +23,16 @@ return [
             'updated' => 'The distributor was successfully updated.',
         ],
 
+        'distributor-storages' => [
+            'created' => 'The distributor storage was successfully created.',
+            'deleted' => 'The distributor storage was successfully deleted.',
+            'updated' => 'The distributor storage was successfully updated.',
+        ],
+
+        'distributor_products' => [
+            'imported' => 'The distributor products was successfully imported.',
+        ],
+
 
 
 

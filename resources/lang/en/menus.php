@@ -125,6 +125,24 @@ return [
                 'main' => 'Distributors',
                 'view' => 'View Distributor',
             ],
+
+            'distributor-storages' => [
+                'title' => 'Distributor Storages',
+                'all' => 'All Distributor Storages',
+                'create' => 'Create Distributor Storage',
+                'edit' => 'Edit Distributor Storage',
+                'main' => 'Distributor Storages',
+                'view' => 'View Distributor Storage',
+            ],
+
+            'distributor-products' => [
+                'title' => 'Distributor Products',
+                'all' => 'All Distributor Products',
+                'create' => 'Create Distributor Product',
+                'edit' => 'Edit Distributor Product',
+                'main' => 'Distributor Products',
+                'view' => 'View Distributor Product',
+            ],
         ]
     ]
 ];

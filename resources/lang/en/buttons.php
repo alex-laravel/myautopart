@@ -24,5 +24,6 @@ return [
         'cancel' => 'Cancel',
         'back' => 'Back',
 //        'continue' => 'Continue',
+        'import' => 'Import',
     ]
 ];
