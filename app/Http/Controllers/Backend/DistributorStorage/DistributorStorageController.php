@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Backend\DistributorStorage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\DistributorStorage\DistributorStorageStoreRequest;
+use App\Http\Requests\Backend\DistributorStorage\DistributorStorageUpdateRequest;
 use App\Models\Distributor\Distributor;
 use App\Models\DistributorStorage\DistributorStorage;
 use App\Repositories\Backend\DistributorStorages\DistributorStoragesRepository;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class DistributorStorageController extends Controller
@@ -45,10 +46,10 @@ class DistributorStorageController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param DistributorStorageStoreRequest $request
      * @return View
      */
-    public function store(Request $request)
+    public function store(DistributorStorageStoreRequest $request)
     {
         $this->distributorStoragesRepository->create($request->only([
             'distributor_id',
@@ -86,11 +87,11 @@ class DistributorStorageController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param DistributorStorageUpdateRequest $request
      * @param DistributorStorage $distributorStorage
      * @return View
      */
-    public function update(Request $request, DistributorStorage $distributorStorage)
+    public function update(DistributorStorageUpdateRequest $request, DistributorStorage $distributorStorage)
     {
         $this->distributorStoragesRepository->update($distributorStorage, $request->only([
             'distributor_id',

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Backend\Distributor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Distributor\DistributorStoreRequest;
+use App\Http\Requests\Backend\Distributor\DistributorUpdateRequest;
 use App\Models\Distributor\Distributor;
 use App\Repositories\Backend\Distributors\DistributorsRepository;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class DistributorController extends Controller
@@ -41,10 +42,10 @@ class DistributorController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param DistributorStoreRequest $request
      * @return View
      */
-    public function store(Request $request)
+    public function store(DistributorStoreRequest $request)
     {
         $this->distributorsRepository->create($request->only([
             'title',
@@ -77,13 +78,12 @@ class DistributorController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param DistributorUpdateRequest $request
      * @param Distributor $distributor
      * @return Response
      */
-    public function update(Request $request, Distributor $distributor)
+    public function update(DistributorUpdateRequest $request, Distributor $distributor)
     {
         $this->distributorsRepository->update($distributor, $request->only([
             'title',
