@@ -18,6 +18,7 @@ class Distributor extends Model
      */
     protected $fillable = [
         'title',
-        'description'
+        'description',
+        'import_slug',
     ];
 }

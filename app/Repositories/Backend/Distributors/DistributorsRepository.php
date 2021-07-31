@@ -6,6 +6,7 @@ namespace App\Repositories\Backend\Distributors;
 
 use App\Models\Distributor\Distributor;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Str;
 
 class DistributorsRepository extends BaseRepository
 {
@@ -21,6 +22,7 @@ class DistributorsRepository extends BaseRepository
         $distributor = new $distributor;
         $distributor->title = !empty($request['title']) ? $request['title'] : null;
         $distributor->description = !empty($request['description']) ? $request['description'] : null;
+        $distributor->import_slug = Str::slug($distributor->title);
         $distributor->save();
 
         return $distributor;

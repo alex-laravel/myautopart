@@ -17,6 +17,7 @@ class CreateDistributorsTable extends Migration
             $table->id();
             $table->string('title', 255)->unique();
             $table->string('description', 455)->nullable();
+            $table->string('import_slug', 255)->unique();
             $table->timestamps();
         });
     }
