@@ -21,8 +21,7 @@ class DistributorProductImportRequest extends FormRequest
     {
         return [
             'distributor_id' => 'required|integer|exists:sh_distributors,id',
-            'distributor_file' => 'required|mimes:txt,xls|max:10000',
-//            'distributor_file' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf|max:2048',
+            'distributor_file' => 'required|mimes:txt,csv|max:10000',
         ];
     }
 }

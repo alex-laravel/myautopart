@@ -133,14 +133,8 @@ class DistributorStorageController extends Controller
      */
     private function prepareDeliveryDaysList()
     {
+        $deliveryDays = range(0, 31);
         $deliveryDays[0] = 'Today';
-        $deliveryDays[1] = '1';
-        $deliveryDays[2] = '2';
-        $deliveryDays[3] = '3';
-        $deliveryDays[4] = '4';
-        $deliveryDays[5] = '5';
-        $deliveryDays[6] = '6';
-        $deliveryDays[7] = '7';
 
         return $deliveryDays;
     }
