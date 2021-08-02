@@ -20,7 +20,7 @@ class CreateDistributorProductsTable extends Migration
             $table->string('original_product_name', 255)->nullable();
             $table->string('original_brand_name', 255)->nullable();
             $table->decimal('price', 13, 4);
-            $table->smallInteger('quantity')->default(0);
+            $table->unsignedSmallInteger('quantity')->default(0);
             $table->timestamps();
 
             $table->foreign('distributor_storage_id')

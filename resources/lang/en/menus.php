@@ -143,6 +143,15 @@ return [
                 'main' => 'Distributor Products',
                 'view' => 'View Distributor Product',
             ],
+
+            'price_schemes' => [
+                'title' => 'Price Schemes',
+                'all' => 'All Price Schemes',
+                'create' => 'Create Price Scheme',
+                'edit' => 'Edit Price Scheme',
+                'main' => 'Price Schemes',
+                'view' => 'View Price Scheme',
+            ],
         ]
     ]
 ];

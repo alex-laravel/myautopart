@@ -33,7 +33,11 @@ return [
             'imported' => 'The distributor products was successfully imported.',
         ],
 
-
+        'price_schemes' => [
+            'created' => 'The price scheme was successfully created.',
+            'deleted' => 'The price scheme was successfully deleted.',
+            'updated' => 'The price scheme was successfully updated.',
+        ],
 
 
     ]

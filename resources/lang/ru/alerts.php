@@ -32,5 +32,11 @@ return [
         'distributor_products' => [
             'imported' => 'The distributor products was successfully imported.',
         ],
+
+        'price_schemes' => [
+            'created' => 'Схема наценки успешно создана.',
+            'updated' => 'Схема наценки успешно обновлена.',
+            'deleted' => 'Схема наценки успешно удалена.',
+        ],
     ]
 ];

@@ -428,5 +428,37 @@ return [
                 ],
             ],
         ],
+
+        'price_schemes' => [
+            'management' => 'Price Schemes Management',
+            'list' => 'List of Price Schemes',
+            'create' => 'Create Price Scheme',
+            'edit' => 'Edit Price Scheme',
+            'view' => 'View Price Scheme',
+            'table' => [
+                'id' => 'ID',
+                'price_from' => 'Price from',
+                'price_to' => 'Price to',
+                'percentage' => 'Percentage',
+                'created_at' => 'Created At',
+                'updated_at' => 'Last Update',
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+                        'id' => 'ID',
+                        'price_from' => 'Price from',
+                        'price_to' => 'Price to',
+                        'percentage' => 'Percentage',
+                        'created_at' => 'Created At',
+                        'updated_at' => 'Last Update',
+                    ],
+                ],
+            ],
+        ],
     ]
 ];

@@ -108,6 +108,13 @@
             </a>
         </li>
 
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.price-schemes.index') }}">
+                <i class="far fa-money-bill-alt"></i>
+                {{ trans('menus.backend.shop.price_schemes.title') }}
+            </a>
+        </li>
+
 
 
 

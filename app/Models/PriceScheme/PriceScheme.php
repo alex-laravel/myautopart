@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Models\Distributor;
+namespace App\Models\PriceScheme;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Distributor extends Model
+class PriceScheme extends Model
 {
     use HasFactory;
-    use DistributorAttribute;
-    use DistributorRelationship;
+    use PriceSchemeAttribute;
 
     /**
      * @var string
      */
-    protected $table = 'sh_distributors';
+    protected $table = 'sh_price_schemes';
 
     /**
      * @var array
      */
     protected $fillable = [
-        'title',
-        'description',
-        'import_slug',
+        'price_from',
+        'price_to',
+        'percentage',
     ];
 }
