@@ -54,9 +54,11 @@
                 <thead>
                 <tr>
                     <th>{{ trans('labels.backend.distributor-products.table.id') }}</th>
-                    <th>{{ trans('labels.backend.distributor-products.table.original_product_no') }}</th>
-                    <th>{{ trans('labels.backend.distributor-products.table.original_product_name') }}</th>
-                    <th>{{ trans('labels.backend.distributor-products.table.original_brand_name') }}</th>
+                    <th>{{ trans('labels.backend.distributor-products.table.distributor_storage_id') }}</th>
+                    <th>{{ trans('labels.backend.distributor-products.table.product_original_no') }}</th>
+                    <th>{{ trans('labels.backend.distributor-products.table.product_local_no') }}</th>
+                    <th>{{ trans('labels.backend.distributor-products.table.product_local_name') }}</th>
+                    <th>{{ trans('labels.backend.distributor-products.table.product_band_name') }}</th>
                     <th>{{ trans('labels.backend.distributor-products.table.price') }}</th>
                     <th>{{ trans('labels.backend.distributor-products.table.quantity') }}</th>
 {{--                    <th>{{ trans('labels.general.actions') }}</th>--}}
@@ -82,9 +84,11 @@
                 },
                 columns: [
                     {data: 'id', name: 'sh_distributor_products.id'},
-                    {data: 'original_product_no', name: 'sh_distributor_products.original_product_no'},
-                    {data: 'original_product_name', name: 'sh_distributor_products.original_product_name'},
-                    {data: 'original_brand_name', name: 'sh_distributor_products.original_brand_name'},
+                    {data: 'distributor_storage_id', name: 'sh_distributor_products.distributor_storage_id'},
+                    {data: 'product_original_no', name: 'sh_distributor_products.product_original_no'},
+                    {data: 'product_local_no', name: 'sh_distributor_products.product_local_no'},
+                    {data: 'product_local_name', name: 'sh_distributor_products.product_local_name'},
+                    {data: 'product_band_name', name: 'sh_distributor_products.product_band_name'},
                     {data: 'price', name: 'sh_distributor_products.price'},
                     {data: 'quantity', name: 'sh_distributor_products.quantity'}
                     // {data: 'actions', name: 'actions', searchable: false, sortable: false, 'class': 'text-nowrap'}

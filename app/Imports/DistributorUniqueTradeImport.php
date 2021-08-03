@@ -5,13 +5,11 @@ namespace App\Imports;
 use App\Models\DistributorProduct\DistributorProduct;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
-use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 
-class DistributorAutoTechnicsImport extends DistributorAbstractImport implements ToCollection, WithCustomCsvSettings
+class DistributorUniqueTradeImport extends DistributorAbstractImport implements ToCollection
 {
     const  HEADING_ROW_COUNT = 1;
-    const  QUANTITY_COLUMN_START = 4;
-    const  SEPARATOR_SYMBOL = ';';
+    const  QUANTITY_COLUMN_START = 7;
 
     /**
      * @var array
@@ -38,38 +36,21 @@ class DistributorAutoTechnicsImport extends DistributorAbstractImport implements
                 continue;
             }
 
-            $data = explode(self::SEPARATOR_SYMBOL, $row[0]);
+//            dd($row);
 
             foreach ($this->distributorStorageIds as $distributorStorageIndex => $distributorStorageId) {
                 DistributorProduct::create([
                     'distributor_storage_id' => $distributorStorageId,
-                    'product_original_no' => $this->filterOriginalProductNo($data[1]),
-                    'product_local_name' => $data[2],
-                    'product_band_name' => $data[0],
-                    'price' => filter_var($data[3], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
-                    'quantity' => (int)filter_var($data[self::QUANTITY_COLUMN_START + $distributorStorageIndex], FILTER_SANITIZE_NUMBER_INT),
+                    'product_barcode' => $row[4],
+                    'product_original_no' => $row[1],
+                    'product_local_no' => $row[0],
+                    'product_local_name' => trim($row[2]),
+                    'product_band_name' => trim($row[3]),
+                    'price' => filter_var($row[6], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+                    'quantity' => (int)filter_var($row[self::QUANTITY_COLUMN_START + $distributorStorageIndex], FILTER_SANITIZE_NUMBER_INT)
                 ]);
             }
         }
-    }
-
-    /**
-     * @return array
-     */
-    public function getCsvSettings(): array
-    {
-        return [
-            'delimiter' => "\t"
-        ];
-    }
-
-    /**
-     * @param string $value
-     * @return string
-     */
-    private function filterOriginalProductNo($value)
-    {
-        return substr($value, strpos($value, " ") + 1);
     }
 
     /**
@@ -78,6 +59,6 @@ class DistributorAutoTechnicsImport extends DistributorAbstractImport implements
      */
     private function isHeading($rowIndex)
     {
-        return $rowIndex <= self::HEADING_ROW_COUNT;
+        return $rowIndex < self::HEADING_ROW_COUNT;
     }
 }

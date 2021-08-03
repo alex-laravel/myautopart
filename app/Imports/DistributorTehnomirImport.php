@@ -38,9 +38,9 @@ class DistributorTehnomirImport extends DistributorAbstractImport implements ToC
             foreach ($this->distributorStorageIds as $distributorStorageId) {
                 DistributorProduct::create([
                     'distributor_storage_id' => $distributorStorageId,
-                    'original_product_no' => $row[7],
-                    'original_product_name' => $row[2],
-                    'original_brand_name' => $row[0],
+                    'product_original_no' => $row[7],
+                    'product_local_name' => $row[2],
+                    'product_band_name' => $row[0],
                     'price' => filter_var($row[10], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
                     'quantity' => (int)filter_var($row[3], FILTER_SANITIZE_NUMBER_INT)
                 ]);

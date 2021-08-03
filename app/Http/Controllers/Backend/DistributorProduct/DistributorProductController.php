@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\DistributorProduct\DistributorProductImportRequest;
 use App\Imports\DistributorAutoTechnicsImport;
 use App\Imports\DistributorTehnomirImport;
+use App\Imports\DistributorUniqueTradeImport;
 use App\Models\Distributor\Distributor;
 use App\Repositories\Backend\DistributorProducts\DistributorProductsRepository;
 use Illuminate\Contracts\View\View;
@@ -20,6 +21,7 @@ class DistributorProductController extends Controller
     const DISTRIBUTOR_IMPORT_SLUG_AUTO_TEXNOMIR_ODESSA = 'texnomir-odessa';
     const DISTRIBUTOR_IMPORT_SLUG_AUTO_TEXNOMIR_GERMANIYA = 'texnomir-germaniya';
     const DISTRIBUTOR_IMPORT_SLUG_AUTO_TEXNOMIR_EMIRATY = 'texnomir-emiraty';
+    const DISTRIBUTOR_IMPORT_SLUG_AUTO_UNIQUE_TRADE = 'unique-trade';
 
     /**
      * @var DistributorProductsRepository
@@ -66,6 +68,9 @@ class DistributorProductController extends Controller
             case $distributor->import_slug === self::DISTRIBUTOR_IMPORT_SLUG_AUTO_TEXNOMIR_GERMANIYA && $distributorFile->getClientOriginalExtension() === self::FILE_IMPORT_EXTENSION_CSV:
             case $distributor->import_slug === self::DISTRIBUTOR_IMPORT_SLUG_AUTO_TEXNOMIR_EMIRATY && $distributorFile->getClientOriginalExtension() === self::FILE_IMPORT_EXTENSION_CSV:
                 Excel::import(new DistributorTehnomirImport($distributorStorageIds), $distributorFile, \Maatwebsite\Excel\Excel::CSV);
+                break;
+            case $distributor->import_slug === self::DISTRIBUTOR_IMPORT_SLUG_AUTO_UNIQUE_TRADE && $distributorFile->getClientOriginalExtension() === self::FILE_IMPORT_EXTENSION_CSV:
+                Excel::import(new DistributorUniqueTradeImport($distributorStorageIds), $distributorFile, \Maatwebsite\Excel\Excel::CSV);
                 break;
             default:
                 return back()->withFlashDanger(trans('exceptions.backend.distributor_products.import_error'));

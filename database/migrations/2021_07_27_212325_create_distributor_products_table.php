@@ -16,9 +16,13 @@ class CreateDistributorProductsTable extends Migration
         Schema::create('sh_distributor_products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('distributor_storage_id');
-            $table->string('original_product_no', 255);
-            $table->string('original_product_name', 255)->nullable();
-            $table->string('original_brand_name', 255)->nullable();
+
+            $table->string('product_barcode', 255)->nullable();
+            $table->string('product_original_no', 255);
+            $table->string('product_local_no', 255)->nullable();
+            $table->string('product_local_name', 255)->nullable();
+            $table->string('product_band_name', 255)->nullable();
+
             $table->decimal('price', 13, 4);
             $table->unsignedSmallInteger('quantity')->default(0);
             $table->timestamps();

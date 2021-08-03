@@ -20,9 +20,11 @@ class DistributorProduct extends Model
      */
     protected $fillable = [
         'distributor_storage_id',
-        'original_product_no',
-        'original_product_name',
-        'original_brand_name',
+        'product_barcode',
+        'product_original_no',
+        'product_local_no',
+        'product_local_name',
+        'product_band_name',
         'price',
         'quantity',
     ];
