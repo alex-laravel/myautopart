@@ -28,12 +28,12 @@ class PriceSchemeAjaxController extends Controller
     {
         return datatables()->of($this->priceSchemesRepository->getData())
             ->editColumn('percentage', function ($priceScheme) {
-                return $priceScheme->percentage . '%';
+                return $priceScheme->pricePercentLabel;
             })
             ->addColumn('actions', function ($priceScheme) {
                 return $priceScheme->actionButtons;
             })
-            ->rawColumns(['actions'])
+            ->rawColumns(['percentage', 'actions'])
             ->make(true);
     }
 }

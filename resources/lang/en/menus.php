@@ -127,7 +127,7 @@ return [
             ],
 
             'distributor-storages' => [
-                'title' => 'Distributor Storages',
+                'title' => 'Storages',
                 'all' => 'All Distributor Storages',
                 'create' => 'Create Distributor Storage',
                 'edit' => 'Edit Distributor Storage',
@@ -136,13 +136,17 @@ return [
             ],
 
             'distributor-products' => [
-                'title' => 'Distributor Products',
+                'title' => 'Products',
                 'all' => 'All Distributor Products',
                 'create' => 'Create Distributor Product',
                 'edit' => 'Edit Distributor Product',
                 'main' => 'Distributor Products',
                 'view' => 'View Distributor Product',
             ],
+        ],
+
+        'settings' => [
+            'title' => 'Settings',
 
             'price_schemes' => [
                 'title' => 'Price Schemes',

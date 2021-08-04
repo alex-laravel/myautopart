@@ -9,6 +9,22 @@ trait PriceSchemeAttribute
     /**
      * @return string
      */
+    public function getPricePercentLabelAttribute()
+    {
+        if ($this->percentage < 1) {
+            return '<label class="badge badge-danger">' . $this->percentage . '%</label>';
+        }
+
+        if ($this->percentage <= 25) {
+            return '<label class="badge badge-info">' . $this->percentage . '%</label>';
+        }
+
+        return '<label class="badge badge-success">' . $this->percentage . '%</label>';
+    }
+
+    /**
+     * @return string
+     */
     public function getActionButtonsAttribute()
     {
         return

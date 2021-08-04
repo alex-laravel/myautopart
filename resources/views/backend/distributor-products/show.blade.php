@@ -4,7 +4,7 @@
 
 @section('header')
     <h1>
-        <i class="fas fa-warehouse"></i>
+        <i class="fas fa-barcode"></i>
         {{ trans('labels.backend.distributor-products.management') }}
     </h1>
 @endsection

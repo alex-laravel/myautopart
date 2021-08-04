@@ -2,6 +2,7 @@
 
 namespace App\Models\DistributorProduct;
 
+use App\Facades\Price;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +10,7 @@ class DistributorProduct extends Model
 {
     use HasFactory;
     use DistributorProductAttribute;
+    use DistributorProductRelationship;
 
     /**
      * @var string
@@ -28,4 +30,12 @@ class DistributorProduct extends Model
         'price',
         'quantity',
     ];
+
+    /**
+     * @return float
+     */
+    public function getRetailPriceAttribute()
+    {
+        return Price::calculateRetailPrice($this->price);
+    }
 }

@@ -15,6 +15,5 @@ trait DistributorRelationship
     public function storages()
     {
         return $this->hasMany(DistributorStorage::class);
-
     }
 }

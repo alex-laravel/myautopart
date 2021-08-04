@@ -181,6 +181,7 @@ return [
          * Auto Service Providers
          */
         App\Providers\AutoFacadesServiceProvider::class,
+        App\Providers\PriceServiceProvider::class,
     ],
 
     /*
@@ -238,7 +239,6 @@ return [
          * Auto Facades
          */
 //        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Garage' => \App\Facades\Garage::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
     ],

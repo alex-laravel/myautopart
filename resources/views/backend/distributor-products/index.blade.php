@@ -8,7 +8,7 @@
 
 @section('header')
     <h1>
-        <i class="fas fa-warehouse"></i>
+        <i class="fas fa-barcode"></i>
         {{ trans('labels.backend.distributor-products.management') }}
     </h1>
 @endsection
@@ -54,13 +54,15 @@
                 <thead>
                 <tr>
                     <th>{{ trans('labels.backend.distributor-products.table.id') }}</th>
-                    <th>{{ trans('labels.backend.distributor-products.table.distributor_storage_id') }}</th>
+                    <th>{{ trans('labels.backend.distributor-products.table.distributor_storage') }}</th>
                     <th>{{ trans('labels.backend.distributor-products.table.product_original_no') }}</th>
                     <th>{{ trans('labels.backend.distributor-products.table.product_local_no') }}</th>
                     <th>{{ trans('labels.backend.distributor-products.table.product_local_name') }}</th>
                     <th>{{ trans('labels.backend.distributor-products.table.product_band_name') }}</th>
-                    <th>{{ trans('labels.backend.distributor-products.table.price') }}</th>
                     <th>{{ trans('labels.backend.distributor-products.table.quantity') }}</th>
+                    <th>{{ trans('labels.backend.distributor-products.table.base_price') }}</th>
+                    <th>{{ trans('labels.backend.distributor-products.table.percent') }}</th>
+                    <th>{{ trans('labels.backend.distributor-products.table.retail_price') }}</th>
 {{--                    <th>{{ trans('labels.general.actions') }}</th>--}}
                 </tr>
                 </thead>
@@ -84,13 +86,15 @@
                 },
                 columns: [
                     {data: 'id', name: 'sh_distributor_products.id'},
-                    {data: 'distributor_storage_id', name: 'sh_distributor_products.distributor_storage_id'},
+                    {data: 'distributor_storage', name: 'distributor_storage'},
                     {data: 'product_original_no', name: 'sh_distributor_products.product_original_no'},
                     {data: 'product_local_no', name: 'sh_distributor_products.product_local_no'},
                     {data: 'product_local_name', name: 'sh_distributor_products.product_local_name'},
                     {data: 'product_band_name', name: 'sh_distributor_products.product_band_name'},
+                    {data: 'quantity', name: 'sh_distributor_products.quantity'},
                     {data: 'price', name: 'sh_distributor_products.price'},
-                    {data: 'quantity', name: 'sh_distributor_products.quantity'}
+                    {data: 'percent', name: 'percent', searchable: false, sortable: false},
+                    {data: 'retail_price', name: 'sh_distributor_products.retail_price', searchable: false, sortable: false}
                     // {data: 'actions', name: 'actions', searchable: false, sortable: false, 'class': 'text-nowrap'}
                 ],
                 order: [[0, 'asc']],

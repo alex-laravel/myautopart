@@ -96,22 +96,26 @@
 
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('backend.distributor-storages.index') }}">
-                <i class="fas fa-warehouse"></i>
+                <i class="fas fa-pallet"></i>
                 {{ trans('menus.backend.shop.distributor-storages.title') }}
             </a>
         </li>
 
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('backend.distributor-products.index') }}">
-                <i class="fas fa-warehouse"></i>
+                <i class="fas fa-barcode"></i>
                 {{ trans('menus.backend.shop.distributor-products.title') }}
             </a>
+        </li>
+
+        <li class="c-sidebar-nav-title">
+            {{ trans('menus.backend.settings.title') }}
         </li>
 
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('backend.price-schemes.index') }}">
                 <i class="far fa-money-bill-alt"></i>
-                {{ trans('menus.backend.shop.price_schemes.title') }}
+                {{ trans('menus.backend.settings.price_schemes.title') }}
             </a>
         </li>
 
