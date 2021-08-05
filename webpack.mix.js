@@ -22,6 +22,7 @@ mix
     .js('resources/js/auth/auth.js', 'public/js/auth.js')
     .js('resources/js/frontend/frontend.js', 'public/js/frontend.js')
     .js('resources/js/backend/backend.js', 'public/js/backend.js')
+    .js('resources/js/backend/sweetalert2.js', 'public/js/backend.sweetalert2.js')
     .copy('node_modules/datatables.net-dt/css/jquery.dataTables.css', 'public/css/backend.datatable.css')
     .copy('node_modules/datatables.net/js/jquery.dataTables.js', 'public/js/backend.datatable.js');
 

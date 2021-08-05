@@ -13,8 +13,8 @@ trait DistributorAttribute
     {
         return
             $this->getShowButtonAttribute() .
-            $this->getEditButtonAttribute();
-//            $this->getDeleteButtonAttribute();
+            $this->getEditButtonAttribute() .
+            $this->getDeleteButtonAttribute();
     }
 
     /**
@@ -33,16 +33,16 @@ trait DistributorAttribute
         return '<a href="' . route('backend.distributors.edit', $this) . '" class="btn btn-sm btn-warning"><i class="far fa-edit"></i> ' . trans('buttons.general.edit') . '</a> ';
     }
 
-//    /**
-//     * @return string
-//     */
-//    private function getDeleteButtonAttribute()
-//    {
-//        return '<a href="' . route('backend.version-containers.destroy', $this->id) . '"
-//             data-method="delete"
-//             data-trans-button-cancel="' . trans('buttons.general.cancel') . '"
-//             data-trans-button-confirm="' . trans('buttons.general.crud.delete') . '"
-//             data-trans-title="' . trans('alerts.general.are_you_sure') . '"
-//             class="btn btn-sm btn-danger"><i class="fa fa-trash" title="' . trans('buttons.general.crud.delete') . '"></i></a> ';
-//    }
+    /**
+     * @return string
+     */
+    private function getDeleteButtonAttribute()
+    {
+        return '<a href="' . route('backend.distributors.destroy', $this->id) . '"
+             data-method="delete"
+             data-trans-button-cancel="' . trans('buttons.general.cancel') . '"
+             data-trans-button-confirm="' . trans('buttons.general.delete') . '"
+             data-trans-title="' . trans('alerts.general.are_you_sure_to_delete') . '"
+             class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> ' . trans('buttons.general.delete') . '</a>';
+    }
 }

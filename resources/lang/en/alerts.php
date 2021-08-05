@@ -14,6 +14,7 @@ return [
     */
     'general' => [
         'are_you_sure' => 'Are you sure you want to do this?',
+        'are_you_sure_to_delete' => 'Are you sure you want to delete this item?',
     ],
 
     'backend' => [

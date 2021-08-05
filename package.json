@@ -29,6 +29,7 @@
         "datatables.net": "^1.10.25",
         "datatables.net-dt": "^1.1.0",
         "jquery": "^3.6.0",
-        "perfect-scrollbar": "^1.5.1"
+        "perfect-scrollbar": "^1.5.1",
+        "sweetalert2": "^11.1.2"
     }
 }

@@ -2,6 +2,7 @@
     "/js/auth.js": "/js/auth.js",
     "/js/frontend.js": "/js/frontend.js",
     "/js/backend.js": "/js/backend.js",
+    "/js/backend.sweetalert2.js": "/js/backend.sweetalert2.js",
     "/css/auth.css": "/css/auth.css",
     "/css/backend.css": "/css/backend.css",
     "/css/frontend.css": "/css/frontend.css",
