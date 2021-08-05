@@ -105,14 +105,14 @@ class DistributorStorageController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param DistributorStorage $distributorStorage
      * @return Response
      */
     public function destroy(DistributorStorage $distributorStorage)
     {
-        //
+        $this->distributorStoragesRepository->delete($distributorStorage);
+
+        return back()->withFlashSuccess(trans('alerts.backend.distributor-storages.deleted'));
     }
 
     /**
