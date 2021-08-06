@@ -24,6 +24,27 @@
 {{--      <svg class="c-icon">--}}
 {{--        <use xlink:href="{{ url('/icons/sprites/free.svg#cil-envelope-open') }}"></use>--}}
 {{--      </svg></a></li>--}}
+    @if (config('locale.enabled'))
+        <li class="c-header-nav-item dropdown">
+            <div class="btn-group">
+                <button class="btn dropdown-toggle shadow-none" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-language mr-2"></i>
+                    {{ trans('menus.backend.header.language.title') }}
+                </button>
+
+                <div class="dropdown-menu" role="menu">
+                    @foreach (array_keys(config('locale.languages')) as $locale)
+                        @if (!App::isLocale($locale))
+                            <a class="dropdown-item" href="/locale/{{ $locale }}">
+                                {{ trans('menus.backend.header.language.labels.' . $locale) }}
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+        </li>
+    @endif
+
   <li class="c-header-nav-item dropdown">
       <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
           <div class="c-avatar">

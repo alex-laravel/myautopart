@@ -18,6 +18,17 @@ return [
             'title' => 'Dashboard'
         ],
 
+        'header' => [
+            'language' => [
+                'title' => 'Language',
+
+                'labels' => [
+                    'en' => 'English',
+                    'ru' => 'Русский',
+                ]
+            ]
+        ],
+
         'general' => [
             'title' => 'General'
         ],

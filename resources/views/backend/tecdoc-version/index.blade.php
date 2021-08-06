@@ -55,13 +55,6 @@
                 </tr>
                 </thead>
             </table>
-
-            <strong class="d-block">NOTES:</strong>
-            <small>https://solutions.tecalliance.net/TcdLicense</small><br>
-            <small>https://web.tecalliance.net/tecdocsw/en/home</small><br>
-            <small>208986u2/aGu2y0_U</small><br>
-            <small>http://webservice.tecalliance.services/</small><br>
-            <small>http://webservice.tecalliance.services/pegasus-3-0/info/</small><br>
         </div>
     </div>
 @endsection
