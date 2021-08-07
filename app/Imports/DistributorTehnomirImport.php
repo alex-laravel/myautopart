@@ -4,11 +4,13 @@ namespace App\Imports;
 
 use App\Models\DistributorProduct\DistributorProduct;
 use Illuminate\Support\Collection;
+use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
 class DistributorTehnomirImport extends DistributorAbstractImport implements ToCollection
 {
-    const  HEADING_ROW_COUNT = 0;
+    const HEADING_ROW_COUNT = 0;
+    const HEADING_COLUMNS_COUNT = 11;
 
     /**
      * @var array
@@ -25,6 +27,7 @@ class DistributorTehnomirImport extends DistributorAbstractImport implements ToC
 
     /**
      * @param Collection $rows
+     * @throws ValidationException
      */
     public function collection(Collection $rows)
     {
@@ -32,6 +35,10 @@ class DistributorTehnomirImport extends DistributorAbstractImport implements ToC
 
         foreach ($rows as $rowIndex => $row) {
             if ($this->isHeading($rowIndex)) {
+                if (!$this->hasAllowedHeadingColumnsCount($row)) {
+                    throw ValidationException::withMessages(['import' => 'The structure of the imported file does not match the expected.']);
+                }
+
                 continue;
             }
 
@@ -55,5 +62,14 @@ class DistributorTehnomirImport extends DistributorAbstractImport implements ToC
     private function isHeading($rowIndex)
     {
         return $rowIndex <= self::HEADING_ROW_COUNT;
+    }
+
+    /**
+     * @param array $row
+     * @return boolean
+     */
+    private function hasAllowedHeadingColumnsCount($row)
+    {
+        return count($row) === self::HEADING_COLUMNS_COUNT;
     }
 }

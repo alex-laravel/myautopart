@@ -4,12 +4,14 @@ namespace App\Imports;
 
 use App\Models\DistributorProduct\DistributorProduct;
 use Illuminate\Support\Collection;
+use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 
 class DistributorAutoTechnicsImport extends DistributorAbstractImport implements ToCollection, WithCustomCsvSettings
 {
     const  HEADING_ROW_COUNT = 1;
+    const  HEADING_COLUMNS_COUNT = 11;
     const  QUANTITY_COLUMN_START = 4;
     const  SEPARATOR_SYMBOL = ';';
 
@@ -28,6 +30,7 @@ class DistributorAutoTechnicsImport extends DistributorAbstractImport implements
 
     /**
      * @param Collection $rows
+     * @throws ValidationException
      */
     public function collection(Collection $rows)
     {
@@ -35,6 +38,10 @@ class DistributorAutoTechnicsImport extends DistributorAbstractImport implements
 
         foreach ($rows as $rowIndex => $row) {
             if ($this->isHeading($rowIndex)) {
+                if (!$this->hasAllowedHeadingColumnsCount($row)) {
+                    throw ValidationException::withMessages(['import' => 'The structure of the imported file does not match the expected.']);
+                }
+
                 continue;
             }
 
@@ -79,5 +86,14 @@ class DistributorAutoTechnicsImport extends DistributorAbstractImport implements
     private function isHeading($rowIndex)
     {
         return $rowIndex <= self::HEADING_ROW_COUNT;
+    }
+
+    /**
+     * @param array $row
+     * @return boolean
+     */
+    private function hasAllowedHeadingColumnsCount($row)
+    {
+        return count(explode(self::SEPARATOR_SYMBOL, $row[0])) === self::HEADING_COLUMNS_COUNT;
     }
 }
