@@ -8,6 +8,7 @@ use App\Imports\DistributorAutoTechnicsImport;
 use App\Imports\DistributorTehnomirImport;
 use App\Imports\DistributorUniqueTradeImport;
 use App\Models\Distributor\Distributor;
+use App\Models\DistributorProduct\DistributorProduct;
 use App\Repositories\Backend\DistributorProducts\DistributorProductsRepository;
 use Illuminate\Contracts\View\View;
 
@@ -84,11 +85,20 @@ class DistributorProductController extends Controller
      */
     private function prepareDistributorsList()
     {
-        $distributors = Distributor::pluck('title', 'id')->toArray();
-        $distributors[0] = ' - Select One - ';
+        $distributorsList[0] = ' - Select One - ';
 
-        asort($distributors);
+        $distributors = Distributor::orderBy('title')->get();
 
-        return $distributors;
+        foreach ($distributors as $distributor) {
+            $distributorStorageIds = $distributor->storages()->pluck('id')->toArray();
+
+            if (empty($distributorStorageIds)) {
+                continue;
+            }
+
+            $distributorsList[$distributor->id] = $distributor->title . ' (' . DistributorProduct::whereIn('distributor_storage_id', $distributorStorageIds)->count() . ' ' . trans('strings.backend.distributor_products.products') . ')';
+        }
+
+        return $distributorsList;
     }
 }

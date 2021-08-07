@@ -399,6 +399,7 @@ return [
             'create' => 'Create Distributor Product',
             'edit' => 'Edit Distributor Product',
             'view' => 'View Distributor Product',
+            'import' => 'Import of Distributor Products',
             'table' => [
                 'id' => 'ID',
                 'distributor_storage' => 'Distributor Storage',

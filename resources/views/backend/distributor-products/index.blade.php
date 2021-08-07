@@ -17,7 +17,7 @@
     {{ Form::open(['route' => 'backend.distributor-products.import', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'files'=> true]) }}
     <div class="card card-accent-danger mt-3">
         <div class="card-header">
-            <h4 class="d-inline-block">{{ trans('labels.general.synchronize') }}</h4>
+            <h4 class="d-inline-block">{{ trans('labels.backend.distributor-products.import') }}</h4>
 
             <div class="float-right">
                 <button class="btn btn-block btn-primary" type="submit">{{ trans('buttons.general.import') }}</button>
