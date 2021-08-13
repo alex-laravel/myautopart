@@ -107,6 +107,8 @@ class ManufacturerController extends TecDocController
 
         $manufacturers = $request->input('manufacturers');
 
+        $motorcycleIds = $this->syncMotorcycles($request);
+
         foreach ($manufacturers as $linkingTargetType) {
             Artisan::call('tecdoc:manufacturers', [
                 'country' => $request->input('country'),
@@ -137,10 +139,50 @@ class ManufacturerController extends TecDocController
                 $manufacturer['isVisible'] = true;
             }
 
+            $output = array_filter($output, function ($manufacturer) use ($motorcycleIds) {
+                return !in_array($manufacturer['manuId'], $motorcycleIds);
+            });
 
             Manufacturer::insert($output);
         }
 
         return redirect()->back();
+    }
+
+    /**
+     * @param ManufacturerSynchronizeRequest $request
+     * @return array
+     */
+    private function syncMotorcycles(ManufacturerSynchronizeRequest $request)
+    {
+        Artisan::call('tecdoc:manufacturers', [
+            'country' => $request->input('country'),
+            'countryGroup' => $request->input('countryGroup'),
+            'linkingTargetType' => Manufacturer::TEC_DOC_TARGET_TYPE_MOTORCYCLES,
+        ]);
+
+        $output = Artisan::output();
+        $output = json_decode($output, true);
+
+        if (!$this->hasSuccessResponse($output)) {
+            \Log::alert('Command [tecdoc:manufacturers] failed.');
+            \Log::alert($output);
+            return [];
+        }
+
+        $output = $this->getResponseDataAsArray($output);
+
+        if (empty($output)) {
+            \Log::alert('Command [tecdoc:manufacturers] has empty response for linkingTargetType [' . Manufacturer::TEC_DOC_TARGET_TYPE_MOTORCYCLES . '].');
+            return [];
+        }
+
+        $motorcycleIds = [];
+
+        foreach ($output as $manufacturer) {
+            $motorcycleIds[] = $manufacturer['manuId'];
+        }
+
+        return $motorcycleIds;
     }
 }

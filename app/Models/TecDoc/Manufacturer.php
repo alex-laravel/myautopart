@@ -16,6 +16,7 @@ class Manufacturer extends Model
     const TEC_DOC_TARGET_TYPE_MOTOR = 'M';
     const TEC_DOC_TARGET_TYPE_BODY = 'K';
     const TEC_DOC_TARGET_TYPE_UNIVERSAL = 'U';
+    const TEC_DOC_TARGET_TYPE_MOTORCYCLES = 'B';
 
     /**
      * @var string[]
