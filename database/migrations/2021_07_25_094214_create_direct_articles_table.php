@@ -23,7 +23,6 @@ class CreateDirectArticlesTable extends Migration
             $table->string('carType', 5);
             $table->unsignedBigInteger('brandNo');
             $table->string('brandName', 250);
-            $table->unsignedBigInteger('assemblyGroupNodeId');
             $table->unsignedBigInteger('genericArticleId');
             $table->string('genericArticleName', 250);
             $table->unsignedBigInteger('sortNo');

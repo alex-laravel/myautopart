@@ -31,7 +31,6 @@ class DirectArticle extends Model
         'carType',
         'brandNo',
         'brandName',
-        'assemblyGroupNodeId',
         'genericArticleId',
         'genericArticleName',
         'sortNo',

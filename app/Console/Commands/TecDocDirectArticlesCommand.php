@@ -9,7 +9,7 @@ class TecDocDirectArticlesCommand extends TecDocCommand
     /**
      * @var string
      */
-    protected $signature = 'tecdoc:direct-articles {linkingTargetId} {linkingTargetType} {genericArticleIds*}';
+    protected $signature = 'tecdoc:direct-articles {linkingTargetId} {linkingTargetType} {brandIds*}';
 
     /**
      * @var string
@@ -31,7 +31,7 @@ class TecDocDirectArticlesCommand extends TecDocCommand
     {
         $linkingTargetId = $this->argument('linkingTargetId');
         $linkingTargetType = $this->argument('linkingTargetType');
-        $genericArticleIds = $this->argument('genericArticleIds');
+        $brandIds = $this->argument('brandIds');
 
         \Log::debug('CALL COMMAND [tecdoc:direct-articles]');
 
@@ -40,10 +40,10 @@ class TecDocDirectArticlesCommand extends TecDocCommand
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),
                 'articleCountry' => config('tecdoc.api.country'),
-                'linkingTargetId' => $linkingTargetId,
                 'linkingTargetType' => $linkingTargetType,
-                'genericArticleId' => [
-                    'array' => $genericArticleIds
+                'linkingTargetId' => $linkingTargetId,
+                'brandNo' => [
+                    'array' => $brandIds
                 ],
                 'sort' => 2,
             ]

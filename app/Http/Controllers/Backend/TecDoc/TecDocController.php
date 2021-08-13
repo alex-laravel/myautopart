@@ -18,6 +18,15 @@ class TecDocController extends Controller
     const TEC_DOC_TARGET_TYPE_ALL = 0; // ???
     const TEC_DOC_TARGET_TYPE_V = 'V'; // ???
 
+    const TEC_DOC_ARTICLE_TYPE_ARTICLE = 0;
+    const TEC_DOC_ARTICLE_TYPE_OE = 1;
+    const TEC_DOC_ARTICLE_TYPE_TRADE = 2;
+    const TEC_DOC_ARTICLE_TYPE_COMPARABLE = 3;
+    const TEC_DOC_ARTICLE_TYPE_REPLACEMENT = 4;
+    const TEC_DOC_ARTICLE_TYPE_REPLACED = 5;
+    const TEC_DOC_ARTICLE_TYPE_EAN = 6;
+    const TEC_DOC_ARTICLE_TYPE_ANY = 10;
+
     /**
      * @var string[]
      */

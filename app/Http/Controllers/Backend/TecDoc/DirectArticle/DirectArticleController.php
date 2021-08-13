@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Backend\TecDoc\DirectArticle;
 
 use App\Http\Controllers\Backend\TecDoc\TecDocController;
+use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
-use App\Models\TecDoc\GenericArticle\GenericArticle;
 use App\Models\TecDoc\Vehicle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -94,43 +94,43 @@ class DirectArticleController extends TecDocController
     {
         ini_set('max_execution_time', 0);
 
-//        DirectArticle::truncate();
+        DirectArticle::truncate();
 
-        $vehicles = Vehicle::where('carId', '>', 2034)->orderBy('carId')->get();
-        $genericArticleIds = GenericArticle::orderBy('genericArticleId')->get()->pluck('genericArticleId')->toArray();
+        $vehicles = Vehicle::where('carId', '>', 1453)->orderBy('carId')->get();
+        $brandIds = Brand::orderBy('brandId')->get()->pluck('brandId')->toArray();
 
         foreach ($vehicles as $vehicle) {
-            foreach (array_chunk($genericArticleIds, 24) as $genericArticleChunk) {
+            foreach (array_chunk($brandIds, 24) as $brandIdsChunk) {
                 Artisan::call('tecdoc:direct-articles', [
                     'linkingTargetId' => $vehicle->carId,
                     'linkingTargetType' => $vehicle->carType,
-                    'genericArticleIds' => $genericArticleChunk,
+                    'brandIds' => $brandIdsChunk,
                 ]);
 
                 $output = Artisan::output();
                 $output = json_decode($output, true);
 
                 if (!$this->hasSuccessResponse($output)) {
-                    \Log::alert('FAIL DIRECT ARTICLES RESPONSE FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $vehicle->carType . '] AND genericArticleIds [' . implode(",", $genericArticleChunk) . ']!');
-                    continue;
+                    \Log::alert('FAIL DIRECT ARTICLES RESPONSE FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $vehicle->carType . '] AND brandIds [' . implode(",", $brandIdsChunk) . ']!');
+                    \Log::alert($output['status'] . ' - ' . $output['statusText'] . '!');
+                    return redirect()->back();
                 }
 
                 $output = $this->getResponseDataAsArray($output);
 
                 if (empty($output)) {
-                    \Log::alert('EMPTY DIRECT ARTICLES RESPONSE FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $vehicle->carType . '] AND genericArticleIds [' . implode(",", $genericArticleChunk) . ']!');
+                    \Log::alert('EMPTY DIRECT ARTICLES RESPONSE FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $vehicle->carType . '] AND brandIds [' . implode(",", $brandIdsChunk) . ']!');
                     continue;
                 }
 
                 foreach ($output as &$article) {
                     $article['carId'] = $vehicle->carId;
                     $article['carType'] = $vehicle->carType;
-                    $article['assemblyGroupNodeId'] = 0;
                 }
 
                 DirectArticle::insert($output);
 
-                \Log::info('DIRECT ARTICLES FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $vehicle->carType . '] AND genericArticleIds [' . implode(",", $genericArticleChunk) . '] CREATED!');
+                \Log::info('DIRECT ARTICLES FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $vehicle->carType . '] AND brandIds [' . implode(",", $brandIdsChunk) . '] CREATED!');
             }
         }
 
