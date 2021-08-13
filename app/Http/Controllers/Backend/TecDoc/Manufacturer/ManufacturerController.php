@@ -6,7 +6,7 @@ use App\Http\Controllers\Backend\TecDoc\TecDocController;
 use App\Http\Requests\Backend\Manufacturer\ManufacturerSynchronizeRequest;
 use App\Models\TecDoc\Country;
 use App\Models\TecDoc\CountryGroup;
-use App\Models\TecDoc\Manufacturer;
+use App\Models\TecDoc\Manufacturer\Manufacturer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -55,7 +55,7 @@ class ManufacturerController extends TecDocController
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\TecDoc\Manufacturer $manufacturer
+     * @param \App\Models\TecDoc\Manufacturer\Manufacturer $manufacturer
      * @return \Illuminate\Http\Response
      */
     public function show(Manufacturer $manufacturer)
@@ -66,7 +66,7 @@ class ManufacturerController extends TecDocController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\TecDoc\Manufacturer $manufacturer
+     * @param \App\Models\TecDoc\Manufacturer\Manufacturer $manufacturer
      * @return \Illuminate\Http\Response
      */
     public function edit(Manufacturer $manufacturer)
@@ -78,7 +78,7 @@ class ManufacturerController extends TecDocController
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\TecDoc\Manufacturer $manufacturer
+     * @param \App\Models\TecDoc\Manufacturer\Manufacturer $manufacturer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Manufacturer $manufacturer)
@@ -89,7 +89,7 @@ class ManufacturerController extends TecDocController
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\TecDoc\Manufacturer $manufacturer
+     * @param \App\Models\TecDoc\Manufacturer\Manufacturer $manufacturer
      * @return \Illuminate\Http\Response
      */
     public function destroy(Manufacturer $manufacturer)

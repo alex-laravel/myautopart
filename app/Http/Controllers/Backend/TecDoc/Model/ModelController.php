@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Model\ModelSynchronizeRequest;
 use App\Models\TecDoc\Country;
 use App\Models\TecDoc\CountryGroup;
-use App\Models\TecDoc\Manufacturer;
+use App\Models\TecDoc\Manufacturer\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -106,7 +106,7 @@ class ModelController extends Controller
 
         ModelSeries::truncate();
 
-        $manufacturers = Manufacturer::orderBy('manuId')->get();
+        $manufacturers = Manufacturer::onlyIsFavorite()->orderBy('manuId')->get();
 
         foreach ($manufacturers as $manufacturer) {
             Artisan::call('tecdoc:models', [

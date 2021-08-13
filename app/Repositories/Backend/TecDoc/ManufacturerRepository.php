@@ -4,7 +4,7 @@
 namespace App\Repositories\Backend\TecDoc;
 
 
-use App\Models\TecDoc\Manufacturer;
+use App\Models\TecDoc\Manufacturer\Manufacturer;
 use App\Repositories\BaseRepository;
 
 class ManufacturerRepository extends BaseRepository

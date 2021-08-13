@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Backend\Manufacturer;
 
-use App\Models\TecDoc\Manufacturer;
+use App\Models\TecDoc\Manufacturer\Manufacturer;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ManufacturerSynchronizeRequest extends FormRequest

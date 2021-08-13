@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Facades\Garage;
 use App\Http\Controllers\Controller;
 use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
-use App\Models\TecDoc\Manufacturer;
+use App\Models\TecDoc\Manufacturer\Manufacturer;
 use App\Models\TecDoc\ShortCut\ShortCut;
 use Illuminate\Contracts\View\View;
 
