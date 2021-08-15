@@ -1,0 +1,10 @@
+@extends('frontend.layout.main')
+
+@section('title', 'Запчасти')
+
+@section('content')
+    <div class="container">
+        <h1>Запчасти для транспортного средства: Марка [{{ $manufacturer->manuName }}] / Модель [{{ $modelSeries->modelname }}] / Транспортное средство [{{ $vehicle->carName }}]</h1>
+
+    </div>
+@endsection

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auto;
+namespace App\Http\Controllers\Frontend\Auto;
 
+use App\Facades\Garage;
 use App\Http\Controllers\Controller;
 use App\Models\TecDoc\Manufacturer\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
 use App\Models\TecDoc\Vehicle;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 
 class AutoController extends Controller
@@ -25,7 +27,7 @@ class AutoController extends Controller
 
         $modelSeries = ModelSeries::where('manuId', $manufacturer->manuId)->get();
 
-        return view('auto.manufacturer', [
+        return view('frontend.auto.manufacturer', [
             'manufacturer' => $manufacturer,
             'modelSeries' => $modelSeries,
         ]);
@@ -52,7 +54,7 @@ class AutoController extends Controller
 
         $vehicles = Vehicle::where('manuId', $manufacturer->manuId)->where('modelId', $model)->get();
 
-        return view('auto.model', [
+        return view('frontend.auto.model', [
             'manufacturer' => $manufacturer,
             'modelSeries' => $modelSeries,
             'vehicles' => $vehicles,
@@ -63,7 +65,7 @@ class AutoController extends Controller
      * @param string $manufacturer
      * @param string $model
      * @param string $vehicle
-     * @return View
+     * @return RedirectResponse
      */
     public function vehicle($manufacturer, $model, $vehicle)
     {
@@ -81,14 +83,12 @@ class AutoController extends Controller
 
         $vehicle = Vehicle::where('carId', $vehicle)->first();
 
-        if (!$modelSeries) {
+        if (!$vehicle) {
             abort(404);
         }
 
-        return view('auto.vehicle', [
-            'manufacturer' => $manufacturer,
-            'modelSeries' => $modelSeries,
-            'vehicle' => $vehicle,
-        ]);
+        Garage::addVehicle($manufacturer->manuId, $manufacturer->manuName, $modelSeries->modelId, $modelSeries->modelname, $vehicle->carId, $vehicle->carName);
+
+        return redirect()->route('frontend.parts.index', [$manufacturer->manuId, $modelSeries->modelId, $vehicle->carId]);
     }
 }

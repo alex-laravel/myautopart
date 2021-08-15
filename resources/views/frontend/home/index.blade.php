@@ -5202,3 +5202,7 @@
     <div class="block-space block-space--layout--before-footer"></div>
 </div>
 @endsection
+
+@section('scripts')
+    <script src="{{ mix('/js/frontend.vehicle.search.js') }}"></script>
+@endsection
