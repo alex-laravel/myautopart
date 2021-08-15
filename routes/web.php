@@ -23,6 +23,13 @@ Auth::routes();
 //});
 
 /*
+ * Locale Routes
+ */
+Route::name('locale.')->group(function () {
+    includeRouteFiles(__DIR__ . '/Locale/');
+});
+
+/*
  * Backend Routes
  */
 Route::name('backend.')->prefix('admin')->middleware(['auth'])->group(function () {
@@ -32,13 +39,6 @@ Route::name('backend.')->prefix('admin')->middleware(['auth'])->group(function (
 /*
  * Frontend Routes
  */
-Route::name('frontend.')->middleware(['auth'])->group(function () {
+Route::name('frontend.')->group(function () {
     includeRouteFiles(__DIR__ . '/Frontend/');
-});
-
-/*
- * Locale Routes
- */
-Route::name('locale.')->group(function () {
-    includeRouteFiles(__DIR__ . '/Locale/');
 });

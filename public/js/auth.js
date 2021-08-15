@@ -15378,6 +15378,19 @@ return jQuery;
 
 /***/ }),
 
+/***/ "./resources/scss/backend/backend.scss":
+/*!*********************************************!*\
+  !*** ./resources/scss/backend/backend.scss ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/scss/auth/auth.scss":
 /*!***************************************!*\
   !*** ./resources/scss/auth/auth.scss ***!
@@ -15391,10 +15404,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/scss/frontend/frontend.scss":
-/*!***********************************************!*\
-  !*** ./resources/scss/frontend/frontend.scss ***!
-  \***********************************************/
+/***/ "./resources/scss/frontend/core.scss":
+/*!*******************************************!*\
+  !*** ./resources/scss/frontend/core.scss ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -15404,10 +15417,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/scss/backend/backend.scss":
-/*!*********************************************!*\
-  !*** ./resources/scss/backend/backend.scss ***!
-  \*********************************************/
+/***/ "./resources/scss/frontend/main.scss":
+/*!*******************************************!*\
+  !*** ./resources/scss/frontend/main.scss ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/scss/frontend/header-spaceship-variant-one.scss":
+/*!*******************************************************************!*\
+  !*** ./resources/scss/frontend/header-spaceship-variant-one.scss ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/scss/frontend/header-mobile-variant-one.scss":
+/*!****************************************************************!*\
+  !*** ./resources/scss/frontend/header-mobile-variant-one.scss ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -18158,9 +18197,12 @@ Popper.Defaults = Defaults;
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/auth": 0,
+/******/ 			"css/frontend.core": 0,
 /******/ 			"css/auth": 0,
-/******/ 			"css/backend": 0,
-/******/ 			"css/frontend": 0
+/******/ 			"css/frontend.mobile": 0,
+/******/ 			"css/frontend.header": 0,
+/******/ 			"css/frontend.main": 0,
+/******/ 			"css/backend": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -18208,10 +18250,13 @@ Popper.Defaults = Defaults;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/auth","css/backend","css/frontend"], () => (__webpack_require__("./resources/js/auth/auth.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/auth","css/backend","css/frontend"], () => (__webpack_require__("./resources/scss/auth/auth.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/auth","css/backend","css/frontend"], () => (__webpack_require__("./resources/scss/frontend/frontend.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/auth","css/backend","css/frontend"], () => (__webpack_require__("./resources/scss/backend/backend.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend.core","css/auth","css/frontend.mobile","css/frontend.header","css/frontend.main","css/backend"], () => (__webpack_require__("./resources/js/auth/auth.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend.core","css/auth","css/frontend.mobile","css/frontend.header","css/frontend.main","css/backend"], () => (__webpack_require__("./resources/scss/auth/auth.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend.core","css/auth","css/frontend.mobile","css/frontend.header","css/frontend.main","css/backend"], () => (__webpack_require__("./resources/scss/frontend/core.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend.core","css/auth","css/frontend.mobile","css/frontend.header","css/frontend.main","css/backend"], () => (__webpack_require__("./resources/scss/frontend/main.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend.core","css/auth","css/frontend.mobile","css/frontend.header","css/frontend.main","css/backend"], () => (__webpack_require__("./resources/scss/frontend/header-spaceship-variant-one.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend.core","css/auth","css/frontend.mobile","css/frontend.header","css/frontend.main","css/backend"], () => (__webpack_require__("./resources/scss/frontend/header-mobile-variant-one.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/frontend.core","css/auth","css/frontend.mobile","css/frontend.header","css/frontend.main","css/backend"], () => (__webpack_require__("./resources/scss/backend/backend.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

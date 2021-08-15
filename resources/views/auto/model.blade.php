@@ -24,6 +24,6 @@
     </div>
 </div>
 
-<script src="{{ asset('js/frontend.js') }}"></script>
+<script src="{{ asset('js/core.js') }}"></script>
 </body>
 </html>

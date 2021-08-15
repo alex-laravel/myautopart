@@ -25,5 +25,14 @@ return [
         'back' => 'Back',
 //        'continue' => 'Continue',
         'import' => 'Import',
+    ],
+
+    'auth' => [
+        'register' => 'Register',
+        'login' => 'Login',
+        'logout' => 'Logout',
+        'password_reset' => 'Reset Password',
+        'password_reset_link' => 'Send Password Reset Link',
+        'password_confirm' => 'Confirm Password',
     ]
 ];

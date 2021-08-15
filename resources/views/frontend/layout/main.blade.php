@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
         <title>{{ config('app.name') }} | @yield('title')</title>
-        <link href="{{ mix('/css/frontend.css') }}" rel="stylesheet">
+        <link href="{{ mix('/css/frontend.core.css') }}" rel="stylesheet">
+        <link href="{{ mix('/css/frontend.main.css') }}" rel="stylesheet">
+        <link href="{{ mix('/css/frontend.header.css') }}" rel="stylesheet" media="(min-width: 1200px)">
+        <link href="{{ mix('/css/frontend.mobile.css') }}" rel="stylesheet" media="(max-width: 1199px)">
+        <link href="{{ url('/favicon.ico') }}" rel="icon" type="image/x-icon">
         @yield('styles')
-        <script src="{{ mix('/js/frontend.js') }}"></script>
-        @yield('scripts')
+{{--        <link rel="stylesheet" href="redparts/vendor/photoswipe/photoswipe.css">--}}
+{{--        <link rel="stylesheet" href="redparts/vendor/photoswipe/default-skin/default-skin.css">--}}
     </head>
     <body>
-        @include('frontend.include.header')
-
-        <main class="py-4">
-            @include('frontend.include.messages')
+        <div class="site">
+            @include('frontend.include.header-mobile')
+            @include('frontend.include.header')
             @yield('content')
-        </main>
+            @include('frontend.include.footer')
+        </div>
+
+        @include('frontend.include.menu-mobile')
+        @include('frontend.include.modal-quick-view')
+        @include('frontend.include.modal-vehicle-add')
+        @include('frontend.include.modal-vehicle-picker')
+{{--        @include('frontend.include.modal-photo-swipe')--}}
+
+        <script src="{{ mix('/js/frontend.core.js') }}"></script>
+{{--        <script src="redparts/vendor/nouislider/nouislider.min.js"></script>--}}
+{{--        <script src="redparts/vendor/photoswipe/photoswipe.min.js"></script>--}}
+{{--        <script src="redparts/vendor/photoswipe/photoswipe-ui-default.min.js"></script>--}}
+        <script src="{{ mix('/js/frontend.main.js') }}"></script>
+        <script src="{{ mix('/js/frontend.number.js') }}"></script>
+        @yield('scripts')
     </body>
 </html>

@@ -17,10 +17,17 @@ const mix = require('laravel-mix');
 
 mix
     .sass('resources/scss/auth/auth.scss', 'public/css/auth.css')
-    .sass('resources/scss/frontend/frontend.scss', 'public/css/frontend.css')
-    .sass('resources/scss/backend/backend.scss', 'public/css/backend.css')
     .js('resources/js/auth/auth.js', 'public/js/auth.js')
-    .js('resources/js/frontend/frontend.js', 'public/js/frontend.js')
+    .sass('resources/scss/frontend/core.scss', 'public/css/frontend.core.css')
+    .sass('resources/scss/frontend/main.scss', 'public/css/frontend.main.css')
+    .sass('resources/scss/frontend/header-spaceship-variant-one.scss', 'public/css/frontend.header.css')
+    .sass('resources/scss/frontend/header-mobile-variant-one.scss', 'public/css/frontend.mobile.css')
+
+    .js('resources/js/frontend/core.js', 'public/js/frontend.core.js')
+    .js('resources/js/frontend/main.js', 'public/js/frontend.main.js')
+    .js('resources/js/frontend/number.js', 'public/js/frontend.number.js')
+
+    .sass('resources/scss/backend/backend.scss', 'public/css/backend.css')
     .js('resources/js/backend/backend.js', 'public/js/backend.js')
     .js('resources/js/backend/sweetalert2.js', 'public/js/backend.sweetalert2.js')
     .copy('node_modules/datatables.net-dt/css/jquery.dataTables.css', 'public/css/backend.datatable.css')
