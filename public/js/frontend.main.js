@@ -1355,7 +1355,7 @@ var __webpack_exports__ = {};
 
 
   $(function () {
-    $('.form-control-select2, .block-finder__form-control--select select').select2({
+    $('.form-control-select2').select2({
       width: ''
     });
   });

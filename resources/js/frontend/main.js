@@ -1256,7 +1256,7 @@
     // select2
     */
     $(function () {
-        $('.form-control-select2, .block-finder__form-control--select select').select2({width: ''});
+        $('.form-control-select2').select2({width: ''});
     });
 
     /*

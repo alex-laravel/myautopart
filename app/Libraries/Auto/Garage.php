@@ -39,6 +39,12 @@ class Garage
 
         $vehicles[self::generateVehicleHash($manufacturerId, $modelSeriesId, $vehicleId)] = self::createVehicle($manufacturerId, $manufacturerName, $modelSeriesId, $modelSeriesName, $vehicleId, $vehicleName);
 
+        foreach ($vehicles as &$vehicle) {
+            $vehicle['selected'] = false;
+        }
+
+        $vehicles[self::generateVehicleHash($manufacturerId, $modelSeriesId, $vehicleId)]['selected'] = true;
+
         self::compactVehicles($vehicles);
 
         return true;

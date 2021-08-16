@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
  * API Vehicles Controllers
  */
 
-Route::get('/vehicles', [ApiVehicleController::class, 'index'])->name('vehicles.index');
+Route::get('/vehicles/{modelId}', [ApiVehicleController::class, 'index'])->name('vehicles.index');

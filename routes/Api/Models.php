@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
  * API Models Controllers
  */
 
-Route::get('/models', [ApiModelController::class, 'index'])->name('models.index');
+Route::get('/models/{manufacturerId}', [ApiModelController::class, 'index'])->name('models.index');

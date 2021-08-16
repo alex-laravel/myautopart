@@ -268,18 +268,18 @@ class HomeController extends Controller
 //
 //        //        Garage::clearVehicles();
 //
-//        $manufactures = Manufacturer::whereIn('manuName', $allBrands)->orderBy('manuName')->get();
+        $manufacturers = Manufacturer::onlyIsFavorite()->orderBy('manuName')->get();
 //        $categories = ShortCut::orderBy('shortCutName')->get();
 //        $assemblyGroups = AssemblyGroup::orderBy('assemblyGroupName')->get()->toArray();
 //
 //        $assemblyGroupsTree = $this->generateAssemblyGroupsTree($assemblyGroups);
 
         return view('frontend.home.index', [
-//            'garageVehicles' => Garage::getVehicles(),
-//            'brands' => $allBrands,
-//            'manufactures' => $manufactures,
+            'manufacturers' => $manufacturers,
 //            'categories' => $categories,
 //            'assemblyGroups' => $assemblyGroupsTree,
+//            'brands' => $allBrands,
+//            'garageVehicles' => Garage::getVehicles(),
         ]);
     }
 

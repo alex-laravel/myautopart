@@ -26,7 +26,6 @@ mix
     .js('resources/js/frontend/core.js', 'public/js/frontend.core.js')
     .js('resources/js/frontend/main.js', 'public/js/frontend.main.js')
     .js('resources/js/frontend/number.js', 'public/js/frontend.number.js')
-    .js('resources/js/frontend/vehicle.search.js', 'public/js/frontend.vehicle.search.js')
 
     .sass('resources/scss/backend/backend.scss', 'public/css/backend.css')
     .js('resources/js/backend/backend.js', 'public/js/backend.js')
