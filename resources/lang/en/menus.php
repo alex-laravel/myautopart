@@ -168,5 +168,37 @@ return [
                 'view' => 'View Price Scheme',
             ],
         ]
+    ],
+
+    'frontend' => [
+        'pages' => [
+            'about' => [
+                'title' => 'About Us',
+            ],
+
+            'contacts' => [
+                'title' => 'Contacts',
+            ],
+
+            'payment' => [
+                'title' => 'Payment Information',
+            ],
+
+            'delivery' => [
+                'title' => 'Delivery Information',
+            ],
+
+            'privacy' => [
+                'title' => 'Privacy Policy',
+            ],
+
+            'terms' => [
+                'title' => 'Terms And Conditions',
+            ],
+
+            'faq' => [
+                'title' => 'FAQ',
+            ],
+        ]
     ]
 ];

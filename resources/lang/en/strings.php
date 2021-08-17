@@ -20,4 +20,10 @@ return [
         ],
 
     ],
+
+    'frontend' => [
+        'general' => [
+            'all_rights_reserved' => 'All Rights Reserved.',
+        ]
+    ]
 ];
