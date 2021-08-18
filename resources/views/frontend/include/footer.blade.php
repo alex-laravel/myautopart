@@ -43,8 +43,10 @@
                             <ul class="footer-links__list">
                                 <li class="footer-links__item"><a href="{{ route('frontend.pages.about') }}" class="footer-links__link">{{ trans('menus.frontend.pages.about.title') }}</a></li>
                                 <li class="footer-links__item"><a href="{{ route('frontend.pages.delivery') }}" class="footer-links__link">{{ trans('menus.frontend.pages.delivery.title') }}</a></li>
-                                <li class="footer-links__item"><a href="{{ route('frontend.pages.payment') }}" class="footer-links__link">{{ trans('menus.frontend.pages.payment.title') }}n</a></li>
+                                <li class="footer-links__item"><a href="{{ route('frontend.pages.payment') }}" class="footer-links__link">{{ trans('menus.frontend.pages.payment.title') }}</a></li>
+                                <li class="footer-links__item"><a href="{{ route('frontend.pages.terms') }}" class="footer-links__link">{{ trans('menus.frontend.pages.terms.title') }}</a></li>
                                 <li class="footer-links__item"><a href="{{ route('frontend.pages.privacy') }}" class="footer-links__link">{{ trans('menus.frontend.pages.privacy.title') }}</a></li>
+                                <li class="footer-links__item"><a href="{{ route('frontend.pages.faq') }}" class="footer-links__link">{{ trans('menus.frontend.pages.faq.title') }}</a></li>
                                 <li class="footer-links__item"><a href="{{ route('frontend.pages.contacts') }}" class="footer-links__link">{{ trans('menus.frontend.pages.contacts.title') }}</a></li>
                             </ul>
                         </div>

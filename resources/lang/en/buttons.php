@@ -21,6 +21,7 @@ return [
         'view' => 'View',
         'save' => 'Save',
         'synchronize' => 'Synchronize',
+        'synchronize-assets' => 'Synchronize Assets',
         'cancel' => 'Cancel',
         'back' => 'Back',
 //        'continue' => 'Continue',

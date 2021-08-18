@@ -11,5 +11,6 @@ Route::group(['prefix' => ''], function () {
     Route::post('brands/get', [BrandAjaxController::class, 'get'])->name('ajax.brands.get');
 
     Route::post('brands/sync', [BrandController::class, 'sync'])->name('brands.sync');
+    Route::post('brands/sync-assets', [BrandController::class, 'syncAssets'])->name('brands.sync-assets');
     Route::resource('brands', BrandController::class);
 });

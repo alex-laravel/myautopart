@@ -939,43 +939,6 @@
                         </ul>
                     </div>
                 </li>
-
-                <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                    <a href="{{ route('frontend.pages.about') }}" class="main-menu__link">
-                        Pages
-                        <svg width="7px" height="5px">
-                            <path d="M0.280,0.282 C0.645,-0.084 1.238,-0.077 1.596,0.297 L3.504,2.310 L5.413,0.297 C5.770,-0.077 6.363,-0.084 6.728,0.282 C7.080,0.634 7.088,1.203 6.746,1.565 L3.504,5.007 L0.262,1.565 C-0.080,1.203 -0.072,0.634 0.280,0.282 Z" />
-                        </svg>
-                    </a>
-
-                    <div class="main-menu__submenu">
-                        <ul class="menu">
-                            <li class="menu__item">
-                                <a href="{{ route('frontend.pages.about') }}" class="menu__link">
-                                    {{ trans('menus.frontend.pages.about.title') }}
-                                </a>
-                            </li>
-
-                            <li class="menu__item">
-                                <a href="{{ route('frontend.pages.contacts') }}" class="menu__link">
-                                    {{ trans('menus.frontend.pages.contacts.title') }}
-                                </a>
-                            </li>
-
-                            <li class="menu__item">
-                                <a href="{{ route('frontend.pages.terms') }}" class="menu__link">
-                                    {{ trans('menus.frontend.pages.terms.title') }}
-                                </a>
-                            </li>
-
-                            <li class="menu__item">
-                                <a href="{{ route('frontend.pages.faq') }}" class="menu__link">
-                                    {{ trans('menus.frontend.pages.faq.title') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
             </ul>
         </div>
     </div>

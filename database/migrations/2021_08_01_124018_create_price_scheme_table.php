@@ -13,12 +13,12 @@ class CreatePriceSchemeTable extends Migration
      */
     public function up()
     {
-        Schema::create('sh_price_schemes', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->unsignedInteger('price_from');
-            $table->unsignedInteger('price_to');
-            $table->smallInteger('percentage');
-            $table->timestamps();
+        Schema::create('td_brands', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedSmallInteger('brandId');
+            $table->unsignedInteger('brandLogoID');
+            $table->string('brandName', 150);
+            $table->string('brandLogoName', 36)->unique()->nullable();
         });
     }
 
@@ -29,6 +29,6 @@ class CreatePriceSchemeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sh_price_schemes');
+        Schema::dropIfExists('td_brands');
     }
 }

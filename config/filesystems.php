@@ -53,6 +53,13 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
         ],
 
+        'brands' => [
+            'driver' => 'local',
+            'root' => storage_path('../public/assets/brands'),
+            'url' => env('APP_URL') . '/assets/brands/',
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*

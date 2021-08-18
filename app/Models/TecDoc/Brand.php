@@ -9,7 +9,15 @@ class Brand extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string
+     */
     protected $table = 'td_brands';
+
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * @var array
@@ -18,5 +26,6 @@ class Brand extends Model
         'brandId',
         'brandLogoID',
         'brandName',
+        'brandLogoName',
     ];
 }

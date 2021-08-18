@@ -6,7 +6,7 @@
         @include('frontend.include.partials.header-search')
 
         <div class="header__indicators">
-            @include('frontend.include.partials.header-wishlist')
+{{--            @include('frontend.include.partials.header-wishlist')--}}
             @include('frontend.include.partials.header-account')
             @include('frontend.include.partials.header-cart')
         </div>

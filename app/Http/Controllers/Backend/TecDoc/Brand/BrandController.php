@@ -116,4 +116,32 @@ class BrandController extends Controller
 
         return redirect()->back();
     }
+
+    /**
+     * @return RedirectResponse
+     */
+    public function syncAssets()
+    {
+        ini_set('max_execution_time', 0);
+
+        $brands = Brand::get();
+
+        foreach ($brands as $brand) {
+            Artisan::call('tecdoc:brand-assets', [
+                'brandId' => $brand->id,
+                'brandLogoId' => $brand->brandLogoID
+            ]);
+
+            $output = Artisan::output();
+
+            if ($output !== true) {
+                \Log::alert('FAIL BRAND ASSETS RESPONSE for Brand ID [' . $brand->brandId . ']!');
+                continue;
+            }
+
+            \Log::info('BRANDS CREATED for Brand ID [' . $brand->brandId . ']!');
+        }
+
+        return redirect()->back();
+    }
 }
