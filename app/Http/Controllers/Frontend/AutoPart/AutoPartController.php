@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend\AutoPart;
 
 use App\Http\Controllers\Controller;
+use App\Models\TecDoc\Brand;
+use App\Models\TecDoc\DirectArticle\DirectArticle;
 use App\Models\TecDoc\Manufacturer\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
 use App\Models\TecDoc\Vehicle;
@@ -43,6 +45,28 @@ class AutoPartController extends Controller
             'vehicle' => $vehicle,
         ]);
     }
+
+
+    /**
+     * @param integer $brandId
+     * @return View
+     */
+    public function byBrand($brandId)
+    {
+        $brand = Brand::where('brandId', (int)$brandId)->first();
+
+        if (!$brand) {
+            abort(404);
+        }
+
+        $parts = DirectArticle::where('brandNo', (int)$brandId)->take(25)->get();
+
+        return view('frontend.auto-parts.brand', [
+            'brand' => $brand,
+            'parts' => $parts,
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

@@ -18,7 +18,7 @@ class CreateBrandsTable extends Migration
             $table->unsignedSmallInteger('brandId');
             $table->unsignedInteger('brandLogoID');
             $table->string('brandName', 150);
-            $table->string('slug', 150)->unique();
+            $table->string('brandLogoName', 36)->unique()->nullable();
         });
     }
 
