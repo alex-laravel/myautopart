@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 
 class AutoPartController extends Controller
 {
+    const PARTS_PACKAGE_LIMIT = 10;
+
     /**
      * @param integer $manufacturerId
      * @param integer $modelSeriesId
@@ -59,7 +61,7 @@ class AutoPartController extends Controller
             abort(404);
         }
 
-        $parts = DirectArticle::where('brandNo', (int)$brandId)->take(25)->get();
+        $parts = DirectArticle::where('brandNo', (int)$brandId)->paginate(self::PARTS_PACKAGE_LIMIT);
 
         return view('frontend.auto-parts.brand', [
             'brand' => $brand,
