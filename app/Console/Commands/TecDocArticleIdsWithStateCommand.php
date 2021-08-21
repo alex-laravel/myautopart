@@ -6,7 +6,7 @@ use App\Models\TecDoc\ArticleIdsWithState;
 use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\GenericArticle\GenericArticle;
-use App\Models\TecDoc\Vehicle;
+use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Support\Facades\Http;
 
 class TecDocArticleIdsWithStateCommand extends TecDocCommand

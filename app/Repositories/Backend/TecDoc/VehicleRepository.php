@@ -4,7 +4,7 @@
 namespace App\Repositories\Backend\TecDoc;
 
 
-use App\Models\TecDoc\Vehicle;
+use App\Models\TecDoc\Vehicle\Vehicle;
 use App\Repositories\BaseRepository;
 
 class VehicleRepository extends BaseRepository

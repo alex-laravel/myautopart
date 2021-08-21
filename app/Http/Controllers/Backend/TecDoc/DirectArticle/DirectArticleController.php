@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend\TecDoc\DirectArticle;
 use App\Http\Controllers\Backend\TecDoc\TecDocController;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
-use App\Models\TecDoc\Vehicle;
+use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

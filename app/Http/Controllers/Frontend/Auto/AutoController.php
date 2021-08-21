@@ -6,13 +6,25 @@ use App\Facades\Garage;
 use App\Http\Controllers\Controller;
 use App\Models\TecDoc\Manufacturer\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
-use App\Models\TecDoc\Vehicle;
+use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 
 class AutoController extends Controller
 {
+    /**
+     * @return View
+     */
+    public function index()
+    {
+        $manufacturers = Manufacturer::onlyIsFavorite()->orderBy('manuName')->get();
+
+        return view('frontend.auto.index', [
+            'manufacturers' => $manufacturers,
+        ]);
+    }
+
     /**
      * @param string $manufacturer
      * @return View

@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\Manufacturer\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
-use App\Models\TecDoc\Vehicle;
+use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller

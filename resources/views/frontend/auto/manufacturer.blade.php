@@ -1,32 +1,73 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href={{ asset('css/frontend.css') }}>
-</head>
-<body>
-<div class="container">
-    <h1>Марка [{{ $manufacturer->manuName }}]</h1>
+@extends('frontend.layout.main')
 
-    <h2>Обзор по Модели</h2>
+@section('title', 'Марка ' . $manufacturer->manuName)
 
-    <div class="row">
-        @foreach ($modelSeries as $model)
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">
-                <a href="/auto/{{ $manufacturer->manuId }}/{{ $model->modelId }}" class="d-block">
-                    <p>
-                        {{ $model->modelname }}
-                        <small>{{ $model->yearOfConstrFrom ? $model->yearOfConstrFrom : 'N/A' }} - {{ $model->yearOfConstrTo ? $model->yearOfConstrTo : 'N/A' }}</small>
-                    </p>
-                </a>
+@section('content')
+    <div class="site__body">
+        <div class="block-header block-header--has-breadcrumb block-header--has-title">
+            <div class="container">
+                <div class="block-header__body">
+                    {{--                    <nav class="breadcrumb block-header__breadcrumb" aria-label="breadcrumb">--}}
+                    {{--                        <ol class="breadcrumb__list">--}}
+                    {{--                            <li class="breadcrumb__spaceship-safe-area" role="presentation"></li>--}}
+                    {{--                            <li class="breadcrumb__item breadcrumb__item--parent breadcrumb__item--first">--}}
+                    {{--                                <a href="index.html" class="breadcrumb__item-link">Home</a>--}}
+                    {{--                            </li>--}}
+                    {{--                            <li class="breadcrumb__item breadcrumb__item--parent">--}}
+                    {{--                                <a href="" class="breadcrumb__item-link">Breadcrumb</a>--}}
+                    {{--                            </li>--}}
+                    {{--                            <li class="breadcrumb__item breadcrumb__item--current breadcrumb__item--last" aria-current="page">--}}
+                    {{--                                <span class="breadcrumb__item-link">Current Page</span>--}}
+                    {{--                            </li>--}}
+                    {{--                            <li class="breadcrumb__title-safe-area" role="presentation"></li>--}}
+                    {{--                        </ol>--}}
+                    {{--                    </nav>--}}
+                    <h1 class="block-header__title">Обзор по модели</h1>
+                </div>
             </div>
-        @endforeach
-    </div>
-</div>
+        </div>
 
-<script src="{{ asset('js/core.js') }}"></script>
-</body>
-</html>
+        <div class="block block-split">
+            <div class="container">
+                <div class="block-split__row row no-gutters">
+                    <div class="block-split__item block-split__item-content col-auto w-100">
+                        <div class="block">
+                            <div class="categories-list categories-list--layout--columns-7-full">
+                                @if (count($modelSeries))
+                                    <ul class="categories-list__body">
+                                        @foreach ($modelSeries as $model)
+                                            <li class="categories-list__item">
+                                                <a href="{{ route('frontend.auto.model', [$model->manuId, $model->modelId]) }}">
+{{--                                                    <div class="image image--type--category">--}}
+{{--                                                        <div class="image__body">--}}
+{{--                                                            <img class="image__tag" src="{{ asset('assets/manufacturers/' . $manufacturer->slug . '.png') }}" alt="{{ $manufacturer->manuName }}">--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+
+                                                    <div class="categories-list__item-name">
+                                                        {{ $model->modelname }}
+                                                    </div>
+                                                </a>
+
+                                                <div class="categories-list__item-products">
+                                                    {{ $model->yearOfConstrFrom ? $model->yearOfConstrFrom : 'нет информации' }} - {{ $model->yearOfConstrTo ? $model->yearOfConstrTo : 'нет информации' }}
+                                                </div>
+                                            </li>
+
+{{--                                            <li class="categories-list__divider"></li>--}}
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <small>нет моделей</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="block-space block-space--layout--divider-nl"></div>
+                    </div>
+                </div>
+
+                <div class="block-space block-space--layout--before-footer"></div>
+            </div>
+        </div>
+    </div>
+@endsection

@@ -1,6 +1,6 @@
 @extends('frontend.layout.main')
 
-@section('title', 'Запчасти')
+@section('title', 'Запчасти для транспортного средства')
 
 @section('content')
     <div class="container">

@@ -1,27 +1,6 @@
 @extends('frontend.layout.main')
 
-@section('styles')
-    {{--    <style>--}}
-    {{--        .card-brand {--}}
-
-    {{--        }--}}
-
-    {{--        .card-brand img {--}}
-    {{--            display: inline-block;--}}
-    {{--            width: 100px;--}}
-    {{--            vertical-align: -17px;--}}
-    {{--        }--}}
-
-    {{--        .card-brand p {--}}
-    {{--            display: inline-block;--}}
-    {{--            width: calc(100% - 100px);--}}
-    {{--            margin-top: 0;--}}
-    {{--            margin-bottom: 0;--}}
-    {{--        }--}}
-    {{--    </style>--}}
-@endsection
-
-@section('title', 'Frontend')
+@section('title', 'Главная')
 
 @section('content')
     {{--    <div class="container">--}}
@@ -51,23 +30,7 @@
     {{--            </div>--}}
     {{--        </div>--}}
 
-    {{--        <h1>Обзор по марке</h1>--}}
 
-    {{--        <div class="row mb-4">--}}
-    {{--            @if (count($manufactures))--}}
-    {{--                @foreach ($manufactures as $manufacture)--}}
-    {{--                    <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">--}}
-    {{--                        <a href="auto/{{ $manufacture->manuId }}" class="d-block">--}}
-    {{--                            <img src="{{ asset('assets/manufacturers/' . Str::slug($manufacture->manuName) . '.png') }}" alt=""><p>{{ $manufacture->manuName }}</p>--}}
-    {{--                        </a>--}}
-    {{--                    </div>--}}
-    {{--                @endforeach--}}
-    {{--            @else--}}
-    {{--                <div class="col-12">--}}
-    {{--                    <small class="d-block">нет марок</small>--}}
-    {{--                </div>--}}
-    {{--            @endif--}}
-    {{--        </div>--}}
 
             <h2>Обзор по категориям</h2>
 

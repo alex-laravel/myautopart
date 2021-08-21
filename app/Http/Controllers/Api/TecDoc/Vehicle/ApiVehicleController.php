@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api\TecDoc\Vehicle;
 
 use App\Http\Controllers\Api\ApiBaseController;
 use App\Http\Responses\Api\V1\Response;
-use App\Models\TecDoc\Vehicle;
+use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 

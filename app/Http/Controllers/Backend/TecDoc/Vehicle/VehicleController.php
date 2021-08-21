@@ -7,7 +7,7 @@ use App\Http\Requests\Backend\Vehicle\VehicleSynchronizeRequest;
 use App\Models\TecDoc\Country;
 use App\Models\TecDoc\CountryGroup;
 use App\Models\TecDoc\ModelSeries;
-use App\Models\TecDoc\Vehicle;
+use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -54,7 +54,7 @@ class VehicleController extends TecDocController
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\TecDoc\Vehicle $vehicle
+     * @param Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function show(Vehicle $vehicle)
@@ -65,7 +65,7 @@ class VehicleController extends TecDocController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\TecDoc\Vehicle $vehicle
+     * @param Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function edit(Vehicle $vehicle)
@@ -77,7 +77,7 @@ class VehicleController extends TecDocController
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\TecDoc\Vehicle $vehicle
+     * @param Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Vehicle $vehicle)
@@ -88,7 +88,7 @@ class VehicleController extends TecDocController
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\TecDoc\Vehicle $vehicle
+     * @param Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function destroy(Vehicle $vehicle)

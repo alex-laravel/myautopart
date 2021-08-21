@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Backend\TecDoc\VehicleDetails;
 
 use App\Http\Controllers\Controller;
-use App\Models\TecDoc\Vehicle;
-use App\Models\TecDoc\VehicleDetails;
+use App\Models\TecDoc\Vehicle\Vehicle;
+use App\Models\TecDoc\VehicleDetails\VehicleDetails;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -46,7 +46,7 @@ class VehicleDetailsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\TecDoc\VehicleDetails $vehicleDetails
+     * @param VehicleDetails $vehicleDetails
      * @return \Illuminate\Http\Response
      */
     public function show(VehicleDetails $vehicleDetails)
@@ -57,7 +57,7 @@ class VehicleDetailsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\TecDoc\VehicleDetails $vehicleDetails
+     * @param VehicleDetails $vehicleDetails
      * @return \Illuminate\Http\Response
      */
     public function edit(VehicleDetails $vehicleDetails)
@@ -69,7 +69,7 @@ class VehicleDetailsController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\TecDoc\VehicleDetails $vehicleDetails
+     * @param VehicleDetails $vehicleDetails
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, VehicleDetails $vehicleDetails)
@@ -80,7 +80,7 @@ class VehicleDetailsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\TecDoc\VehicleDetails $vehicleDetails
+     * @param VehicleDetails $vehicleDetails
      * @return \Illuminate\Http\Response
      */
     public function destroy(VehicleDetails $vehicleDetails)
@@ -152,7 +152,7 @@ class VehicleDetailsController extends Controller
                 continue;
             }
 
-            Artisan::call('tecdoc:brand-assets', [
+            Artisan::call('tecdoc:vehicle-assets', [
                 'vehicleId' => $vehicleDetail->carId,
                 'vehicleDocId' => $vehicleDetail->vehicleDocId
             ]);

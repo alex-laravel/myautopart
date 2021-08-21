@@ -60,6 +60,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'vehicles' => [
+            'driver' => 'local',
+            'root' => storage_path('../public/assets/vehicles'),
+            'url' => env('APP_URL') . '/assets/vehicles/',
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*

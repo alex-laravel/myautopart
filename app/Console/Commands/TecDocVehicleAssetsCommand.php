@@ -4,7 +4,7 @@
 namespace App\Console\Commands;
 
 
-use App\Models\TecDoc\VehicleDetails;
+use App\Models\TecDoc\VehicleDetails\VehicleDetails;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 

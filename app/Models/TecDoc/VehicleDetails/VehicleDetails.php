@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\TecDoc;
+namespace App\Models\TecDoc\VehicleDetails;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class VehicleDetails extends Model
 {
     use HasFactory;
+    use VehicleDetailsRelationship;
 
     /**
      * @var bool
