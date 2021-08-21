@@ -94,7 +94,6 @@
                     <th>modelname</th>
                     <th>yearOfConstrFrom</th>
                     <th>yearOfConstrTo</th>
-                    <th>linkingTargetType</th>
                 </tr>
                 </thead>
             </table>
@@ -122,8 +121,7 @@
                     {data: 'modelId', name: 'td_model_series.modelId'},
                     {data: 'modelname', name: 'td_model_series.modelname'},
                     {data: 'yearOfConstrFrom', name: 'td_model_series.yearOfConstrFrom'},
-                    {data: 'yearOfConstrTo', name: 'td_model_series.yearOfConstrTo'},
-                    {data: 'linkingTargetType', name: 'td_model_series.linkingTargetType'}
+                    {data: 'yearOfConstrTo', name: 'td_model_series.yearOfConstrTo'}
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500

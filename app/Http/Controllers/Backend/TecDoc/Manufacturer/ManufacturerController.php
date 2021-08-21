@@ -103,17 +103,11 @@ class ManufacturerController extends TecDocController
     {
         Manufacturer::truncate();
 
-        $linkingTargetTypes = [
-            self::TEC_DOC_TARGET_TYPE_PASSENGER,
-            self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
-            self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT,
-        ];
-
         $motorcycleIds = $this->syncMotorcycles($request);
 
         $manufacturerIds = [];
 
-        foreach ($linkingTargetTypes as $linkingTargetType) {
+        foreach (self::$allowedPassengerAndCommercialLinkingTargetTypes as $linkingTargetType) {
             Artisan::call('tecdoc:manufacturers', [
                 'country' => $request->input('country'),
                 'countryGroup' => $request->input('countryGroup'),

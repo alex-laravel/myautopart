@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend\TecDoc\Model;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\TecDoc\TecDocController;
 use App\Http\Requests\Backend\Model\ModelSynchronizeRequest;
 use App\Models\TecDoc\Country;
 use App\Models\TecDoc\CountryGroup;
@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 
-class ModelController extends Controller
+class ModelController extends TecDocController
 {
     /**
      * Display a listing of the resource.
@@ -43,7 +43,7 @@ class ModelController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,7 +54,7 @@ class ModelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TecDoc\ModelSeries  $modelSeries
+     * @param \App\Models\TecDoc\ModelSeries $modelSeries
      * @return \Illuminate\Http\Response
      */
     public function show(ModelSeries $modelSeries)
@@ -65,7 +65,7 @@ class ModelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TecDoc\ModelSeries  $modelSeries
+     * @param \App\Models\TecDoc\ModelSeries $modelSeries
      * @return \Illuminate\Http\Response
      */
     public function edit(ModelSeries $modelSeries)
@@ -76,8 +76,8 @@ class ModelController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TecDoc\ModelSeries  $modelSeries
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\TecDoc\ModelSeries $modelSeries
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ModelSeries $modelSeries)
@@ -88,7 +88,7 @@ class ModelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TecDoc\ModelSeries  $modelSeries
+     * @param \App\Models\TecDoc\ModelSeries $modelSeries
      * @return \Illuminate\Http\Response
      */
     public function destroy(ModelSeries $modelSeries)
@@ -108,45 +108,55 @@ class ModelController extends Controller
 
         $manufacturers = Manufacturer::onlyIsFavorite()->orderBy('manuId')->get();
 
+        $modelIds = [];
+
         foreach ($manufacturers as $manufacturer) {
-            Artisan::call('tecdoc:models', [
-                'manufacturerId' => $manufacturer->manuId,
-                'country' => $request->input('country'),
-                'countryGroup' => $request->input('countryGroup'),
-                'linkingTargetType' => $manufacturer->linkingTargetTypes
-            ]);
+            foreach (self::$allowedPassengerAndCommercialLinkingTargetTypes as $linkingTargetType) {
+                Artisan::call('tecdoc:models', [
+                    'country' => $request->input('country'),
+                    'countryGroup' => $request->input('countryGroup'),
+                    'manufacturerId' => $manufacturer->manuId,
+                    'linkingTargetType' => $linkingTargetType
+                ]);
 
-            $output = Artisan::output();
-            $output = json_decode($output, true);
+                $output = Artisan::output();
+                $output = json_decode($output, true);
 
-            if (!$this->hasSuccessResponse($output)) {
-                continue;
-            }
-
-            $output = $this->getResponseDataAsArray($output);
-
-            if (empty($output)) {
-                continue;
-            }
-
-            foreach ($output as &$model) {
-                $model['manuId'] = $manufacturer->manuId;
-                $model['linkingTargetType'] = $manufacturer->linkingTargetTypes;
-
-                if (!isset($model['yearOfConstrFrom'])) {
-                    $model['yearOfConstrFrom'] = null;
+                if (!$this->hasSuccessResponse($output)) {
+                    continue;
                 }
 
-                if (!isset($model['yearOfConstrTo'])) {
-                    $model['yearOfConstrTo'] = null;
+                $output = $this->getResponseDataAsArray($output);
+
+                if (empty($output)) {
+                    continue;
                 }
 
-                $model['isPopular'] = $model['favorFlag'];
-                $model['isVisible'] = true;
-                $model['slug'] = Str::slug($model['modelname']);
-            }
+                foreach ($output as $index => &$model) {
+                    if (in_array($model['modelId'], $modelIds)) {
+                        unset($output[$index]);
+                        continue;
+                    }
 
-            ModelSeries::insert($output);
+                    $model['manuId'] = $manufacturer->manuId;
+
+                    if (!isset($model['yearOfConstrFrom'])) {
+                        $model['yearOfConstrFrom'] = null;
+                    }
+
+                    if (!isset($model['yearOfConstrTo'])) {
+                        $model['yearOfConstrTo'] = null;
+                    }
+
+                    $model['isPopular'] = $model['favorFlag'];
+                    $model['isVisible'] = true;
+                    $model['slug'] = Str::slug($model['modelname']);
+
+                    $modelIds[] = $model['modelId'];
+                }
+
+                ModelSeries::insert($output);
+            }
         }
 
         return redirect()->back();
