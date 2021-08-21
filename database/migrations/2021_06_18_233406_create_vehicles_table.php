@@ -19,7 +19,6 @@ class CreateVehiclesTable extends Migration
             $table->unsignedInteger('modelId');
             $table->unsignedInteger('carId');
             $table->string('carName', 150);
-            $table->string('carType', 5);
             $table->string('firstCountry', 5);
             $table->string('slug', 150);
         });

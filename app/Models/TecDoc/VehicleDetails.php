@@ -47,5 +47,7 @@ class VehicleDetails extends Model
         'yearOfConstrFrom',
         'yearOfConstrTo',
         'vehicleDocId',
+        'assetThumbnailName',
+        'assetImageName',
     ];
 }

@@ -137,4 +137,36 @@ class VehicleDetailsController extends Controller
 
         return redirect()->back();
     }
+
+    /**
+     * @return RedirectResponse
+     */
+    public function syncAssets()
+    {
+        ini_set('max_execution_time', 0);
+
+        $vehicleDetails = VehicleDetails::get();
+
+        foreach ($vehicleDetails as $vehicleDetail) {
+            if (empty($vehicleDetail->vehicleDocId)) {
+                continue;
+            }
+
+            Artisan::call('tecdoc:brand-assets', [
+                'vehicleId' => $vehicleDetail->carId,
+                'vehicleDocId' => $vehicleDetail->vehicleDocId
+            ]);
+
+            $output = Artisan::output();
+
+            if ($output !== true) {
+                \Log::alert('FAIL BRAND ASSETS RESPONSE for Vehicle ID [' . $vehicleDetail->carId . ']!');
+                continue;
+            }
+
+            \Log::info('BRANDS CREATED for Brand ID [' . $vehicleDetail->carId . ']!');
+        }
+
+        return redirect()->back();
+    }
 }

@@ -39,6 +39,8 @@ class CreateVehicleDetailsTable extends Migration
             $table->unsignedInteger('yearOfConstrFrom')->nullable();
             $table->unsignedInteger('yearOfConstrTo')->nullable();
             $table->string('vehicleDocId', 150)->nullable();
+            $table->string('assetThumbnailName', 36)->unique()->nullable();
+            $table->string('assetImageName', 36)->unique()->nullable();
         });
     }
 

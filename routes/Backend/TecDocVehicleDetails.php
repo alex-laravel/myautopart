@@ -11,5 +11,6 @@ Route::group(['prefix' => ''], function () {
     Route::post('vehicle-details/get', [VehicleDetailsAjaxController::class, 'get'])->name('ajax.vehicle-details.get');
 
     Route::post('vehicle-details/sync', [VehicleDetailsController::class, 'sync'])->name('vehicle-details.sync');
+    Route::post('vehicle-details/sync-assets', [VehicleDetailsController::class, 'syncAssets'])->name('vehicle-details.sync-assets');
     Route::resource('vehicle-details', VehicleDetailsController::class);
 });

@@ -14,22 +14,29 @@
 @endsection
 
 @section('content')
-    <form class="form-horizontal" action="{{ route('backend.vehicle-details.sync') }}" method="post">
-        @csrf
+    <div class="card card-accent-success mt-3">
+        <div class="card-header">
+            <h4 class="d-inline-block">{{ trans('labels.general.synchronize') }}</h4>
 
-        <div class="card card-accent-success mt-3">
-            <div class="card-header">
-                <h4 class="d-inline-block">{{ trans('labels.general.synchronize') }}</h4>
-
-                <div class="float-right">
-                    <button class="btn btn-block btn-primary" type="submit">{{ trans('buttons.general.synchronize') }}</button>
-                </div>
+            <div class="float-right">
+                <form class="form-horizontal" action="{{ route('backend.vehicle-details.sync-assets') }}" method="post">
+                    @csrf
+                    <button class="btn btn-block btn-info" type="submit">{{ trans('buttons.general.synchronize-assets') }}</button>
+                </form>
             </div>
 
-            <div class="card-body">
+            <div class="float-right mr-2">
+                <form class="form-horizontal" action="{{ route('backend.vehicle-details.sync') }}" method="post">
+                    @csrf
+                    <button class="btn btn-block btn-primary" type="submit">{{ trans('buttons.general.synchronize') }}</button>
+                </form>
             </div>
         </div>
-    </form>
+
+        <div class="card-body">
+        </div>
+    </div>
+
 
     <div class="card card-accent-info mt-3">
         <div class="card-header">

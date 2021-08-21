@@ -19,16 +19,7 @@ class Vehicle extends Model
         'modelId',
         'carId',
         'carName',
-        'carType',
         'firstCountry',
         'slug',
     ];
-
-    /**
-     * @return string
-     */
-    public function getCarTypeLabelAttribute()
-    {
-        return '<span class="badge badge-dark">' . $this->carType . '</span>';
-    }
 }

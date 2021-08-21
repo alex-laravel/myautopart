@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend\TecDoc\Vehicle;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\TecDoc\TecDocController;
 use App\Http\Requests\Backend\Vehicle\VehicleSynchronizeRequest;
 use App\Models\TecDoc\Country;
 use App\Models\TecDoc\CountryGroup;
@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 
-class VehicleController extends Controller
+class VehicleController extends TecDocController
 {
     /**
      * Display a listing of the resource.
@@ -43,7 +43,7 @@ class VehicleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,7 +54,7 @@ class VehicleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TecDoc\Vehicle  $vehicle
+     * @param \App\Models\TecDoc\Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function show(Vehicle $vehicle)
@@ -65,7 +65,7 @@ class VehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TecDoc\Vehicle  $vehicle
+     * @param \App\Models\TecDoc\Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function edit(Vehicle $vehicle)
@@ -76,8 +76,8 @@ class VehicleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TecDoc\Vehicle  $vehicle
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\TecDoc\Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Vehicle $vehicle)
@@ -88,7 +88,7 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TecDoc\Vehicle  $vehicle
+     * @param \App\Models\TecDoc\Vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function destroy(Vehicle $vehicle)
@@ -106,40 +106,52 @@ class VehicleController extends Controller
 
         Vehicle::truncate();
 
-        foreach (ModelSeries::orderBy('manuId')->get() as $modelSeries) {
-            Artisan::call('tecdoc:vehicles', [
-                'manufacturerId' => $modelSeries->manuId,
-                'modelId' => $modelSeries->modelId,
-                'country' => $request->input('country'),
-                'countryGroup' => $request->input('countryGroup'),
-                'linkingTargetType' => $modelSeries->linkingTargetType,
-            ]);
+        $vehicleIds = [];
 
-            $output = Artisan::output();
-            $output = json_decode($output, true);
+        foreach (self::$allowedPassengerAndCommercialLinkingTargetTypes as $linkingTargetType) {
+            foreach (ModelSeries::orderBy('manuId')->get() as $modelSeries) {
+                Artisan::call('tecdoc:vehicles', [
+                    'country' => $request->input('country'),
+                    'countryGroup' => $request->input('countryGroup'),
+                    'manufacturerId' => $modelSeries->manuId,
+                    'modelId' => $modelSeries->modelId,
+                    'linkingTargetType' => $linkingTargetType,
+                ]);
 
-            if (!$this->hasSuccessResponse($output)) {
-                \Log::alert('FAIL RESPONSE FOR MANUFACTURER ID [' . $modelSeries->manuId . '] AND MODEL ID [' . $modelSeries->modelId . ']!');
-                continue;
+                $output = Artisan::output();
+                $output = json_decode($output, true);
+
+                if (!$this->hasSuccessResponse($output)) {
+                    \Log::alert('FAIL RESPONSE FOR MANUFACTURER ID [' . $modelSeries->manuId . '] AND MODEL ID [' . $modelSeries->modelId . ']!');
+                    continue;
+                }
+
+                $output = $this->getResponseDataAsArray($output);
+
+                if (empty($output)) {
+                    \Log::alert('EMPTY RESPONSE FOR MANUFACTURER ID [' . $modelSeries->manuId . '] AND MODEL ID [' . $modelSeries->modelId . ']!');
+                    continue;
+                }
+
+                foreach ($output as $index => &$vehicle) {
+                    if (in_array($vehicle['carId'], $vehicleIds)) {
+                        unset($output[$index]);
+                        continue;
+                    }
+
+                    $vehicle['manuId'] = $modelSeries->manuId;
+                    $vehicle['modelId'] = $modelSeries->modelId;
+                    $vehicle['slug'] = Str::slug($vehicle['carName']);
+
+                    $vehicleIds[] = $vehicle['carId'];
+                }
+
+                Vehicle::insert($output);
+
+                \Log::info('VEHICLES FOR MANUFACTURER ID [' . $modelSeries->manuId . '] AND MODEL ID [' . $modelSeries->modelId . '] CREATED!');
             }
-
-            $output = $this->getResponseDataAsArray($output);
-
-            if (empty($output)) {
-                \Log::alert('EMPTY RESPONSE FOR MANUFACTURER ID [' . $modelSeries->manuId . '] AND MODEL ID [' . $modelSeries->modelId . ']!');
-                continue;
-            }
-
-            foreach ($output as &$vehicle) {
-                $vehicle['manuId'] = $modelSeries->manuId;
-                $vehicle['modelId'] = $modelSeries->modelId;
-                $vehicle['slug'] = Str::slug($vehicle['carName']);
-            }
-
-            Vehicle::insert($output);
-
-            \Log::info('VEHICLES FOR MANUFACTURER ID [' . $modelSeries->manuId . '] AND MODEL ID [' . $modelSeries->modelId . '] CREATED!');
         }
+
 
         return redirect()->back();
     }

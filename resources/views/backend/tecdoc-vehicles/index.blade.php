@@ -93,7 +93,6 @@
                     <th>modelId</th>
                     <th>carId</th>
                     <th>carName</th>
-                    <th>carType</th>
                     <th>firstCountry</th>
                 </tr>
                 </thead>
@@ -122,7 +121,6 @@
                     {data: 'modelId', name: 'td_vehicles.modelId'},
                     {data: 'carId', name: 'td_vehicles.carId'},
                     {data: 'carName', name: 'td_vehicles.carName'},
-                    {data: 'carType', name: 'td_vehicles.carType'},
                     {data: 'firstCountry', name: 'td_vehicles.firstCountry'}
                 ],
                 order: [[0, "asc"]],
