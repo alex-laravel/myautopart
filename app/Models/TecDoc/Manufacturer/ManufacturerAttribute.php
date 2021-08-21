@@ -9,14 +9,6 @@ trait ManufacturerAttribute
     /**
      * @return string
      */
-    public function getLinkingTargetTypesLabelAttribute()
-    {
-        return '<span class="badge badge-dark">' . $this->linkingTargetTypes . '</span>';
-    }
-
-    /**
-     * @return string
-     */
     public function getIsFavoriteLabelAttribute()
     {
         return $this->favorFlag

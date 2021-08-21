@@ -51,7 +51,6 @@ class Manufacturer extends Model
     protected $fillable = [
         'manuId',
         'manuName',
-        'linkingTargetTypes',
         'favorFlag',
         'slug',
         'isPopular',

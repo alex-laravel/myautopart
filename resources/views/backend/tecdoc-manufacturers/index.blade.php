@@ -74,39 +74,6 @@
                         @endif
                     </div>
                 </div>
-
-                <div class="row mb-2">
-                    <div class="col-md-3">
-                        <strong>{{ trans('menus.backend.tecdoc.cars.manufacturers.title') }}</strong>
-                    </div>
-
-                    <div class="col-md-9">
-                        @if (count($manufacturers))
-                            <select class="form-control" name="manufacturers[]" size="8" multiple>
-                                <option value="">Please select</option>
-                                @foreach ($manufacturers as $manufacturer)
-                                    @if(!old('manufacturers') && in_array($manufacturer, $defaultManufacturers))
-                                        <option value="{{ $manufacturer }}" selected>{{ $manufacturer }}</option>
-                                    @elseif(old('manufacturers') && is_array(old('manufacturers')) && in_array($manufacturer, old('manufacturers')))
-                                        <option value="{{ $manufacturer }}" selected>{{ $manufacturer }}</option>
-                                    @else
-                                        <option value="{{ $manufacturer }}">{{ $manufacturer }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        @else
-                            <small class="d-block">нет вариантов для производителей</small>
-                        @endif
-                    </div>
-                </div>
-
-                <small>P: Passenger car</small><br>
-                <small>O: Commercial vehicle</small><br>
-                <small>L: Commercial Light vehicle</small><br>
-                <small>A: Axles</small><br>
-                <small>M: Motor</small><br>
-                <small>K: Body type</small><br>
-                <small>U: Universal</small><br>
             </div>
         </div>
     </form>
@@ -124,7 +91,6 @@
                     <th>slug</th>
                     <th>manuId</th>
                     <th>manuName</th>
-                    <th>linkingTargetTypes</th>
                     <th>favorFlag</th>
                     <th>isPopular</th>
                     <th>isVisible</th>
@@ -153,7 +119,6 @@
                     {data: 'slug', name: 'td_manufacturers.slug'},
                     {data: 'manuId', name: 'td_manufacturers.manuId'},
                     {data: 'manuName', name: 'td_manufacturers.manuName'},
-                    {data: 'linkingTargetTypes', name: 'td_manufacturers.linkingTargetTypes'},
                     {data: 'favorFlag', name: 'td_manufacturers.favorFlag'},
                     {data: 'isPopular', name: 'td_manufacturers.isPopular'},
                     {data: 'isVisible', name: 'td_manufacturers.isVisible'}

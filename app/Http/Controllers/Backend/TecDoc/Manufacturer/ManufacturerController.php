@@ -25,9 +25,7 @@ class ManufacturerController extends TecDocController
         return view('backend.tecdoc-manufacturers.index', [
             'countries' => Country::orderBy('countryCode')->get(),
             'countryGroups' => CountryGroup::orderBy('tecdocCode')->get(),
-            'manufacturers' => self::$allowedTargetTypes,
             'defaultLanguage' => config('tecdoc.api.country'),
-            'defaultManufacturers' => self::$allowedVehicleTargetTypes,
         ]);
     }
 
@@ -105,11 +103,17 @@ class ManufacturerController extends TecDocController
     {
         Manufacturer::truncate();
 
-        $manufacturers = $request->input('manufacturers');
+        $linkingTargetTypes = [
+            self::TEC_DOC_TARGET_TYPE_PASSENGER,
+            self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
+            self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT,
+        ];
 
         $motorcycleIds = $this->syncMotorcycles($request);
 
-        foreach ($manufacturers as $linkingTargetType) {
+        $manufacturerIds = [];
+
+        foreach ($linkingTargetTypes as $linkingTargetType) {
             Artisan::call('tecdoc:manufacturers', [
                 'country' => $request->input('country'),
                 'countryGroup' => $request->input('countryGroup'),
@@ -132,16 +136,23 @@ class ManufacturerController extends TecDocController
                 continue;
             }
 
-            foreach ($output as &$manufacturer) {
-                $manufacturer['manuName'] = isset($manufacturer['manuName']) ? $manufacturer['manuName'] : '';
-                $manufacturer['slug'] = Str::slug($manufacturer['manuName']);
+            foreach ($output as $index => &$manufacturer) {
+                if (in_array($manufacturer['manuId'], $manufacturerIds)) {
+                    unset($output[$index]);
+                    continue;
+                }
+
+                if (in_array($manufacturer['manuId'], $motorcycleIds)) {
+                    unset($output[$index]);
+                    continue;
+                }
+
                 $manufacturer['isPopular'] = $manufacturer['favorFlag'];
                 $manufacturer['isVisible'] = true;
-            }
+                $manufacturer['slug'] = Str::slug($manufacturer['manuName']);
 
-            $output = array_filter($output, function ($manufacturer) use ($motorcycleIds) {
-                return !in_array($manufacturer['manuId'], $motorcycleIds);
-            });
+                $manufacturerIds[] = $manufacturer['manuId'];
+            }
 
             Manufacturer::insert($output);
         }

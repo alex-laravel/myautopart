@@ -29,9 +29,6 @@ class ManufacturerAjaxController extends Controller
     public function get()
     {
         return datatables()->of($this->manufacturerRepository->getData())
-            ->editColumn('linkingTargetTypes', function ($manufacturer) {
-                return $manufacturer->linkingTargetTypesLabel;
-            })
             ->editColumn('favorFlag', function ($manufacturer) {
                 return $manufacturer->isfavoriteLabel;
             })
@@ -41,7 +38,7 @@ class ManufacturerAjaxController extends Controller
             ->editColumn('isVisible', function ($manufacturer) {
                 return $manufacturer->isVisibleLabel;
             })
-            ->rawColumns(['linkingTargetTypes', 'favorFlag', 'isPopular', 'isVisible'])
+            ->rawColumns(['favorFlag', 'isPopular', 'isVisible'])
             ->make(true);
     }
 }
