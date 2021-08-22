@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Route;
  * Frontend Account Controllers
  */
 
-Route::get('/account/dashboard', [AccountController::class, 'dashboard'])->name('account.dashboard');
-Route::get('/account/garage', [AccountController::class, 'garage'])->name('account.garage');
-Route::get('/account/orders', [AccountController::class, 'orders'])->name('account.orders');
-Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile');
-Route::get('/account/password', [AccountController::class, 'password'])->name('account.password');
+Route::name('account.')->prefix('account')->middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [AccountController::class, 'dashboard'])->name('dashboard');
+    Route::get('/garage', [AccountController::class, 'garage'])->name('garage');
+    Route::get('/orders', [AccountController::class, 'orders'])->name('orders');
+    Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+    Route::get('/password', [AccountController::class, 'password'])->name('password');
+});
