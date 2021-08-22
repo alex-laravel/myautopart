@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Frontend\Account;
 
 
+use App\Facades\Garage;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 
@@ -25,7 +26,7 @@ class AccountController extends Controller
     public function garage()
     {
         return view('frontend.account.garage', [
-
+            'garageVehicles' => Garage::getVehicles()
         ]);
     }
 

@@ -20,66 +20,49 @@
                             <div class="card-divider"></div>
                             <div class="card-body card-body--padding--2">
                                 <div class="vehicles-list vehicles-list--layout--account">
-                                    <div class="vehicles-list__body">
-                                        <div class="vehicles-list__item">
-                                            <div class="vehicles-list__item-info">
-                                                <div class="vehicles-list__item-name">2011 Ford Focus S</div>
-                                                <div class="vehicles-list__item-details">Engine 2.0L 1742DA L4 FI Turbo</div>
-                                                <div class="vehicles-list__item-links">
-                                                    <a href="">Show Parts</a>
+                                    @if (count($garageVehicles))
+                                        <div class="vehicles-list__body">
+                                            @foreach ($garageVehicles as $garageVehicle)
+                                                <div class="vehicles-list__item">
+                                                    <div class="vehicles-list__item-info">
+                                                        <div class="vehicles-list__item-name">
+                                                            {{ $garageVehicle['manufacturerName'] }} {{ $garageVehicle['modelSeriesName'] }}
+                                                        </div>
+
+                                                        <div class="vehicles-list__item-details">
+                                                            Engine
+                                                            {{ $garageVehicle['vehicleName'] }}
+                                                        </div>
+
+                                                        <div class="vehicles-list__item-links">
+                                                            <a href="{{ route('frontend.parts.vehicle') }}">
+                                                                Show Parts
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <a href="{{ route('frontend.garage.vehicle.delete', [$garageVehicle['manufacturerId'], $garageVehicle['modelSeriesId'], $garageVehicle['vehicleId']]) }}" role="button" class="vehicles-list__item-remove">
+                                                        <svg width="16" height="16">
+                                                            <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z" />
+                                                        </svg>
+                                                    </a>
                                                 </div>
-                                            </div>
-                                            <button type="button" class="vehicles-list__item-remove">
-                                                <svg width="16" height="16">
-                                                    <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z" />
-                                                </svg>
-                                            </button>
+                                            @endforeach
                                         </div>
-                                        <div class="vehicles-list__item">
-                                            <div class="vehicles-list__item-info">
-                                                <div class="vehicles-list__item-name">2019 Audi Q7 Premium</div>
-                                                <div class="vehicles-list__item-details">Engine 3.0L 5626CC L6 QK</div>
-                                                <div class="vehicles-list__item-links">
-                                                    <a href="">Show Parts</a>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="vehicles-list__item-remove">
-                                                <svg width="16" height="16">
-                                                    <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="vehicles-list__item">
-                                            <div class="vehicles-list__item-info">
-                                                <div class="vehicles-list__item-name">2015 Kia Rio LX</div>
-                                                <div class="vehicles-list__item-details">Engine 1.6L 8306JK L5 RL</div>
-                                                <div class="vehicles-list__item-links">
-                                                    <a href="">Show Parts</a>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="vehicles-list__item-remove">
-                                                <svg width="16" height="16">
-                                                    <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="vehicles-list__item">
-                                            <div class="vehicles-list__item-info">
-                                                <div class="vehicles-list__item-name">2008 BMW M5</div>
-                                                <div class="vehicles-list__item-details">Engine 5.0L 8351XZ V10 DB</div>
-                                                <div class="vehicles-list__item-links">
-                                                    <a href="">Show Parts</a>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="vehicles-list__item-remove">
-                                                <svg width="16" height="16">
-                                                    <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    @else
+                                        <small class="d-block">нет добавленных автомобилей</small>
+                                    @endif
+                                </div>
+
+                                <div class="mt-4 pt-3">
+                                    <a href="{{ route('frontend.auto.index') }}" class="btn btn-sm btn-primary">
+                                        Add A Vehicle
+                                    </a>
                                 </div>
                             </div>
+
+
+
 {{--                            <div class="card-divider"></div>--}}
 {{--                            <div class="card-header">--}}
 {{--                                <h5>Add A Vehicle</h5>--}}
