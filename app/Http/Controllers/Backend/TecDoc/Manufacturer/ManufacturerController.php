@@ -103,8 +103,6 @@ class ManufacturerController extends TecDocController
     {
         Manufacturer::truncate();
 
-        $motorcycleIds = $this->syncMotorcycles($request);
-
         $manufacturerIds = [];
 
         foreach (self::$allowedPassengerAndCommercialLinkingTargetTypes as $linkingTargetType) {
@@ -136,11 +134,6 @@ class ManufacturerController extends TecDocController
                     continue;
                 }
 
-                if (in_array($manufacturer['manuId'], $motorcycleIds)) {
-                    unset($output[$index]);
-                    continue;
-                }
-
                 $manufacturer['isPopular'] = $manufacturer['favorFlag'];
                 $manufacturer['isVisible'] = true;
                 $manufacturer['slug'] = Str::slug($manufacturer['manuName']);
@@ -152,42 +145,5 @@ class ManufacturerController extends TecDocController
         }
 
         return redirect()->back();
-    }
-
-    /**
-     * @param ManufacturerSynchronizeRequest $request
-     * @return array
-     */
-    private function syncMotorcycles(ManufacturerSynchronizeRequest $request)
-    {
-        Artisan::call('tecdoc:manufacturers', [
-            'country' => $request->input('country'),
-            'countryGroup' => $request->input('countryGroup'),
-            'linkingTargetType' => Manufacturer::TEC_DOC_TARGET_TYPE_MOTORCYCLES,
-        ]);
-
-        $output = Artisan::output();
-        $output = json_decode($output, true);
-
-        if (!$this->hasSuccessResponse($output)) {
-            \Log::alert('Command [tecdoc:manufacturers] failed.');
-            \Log::alert($output);
-            return [];
-        }
-
-        $output = $this->getResponseDataAsArray($output);
-
-        if (empty($output)) {
-            \Log::alert('Command [tecdoc:manufacturers] has empty response for linkingTargetType [' . Manufacturer::TEC_DOC_TARGET_TYPE_MOTORCYCLES . '].');
-            return [];
-        }
-
-        $motorcycleIds = [];
-
-        foreach ($output as $manufacturer) {
-            $motorcycleIds[] = $manufacturer['manuId'];
-        }
-
-        return $motorcycleIds;
     }
 }

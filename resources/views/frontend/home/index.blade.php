@@ -29,39 +29,7 @@
     {{--                @endif--}}
     {{--            </div>--}}
     {{--        </div>--}}
-
-
-
-            <h2>Обзор по категориям</h2>
-
-            <div class="row mb-4">
-                @if (count($categories))
-                    @foreach ($categories as $category)
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-12 card-brand">
-                            <a href="#" class="d-block">
-                                <p>{{ $category->shortCutName }} {{ $category->linkingTargetType }}</p>
-                            </a>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-12">
-                        <small class="d-block">нет категорий</small>
-                    </div>
-                @endif
-            </div>
-
-            <h2>Обзор по сборочным группам</h2>
-
-            @if (count($assemblyGroups))
-                <ul>
-                    @foreach ($assemblyGroups as $assemblyGroup)
-                        @include('frontend.home.partials.assembly-group-child', $assemblyGroup)
-                    @endforeach
-                </ul>
-            @else
-                <small class="d-block">нет сборочных групп</small>
-            @endif
-        </div>
+{{--        </div>--}}
 
     <div class="site__body">
         <div class="block-finder block">

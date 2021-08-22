@@ -17,8 +17,12 @@
                             </span>
                         </span>
                                 <span class="vehicles-list__item-info">
-                            <span class="vehicles-list__item-name">{{ $garageVehicle['manufacturerName'] }} {{ $garageVehicle['modelSeriesName'] }}</span>
-                            <span class="vehicles-list__item-details">{{ $garageVehicle['vehicleName'] }}</span>
+                            <span class="vehicles-list__item-name">
+                                {{ $garageVehicle['manufacturerName'] }} / {{ $garageVehicle['manufacturerId'] }} -
+                                {{ $garageVehicle['modelSeriesName'] }} / {{ $garageVehicle['modelSeriesId'] }}</span>
+                            <span class="vehicles-list__item-details">
+                                {{ $garageVehicle['vehicleName'] }} / {{ $garageVehicle['vehicleId'] }}
+                            </span>
                         </span>
 
                         <button type="button" class="vehicles-list__item-remove">
