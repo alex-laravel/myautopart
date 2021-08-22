@@ -11,6 +11,18 @@ class Garage
     const COOKIES_GARAGE_PERIOD = 60 * 60 * 24 * 365;
 
     /**
+     * @return array|null
+     */
+    public static function getActiveVehicle()
+    {
+        $vehicles = array_filter(self::extractVehicles(), function ($vehicle) {
+            return array_key_exists('selected', $vehicle) && $vehicle['selected'] === true;
+        });
+
+        return !empty($vehicles) ? array_values($vehicles)[0] : null;
+    }
+
+    /**
      * @return array
      */
     public static function getVehicles()
