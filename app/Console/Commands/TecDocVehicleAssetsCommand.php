@@ -37,8 +37,6 @@ class TecDocVehicleAssetsCommand extends TecDocCommand
     {
         \Log::debug('CALL COMMAND [tecdoc:vehicle-assets]');
 
-        Storage::disk(self::VEHICLE_ASSETS_STORAGE_NAME);
-
         $vehicleId = (int)$this->argument('vehicleId');
         $vehicleDocId = $this->argument('vehicleDocId');
 
@@ -51,18 +49,20 @@ class TecDocVehicleAssetsCommand extends TecDocCommand
             $vehicleAssetName = $this->generateVehicleAssetNme($responseImage->header('Content-Type'), $vehicle->id . $vehicle->carId);
             $vehicle->assetImageName = $vehicleAssetName;
 
-            Storage::put($vehicleAssetName, $responseImage->body());
+            Storage::disk(self::VEHICLE_ASSETS_STORAGE_NAME)->put($vehicleAssetName, $responseImage->body());
         }
 
         if ($responseThumbnail->ok()) {
             $vehicleAssetName = $this->generateVehicleAssetNme($responseThumbnail->header('Content-Type'), $vehicle->carId);
             $vehicle->assetThumbnailName = $vehicleAssetName;
 
-            Storage::put($vehicleAssetName, $responseThumbnail->body());
+            Storage::disk(self::VEHICLE_ASSETS_STORAGE_NAME)->put($vehicleAssetName, $responseThumbnail->body());
         }
 
         if ($responseImage->ok() || $responseThumbnail->ok()) {
             $vehicle->save();
+
+            \Log::info('ASSET CREATED for Vehicle ID [' . $vehicle->carId . ']!');
 
             $this->line(true);
             return true;

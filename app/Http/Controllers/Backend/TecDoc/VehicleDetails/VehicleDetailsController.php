@@ -159,12 +159,12 @@ class VehicleDetailsController extends Controller
 
             $output = Artisan::output();
 
-            if ($output !== true) {
-                \Log::alert('FAIL BRAND ASSETS RESPONSE for Vehicle ID [' . $vehicleDetail->carId . ']!');
+            if (!$output) {
+                \Log::alert('FAIL VEHICLE ASSETS RESPONSE for Vehicle ID [' . $vehicleDetail->carId . ']!');
                 continue;
             }
 
-            \Log::info('BRANDS CREATED for Brand ID [' . $vehicleDetail->carId . ']!');
+            \Log::info('ASSETS CREATED for VEHICLE ID [' . $vehicleDetail->carId . ']!');
         }
 
         return redirect()->back();

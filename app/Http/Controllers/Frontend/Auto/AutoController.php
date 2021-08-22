@@ -101,6 +101,6 @@ class AutoController extends Controller
 
         Garage::addVehicle($manufacturer->manuId, $manufacturer->manuName, $modelSeries->modelId, $modelSeries->modelname, $vehicle->carId, $vehicle->carName);
 
-        return redirect()->route('frontend.parts.index', [$manufacturer->manuId, $modelSeries->modelId, $vehicle->carId]);
+        return redirect()->route('frontend.parts.vehicle');
     }
 }

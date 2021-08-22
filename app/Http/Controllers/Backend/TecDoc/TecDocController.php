@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 class TecDocController extends Controller
 {
+    const TEC_DOC_TARGET_TYPE_VEHICLE = 'V';
     const TEC_DOC_TARGET_TYPE_PASSENGER = 'P';
     const TEC_DOC_TARGET_TYPE_COMMERCIAL = 'O';
     const TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT = 'L';
@@ -16,7 +17,6 @@ class TecDocController extends Controller
     const TEC_DOC_TARGET_TYPE_UNIVERSAL = 'U';
 
     const TEC_DOC_TARGET_TYPE_ALL = 0; // ???
-    const TEC_DOC_TARGET_TYPE_V = 'V'; // PASSENGER EXCEPT MOTORCYCLES
 
     const TEC_DOC_ARTICLE_TYPE_ARTICLE = 0;
     const TEC_DOC_ARTICLE_TYPE_OE = 1;
@@ -32,7 +32,7 @@ class TecDocController extends Controller
      * @var string[]
      */
     public static $allowedPassengerAndCommercialLinkingTargetTypes = [
-        self::TEC_DOC_TARGET_TYPE_PASSENGER,
+        self::TEC_DOC_TARGET_TYPE_VEHICLE,
         self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
         self::TEC_DOC_TARGET_TYPE_COMMERCIAL_LIGHT,
     ];

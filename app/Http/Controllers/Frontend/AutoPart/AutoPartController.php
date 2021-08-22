@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Frontend\AutoPart;
 
+use App\Facades\Garage;
 use App\Http\Controllers\Controller;
+use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
-use App\Models\TecDoc\Manufacturer\Manufacturer;
-use App\Models\TecDoc\ModelSeries;
-use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -16,38 +15,33 @@ class AutoPartController extends Controller
     const PARTS_PACKAGE_LIMIT = 10;
 
     /**
-     * @param integer $manufacturerId
-     * @param integer $modelSeriesId
-     * @param integer $vehicleId
      * @return View
      */
-    public function index($manufacturerId, $modelSeriesId, $vehicleId)
+    public function byVehicle()
     {
-        $manufacturer = Manufacturer::where('manuId', $manufacturerId)->first();
+        $activeVehicle = Garage::getActiveVehicle();
 
-        if (!$manufacturer) {
+        if (!$activeVehicle) {
             abort(404);
         }
 
-        $modelSeries = ModelSeries::where('manuId', $manufacturer->manuId)->where('modelId', $modelSeriesId)->first();
+        $parts = DirectArticle::where('carId', (int)$activeVehicle['vehicleId'])->paginate(self::PARTS_PACKAGE_LIMIT);
 
-        if (!$modelSeries) {
-            abort(404);
-        }
+//        $assemblyGroups = AssemblyGroup::orderBy('assemblyGroupName')->get()->toArray();
+//        $assemblyGroupsTree = $this->generateAssemblyGroupsTree($assemblyGroups);
 
-        $vehicle = Vehicle::where('carId', $vehicleId)->first();
-
-        if (!$vehicle) {
-            abort(404);
-        }
-
-        return view('frontend.auto-parts.index', [
-            'manufacturer' => $manufacturer,
-            'modelSeries' => $modelSeries,
-            'vehicle' => $vehicle,
+        return view('frontend.auto-parts.vehicle', [
+            'manufacturerId' => $activeVehicle['manufacturerId'],
+            'manufacturerName' => $activeVehicle['manufacturerName'],
+            'modelSeriesId' => $activeVehicle['modelSeriesId'],
+            'modelSeriesName' => $activeVehicle['modelSeriesName'],
+            'vehicleId' => $activeVehicle['vehicleId'],
+            'vehicleName' => $activeVehicle['vehicleName'],
+            'parts' => $parts,
+            'assemblyGroups' => []
+//            'assemblyGroups' => $assemblyGroupsTree
         ]);
     }
-
 
     /**
      * @param integer $brandId
@@ -63,12 +57,15 @@ class AutoPartController extends Controller
 
         $parts = DirectArticle::where('brandNo', (int)$brandId)->paginate(self::PARTS_PACKAGE_LIMIT);
 
+        $assemblyGroups = AssemblyGroup::orderBy('assemblyGroupName')->get()->toArray();
+        $assemblyGroupsTree = $this->generateAssemblyGroupsTree($assemblyGroups);
+
         return view('frontend.auto-parts.brand', [
             'brand' => $brand,
             'parts' => $parts,
+            'assemblyGroups' => $assemblyGroupsTree
         ]);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -83,7 +80,7 @@ class AutoPartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -94,7 +91,7 @@ class AutoPartController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -105,7 +102,7 @@ class AutoPartController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -116,8 +113,8 @@ class AutoPartController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -128,11 +125,37 @@ class AutoPartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * @param array $assemblyGroups
+     * @param integer $parentId
+     * @return array
+     */
+    private function generateAssemblyGroupsTree(&$assemblyGroups, $parentId = null)
+    {
+        $assemblyGroupsTree = [];
+
+        foreach ($assemblyGroups as $assemblyGroup) {
+            if ($assemblyGroup['parentNodeId'] == $parentId) {
+                $children = $this->generateAssemblyGroupsTree($assemblyGroups, $assemblyGroup['assemblyGroupNodeId']);
+
+                if ($children) {
+                    $assemblyGroup['children'] = $children;
+                }
+
+                $assemblyGroupsTree[$assemblyGroup['assemblyGroupNodeId']] = $assemblyGroup;
+                unset($assemblyGroups[$assemblyGroup['assemblyGroupNodeId']]);
+            }
+        }
+
+        return $assemblyGroupsTree;
     }
 }
