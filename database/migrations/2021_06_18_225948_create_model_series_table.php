@@ -24,6 +24,8 @@ class CreateModelSeriesTable extends Migration
             $table->boolean('isPopular');
             $table->boolean('isVisible');
             $table->string('slug', 150);
+            $table->index('manuId');
+            $table->index('modelId');
         });
     }
 

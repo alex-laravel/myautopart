@@ -25,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+
+//        \DB::listen(function($query) {
+//            \Log::debug($query->sql);
+//            \Log::debug($query->time);
+//        });
     }
 }

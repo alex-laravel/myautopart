@@ -21,6 +21,9 @@ class CreateVehiclesTable extends Migration
             $table->string('carName', 150);
             $table->string('firstCountry', 5);
             $table->string('slug', 150);
+            $table->index('manuId');
+            $table->index('modelId');
+            $table->index('carId');
         });
     }
 

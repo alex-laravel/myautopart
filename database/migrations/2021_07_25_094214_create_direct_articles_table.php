@@ -26,6 +26,8 @@ class CreateDirectArticlesTable extends Migration
             $table->unsignedBigInteger('genericArticleId');
             $table->string('genericArticleName', 250);
             $table->unsignedBigInteger('sortNo');
+            $table->index('carId');
+            $table->index('brandNo');
         });
     }
 
