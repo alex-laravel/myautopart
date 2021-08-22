@@ -19,35 +19,66 @@
                                     <div class="profile-card__avatar">
                                         <img src="images/avatars/avatar-4.jpg" alt="">
                                     </div>
-                                    <div class="profile-card__name">Helena Garcia</div>
-                                    <div class="profile-card__email">red-parts@example.com</div>
+
+                                    <div class="profile-card__name">
+                                        {{ auth()->user()->name }}
+                                    </div>
+
+                                    <div class="profile-card__email">
+                                        {{ auth()->user()->email }}
+                                    </div>
+
                                     <div class="profile-card__edit">
-                                        <a href="account-profile.html" class="btn btn-secondary btn-sm">Edit Profile</a>
+                                        <a href="{{ route('frontend.account.profile') }}" class="btn btn-secondary btn-sm">
+                                            Edit Profile
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="dashboard__address card address-card address-card--featured">
-                                <div class="address-card__badge tag-badge tag-badge--theme">Default</div>
+                                <div class="address-card__badge tag-badge tag-badge--theme">
+                                    Default
+                                </div>
+
                                 <div class="address-card__body">
-                                    <div class="address-card__name">Helena Garcia</div>
-                                    <div class="address-card__row">
-                                        Random Federation<br>
-                                        115302, Moscow<br>
-                                        ul. Varshavskaya, 15-2-178
+                                    <div class="address-card__name">
+                                        {{ auth()->user()->name }}
                                     </div>
+
                                     <div class="address-card__row">
-                                        <div class="address-card__row-title">Phone Number</div>
-                                        <div class="address-card__row-content">38 972 588-42-36</div>
+                                        <div class="address-card__row-title">
+                                            Email Address
+                                        </div>
+                                        <div class="address-card__row-content">
+                                            {{ auth()->user()->email }}
+                                        </div>
                                     </div>
+
+{{--                                    <div class="address-card__row">--}}
+{{--                                        Random Federation<br>--}}
+{{--                                        115302, Moscow<br>--}}
+{{--                                        ul. Varshavskaya, 15-2-178--}}
+{{--                                    </div>--}}
+
                                     <div class="address-card__row">
-                                        <div class="address-card__row-title">Email Address</div>
-                                        <div class="address-card__row-content">helena@example.com</div>
+                                        <div class="address-card__row-title">
+                                            Phone Number
+                                        </div>
+
+                                        <div class="address-card__row-content">
+                                            нет информации
+                                        </div>
                                     </div>
+
                                     <div class="address-card__footer">
-                                        <a href="">Edit Address</a>
+                                        <a href="{{ route('frontend.account.profile') }}">
+                                            Edit Address
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="dashboard__orders card">
                                 <div class="card-header">
                                     <h5>Recent Orders</h5>
