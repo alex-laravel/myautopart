@@ -3,7 +3,7 @@
 use App\Http\Controllers\Frontend\Auto\AutoController;
 use App\Http\Controllers\Frontend\AutoPart\AutoPartController;
 use App\Http\Controllers\Auto\GarageController;
-use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /**

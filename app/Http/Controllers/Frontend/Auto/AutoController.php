@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend\Auto;
 
 use App\Facades\Garage;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\TecDoc\Manufacturer\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
 use App\Models\TecDoc\Vehicle\Vehicle;
@@ -11,7 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 
-class AutoController extends Controller
+class AutoController extends FrontendController
 {
     /**
      * @return View

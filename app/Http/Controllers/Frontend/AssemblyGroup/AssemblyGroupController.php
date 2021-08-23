@@ -4,10 +4,10 @@
 namespace App\Http\Controllers\Frontend\AssemblyGroup;
 
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Contracts\View\View;
 
-class AssemblyGroupController extends Controller
+class AssemblyGroupController extends FrontendController
 {
     /**
      * @return View

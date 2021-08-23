@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Frontend\AutoPart;
 
 use App\Facades\Garage;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class AutoPartController extends Controller
+class AutoPartController extends FrontendController
 {
     const PARTS_PACKAGE_LIMIT = 10;
 

@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Frontend\Account;
 
 
 use App\Facades\Garage;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Contracts\View\View;
 
-class AccountController extends Controller
+class AccountController extends FrontendController
 {
     /**
      * @return View

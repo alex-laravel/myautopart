@@ -1,16 +1,15 @@
 <?php
 
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Frontend\Home;
 
 
-use App\Facades\Garage;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\Manufacturer\Manufacturer;
 use Illuminate\Contracts\View\View;
 
-class HomeController extends Controller
+class HomeController extends FrontendController
 {
     const BRANDS_LIMIT = 16;
 
@@ -19,8 +18,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        Garage::clearVehicles();
-
         $manufacturers = Manufacturer::onlyIsFavorite()->orderBy('manuName')->get();
 
         $brands = Brand::inRandomOrder()->limit(self::BRANDS_LIMIT)->get();
@@ -28,7 +25,6 @@ class HomeController extends Controller
         return view('frontend.home.index', [
             'manufacturers' => $manufacturers,
             'brands' => $brands,
-//            'garageVehicles' => Garage::getVehicles(),
         ]);
     }
 }

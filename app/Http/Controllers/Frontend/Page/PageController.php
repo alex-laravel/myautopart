@@ -4,10 +4,10 @@
 namespace App\Http\Controllers\Frontend\Page;
 
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Contracts\View\View;
 
-class PageController extends Controller
+class PageController extends FrontendController
 {
     /**
      * @return View
