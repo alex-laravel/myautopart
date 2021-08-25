@@ -165,6 +165,18 @@ return [
     ],
 
     'frontend' => [
+        'header' => [
+            'catalog' => 'Каталог автозапчастей',
+
+            'account' => [
+                'dashboard' => 'Дашборд',
+                'garage' => 'Гараж',
+                'orders' => 'Заказы',
+                'profile' => 'Профиль',
+                'password' => 'Пароль',
+            ]
+        ],
+
         'pages' => [
             'about' => [
                 'title' => 'О нас',

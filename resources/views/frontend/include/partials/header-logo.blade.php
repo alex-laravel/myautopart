@@ -1,10 +1,10 @@
 <div class="header__logo">
     <a href="{{ routeHome() }}" class="logo">
         <div class="logo__slogan">
-            Auto parts for Cars, trucks and motorcycles
+            {{ trans('strings.frontend.general.slogan') }}
         </div>
+
         <div class="logo__image">
-            <!-- logo -->
             <svg width="168" height="26">
                 <path class="logo__part-primary" d="M50,26h-5c-1.1,0-2-0.9-2-2V2c0-1.1,0.9-2,2-2h5c6.6,0,12,5.4,12,12v2C62,20.6,56.6,26,50,26z M57,12
 	c0-3.9-3.1-7-7-7h-0.8C48.5,5,48,5.5,48,6.2v13.6c0,0.7,0.5,1.2,1.2,1.2H50c3.9,0,7-3.1,7-7V12z M38.5,26h-13h-2
@@ -32,7 +32,6 @@
 	c0,0.2,0.1,0.4,0.1,0.6c0,0.2,0.1,0.4,0.1,0.6C83.9,8,84,8.2,84,8.4c0,0.2,0,0.4,0,0.6s0,0.4,0,0.6C84,9.8,83.9,10,83.9,10.2z M75,5
 	h-4c-0.6,0-1,0.4-1,1v6c0,0.6,0.4,1,1,1h4c2.2,0,4-1.8,4-4S77.2,5,75,5z"></path>
             </svg>
-            <!-- logo / end -->
         </div>
     </a>
 </div>

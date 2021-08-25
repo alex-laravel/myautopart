@@ -22,7 +22,7 @@
 {{--                            <li class="breadcrumb__title-safe-area" role="presentation"></li>--}}
 {{--                        </ol>--}}
 {{--                    </nav>--}}
-                    <h1 class="block-header__title">Запчасти по бренда: Бренд [{{ $brand->brandName }}]</h1>
+                    <h1 class="block-header__title">Запчасти по бренду: Бренд [{{ $brand->brandName }}]</h1>
                 </div>
             </div>
         </div>

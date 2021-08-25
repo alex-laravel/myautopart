@@ -59,11 +59,11 @@
 
                 <div class="account-menu__divider"></div>
                 <ul class="account-menu__links">
-                    <li><a href="{{ route('frontend.account.dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ route('frontend.account.garage') }}">Garage</a></li>
-                    <li><a href="{{ route('frontend.account.orders') }}">Order History</a></li>
-                    <li><a href="{{ route('frontend.account.profile') }}">Profile</a></li>
-                    <li><a href="{{ route('frontend.account.password') }}">Password</a></li>
+                    <li><a href="{{ route('frontend.account.dashboard') }}">{{ trans('menus.frontend.header.account.dashboard') }}</a></li>
+                    <li><a href="{{ route('frontend.account.garage') }}">{{ trans('menus.frontend.header.account.garage') }}</a></li>
+                    <li><a href="{{ route('frontend.account.orders') }}">{{ trans('menus.frontend.header.account.orders') }}</a></li>
+                    <li><a href="{{ route('frontend.account.profile') }}">{{ trans('menus.frontend.header.account.profile') }}</a></li>
+                    <li><a href="{{ route('frontend.account.password') }}">{{ trans('menus.frontend.header.account.password') }}</a></li>
                 </ul>
 
                 <div class="account-menu__divider"></div>

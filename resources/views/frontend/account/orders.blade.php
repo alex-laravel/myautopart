@@ -15,7 +15,7 @@
                     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Order History</h5>
+                                <h5>{{ trans('menus.frontend.header.account.orders') }}</h5>
                             </div>
                             <div class="card-divider"></div>
                             <div class="card-table">

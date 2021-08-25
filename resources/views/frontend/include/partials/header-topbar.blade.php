@@ -4,7 +4,7 @@
     <div class="topbar topbar--spaceship-start">
 {{--        <div class="topbar__item-text d-none d-xxl-flex">Call Us: (800) 060-0730</div>--}}
         <div class="topbar__item-text">
-            Call Us: (800) 060-0730
+            {{ trans('labels.frontend.header.call_us') }}: {{ config('contacts.phone') }}
         </div>
 
         <div class="topbar__item-text">

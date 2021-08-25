@@ -171,6 +171,18 @@ return [
     ],
 
     'frontend' => [
+        'header' => [
+            'catalog' => 'Parts Catalog',
+
+            'account' => [
+                'dashboard' => 'Dashboard',
+                'garage' => 'Garage',
+                'orders' => 'Orders',
+                'profile' => 'Profile',
+                'password' => 'Password',
+            ]
+        ],
+
         'pages' => [
             'about' => [
                 'title' => 'About Us',

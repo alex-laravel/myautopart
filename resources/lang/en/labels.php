@@ -522,6 +522,10 @@ return [
     ],
 
     'frontend' => [
+        'header' => [
+            'call_us' => 'Call Us'
+        ],
+
         'search' => [
             'title' => 'Find Parts For Your Vehicle',
             'headline' => 'Over hundreds of brands and tens of thousands of parts',

@@ -23,6 +23,8 @@ return [
 
     'frontend' => [
         'general' => [
+            'slogan' => 'Auto parts for passenger and commercial cars',
+            'search' => 'Search by VIN or Part Number',
             'all_rights_reserved' => 'All Rights Reserved.',
         ]
     ]

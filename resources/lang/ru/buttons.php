@@ -28,5 +28,14 @@ return [
 
 //        'continue' => 'Продолжить',
         'import' => 'Импортировать',
+    ],
+
+    'auth' => [
+        'register' => 'Регистрация',
+        'login' => 'Вход',
+        'logout' => 'Выход',
+        'password_reset' => 'Reset Password',
+        'password_reset_link' => 'Send Password Reset Link',
+        'password_confirm' => 'Confirm Password',
     ]
 ];
