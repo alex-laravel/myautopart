@@ -1,5 +1,5 @@
 <li class="widget-categories__item" data-collapse-item>
-{{--    {{ route('frontend.assembly-groups.index', $assemblyGroup['assemblyGroupNodeId']) }}--}}
+{{--    {{ route('frontend.assemblies.index', $assemblyGroup['assemblyGroupNodeId']) }}--}}
     <a href="#" class="widget-categories__link">
         {{ $assemblyGroup['assemblyGroupName'] }}
     </a>

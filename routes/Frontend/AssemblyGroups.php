@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
  * Frontend AssemblyGroup Controllers
  */
 
-Route::get('/assemblies/{assemblyGroupId}', [AssemblyGroupController::class, 'index'])->name('assembly-groups.index');
+Route::get('/assemblies/{assemblyGroupId}', [AssemblyGroupController::class, 'index'])->name('assemblies.index');

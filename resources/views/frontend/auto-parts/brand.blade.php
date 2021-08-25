@@ -22,7 +22,7 @@
 {{--                            <li class="breadcrumb__title-safe-area" role="presentation"></li>--}}
 {{--                        </ol>--}}
 {{--                    </nav>--}}
-                    <h1 class="block-header__title">Запчасти для бренда: Бренд [{{ $brand->brandName }}]</h1>
+                    <h1 class="block-header__title">Запчасти по бренда: Бренд [{{ $brand->brandName }}]</h1>
                 </div>
             </div>
         </div>
@@ -48,18 +48,18 @@
                                             <h4>Filters</h4>
                                         </div>
 
-                                        @if (count($assemblyGroups))
-                                            <div class="card widget widget-categories">
-                                                <div class="widget__header">
-                                                    <h5>Categories</h5>
-                                                </div>
-                                                <ul class="widget-categories__list widget-categories__list--root" data-collapse data-collapse-opened-class="widget-categories__item--open">
-                                                    @foreach ($assemblyGroups as $assemblyGroup)
-                                                        @include('frontend.auto-parts.partials.assembly-group-child', $assemblyGroup)
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
+{{--                                        @if (count($assemblyGroups))--}}
+{{--                                            <div class="card widget widget-categories">--}}
+{{--                                                <div class="widget__header">--}}
+{{--                                                    <h5>Categories</h5>--}}
+{{--                                                </div>--}}
+{{--                                                <ul class="widget-categories__list widget-categories__list--root" data-collapse data-collapse-opened-class="widget-categories__item--open">--}}
+{{--                                                    @foreach ($assemblyGroups as $assemblyGroup)--}}
+{{--                                                        @include('frontend.auto-parts.partials.assembly-group-child', $assemblyGroup)--}}
+{{--                                                    @endforeach--}}
+{{--                                                </ul>--}}
+{{--                                            </div>--}}
+{{--                                        @endif--}}
 {{--                                        <div class="widget-filters__list">--}}
 {{--                                            <div class="widget-filters__item">--}}
 {{--                                                <div class="filter filter--opened" data-collapse-item>--}}
