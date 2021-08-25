@@ -17,8 +17,6 @@ class CreateAssemblyGroupTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('assemblyGroupNodeId');
             $table->string('assemblyGroupName', 250);
-            $table->string('linkingTargetType', 5);
-            $table->unsignedBigInteger('shortCutId')->nullable()->default(null);
             $table->unsignedBigInteger('parentNodeId')->nullable()->default(null);
             $table->boolean('hasChilds');
             $table->boolean('isVisible')->default(true);

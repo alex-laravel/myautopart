@@ -9,7 +9,7 @@ class TecDocAssemblyGroupsCommand extends TecDocCommand
     /**
      * @var string
      */
-    protected $signature = 'tecdoc:assembly-groups {shortCutId} {linkingTargetType}';
+    protected $signature = 'tecdoc:assembly-groups {linkingTargetType}';
 
     /**
      * @var string
@@ -29,7 +29,6 @@ class TecDocAssemblyGroupsCommand extends TecDocCommand
      */
     public function handle()
     {
-        $shortCutId = (int)$this->argument('shortCutId');
         $linkingTargetType = $this->argument('linkingTargetType');
 
         $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
@@ -37,7 +36,6 @@ class TecDocAssemblyGroupsCommand extends TecDocCommand
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),
                 'linkingTargetType' => $linkingTargetType,
-                'shortCutId' => $shortCutId,
                 'childNodes' => true,
             ]
         ]);

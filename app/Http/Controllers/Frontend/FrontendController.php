@@ -15,6 +15,6 @@ class FrontendController extends Controller
      */
     public function __construct(AssemblyGroupRepository $assemblyGroupRepository)
     {
-        View::share('assemblyGroups', $assemblyGroupRepository->getAssemblyGroupsAsTree());
+        View::share('sharedAssemblyGroups', $assemblyGroupRepository->getAssemblyGroupsAsTree());
     }
 }

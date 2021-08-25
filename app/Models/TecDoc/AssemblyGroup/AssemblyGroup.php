@@ -25,8 +25,6 @@ class AssemblyGroup extends Model
     protected $fillable = [
         'assemblyGroupNodeId',
         'assemblyGroupName',
-        'linkingTargetType',
-        'shortCutId',
         'parentNodeId',
         'hasChilds',
         'isVisible',
@@ -39,14 +37,6 @@ class AssemblyGroup extends Model
         'hasChilds' => 'boolean',
         'isVisible' => 'boolean',
     ];
-
-    /**
-     * @return string
-     */
-    public function getLinkingTargetTypeLabelAttribute()
-    {
-        return '<span class="badge badge-dark">' . $this->linkingTargetType . '</span>';
-    }
 
     /**
      * @return string
