@@ -27,7 +27,7 @@ class AutoPartController extends FrontendController
             abort(404);
         }
 
-        $manufacturer = Manufacturer::where('manuId', $vehicle->manuId)->first();
+        $manufacturer = $this->manufacturerRepository->getManufacturerById($vehicle->manuId);
 
         if (!$manufacturer) {
             abort(404);

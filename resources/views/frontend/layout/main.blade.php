@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="format-detection" content="telephone=no">
-        <title>{{ config('app.name') }} | @yield('title')</title>
+        <title>@yield('title') | {{ config('app.name') }}</title>
         <link href="{{ mix('/css/frontend.core.css') }}" rel="stylesheet">
         <link href="{{ mix('/css/frontend.main.css') }}" rel="stylesheet">
         <link href="{{ mix('/css/frontend.header.css') }}" rel="stylesheet" media="(min-width: 1200px)">

@@ -18,7 +18,7 @@ class AutoController extends FrontendController
      */
     public function index()
     {
-        $manufacturers = Manufacturer::onlyIsFavorite()->orderBy('manuName')->get();
+        $manufacturers = $this->manufacturerRepository->getManufacturersOnlyIsFavorite();
 
         return view('frontend.auto.index', [
             'manufacturers' => $manufacturers,
@@ -31,7 +31,7 @@ class AutoController extends FrontendController
      */
     public function manufacturer($manufacturer)
     {
-        $manufacturer = Manufacturer::where('manuId', $manufacturer)->first();
+        $manufacturer = $this->manufacturerRepository->getManufacturerById($manufacturer);
 
         if (!$manufacturer) {
             abort(404);
@@ -52,7 +52,7 @@ class AutoController extends FrontendController
      */
     public function model($manufacturer, $model)
     {
-        $manufacturer = Manufacturer::where('manuId', $manufacturer)->first();
+        $manufacturer = $this->manufacturerRepository->getManufacturerById($manufacturer);
 
         if (!$manufacturer) {
             abort(404);
@@ -81,7 +81,7 @@ class AutoController extends FrontendController
      */
     public function vehicle($manufacturer, $model, $vehicle)
     {
-        $manufacturer = Manufacturer::where('manuId', $manufacturer)->first();
+        $manufacturer = $this->manufacturerRepository->getManufacturerById($manufacturer);
 
         if (!$manufacturer) {
             abort(404);

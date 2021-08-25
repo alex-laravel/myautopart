@@ -13,7 +13,7 @@ class AssemblyGroupRepository extends BaseRepository
     const MODEL = AssemblyGroup::class;
     const CACHE_QUERY_KEY = 'query.assembly.groups';
     const CACHE_DATA_KEY = 'data.assembly.groups';
-    const CACHE_TIME = 60 * 60 * 24;
+    const CACHE_TIME = 60 * 60;
 
     /**
      * @return array

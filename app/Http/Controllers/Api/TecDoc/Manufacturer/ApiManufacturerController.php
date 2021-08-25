@@ -21,7 +21,7 @@ class ApiManufacturerController extends ApiBaseController
             abort(404);
         }
 
-        $manufacturers = Manufacturer::onlyIsFavorite()->orderBy('manuName')->get();
+        $manufacturers = $this->manufacturerRepository->getManufacturersOnlyIsFavorite();
 
         return Response::success($this->prepareManufacturersResponse($manufacturers));
     }
