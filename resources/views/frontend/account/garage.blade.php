@@ -35,7 +35,7 @@
                                                         </div>
 
                                                         <div class="vehicles-list__item-links">
-                                                            <a href="{{ route('frontend.parts.vehicle') }}">
+                                                            <a href="{{ route('frontend.parts.vehicle', $garageVehicle['vehicleId']) }}">
                                                                 Show Parts
                                                             </a>
                                                         </div>

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Frontend\AutoPart;
 
-use App\Facades\Garage;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
+use App\Models\TecDoc\Manufacturer\Manufacturer;
+use App\Models\TecDoc\ModelSeries;
+use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -15,31 +16,40 @@ class AutoPartController extends FrontendController
     const PARTS_PACKAGE_LIMIT = 10;
 
     /**
+     * @param integer $vehicleId
      * @return View
      */
-    public function byVehicle()
+    public function byVehicle($vehicleId)
     {
-        $activeVehicle = Garage::getActiveVehicle();
+        $vehicle = Vehicle::where('carId', (int)$vehicleId)->first();
 
-        if (!$activeVehicle) {
+        if (!$vehicle) {
             abort(404);
         }
 
-        $parts = DirectArticle::where('carId', (int)$activeVehicle['vehicleId'])->paginate(self::PARTS_PACKAGE_LIMIT);
+        $manufacturer = Manufacturer::where('manuId', $vehicle->manuId)->first();
 
-//        $assemblyGroups = AssemblyGroup::orderBy('assemblyGroupName')->get()->toArray();
-//        $assemblyGroupsTree = $this->generateAssemblyGroupsTree($assemblyGroups);
+        if (!$manufacturer) {
+            abort(404);
+        }
+
+        $modelSeries = ModelSeries::where('manuId', $vehicle->manuId)->where('modelId', $vehicle->modelId)->first();
+
+        if (!$modelSeries) {
+            abort(404);
+        }
+
+        $parts = DirectArticle::where('carId', $vehicle->carId)->paginate(self::PARTS_PACKAGE_LIMIT);
 
         return view('frontend.auto-parts.vehicle', [
-            'manufacturerId' => $activeVehicle['manufacturerId'],
-            'manufacturerName' => $activeVehicle['manufacturerName'],
-            'modelSeriesId' => $activeVehicle['modelSeriesId'],
-            'modelSeriesName' => $activeVehicle['modelSeriesName'],
-            'vehicleId' => $activeVehicle['vehicleId'],
-            'vehicleName' => $activeVehicle['vehicleName'],
+            'manufacturerId' => $manufacturer->manuId,
+            'manufacturerName' => $manufacturer->manuName,
+            'modelSeriesId' => $modelSeries->modelId,
+            'modelSeriesName' => $modelSeries->modelname,
+            'vehicleId' => $vehicle->carId,
+            'vehicleName' => $vehicle->carName,
             'parts' => $parts,
             'assemblyGroups' => []
-//            'assemblyGroups' => $assemblyGroupsTree
         ]);
     }
 
@@ -57,13 +67,10 @@ class AutoPartController extends FrontendController
 
         $parts = DirectArticle::where('brandNo', (int)$brandId)->paginate(self::PARTS_PACKAGE_LIMIT);
 
-        $assemblyGroups = AssemblyGroup::orderBy('assemblyGroupName')->get()->toArray();
-        $assemblyGroupsTree = $this->generateAssemblyGroupsTree($assemblyGroups);
-
         return view('frontend.auto-parts.brand', [
             'brand' => $brand,
             'parts' => $parts,
-            'assemblyGroups' => $assemblyGroupsTree
+            'assemblyGroups' => []
         ]);
     }
 
@@ -131,31 +138,5 @@ class AutoPartController extends FrontendController
     public function destroy($id)
     {
         //
-    }
-
-
-    /**
-     * @param array $assemblyGroups
-     * @param integer $parentId
-     * @return array
-     */
-    private function generateAssemblyGroupsTree(&$assemblyGroups, $parentId = null)
-    {
-        $assemblyGroupsTree = [];
-
-        foreach ($assemblyGroups as $assemblyGroup) {
-            if ($assemblyGroup['parentNodeId'] == $parentId) {
-                $children = $this->generateAssemblyGroupsTree($assemblyGroups, $assemblyGroup['assemblyGroupNodeId']);
-
-                if ($children) {
-                    $assemblyGroup['children'] = $children;
-                }
-
-                $assemblyGroupsTree[$assemblyGroup['assemblyGroupNodeId']] = $assemblyGroup;
-                unset($assemblyGroups[$assemblyGroup['assemblyGroupNodeId']]);
-            }
-        }
-
-        return $assemblyGroupsTree;
     }
 }
