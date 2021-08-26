@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Frontend\Auto;
 
 use App\Facades\Garage;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Models\TecDoc\ModelSeries;
-use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -63,7 +61,7 @@ class AutoController extends FrontendController
             abort(404);
         }
 
-        $vehicles = Vehicle::where('manuId', $manufacturer->manuId)->where('modelId', $model)->get();
+        $vehicles = $this->vehicleRepository->getVehiclesByModelId($model);
 
         return view('frontend.auto.model', [
             'manufacturer' => $manufacturer,
@@ -92,7 +90,7 @@ class AutoController extends FrontendController
             abort(404);
         }
 
-        $vehicle = Vehicle::where('carId', $vehicle)->first();
+        $vehicle = $this->vehicleRepository->getVehicleById($vehicle);
 
         if (!$vehicle) {
             abort(404);

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\TecDoc\AssemblyGroupRepository;
 use App\Repositories\Frontend\TecDoc\ManufacturerRepository;
 use App\Repositories\Frontend\TecDoc\ModelSeriesRepository;
+use App\Repositories\Frontend\TecDoc\VehicleRepository;
 use Illuminate\Support\Facades\View;
 
 class FrontendController extends Controller
@@ -23,16 +24,24 @@ class FrontendController extends Controller
     protected $modelSeriesRepository;
 
     /**
+     * @var VehicleRepository
+     */
+    protected $vehicleRepository;
+
+    /**
      * @param ManufacturerRepository $manufacturerRepository
      * @param ModelSeriesRepository $modelSeriesRepository
+     * @param VehicleRepository $vehicleRepository
      * @param AssemblyGroupRepository $assemblyGroupRepository
      */
     public function __construct(ManufacturerRepository $manufacturerRepository,
                                 ModelSeriesRepository $modelSeriesRepository,
+                                VehicleRepository $vehicleRepository,
                                 AssemblyGroupRepository $assemblyGroupRepository)
     {
         $this->manufacturerRepository = $manufacturerRepository;
         $this->modelSeriesRepository = $modelSeriesRepository;
+        $this->vehicleRepository = $vehicleRepository;
 
         View::share('sharedAssemblyGroups', $assemblyGroupRepository->getAssemblyGroupsAsTree());
     }

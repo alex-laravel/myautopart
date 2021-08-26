@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend\AutoPart;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
-use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -19,7 +18,7 @@ class AutoPartController extends FrontendController
      */
     public function byVehicle($vehicleId)
     {
-        $vehicle = Vehicle::where('carId', (int)$vehicleId)->first();
+        $vehicle = $this->vehicleRepository->getVehicleById($vehicleId);
 
         if (!$vehicle) {
             abort(404);
