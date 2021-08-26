@@ -50,7 +50,9 @@
                                                 </a>
 
                                                 <div class="categories-list__item-products">
-                                                    {{ $model->yearOfConstrFrom ? $model->yearOfConstrFrom : 'нет информации' }} - {{ $model->yearOfConstrTo ? $model->yearOfConstrTo : 'нет информации' }}
+                                                    {{ $model->yearOfConstrFrom ? $model->yearOfConstrFrom : trans('strings.frontend.models.no_data') }}
+                                                    -
+                                                    {{ $model->yearOfConstrTo ? $model->yearOfConstrTo : trans('strings.frontend.models.present_time') }}
                                                 </div>
                                             </li>
 

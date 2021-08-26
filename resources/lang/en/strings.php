@@ -26,6 +26,11 @@ return [
             'slogan' => 'Auto parts for passenger and commercial cars',
             'search' => 'Search by VIN or Part Number',
             'all_rights_reserved' => 'All Rights Reserved.',
+        ],
+
+        'models' => [
+            'no_data' => 'no data',
+            'present_time' => 'present time'
         ]
     ]
 ];
