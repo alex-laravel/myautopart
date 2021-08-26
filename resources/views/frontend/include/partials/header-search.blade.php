@@ -12,6 +12,12 @@
 	c-0.4,0.4-0.4,1.6,0,2c0.5,0.5,4,0.4,4,0C6,11.2,4.5,10.3,4,10z M14,12c0,0.4,3.5,0.5,4,0c0.4-0.4,0.4-1.6,0-2c-0.5-0.5-1.3-0.3-2,0
 	C15.5,10.2,14,11.3,14,12z" />
                                     </svg>
+
+                                    @if(\App\Facades\Garage::getVehiclesTotal() > 0)
+                                        <span class="indicator__counter">
+                                            {{ \App\Facades\Garage::getVehiclesTotal() }}
+                                        </span>
+                                    @endif
                                 </span>
                 <span class="search__button-title">Select Vehicle</span>
             </button>

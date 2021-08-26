@@ -33,6 +33,14 @@ class Garage
     }
 
     /**
+     * @return integer
+     */
+    public static function getVehiclesTotal()
+    {
+        return count(self::getVehicles());
+    }
+
+    /**
      * @param string $manufacturerId
      * @param string $manufacturerName
      * @param string $modelSeriesId
