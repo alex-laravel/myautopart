@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend\Auto;
 
 use App\Facades\Garage;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Models\TecDoc\Manufacturer\Manufacturer;
 use App\Models\TecDoc\ModelSeries;
 use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
@@ -37,7 +36,7 @@ class AutoController extends FrontendController
             abort(404);
         }
 
-        $modelSeries = ModelSeries::where('manuId', $manufacturer->manuId)->get();
+        $modelSeries = $this->modelSeriesRepository->getModelSeriesByManufacturerId($manufacturer->manuId);
 
         return view('frontend.auto.manufacturer', [
             'manufacturer' => $manufacturer,
@@ -58,7 +57,7 @@ class AutoController extends FrontendController
             abort(404);
         }
 
-        $modelSeries = ModelSeries::where('manuId', $manufacturer->manuId)->where('modelId', $model)->first();
+        $modelSeries = $this->modelSeriesRepository->getModelSeriesById($model);
 
         if (!$modelSeries) {
             abort(404);
@@ -87,7 +86,7 @@ class AutoController extends FrontendController
             abort(404);
         }
 
-        $modelSeries = ModelSeries::where('manuId', $manufacturer->manuId)->where('modelId', $model)->first();
+        $modelSeries = $this->modelSeriesRepository->getModelSeriesById($model);
 
         if (!$modelSeries) {
             abort(404);

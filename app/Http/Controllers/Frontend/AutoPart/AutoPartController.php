@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Frontend\AutoPart;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
-use App\Models\TecDoc\Manufacturer\Manufacturer;
-use App\Models\TecDoc\ModelSeries;
 use App\Models\TecDoc\Vehicle\Vehicle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -33,7 +31,7 @@ class AutoPartController extends FrontendController
             abort(404);
         }
 
-        $modelSeries = ModelSeries::where('manuId', $vehicle->manuId)->where('modelId', $vehicle->modelId)->first();
+        $modelSeries = $this->modelSeriesRepository->getModelSeriesById($vehicle->modelId);
 
         if (!$modelSeries) {
             abort(404);

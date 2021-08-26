@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Api\TecDoc\Manufacturer;
 
 use App\Http\Controllers\Api\ApiBaseController;
 use App\Http\Responses\Api\V1\Response;
-use App\Models\TecDoc\Manufacturer\Manufacturer;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 

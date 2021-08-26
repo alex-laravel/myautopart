@@ -22,7 +22,7 @@ class ApiModelController extends ApiBaseController
             abort(404);
         }
 
-        $models = ModelSeries::where('manuId', (int)$manufacturerId)->orderBy('modelname')->get();
+        $models = $this->modelSeriesRepository->getModelSeriesByManufacturerId($manufacturerId);
 
         return Response::success($this->prepareModelsResponse($models));
     }
