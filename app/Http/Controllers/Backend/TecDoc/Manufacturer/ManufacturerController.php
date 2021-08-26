@@ -138,6 +138,8 @@ class ManufacturerController extends TecDocController
                 $manufacturer['isVisible'] = true;
                 $manufacturer['slug'] = Str::slug($manufacturer['manuName']);
 
+                unset($manufacturer['linkingTargetTypes']);
+
                 $manufacturerIds[] = $manufacturer['manuId'];
             }
 

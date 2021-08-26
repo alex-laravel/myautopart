@@ -143,6 +143,8 @@ class VehicleController extends TecDocController
                     $vehicle['modelId'] = $modelSeries->modelId;
                     $vehicle['slug'] = Str::slug($vehicle['carName']);
 
+                    unset($vehicle['carType']);
+
                     $vehicleIds[] = $vehicle['carId'];
                 }
 

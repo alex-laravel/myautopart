@@ -22,6 +22,7 @@ class CreateManufacturerTable extends Migration
             $table->boolean('isPopular');
             $table->boolean('isVisible');
             $table->index('manuId');
+            $table->index('favorFlag');
         });
     }
 
