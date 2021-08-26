@@ -40,7 +40,11 @@
                                                 <a href="{{ route('frontend.auto.vehicle', [$manufacturer->manuId, $modelSeries->modelId, $vehicle->carId]) }}">
                                                     <div class="image image--type--category">
                                                         <div class="image__body">
-                                                            <img class="image__tag" src="{{ asset('assets/vehicles/' . $vehicle->details->assetThumbnailName) }}" alt="{{ $vehicle->carName }}">
+                                                            @if($vehicle->details->assetThumbnailName)
+                                                                <img class="image__tag" src="{{ asset('assets/vehicles/' . $vehicle->details->assetThumbnailName) }}" width="200">
+                                                            @else
+                                                                <img class="image__tag" src="{{ asset('assets/vehicles/model-default.jpg') }}" width="200">
+                                                            @endif
                                                         </div>
                                                     </div>
 
