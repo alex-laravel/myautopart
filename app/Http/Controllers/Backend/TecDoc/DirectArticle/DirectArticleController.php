@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\TecDoc\DirectArticle;
 
 use App\Http\Controllers\Backend\TecDoc\TecDocController;
+use App\Models\TecDoc\AssemblyGroup\AssemblyGroup;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
 use App\Models\TecDoc\Vehicle\Vehicle;
@@ -96,22 +97,28 @@ class DirectArticleController extends TecDocController
 
         DirectArticle::truncate();
 
-        $vehicles = Vehicle::where('carId', '>', 1453)->orderBy('carId')->get();
-        $brandIds = Brand::orderBy('brandId')->get()->pluck('brandId')->toArray();
+        $vehicles = Vehicle::orderBy('carId')->get();
+        $assemblyGroups = AssemblyGroup::where('hasChilds', false)->orderBy('assemblyGroupNodeId')->get();
 
-        foreach ($vehicles as $vehicle) {
-            foreach (array_chunk($brandIds, 24) as $brandIdsChunk) {
+        $assemblyGroupsUnique = [];
+
+        foreach ($assemblyGroups as $assemblyGroup) {
+            $assemblyGroupsUnique[$assemblyGroup->assemblyGroupNodeId] = $assemblyGroup;
+        }
+
+        foreach ($assemblyGroupsUnique as $assemblyGroupUnique) {
+            foreach ($vehicles as $vehicle) {
                 Artisan::call('tecdoc:direct-articles', [
                     'linkingTargetId' => $vehicle->carId,
-                    'linkingTargetType' => $vehicle->carType,
-                    'brandIds' => $brandIdsChunk,
+                    'linkingTargetType' => $assemblyGroupUnique->linkingTargetType,
+                    'assemblyGroupId' => $assemblyGroupUnique->assemblyGroupNodeId,
                 ]);
 
                 $output = Artisan::output();
                 $output = json_decode($output, true);
 
                 if (!$this->hasSuccessResponse($output)) {
-                    \Log::alert('FAIL DIRECT ARTICLES RESPONSE FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $vehicle->carType . '] AND brandIds [' . implode(",", $brandIdsChunk) . ']!');
+                    \Log::alert('FAIL DIRECT ARTICLES RESPONSE FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $assemblyGroupUnique->linkingTargetType . '] AND assemblyGroupId [' . $assemblyGroupUnique->assemblyGroupNodeId . ']!');
                     \Log::alert($output['status'] . ' - ' . $output['statusText'] . '!');
                     return redirect()->back();
                 }
@@ -119,18 +126,19 @@ class DirectArticleController extends TecDocController
                 $output = $this->getResponseDataAsArray($output);
 
                 if (empty($output)) {
-                    \Log::alert('EMPTY DIRECT ARTICLES RESPONSE FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $vehicle->carType . '] AND brandIds [' . implode(",", $brandIdsChunk) . ']!');
+                    \Log::alert('EMPTY DIRECT ARTICLES RESPONSE FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $assemblyGroupUnique->linkingTargetType . '] AND assemblyGroupId [' . $assemblyGroupUnique->assemblyGroupNodeId . ']!');
                     continue;
                 }
 
                 foreach ($output as &$article) {
                     $article['carId'] = $vehicle->carId;
-                    $article['carType'] = $vehicle->carType;
+                    $article['assemblyGroupNodeId'] = $assemblyGroupUnique->assemblyGroupNodeId;
+                    $article['linkingTargetType'] = $assemblyGroupUnique->linkingTargetType;
                 }
 
                 DirectArticle::insert($output);
 
-                \Log::info('DIRECT ARTICLES FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $vehicle->carType . '] AND brandIds [' . implode(",", $brandIdsChunk) . '] CREATED!');
+                \Log::info('DIRECT ARTICLES FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $assemblyGroupUnique->linkingTargetType . '] AND brandIds [' . $assemblyGroupUnique->assemblyGroupNodeId . '] CREATED!');
             }
         }
 

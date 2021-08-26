@@ -20,14 +20,16 @@ class CreateDirectArticlesTable extends Migration
             $table->string('articleNo', 250);
             $table->unsignedInteger('articleStateId');
             $table->unsignedBigInteger('carId');
-            $table->string('carType', 5);
             $table->unsignedBigInteger('brandNo');
             $table->string('brandName', 250);
+            $table->string('linkingTargetType', 3);
             $table->unsignedBigInteger('genericArticleId');
+            $table->unsignedBigInteger('assemblyGroupNodeId');
             $table->string('genericArticleName', 250);
             $table->unsignedBigInteger('sortNo');
             $table->index('carId');
             $table->index('brandNo');
+            $table->index('assemblyGroupNodeId');
         });
     }
 
