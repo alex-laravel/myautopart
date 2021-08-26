@@ -16,8 +16,6 @@ class TecDocController extends Controller
     const TEC_DOC_TARGET_TYPE_BODY = 'K';
     const TEC_DOC_TARGET_TYPE_UNIVERSAL = 'U';
 
-    const TEC_DOC_TARGET_TYPE_ALL = 0; // ???
-
     const TEC_DOC_ARTICLE_TYPE_ARTICLE = 0;
     const TEC_DOC_ARTICLE_TYPE_OE = 1;
     const TEC_DOC_ARTICLE_TYPE_TRADE = 2;
@@ -26,7 +24,6 @@ class TecDocController extends Controller
     const TEC_DOC_ARTICLE_TYPE_REPLACED = 5;
     const TEC_DOC_ARTICLE_TYPE_EAN = 6;
     const TEC_DOC_ARTICLE_TYPE_ANY = 10;
-
 
     /**
      * @var string[]
@@ -40,8 +37,8 @@ class TecDocController extends Controller
     /**
      * @var string[]
      */
-    public static $allowedShortCutsTypes = [
-        self::TEC_DOC_TARGET_TYPE_PASSENGER,
+    public static $allowedShortCutsLinkingTargetTypes = [
+        self::TEC_DOC_TARGET_TYPE_VEHICLE,
         self::TEC_DOC_TARGET_TYPE_COMMERCIAL,
         self::TEC_DOC_TARGET_TYPE_UNIVERSAL
     ];

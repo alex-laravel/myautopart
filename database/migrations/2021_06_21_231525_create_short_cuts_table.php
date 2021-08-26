@@ -15,9 +15,9 @@ class CreateShortCutsTable extends Migration
     {
         Schema::create('td_short_cuts', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('shortCutId');
+            $table->unsignedBigInteger('shortCutId')->unique();
             $table->string('shortCutName', 150);
-            $table->string('linkingTargetType', 5);
+            $table->string('linkingTargetType', 3);
             $table->boolean('isVisible')->default(true);
         });
     }

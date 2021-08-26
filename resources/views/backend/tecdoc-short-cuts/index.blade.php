@@ -52,19 +52,6 @@
                 </tr>
                 </thead>
             </table>
-
-            <strong class="d-block">NOTES:</strong>
-            <small>??? articleCountry</small><br>
-
-            <strong class="d-block">NOTES:</strong>
-            <small>P - 17</small><br>
-            <small>O - 16</small><br>
-            <small>L - 17</small><br>
-            <small>A - 17</small><br>
-            <small>M - 17</small><br>
-            <small>K - 16</small><br>
-            <small>U - 6</small><br>
-
         </div>
     </div>
 @endsection

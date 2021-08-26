@@ -45,8 +45,10 @@
                 <thead>
                 <tr>
                     <th>ID</th>
+                    <th>shortCutId</th>
                     <th>assemblyGroupNodeId</th>
                     <th>assemblyGroupName</th>
+                    <th>linkingTargetType</th>
                     <th>parentNodeId</th>
                     <th>hasChilds</th>
                     <th>isVisible</th>
@@ -72,8 +74,10 @@
                 },
                 columns: [
                     {data: 'id', name: 'td_assembly_groups.id'},
+                    {data: 'shortCutId', name: 'td_assembly_groups.shortCutId'},
                     {data: 'assemblyGroupNodeId', name: 'td_assembly_groups.assemblyGroupNodeId'},
                     {data: 'assemblyGroupName', name: 'td_assembly_groups.assemblyGroupName'},
+                    {data: 'linkingTargetType', name: 'td_assembly_groups.linkingTargetType'},
                     {data: 'parentNodeId', name: 'td_assembly_groups.parentNodeId'},
                     {data: 'hasChilds', name: 'td_assembly_groups.hasChilds'},
                     {data: 'isVisible', name: 'td_assembly_groups.isVisible'}

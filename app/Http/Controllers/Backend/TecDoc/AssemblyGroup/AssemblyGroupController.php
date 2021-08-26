@@ -96,37 +96,33 @@ class AssemblyGroupController extends TecDocController
     {
         AssemblyGroup::truncate();
 
-        $assemblyGroupIds = [];
+        $shortCuts = ShortCut::orderBy('shortCutId')->get();
 
-        foreach (self::$allowedPassengerAndCommercialLinkingTargetTypes as $linkingTargetType) {
+        foreach ($shortCuts as $shortCut) {
             Artisan::call('tecdoc:assembly-groups', [
-                'linkingTargetType' => $linkingTargetType
+                'linkingTargetType' => $shortCut->linkingTargetType,
+                'shortCutId' => $shortCut->shortCutId,
             ]);
 
             $output = Artisan::output();
             $output = json_decode($output, true);
 
             if (!$this->hasSuccessResponse($output)) {
-                \Log::alert('FAIL ASSEMBLY GROUPS RESPONSE FOR linkingTargetType [' . $linkingTargetType . ']!');
+                \Log::alert('FAIL ASSEMBLY GROUPS RESPONSE FOR shortCutId [' . $shortCut->shortCutId . '] AND linkingTargetType [' . $shortCut->linkingTargetType . ']!');
                 continue;
             }
 
             $output = $this->getResponseDataAsArray($output);
 
             if (empty($output)) {
-                \Log::alert('EMPTY ASSEMBLY GROUPS RESPONSE FOR linkingTargetType [' . $linkingTargetType . ']!');
+                \Log::alert('EMPTY ASSEMBLY GROUPS RESPONSE FOR shortCutId [' . $shortCut->shortCutId . '] AND linkingTargetType [' . $shortCut->linkingTargetType . ']!');
                 continue;
             }
 
             foreach ($output as $index => &$assemblyGroup) {
-                if (in_array($assemblyGroup['assemblyGroupNodeId'], $assemblyGroupIds)) {
-                    unset($output[$index]);
-                    continue;
-                }
-
+                $assemblyGroup['shortCutId'] = $shortCut->shortCutId;
+                $assemblyGroup['linkingTargetType'] = $shortCut->linkingTargetType;
                 $assemblyGroup['parentNodeId'] = isset($assemblyGroup['parentNodeId']) ? $assemblyGroup['parentNodeId'] : null;
-
-                $assemblyGroupIds[] = $assemblyGroup['assemblyGroupNodeId'];
             }
 
             AssemblyGroup::insert($output);
