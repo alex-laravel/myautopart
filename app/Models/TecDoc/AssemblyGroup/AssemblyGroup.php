@@ -24,6 +24,7 @@ class AssemblyGroup extends Model
      */
     protected $fillable = [
         'shortCutId',
+        'shortCutName',
         'assemblyGroupNodeId',
         'assemblyGroupName',
         'linkingTargetType',

@@ -46,6 +46,7 @@
                 <tr>
                     <th>ID</th>
                     <th>shortCutId</th>
+                    <th>shortCutName</th>
                     <th>assemblyGroupNodeId</th>
                     <th>assemblyGroupName</th>
                     <th>linkingTargetType</th>
@@ -75,6 +76,7 @@
                 columns: [
                     {data: 'id', name: 'td_assembly_groups.id'},
                     {data: 'shortCutId', name: 'td_assembly_groups.shortCutId'},
+                    {data: 'shortCutName', name: 'td_assembly_groups.shortCutName'},
                     {data: 'assemblyGroupNodeId', name: 'td_assembly_groups.assemblyGroupNodeId'},
                     {data: 'assemblyGroupName', name: 'td_assembly_groups.assemblyGroupName'},
                     {data: 'linkingTargetType', name: 'td_assembly_groups.linkingTargetType'},

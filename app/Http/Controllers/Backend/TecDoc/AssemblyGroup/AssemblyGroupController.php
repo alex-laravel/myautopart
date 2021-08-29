@@ -121,6 +121,7 @@ class AssemblyGroupController extends TecDocController
 
             foreach ($output as $index => &$assemblyGroup) {
                 $assemblyGroup['shortCutId'] = $shortCut->shortCutId;
+                $assemblyGroup['shortCutName'] = $shortCut->shortCutName;
                 $assemblyGroup['linkingTargetType'] = $shortCut->linkingTargetType;
                 $assemblyGroup['parentNodeId'] = isset($assemblyGroup['parentNodeId']) ? $assemblyGroup['parentNodeId'] : null;
             }

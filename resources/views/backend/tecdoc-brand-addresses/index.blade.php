@@ -67,9 +67,6 @@
                 </tr>
                 </thead>
             </table>
-
-            <strong class="d-block">NOTES:</strong>
-            <small>??? articleCountry</small><br>
         </div>
     </div>
 @endsection

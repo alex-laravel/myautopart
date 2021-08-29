@@ -32,10 +32,39 @@ class AssemblyGroupRepository extends BaseRepository
     {
         return Cache::remember(self::CACHE_DATA_KEY, self::CACHE_TIME, function () {
             $assemblyGroups = $this->getAssemblyGroupsAsArray();
-            $assemblyGroups = $this->generateAssemblyGroupsTree($assemblyGroups);
+            $assemblyGroups = $this->sortAssemblyGroupsByCategory($assemblyGroups);
+
+            foreach ($assemblyGroups as &$assemblyGroupCategory) {
+                $assemblyGroupCategory['assemblyGroups'] = $this->generateAssemblyGroupsTree($assemblyGroupCategory['assemblyGroups']);
+            }
 
             return $assemblyGroups;
         });
+    }
+
+    /**
+     * @param array $assemblyGroups
+     * @return array
+     */
+    private function sortAssemblyGroupsByCategory($assemblyGroups)
+    {
+        $assemblyGroupsByCategory = [];
+
+        foreach ($assemblyGroups as $assemblyGroup) {
+            if (!array_key_exists($assemblyGroup['shortCutId'], $assemblyGroupsByCategory)) {
+                $assemblyGroupsByCategory[$assemblyGroup['shortCutId']] = [
+                    'shortCutId' => $assemblyGroup['shortCutId'],
+                    'shortCutName' => $assemblyGroup['shortCutName'],
+                    'assemblyGroups' => [],
+                ];
+            }
+
+            $assemblyGroupsByCategory[$assemblyGroup['shortCutId']]['assemblyGroups'][] = $assemblyGroup;
+        }
+
+        unset($assemblyGroups);
+
+        return $assemblyGroupsByCategory;
     }
 
     /**

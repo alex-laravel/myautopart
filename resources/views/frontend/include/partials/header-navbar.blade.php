@@ -24,11 +24,12 @@
                             <li class="departments__list-padding" role="presentation"></li>
 
                             @foreach ($sharedAssemblyGroups as $assemblyGroup)
-                                <li class="departments__item {{ array_key_exists('children', $assemblyGroup) && count($assemblyGroup['children']) ? 'departments__item--submenu--megamenu departments__item--has-submenu' : '' }}">
-                                    <a href="{{ route('frontend.assemblies.index', $assemblyGroup['assemblyGroupNodeId']) }}" class="departments__item-link">
-                                        {{ $assemblyGroup['assemblyGroupName'] }}
+                                <li class="departments__item {{ count($assemblyGroup['assemblyGroups']) ? 'departments__item--submenu--megamenu departments__item--has-submenu' : '' }}">
+{{--                                    <a href="{{ route('frontend.assemblies.index', $assemblyGroup['assemblyGroupNodeId']) }}" class="departments__item-link">--}}
+                                    <a href="#" class="departments__item-link">
+                                        {{ $assemblyGroup['shortCutName'] }}
 
-                                        @if(array_key_exists('children', $assemblyGroup) && count($assemblyGroup['children']))
+                                        @if(count($assemblyGroup['assemblyGroups']))
                                             <span class="departments__item-arrow">
                                                 <svg width="7" height="11">
                                                     <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9	C-0.1,9.8-0.1,10.4,0.3,10.7z" />
@@ -37,14 +38,14 @@
                                         @endif
                                     </a>
 
-                                    @if(array_key_exists('children', $assemblyGroup) && count($assemblyGroup['children']))
+                                    @if(count($assemblyGroup['assemblyGroups']))
                                         <div class="departments__item-menu">
                                             <div class="megamenu departments__megamenu departments__megamenu--size--xl">
-{{--                                                <div class="megamenu__image">--}}
-{{--                                                    <img src="images/departments/departments-2.jpg" alt="">--}}
-{{--                                                </div>--}}
+                                                <div class="megamenu__image">
+                                                    <img src="images/departments/departments-2.jpg" alt="">
+                                                </div>
                                                 <div class="row">
-                                                    @foreach ($assemblyGroup['children'] as $assemblyGroupFirstChild)
+                                                    @foreach ($assemblyGroup['assemblyGroups'] as $assemblyGroupFirstChild)
                                                         <div class="col-1of5 mb-4">
                                                             <ul class="megamenu__links megamenu-links megamenu-links--root">
                                                                 <li class="megamenu-links__item {{ array_key_exists('children', $assemblyGroupFirstChild) && count($assemblyGroupFirstChild['children']) ? 'megamenu-links__item--has-submenu' : '' }}">
@@ -77,6 +78,19 @@
                                                                                                                         <i class="fas fa-caret-right d-inline-block mr-2"></i>
                                                                                                                         {{ $assemblyGroupFourthChild['assemblyGroupName'] }}
                                                                                                                     </a>
+
+                                                                                                                    @if(array_key_exists('children', $assemblyGroupFourthChild) && count($assemblyGroupFourthChild['children']))
+                                                                                                                        <ul class="megamenu-links border-0 pl-5">
+                                                                                                                            @foreach ($assemblyGroupFourthChild['children'] as $assemblyGroupFifthChild)
+                                                                                                                                <li class="megamenu-links__item">
+                                                                                                                                    <a href="{{ route('frontend.assemblies.index', $assemblyGroupFifthChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
+                                                                                                                                        <i class="fas fa-caret-right d-inline-block mr-2"></i>
+                                                                                                                                        {{ $assemblyGroupFifthChild['assemblyGroupName'] }}
+                                                                                                                                    </a>
+                                                                                                                                </li>
+                                                                                                                            @endforeach
+                                                                                                                        </ul>
+                                                                                                                    @endif
                                                                                                                 </li>
                                                                                                             @endforeach
                                                                                                         </ul>

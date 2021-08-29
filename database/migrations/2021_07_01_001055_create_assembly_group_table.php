@@ -16,6 +16,7 @@ class CreateAssemblyGroupTable extends Migration
         Schema::create('td_assembly_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('shortCutId');
+            $table->string('shortCutName', 150);
             $table->unsignedBigInteger('assemblyGroupNodeId');
             $table->string('assemblyGroupName', 250);
             $table->string('linkingTargetType', 3);
