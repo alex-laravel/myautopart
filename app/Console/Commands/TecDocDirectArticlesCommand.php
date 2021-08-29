@@ -48,5 +48,10 @@ class TecDocDirectArticlesCommand extends TecDocCommand
         ]);
 
         $this->line($response->body());
+
+        unset($linkingTargetType);
+        unset($linkingTargetId);
+        unset($assemblyGroupId);
+        unset($response);
     }
 }

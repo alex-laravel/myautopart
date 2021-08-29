@@ -10,6 +10,14 @@ class Vehicle extends Model
     use HasFactory;
     use VehicleRelationship;
 
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
+     * @var string 
+     */
     protected $table = 'td_vehicles';
 
     /**
@@ -19,6 +27,7 @@ class Vehicle extends Model
         'manuId',
         'modelId',
         'carId',
+        'carType',
         'carName',
         'firstCountry',
         'slug',

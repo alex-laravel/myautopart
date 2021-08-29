@@ -106,7 +106,7 @@ class VehicleController extends TecDocController
 
         Vehicle::truncate();
 
-        $vehicleIds = [];
+//        $vehicleIds = [];
 
         foreach (self::$allowedPassengerAndCommercialLinkingTargetTypes as $linkingTargetType) {
             foreach (ModelSeries::orderBy('manuId')->get() as $modelSeries) {
@@ -134,18 +134,18 @@ class VehicleController extends TecDocController
                 }
 
                 foreach ($output as $index => &$vehicle) {
-                    if (in_array($vehicle['carId'], $vehicleIds)) {
-                        unset($output[$index]);
-                        continue;
-                    }
+//                    if (in_array($vehicle['carId'], $vehicleIds)) {
+//                        unset($output[$index]);
+//                        continue;
+//                    }
 
                     $vehicle['manuId'] = $modelSeries->manuId;
                     $vehicle['modelId'] = $modelSeries->modelId;
                     $vehicle['slug'] = Str::slug($vehicle['carName']);
 
-                    unset($vehicle['carType']);
+//                    unset($vehicle['carType']);
 
-                    $vehicleIds[] = $vehicle['carId'];
+//                    $vehicleIds[] = $vehicle['carId'];
                 }
 
                 Vehicle::insert($output);
