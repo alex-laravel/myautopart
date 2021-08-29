@@ -43,6 +43,33 @@ class AssemblyGroupRepository extends BaseRepository
     }
 
     /**
+     * @param integer $shortCutId
+     * @return array
+     */
+    public function getLowerAssemblyGroupIdsByParentShortCutId($shortCutId)
+    {
+        $assemblyGroups = $this->getAssemblyGroupsAsArray();
+        $assemblyGroups = $this->filterAssemblyGroupsByShortCutId($assemblyGroups, $shortCutId);
+
+        return $this->generateLowerAssemblyGroupIds($assemblyGroups);
+    }
+
+    /**
+     * @param integer $assemblyGroupId
+     * @return array
+     */
+    public function getLowerAssemblyGroupIdsByParentAssemblyGroupId($assemblyGroupId)
+    {
+        $assemblyGroups = $this->getAssemblyGroupsAsArray();
+
+
+        $assemblyGroupIds = [];
+
+
+        return $assemblyGroupIds;
+    }
+
+    /**
      * @param array $assemblyGroups
      * @return array
      */
@@ -90,5 +117,34 @@ class AssemblyGroupRepository extends BaseRepository
         }
 
         return $assemblyGroupsTree;
+    }
+
+    /**
+     * @param array $assemblyGroups
+     * @return array
+     */
+    private function generateLowerAssemblyGroupIds($assemblyGroups)
+    {
+        $lowerAssemblyGroupIds = [];
+
+        foreach ($assemblyGroups as $assemblyGroup) {
+            if($assemblyGroup['hasChilds'] === false){
+                $lowerAssemblyGroupIds[] = $assemblyGroup['assemblyGroupNodeId'];
+            }
+        }
+
+        return $lowerAssemblyGroupIds;
+    }
+
+    /**
+     * @param array $assemblyGroups
+     * @param integer $shortCutId
+     * @return array
+     */
+    private function filterAssemblyGroupsByShortCutId($assemblyGroups, $shortCutId)
+    {
+        return array_filter($assemblyGroups, function ($assemblyGroup) use ($shortCutId) {
+            return $assemblyGroup['shortCutId'] === (int)$shortCutId;
+        });
     }
 }

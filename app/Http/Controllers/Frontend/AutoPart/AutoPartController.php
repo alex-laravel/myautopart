@@ -6,7 +6,6 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class AutoPartController extends FrontendController
 {
@@ -51,6 +50,36 @@ class AutoPartController extends FrontendController
     }
 
     /**
+     * @param integer $categoryId
+     * @return View
+     */
+    public function byCategory($categoryId)
+    {
+        $assemblyGroupNodeIds = $this->assemblyGroupRepository->getLowerAssemblyGroupIdsByParentShortCutId($categoryId);
+
+        $parts = DirectArticle::whereIn('assemblyGroupNodeId', $assemblyGroupNodeIds)->paginate(self::PARTS_PACKAGE_LIMIT);
+
+        return view('frontend.auto-parts.category', [
+            'parts' => $parts
+        ]);
+    }
+
+    /**
+     * @param integer $assemblyId
+     * @return View
+     */
+    public function byAssembly($assemblyId)
+    {
+        $assemblyGroupNodeIds = $this->assemblyGroupRepository->getLowerAssemblyGroupIdsByParentAssemblyGroupId($assemblyId);
+
+        $parts = DirectArticle::whereIn('assemblyGroupNodeId', $assemblyGroupNodeIds)->paginate(self::PARTS_PACKAGE_LIMIT);
+
+        return view('frontend.auto-parts.assembly', [
+            'parts' => $parts
+        ]);
+    }
+
+    /**
      * @param integer $brandId
      * @return View
      */
@@ -69,71 +98,5 @@ class AutoPartController extends FrontendController
             'parts' => $parts,
             'assemblyGroups' => []
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

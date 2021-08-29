@@ -29,6 +29,11 @@ class FrontendController extends Controller
     protected $vehicleRepository;
 
     /**
+     * @var AssemblyGroupRepository
+     */
+    protected $assemblyGroupRepository;
+
+    /**
      * @param ManufacturerRepository $manufacturerRepository
      * @param ModelSeriesRepository $modelSeriesRepository
      * @param VehicleRepository $vehicleRepository
@@ -42,7 +47,8 @@ class FrontendController extends Controller
         $this->manufacturerRepository = $manufacturerRepository;
         $this->modelSeriesRepository = $modelSeriesRepository;
         $this->vehicleRepository = $vehicleRepository;
+        $this->assemblyGroupRepository = $assemblyGroupRepository;
 
-        View::share('sharedAssemblyGroups', $assemblyGroupRepository->getAssemblyGroupsAsTree());
+        View::share('sharedAssemblyGroups', $this->assemblyGroupRepository->getAssemblyGroupsAsTree());
     }
 }
