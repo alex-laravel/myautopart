@@ -11,14 +11,16 @@
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                         <div class="card flex-grow-1 mb-md-0 mr-0 mr-lg-3 ml-0 ml-lg-4">
                             <div class="card-body card-body--padding--2">
-                                <h3 class="card-title">{{ trans('labels.auth.login.title') }}</h3>
+                                <h3 class="card-title">
+                                    {{ trans('labels.auth.login.title') }}
+                                </h3>
 
                                 <form action="{{ route('login') }}" method="POST">
                                     @csrf
 
                                     <div class="form-group">
                                         <label for="email">{{ trans('labels.auth.login.form.login') }}</label>
-                                        <input id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ trans('labels.auth.login.form.login') }}">
+                                        <input id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ trans('labels.auth.login.form.login') }}" value="{{ old('email') }}" required autofocus>
 
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -29,7 +31,7 @@
 
                                     <div class="form-group">
                                         <label for="password">{{ trans('labels.auth.login.form.password') }}</label>
-                                        <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ trans('labels.auth.login.form.password') }}">
+                                        <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ trans('labels.auth.login.form.password') }}" required>
 
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User\User;
 use App\Providers\RouteServiceProvider;
+use App\Repositories\Frontend\TecDoc\AssemblyGroupRepository;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller
+class RegisterController extends AuthController
 {
     /*
     |--------------------------------------------------------------------------
@@ -34,10 +34,13 @@ class RegisterController extends Controller
     /**
      * Create a new controller instance.
      *
+     * @param AssemblyGroupRepository $assemblyGroupRepository
      * @return void
      */
-    public function __construct()
+    public function __construct(AssemblyGroupRepository $assemblyGroupRepository)
     {
+        parent::__construct($assemblyGroupRepository);
+
         $this->middleware('guest');
     }
 
