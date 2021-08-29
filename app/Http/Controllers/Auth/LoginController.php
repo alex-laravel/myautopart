@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Repositories\Frontend\TecDoc\AssemblyGroupRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginController extends Controller
+class LoginController extends AuthController
 {
     /*
     |--------------------------------------------------------------------------
@@ -31,10 +31,13 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      *
+     * @param AssemblyGroupRepository $assemblyGroupRepository
      * @return void
      */
-    public function __construct()
+    public function __construct(AssemblyGroupRepository $assemblyGroupRepository)
     {
+        parent::__construct($assemblyGroupRepository);
+
         $this->middleware('guest')->except('logout');
     }
 }
