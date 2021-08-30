@@ -25,8 +25,7 @@
 
                             @foreach ($sharedAssemblyGroups as $assemblyGroup)
                                 <li class="departments__item {{ count($assemblyGroup['assemblyGroups']) ? 'departments__item--submenu--megamenu departments__item--has-submenu' : '' }}">
-{{--                                    <a href="{{ route('frontend.assemblies.index', $assemblyGroup['assemblyGroupNodeId']) }}" class="departments__item-link">--}}
-                                    <a href="#" class="departments__item-link">
+                                    <a href="{{ route('frontend.parts.category', $assemblyGroup['shortCutId']) }}" class="departments__item-link">
                                         {{ $assemblyGroup['shortCutName'] }}
 
                                         @if(count($assemblyGroup['assemblyGroups']))
@@ -49,7 +48,7 @@
                                                         <div class="col-1of5 mb-4">
                                                             <ul class="megamenu__links megamenu-links megamenu-links--root">
                                                                 <li class="megamenu-links__item {{ array_key_exists('children', $assemblyGroupFirstChild) && count($assemblyGroupFirstChild['children']) ? 'megamenu-links__item--has-submenu' : '' }}">
-                                                                    <a href="{{ route('frontend.assemblies.index', $assemblyGroupFirstChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
+                                                                    <a href="{{ route('frontend.parts.assembly', $assemblyGroupFirstChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
                                                                         {{ $assemblyGroupFirstChild['assemblyGroupName'] }}
                                                                     </a>
 
@@ -57,7 +56,7 @@
                                                                         <ul class="megamenu-links">
                                                                             @foreach ($assemblyGroupFirstChild['children'] as $assemblyGroupSecondChild)
                                                                                 <li class="megamenu-links__item">
-                                                                                    <a href="{{ route('frontend.assemblies.index', $assemblyGroupSecondChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
+                                                                                    <a href="{{ route('frontend.parts.assembly', $assemblyGroupSecondChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
                                                                                         {{ $assemblyGroupSecondChild['assemblyGroupName'] }}
                                                                                     </a>
 
@@ -65,7 +64,7 @@
                                                                                         <ul class="megamenu-links border-0 pl-3">
                                                                                             @foreach ($assemblyGroupSecondChild['children'] as $assemblyGroupThirdChild)
                                                                                                 <li class="megamenu-links__item">
-                                                                                                    <a href="{{ route('frontend.assemblies.index', $assemblyGroupThirdChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
+                                                                                                    <a href="{{ route('frontend.parts.assembly', $assemblyGroupThirdChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
                                                                                                         <i class="fas fa-caret-right d-inline-block mr-2"></i>
                                                                                                         {{ $assemblyGroupThirdChild['assemblyGroupName'] }}
                                                                                                     </a>
@@ -74,7 +73,7 @@
                                                                                                         <ul class="megamenu-links border-0 pl-5">
                                                                                                             @foreach ($assemblyGroupThirdChild['children'] as $assemblyGroupFourthChild)
                                                                                                                 <li class="megamenu-links__item">
-                                                                                                                    <a href="{{ route('frontend.assemblies.index', $assemblyGroupFourthChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
+                                                                                                                    <a href="{{ route('frontend.parts.assembly', $assemblyGroupFourthChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
                                                                                                                         <i class="fas fa-caret-right d-inline-block mr-2"></i>
                                                                                                                         {{ $assemblyGroupFourthChild['assemblyGroupName'] }}
                                                                                                                     </a>
@@ -83,7 +82,7 @@
                                                                                                                         <ul class="megamenu-links border-0 pl-5">
                                                                                                                             @foreach ($assemblyGroupFourthChild['children'] as $assemblyGroupFifthChild)
                                                                                                                                 <li class="megamenu-links__item">
-                                                                                                                                    <a href="{{ route('frontend.assemblies.index', $assemblyGroupFifthChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
+                                                                                                                                    <a href="{{ route('frontend.parts.assembly', $assemblyGroupFifthChild['assemblyGroupNodeId']) }}" class="megamenu-links__item-link">
                                                                                                                                         <i class="fas fa-caret-right d-inline-block mr-2"></i>
                                                                                                                                         {{ $assemblyGroupFifthChild['assemblyGroupName'] }}
                                                                                                                                     </a>

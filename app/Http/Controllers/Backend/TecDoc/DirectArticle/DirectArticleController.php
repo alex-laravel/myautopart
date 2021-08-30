@@ -35,7 +35,7 @@ class DirectArticleController extends TecDocController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,7 +46,7 @@ class DirectArticleController extends TecDocController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TecDoc\DirectArticle\DirectArticle  $directArticle
+     * @param \App\Models\TecDoc\DirectArticle\DirectArticle $directArticle
      * @return \Illuminate\Http\Response
      */
     public function show(DirectArticle $directArticle)
@@ -57,7 +57,7 @@ class DirectArticleController extends TecDocController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TecDoc\DirectArticle\DirectArticle  $directArticle
+     * @param \App\Models\TecDoc\DirectArticle\DirectArticle $directArticle
      * @return \Illuminate\Http\Response
      */
     public function edit(DirectArticle $directArticle)
@@ -68,8 +68,8 @@ class DirectArticleController extends TecDocController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TecDoc\DirectArticle\DirectArticle  $directArticle
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\TecDoc\DirectArticle\DirectArticle $directArticle
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, DirectArticle $directArticle)
@@ -80,7 +80,7 @@ class DirectArticleController extends TecDocController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TecDoc\DirectArticle\DirectArticle  $directArticle
+     * @param \App\Models\TecDoc\DirectArticle\DirectArticle $directArticle
      * @return \Illuminate\Http\Response
      */
     public function destroy(DirectArticle $directArticle)
@@ -95,9 +95,12 @@ class DirectArticleController extends TecDocController
     {
         ini_set('max_execution_time', 0);
 
-        DirectArticle::truncate();
+//        DirectArticle::truncate();
 
-        $vehicles = Vehicle::orderBy('carId')->get();
+//        $vehicles = Vehicle::where('carId', '>', 1016989)->orderBy('carId')->get();
+//        $assemblyGroups = AssemblyGroup::where('assemblyGroupNodeId', '>', 100027)->where('hasChilds', false)->orderBy('assemblyGroupNodeId')->get();
+
+        $vehicles = Vehicle::where('carId', '>', 1150)->orderBy('carId')->get();
         $assemblyGroups = AssemblyGroup::where('hasChilds', false)->orderBy('assemblyGroupNodeId')->get();
 
         $assemblyGroupsUnique = [];
@@ -106,8 +109,16 @@ class DirectArticleController extends TecDocController
             $assemblyGroupsUnique[$assemblyGroup->assemblyGroupNodeId] = $assemblyGroup;
         }
 
-        foreach ($assemblyGroupsUnique as $assemblyGroupUnique) {
-            foreach ($vehicles as $vehicle) {
+        foreach ($vehicles as $vehicle) {
+            foreach ($assemblyGroupsUnique as $assemblyGroupUnique) {
+                if ($vehicle->carType === 'P') {
+                    $vehicle->carType = 'V';
+                }
+
+                if ($vehicle->carType !== $assemblyGroupUnique->linkingTargetType) {
+                    continue;
+                }
+
                 Artisan::call('tecdoc:direct-articles', [
                     'linkingTargetId' => $vehicle->carId,
                     'linkingTargetType' => $assemblyGroupUnique->linkingTargetType,
@@ -119,8 +130,8 @@ class DirectArticleController extends TecDocController
 
                 if (!$this->hasSuccessResponse($output)) {
                     \Log::alert('FAIL DIRECT ARTICLES RESPONSE FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $assemblyGroupUnique->linkingTargetType . '] AND assemblyGroupId [' . $assemblyGroupUnique->assemblyGroupNodeId . ']!');
-                    \Log::alert($output['status'] . ' - ' . $output['statusText'] . '!');
-                    return redirect()->back();
+                    \Log::alert($output);
+                    continue;
                 }
 
                 $output = $this->getResponseDataAsArray($output);
@@ -138,7 +149,7 @@ class DirectArticleController extends TecDocController
 
                 DirectArticle::insert($output);
 
-                \Log::info('DIRECT ARTICLES FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $assemblyGroupUnique->linkingTargetType . '] AND brandIds [' . $assemblyGroupUnique->assemblyGroupNodeId . '] CREATED!');
+                \Log::info('DIRECT ARTICLES FOR linkingTargetId [' . $vehicle->carId . '] AND linkingTargetType [' . $assemblyGroupUnique->linkingTargetType . '] AND assemblyGroupId [' . $assemblyGroupUnique->assemblyGroupNodeId . '] CREATED!');
             }
         }
 
