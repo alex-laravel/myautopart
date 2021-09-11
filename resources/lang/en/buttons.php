@@ -39,7 +39,7 @@ return [
 
     'frontend' => [
         'shop' => [
-            'add_to_cart' => 'Добавить в корзину'
+            'add_to_cart' => 'Add to cart'
         ]
     ]
 ];

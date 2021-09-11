@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\AutoPart;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
+use App\Models\TecDoc\DirectArticleDetails\DirectArticleDetails;
 use Illuminate\Contracts\View\View;
 
 class AutoPartController extends FrontendController
@@ -106,6 +107,14 @@ class AutoPartController extends FrontendController
      */
     public function partDetails($partId)
     {
-        return view('frontend.auto-parts.part-details');
+        $part = DirectArticleDetails::where('articleId', (int)$partId)->first();
+
+        if (!$part) {
+            abort(404);
+        }
+
+        return view('frontend.auto-parts.part-details', [
+            'part' => $part
+        ]);
     }
 }

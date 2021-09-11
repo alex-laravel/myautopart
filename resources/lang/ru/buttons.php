@@ -41,7 +41,7 @@ return [
 
     'frontend' => [
         'shop' => [
-            'add_to_cart' => 'Add to cart'
+            'add_to_cart' => 'Купить'
         ]
     ]
 ];

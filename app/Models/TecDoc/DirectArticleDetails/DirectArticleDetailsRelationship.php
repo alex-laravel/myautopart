@@ -12,7 +12,7 @@ trait DirectArticleDetailsRelationship
     /**
      * @return BelongsTo
      */
-    public function vehicle()
+    public function article()
     {
         return $this->belongsTo(DirectArticle::class, 'articleId', 'articleId');
     }
