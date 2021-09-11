@@ -56,7 +56,7 @@
     .search__decor {
         position: absolute;
         display: flex;
-        bottom: -$local-shadow-size;
+        bottom: -$local-shadow-size + 1px;
         height: $local-height + $local-shadow-size;
         width: calc(100% + #{$local-shadow-size * 2});
         z-index: -1;
