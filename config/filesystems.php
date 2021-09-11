@@ -67,6 +67,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'articles' => [
+            'driver' => 'local',
+            'root' => storage_path('../public/assets/articles'),
+            'url' => env('APP_URL') . '/assets/articles/',
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*
