@@ -561,6 +561,15 @@ return [
             ]
         ],
 
+        'cart' => [
+            'title' => 'Shopping Cart',
+            'total' => 'Total',
+            'button' => [
+                'view_cart' => 'View Cart',
+                'checkout' => 'Checkout',
+            ]
+        ],
+
         'product' => [
             'original_number' => 'Original Number'
         ]

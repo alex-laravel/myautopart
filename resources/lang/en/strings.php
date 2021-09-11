@@ -13,6 +13,10 @@ return [
     |
     */
 
+    'general' => [
+        'hrn' => 'hrn.'
+    ],
+
     'backend' => [
 
         'distributor_products' => [

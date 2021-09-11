@@ -15,8 +15,8 @@
             </svg>
             <span class="indicator__counter">{{ count(\App\Facades\Cart::getCart()) }}</span>
         </span>
-        <span class="indicator__title">Shopping Cart</span>
-        <span class="indicator__value">{{ $total }} грн.</span>
+        <span class="indicator__title">{{ trans('labels.frontend.cart.title') }}</span>
+        <span class="indicator__value">{{ $total }} {{ trans('strings.general.hrn') }}</span>
     </a>
     <div class="indicator__content">
         <div class="dropcart">
@@ -24,13 +24,14 @@
                 @foreach(\App\Facades\Cart::getCart() as $productId => $productDetails)
                     <li class="dropcart__item">
                         <div class="dropcart__item-image image image--type--product">
-                            <a class="image__body" href="product-full.html">
+                            <a class="image__body" href="{{ route('frontend.parts.details', $productDetails['id']) }}">
                                 <img class="image__tag" src="images/products/product-4-70x70.jpg" alt="">
                             </a>
                         </div>
+
                         <div class="dropcart__item-info">
                             <div class="dropcart__item-name">
-                                <a href="product-full.html">{{ $productDetails['title'] }}</a>
+                                <a href="{{ route('frontend.parts.details', $productDetails['id']) }}">{{ $productDetails['title'] }}</a>
                             </div>
                             <ul class="dropcart__item-features">
                                 <li>Color: Yellow</li>
@@ -66,14 +67,15 @@
 {{--                        <td>$0.00</td>--}}
 {{--                    </tr>--}}
                     <tr>
-                        <th>Total</th>
-                        <td>{{ $total }} грн.</td>
+                        <th>{{ trans('labels.frontend.cart.total') }}</th>
+                        <td>{{ $total }} {{ trans('strings.general.hrn') }}</td>
                     </tr>
                 </table>
             </div>
+
             <div class="dropcart__actions">
-                <a href="{{ route('frontend.cart.index') }}" class="btn btn-secondary">View Cart</a>
-                <a href="{{ route('frontend.checkout.index') }}" class="btn btn-primary">Checkout</a>
+                <a href="{{ route('frontend.cart.index') }}" class="btn btn-secondary">{{ trans('labels.frontend.cart.button.view_cart') }}</a>
+                <a href="{{ route('frontend.checkout.index') }}" class="btn btn-primary">{{ trans('labels.frontend.cart.button.checkout') }}</a>
             </div>
         </div>
     </div>

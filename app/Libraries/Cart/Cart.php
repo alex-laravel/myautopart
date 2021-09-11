@@ -35,7 +35,7 @@ class Cart
             return true;
         }
 
-        $cart[$productId] = self::createProduct();
+        $cart[$productId] = self::createProduct($productId);
 
         self::cartPut($cart);
 
@@ -99,12 +99,14 @@ class Cart
     }
 
     /**
+     * @param integer $productId
      * @return array
      */
-    private static function createProduct()
+    private static function createProduct($productId)
     {
         return [
-            'title' => 'Product Title',
+            'id' => $productId,
+            'title' => 'Product ID ' . $productId,
             'price' => 50,
             'quantity' => 1
         ];
