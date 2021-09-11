@@ -1619,7 +1619,7 @@
 .search__decor {
   position: absolute;
   display: flex;
-  bottom: -10px;
+  bottom: -9px;
   height: 34px;
   width: calc(100% + 20px);
   z-index: -1;

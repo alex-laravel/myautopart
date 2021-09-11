@@ -8997,7 +8997,7 @@ select.form-control::-ms-expand {
 
 .widget-categories__item--open .widget-categories__container {
   opacity: 1;
-  height: auto !important;
+  height: auto;
 }
 .widget-categories__item--open .widget-categories__expander:after {
   transform: none;
