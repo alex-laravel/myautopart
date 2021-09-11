@@ -107,7 +107,7 @@ class AutoPartController extends FrontendController
      */
     public function partDetails($partId)
     {
-        $part = DirectArticleDetails::where('articleId', (int)$partId)->first();
+        $part = DirectArticleDetails::with('documents')->where('articleId', (int)$partId)->first();
 
         if (!$part) {
             abort(404);
