@@ -182,6 +182,7 @@ return [
          */
         App\Providers\AutoFacadesServiceProvider::class,
         App\Providers\PriceServiceProvider::class,
+        App\Providers\CartServiceProvider::class,
     ],
 
     /*
@@ -241,6 +242,7 @@ return [
 //        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Cart' => \App\Facades\Cart::class
     ],
 
 ];

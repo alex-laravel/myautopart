@@ -3,7 +3,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\TecDoc\AssemblyGroupRepository;
 use App\Repositories\Frontend\TecDoc\ManufacturerRepository;
