@@ -21,7 +21,7 @@ Route::get('/parts/auto/{vehicleId}', [AutoPartController::class, 'byVehicle'])-
 Route::get('/parts/category/{categoryId}', [AutoPartController::class, 'byCategory'])->name('parts.category');
 Route::get('/parts/assembly/{assemblyId}', [AutoPartController::class, 'byAssembly'])->name('parts.assembly');
 Route::get('/parts/brand/{brandId}', [AutoPartController::class, 'byBrand'])->name('parts.brand');
-Route::get('/parts/{partId}/details', [AutoPartController::class, 'partDetails'])->name('parts.details');
+Route::get('/parts/details/{partId}', [AutoPartController::class, 'partDetails'])->name('parts.details');
 
 Route::get('/garage/{manufacturerId}/{modelSeriesId}/{vehicleId}/activate', [GarageController::class, 'vehicleActivate'])->name('garage.vehicle.activate');
 Route::get('/garage/{manufacturerId}/{modelSeriesId}/{vehicleId}/delete', [GarageController::class, 'vehicleDelete'])->name('garage.vehicle.delete');

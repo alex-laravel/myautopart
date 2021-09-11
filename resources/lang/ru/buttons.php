@@ -37,5 +37,11 @@ return [
         'password_reset' => 'Reset Password',
         'password_reset_link' => 'Send Password Reset Link',
         'password_confirm' => 'Confirm Password',
+    ],
+
+    'frontend' => [
+        'shop' => [
+            'add_to_cart' => 'Add to cart'
+        ]
     ]
 ];

@@ -36,15 +36,19 @@ class TecDocDirectArticlesQueueCommand extends Command
     {
         ini_set('max_execution_time', 0);
 
-        DirectArticle::truncate();
+//        DirectArticle::truncate();
 
         $vehicleIds = Vehicle::orderBy('carId')->get()->pluck('id')->toArray();
+
+        $index = 0;
 
         foreach (array_chunk($vehicleIds, 100) as $vehicleIdsChunk) {
             foreach ($vehicleIdsChunk as $vehicleId) {
                 DirectArticleJob::dispatch($vehicleId);
 
-                \Log::debug('PUSHED JOB FOR VEHICLE ID [' . $vehicleId . '].');
+                $index++;
+
+                \Log::debug('PUSHED JOB FOR ID [' . $index . '] VEHICLE ID [' . $vehicleId . '].');
             }
 
             unset($vehicleIdsChunk);

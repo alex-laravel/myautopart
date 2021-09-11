@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DirectArticle extends Model
 {
     use HasFactory;
+    use DirectArticleRelationship;
 
     /**
      * @var bool

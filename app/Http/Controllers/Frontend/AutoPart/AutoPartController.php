@@ -35,7 +35,7 @@ class AutoPartController extends FrontendController
             abort(404);
         }
 
-        $parts = DirectArticle::where('carId', $vehicle->carId)->paginate(self::PARTS_PACKAGE_LIMIT);
+        $parts = DirectArticle::with('details')->where('carId', $vehicle->carId)->paginate(self::PARTS_PACKAGE_LIMIT);
 
         return view('frontend.auto-parts.vehicle', [
             'manufacturerId' => $manufacturer->manuId,
@@ -57,7 +57,7 @@ class AutoPartController extends FrontendController
     {
         $assemblyGroupNodeIds = $this->assemblyGroupRepository->getLowerAssemblyGroupIdsByParentShortCutId($categoryId);
 
-        $parts = DirectArticle::whereIn('assemblyGroupNodeId', $assemblyGroupNodeIds)->paginate(self::PARTS_PACKAGE_LIMIT);
+        $parts = DirectArticle::with('details')->whereIn('assemblyGroupNodeId', $assemblyGroupNodeIds)->paginate(self::PARTS_PACKAGE_LIMIT);
 
         return view('frontend.auto-parts.category', [
             'parts' => $parts
@@ -91,12 +91,21 @@ class AutoPartController extends FrontendController
             abort(404);
         }
 
-        $parts = DirectArticle::where('brandNo', (int)$brandId)->paginate(self::PARTS_PACKAGE_LIMIT);
+        $parts = DirectArticle::with('details')->where('brandNo', (int)$brandId)->paginate(self::PARTS_PACKAGE_LIMIT);
 
         return view('frontend.auto-parts.brand', [
             'brand' => $brand,
             'parts' => $parts,
             'assemblyGroups' => []
         ]);
+    }
+
+    /**
+     * @param integer $partId
+     * @return View
+     */
+    public function partDetails($partId)
+    {
+        return view('frontend.auto-parts.part-details');
     }
 }

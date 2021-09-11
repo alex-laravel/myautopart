@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DirectArticleDetails extends Model
 {
     use HasFactory;
+    use DirectArticleDetailsRelationship;
 
     /**
      * @var string

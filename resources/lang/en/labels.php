@@ -560,5 +560,9 @@ return [
                 'search' => 'Search'
             ]
         ],
+
+        'product' => [
+            'original_number' => 'Original Number'
+        ]
     ]
 ];
