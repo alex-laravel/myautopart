@@ -111,7 +111,11 @@ return [
             ],
 
             'direct-articles' => [
-                'title' => 'Непосредственные Статьи',
+                'title' => 'Запчасти',
+            ],
+
+            'direct-article-details' => [
+                'title' => 'Детализация Запчастей',
             ],
 
             'version' => [

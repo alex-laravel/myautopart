@@ -120,6 +120,10 @@ return [
                 'title' => 'Direct Articles',
             ],
 
+            'direct-article-details' => [
+                'title' => 'Direct Article Details',
+            ],
+
             'version' => [
                 'title' => 'Version',
             ]

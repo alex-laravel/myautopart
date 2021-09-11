@@ -15,6 +15,14 @@
 {{--        <link rel="stylesheet" href="redparts/vendor/photoswipe/default-skin/default-skin.css">--}}
     </head>
     <body>
+<div class="container">
+    @if(session('success'))
+        <div class="alert alert-success">
+            SESSION SUCCESS: {{ session('success') }}
+        </div>
+    @endif
+</div>
+
         <div class="site">
             @include('frontend.include.header-mobile')
             @include('frontend.include.header')

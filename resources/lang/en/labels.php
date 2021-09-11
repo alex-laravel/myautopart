@@ -334,6 +334,28 @@ return [
             ],
         ],
 
+        'direct-article-details' => [
+            'management' => 'Direct Article Details Management',
+            'list' => 'List of Direct Article Details',
+            'create' => 'Create Direct Article Details',
+            'edit' => 'Edit Direct Article Details',
+            'view' => 'View Direct Article Details',
+            'table' => [
+
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+
+                    ],
+                ],
+            ],
+        ],
+
         'generic-articles' => [
             'management' => 'Generic Articles Management',
             'list' => 'List of Generic Articles',
