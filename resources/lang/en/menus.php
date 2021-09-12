@@ -187,6 +187,45 @@ return [
             ]
         ],
 
+        'footer' => [
+            'contacts' => [
+                'title' => 'Contact Us',
+
+                'labels' => [
+                    'email' => 'Email Address',
+                    'phone' => 'Phone Number',
+                    'support' => 'Support',
+                    'online_orders ' => 'Online Orders',
+                ]
+            ],
+
+            'information' => [
+                'title' => 'Information',
+
+                'labels' => [
+                ]
+            ],
+
+            'account' => [
+                'title' => 'My Account',
+
+                'labels' => [
+                    'login' => 'Login',
+                    'register' => 'Register',
+                    'dashboard' => 'Dashboard',
+                    'garage' => 'Garage',
+                    'orders' => 'Order History',
+                ]
+            ],
+
+            'newsletter' => [
+                'title' => 'Newsletter',
+
+                'labels' => [
+                ]
+            ]
+        ],
+
         'pages' => [
             'about' => [
                 'title' => 'About Us',

@@ -181,6 +181,45 @@ return [
             ]
         ],
 
+        'footer' => [
+            'contacts' => [
+                'title' => 'Связаться с нами',
+
+                'labels' => [
+                    'email' => 'Email',
+                    'phone' => 'Телефон',
+                    'support' => 'Поддержка',
+                    'online_orders' => 'Интернет заказы',
+                ]
+            ],
+
+            'information' => [
+                'title' => 'Информация',
+
+                'labels' => [
+                ]
+            ],
+
+            'account' => [
+                'title' => 'Мой кабинет',
+
+                'labels' => [
+                    'login' => 'Вход',
+                    'register' => 'Регистрация',
+                    'dashboard' => 'Дашборд',
+                    'garage' => 'Гараж',
+                    'orders' => 'История заказов',
+                ]
+            ],
+
+            'newsletter' => [
+                'title' => 'Рассылка',
+
+                'labels' => [
+                ]
+            ]
+        ],
+
         'pages' => [
             'about' => [
                 'title' => 'О нас',

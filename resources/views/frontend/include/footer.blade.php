@@ -7,39 +7,42 @@
                 <div class="decor__center"></div>
             </div>
         </div>
+
         <div class="site-footer__widgets">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-xl-4">
                         <div class="site-footer__widget footer-contacts">
-                            <h5 class="footer-contacts__title">Contact Us</h5>
+                            <h5 class="footer-contacts__title">{{ trans('menus.frontend.footer.contacts.title') }}</h5>
                             <div class="footer-contacts__text">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing
                                 elit. Integer in feugiat lorem.
                             </div>
+
                             <address class="footer-contacts__contacts">
                                 <dl>
-                                    <dt>Phone Number</dt>
-                                    <dd>+1 (800) 060-07-30</dd>
+                                    <dt>{{ trans('menus.frontend.footer.contacts.labels.phone') }}</dt>
+                                    <dd>{{ config('contacts.phone') }}</dd>
                                 </dl>
                                 <dl>
-                                    <dt>Email Address</dt>
-                                    <dd>red-parts@example.com</dd>
+                                    <dt>{{ trans('menus.frontend.footer.contacts.labels.email') }}</dt>
+                                    <dd>{{ config('contacts.email') }}</dd>
                                 </dl>
                                 <dl>
-                                    <dt>Our Location</dt>
-                                    <dd>715 Fake Street, New York 10021 USA</dd>
+                                    <dt>{{ trans('menus.frontend.footer.contacts.labels.support') }}</dt>
+                                    <dd>Пн - Пт 10:00 - 18:00</dd>
                                 </dl>
                                 <dl>
-                                    <dt>Working Hours</dt>
-                                    <dd>Mon-Sat 10:00pm - 7:00pm</dd>
+                                    <dt>{{ trans('menus.frontend.footer.contacts.labels.online_orders') }}</dt>
+                                    <dd>24/7</dd>
                                 </dl>
                             </address>
                         </div>
                     </div>
+
                     <div class="col-6 col-md-3 col-xl-2">
                         <div class="site-footer__widget footer-links">
-                            <h5 class="footer-links__title">Information</h5>
+                            <h5 class="footer-links__title">{{ trans('menus.frontend.footer.information.title') }}</h5>
                             <ul class="footer-links__list">
                                 <li class="footer-links__item"><a href="{{ route('frontend.pages.about') }}" class="footer-links__link">{{ trans('menus.frontend.pages.about.title') }}</a></li>
                                 <li class="footer-links__item"><a href="{{ route('frontend.pages.delivery') }}" class="footer-links__link">{{ trans('menus.frontend.pages.delivery.title') }}</a></li>
@@ -51,23 +54,26 @@
                             </ul>
                         </div>
                     </div>
+
                     <div class="col-6 col-md-3 col-xl-2">
                         <div class="site-footer__widget footer-links">
-                            <h5 class="footer-links__title">My Account</h5>
+                            <h5 class="footer-links__title">{{ trans('menus.frontend.footer.account.title') }}</h5>
                             <ul class="footer-links__list">
-                                <li class="footer-links__item"><a href="" class="footer-links__link">Store Location</a></li>
-                                <li class="footer-links__item"><a href="" class="footer-links__link">Order History</a></li>
-                                <li class="footer-links__item"><a href="" class="footer-links__link">Wish List</a></li>
-                                <li class="footer-links__item"><a href="" class="footer-links__link">Newsletter</a></li>
-                                <li class="footer-links__item"><a href="" class="footer-links__link">Specials</a></li>
-                                <li class="footer-links__item"><a href="" class="footer-links__link">Gift Certificates</a></li>
-                                <li class="footer-links__item"><a href="" class="footer-links__link">Affiliate</a></li>
+                                @guest
+                                    <li class="footer-links__item"><a href="{{ route('login') }}" class="footer-links__link">{{ trans('menus.frontend.footer.account.labels.login') }}</a></li>
+                                    <li class="footer-links__item"><a href="{{ route('register') }}" class="footer-links__link">{{ trans('menus.frontend.footer.account.labels.register') }}</a></li>
+                                @else
+                                    <li class="footer-links__item"><a href="{{ route('frontend.account.dashboard') }}" class="footer-links__link">{{ trans('menus.frontend.footer.account.labels.dashboard') }}</a></li>
+                                    <li class="footer-links__item"><a href="{{ route('frontend.account.garage') }}" class="footer-links__link">{{ trans('menus.frontend.footer.account.labels.garage') }}</a></li>
+                                    <li class="footer-links__item"><a href="{{ route('frontend.account.orders') }}" class="footer-links__link">{{ trans('menus.frontend.footer.account.labels.orders') }}</a></li>
+                                @endguest
                             </ul>
                         </div>
                     </div>
+
                     <div class="col-12 col-md-6 col-xl-4">
                         <div class="site-footer__widget footer-newsletter">
-                            <h5 class="footer-newsletter__title">Newsletter</h5>
+                            <h5 class="footer-newsletter__title">{{ trans('menus.frontend.footer.newsletter.title') }}</h5>
                             <div class="footer-newsletter__text">
                                 Enter your email address below to subscribe to our newsletter and keep up to date with discounts and special offers.
                             </div>
@@ -93,6 +99,7 @@
                 </div>
             </div>
         </div>
+
         <div class="site-footer__bottom">
             <div class="container">
                 <div class="site-footer__bottom-row">
