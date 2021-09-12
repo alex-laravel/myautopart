@@ -586,6 +586,7 @@ return [
             ],
 
             'garage' => [
+                'engine' => 'Engine',
                 'no_auto' => 'You don\'t have any added cars yet'
             ],
 

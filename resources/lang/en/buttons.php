@@ -49,6 +49,7 @@ return [
             ],
 
             'garage' => [
+                'show_parts' => 'Show Parts',
                 'add_vehicle' => 'Add A Vehicle'
             ],
 

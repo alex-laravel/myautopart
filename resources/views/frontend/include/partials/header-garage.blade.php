@@ -22,15 +22,15 @@
                                 {{ $garageVehicle['manufacturerName'] }} / {{ $garageVehicle['manufacturerId'] }} -
                                 {{ $garageVehicle['modelSeriesName'] }} / {{ $garageVehicle['modelSeriesId'] }}</span>
                             <span class="vehicles-list__item-details">
-                                {{ $garageVehicle['vehicleName'] }} / {{ $garageVehicle['vehicleId'] }}
+                                {{ trans('labels.frontend.account.garage.engine') }} {{ $garageVehicle['vehicleName'] }} / {{ $garageVehicle['vehicleId'] }}
                             </span>
                         </span>
 
-                        <button type="button" class="vehicles-list__item-remove">
+                        <a href="{{ route('frontend.garage.vehicle.delete', [$garageVehicle['manufacturerId'], $garageVehicle['modelSeriesId'], $garageVehicle['vehicleId']]) }}" role="button" class="vehicles-list__item-remove">
                             <svg width="16" height="16">
                                 <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z" />
                             </svg>
-                        </button>
+                        </a>
                     </label>
                     @endforeach
                 @else

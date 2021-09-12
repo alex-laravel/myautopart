@@ -30,13 +30,13 @@
                                                         </div>
 
                                                         <div class="vehicles-list__item-details">
-                                                            Engine
+                                                            {{ trans('labels.frontend.account.garage.engine') }}
                                                             {{ $garageVehicle['vehicleName'] }}
                                                         </div>
 
                                                         <div class="vehicles-list__item-links">
                                                             <a href="{{ route('frontend.parts.vehicle', $garageVehicle['vehicleId']) }}">
-                                                                Show Parts
+                                                                {{ trans('buttons.frontend.account.garage.show_parts') }}
                                                             </a>
                                                         </div>
                                                     </div>
