@@ -84,7 +84,13 @@
         </div>
         <div class="product-card__footer">
             <div class="product-card__prices">
-                <div class="product-card__price product-card__price--current">$19.00</div>
+                <div class="product-card__price product-card__price--current">
+                    @if($part->products)
+                        @foreach ($part->products as $product)
+                            <span>{{ $product['price'] }} {{ trans('strings.general.hrn') }}</span>
+                        @endforeach
+                    @endif
+                </div>
             </div>
 
             <a class="product-card__addtocart-icon" href="{{ route('frontend.cart.add', $part->id) }}" role="button" aria-label="{{ trans('buttons.frontend.shop.add_to_cart') }}">

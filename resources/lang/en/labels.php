@@ -575,7 +575,12 @@ return [
         ],
 
         'product' => [
-            'original_number' => 'Original Number'
+            'original_number' => 'Original Number',
+            'brand' => 'Brand',
+            'status' => [
+                'in_stock' => 'In Stock',
+                'out_of_stock' => 'Out of Stock'
+            ]
         ],
 
         'account' => [

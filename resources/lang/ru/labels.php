@@ -577,7 +577,12 @@ return [
         ],
 
         'product' => [
-            'original_number' => 'Оригинальный номер запчасти'
+            'original_number' => 'Оригинальный номер запчасти',
+            'brand' => 'Бренд',
+            'status' => [
+                'in_stock' => 'в наличии',
+                'out_of_stock' => 'нет в наличии'
+            ]
         ],
 
         'account' => [

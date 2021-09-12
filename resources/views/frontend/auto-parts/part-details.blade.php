@@ -119,19 +119,36 @@
                                             <div class="product__badge tag-badge tag-badge--sale">Sale</div>
                                             <div class="product__prices-stock">
                                                 <div class="product__prices">
-                                                    <div class="product__price product__price--current">$1,499.00</div>
-                                                </div>
-                                                <div class="status-badge status-badge--style--success product__stock status-badge--has-text">
-                                                    <div class="status-badge__body">
-                                                        <div class="status-badge__text">In Stock</div>
-                                                        <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="In&#x20;Stock"></div>
+                                                    <div class="product__price product__price--current">
+                                                        @if($part->products)
+                                                            @foreach ($part->products as $product)
+                                                                <span>{{ $product['price'] }} {{ trans('strings.general.hrn') }}</span>
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                 </div>
+
+                                                @if($part->products)
+                                                    <div class="status-badge status-badge--style--success product__stock status-badge--has-text">
+                                                        <div class="status-badge__body">
+                                                            <div class="status-badge__text text-nowrap">{{ trans('labels.frontend.product.status.in_stock') }}</div>
+                                                            <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="{{ trans('labels.frontend.product.status.in_stock') }}"></div>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="status-badge status-badge--style--failure product__stock status-badge--has-text">
+                                                        <div class="status-badge__body">
+                                                            <div class="status-badge__text text-nowrap">{{ trans('labels.frontend.product.status.out_of_stock') }}</div>
+                                                            <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="{{ trans('labels.frontend.product.status.out_of_stock') }}"></div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+
                                             </div>
                                             <div class="product__meta">
                                                 <table>
                                                     <tr>
-                                                        <th>Original Number</th>
+                                                        <th>{{ trans('labels.frontend.product.original_number') }}</th>
                                                         <td>{{ $part->articleNo }}</td>
                                                     </tr>
 {{--                                                    <tr>--}}
@@ -139,7 +156,7 @@
 {{--                                                        <td>201902-0057</td>--}}
 {{--                                                    </tr>--}}
                                                     <tr>
-                                                        <th>Brand</th>
+                                                        <th>{{ trans('labels.frontend.product.brand') }}</th>
                                                         <td><a href="{{ route('frontend.parts.brand', $part->brandNo) }}">{{ $part->brandName }}</a></td>
                                                     </tr>
 {{--                                                    <tr>--}}

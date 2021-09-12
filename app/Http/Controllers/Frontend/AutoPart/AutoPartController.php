@@ -58,7 +58,10 @@ class AutoPartController extends FrontendController
     {
         $assemblyGroupNodeIds = $this->assemblyGroupRepository->getLowerAssemblyGroupIdsByParentShortCutId($categoryId);
 
-        $parts = DirectArticle::with('details')->whereIn('assemblyGroupNodeId', $assemblyGroupNodeIds)->paginate(self::PARTS_PACKAGE_LIMIT);
+        $parts = DirectArticle::with('details')
+            ->with('products')
+            ->whereIn('assemblyGroupNodeId', $assemblyGroupNodeIds)
+            ->paginate(self::PARTS_PACKAGE_LIMIT);
 
         return view('frontend.auto-parts.category', [
             'parts' => $parts
@@ -107,7 +110,10 @@ class AutoPartController extends FrontendController
      */
     public function partDetails($partId)
     {
-        $part = DirectArticleDetails::with('documents')->where('articleId', (int)$partId)->first();
+        $part = DirectArticleDetails::with('documents')
+            ->with('products')
+            ->where('articleId', (int)$partId)
+            ->first();
 
         if (!$part) {
             abort(404);
