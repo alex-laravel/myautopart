@@ -3,10 +3,11 @@
     <div class="vehicle-picker__panel vehicle-picker__panel--list vehicle-picker__panel--active" data-panel="list">
         <div class="vehicle-picker__panel-body">
             <div class="vehicle-picker__text">
-                Select a vehicle to find exact fit parts!!!
+                {{ trans('strings.frontend.general.garage') }}
             </div>
+
             <div class="vehicles-list">
-                <div class="vehicles-list__body">
+                <div class="vehicles-list__body m-0">
                 @if (count(\App\Facades\Garage::getVehicles()))
                     @foreach (\App\Facades\Garage::getVehicles() as $garageVehicle)
                     <label class="vehicles-list__item">
@@ -33,18 +34,23 @@
                     </label>
                     @endforeach
                 @else
-                    <small class="d-block">нет выбранных автомобилей</small>
+                    <small class="d-block py-3">{{ trans('labels.frontend.account.garage.no_auto') }}</small>
+                @endif
+
 {{--                        <a href="{{ route('frontend.garage.vehicle.activate', [$garageVehicle['manufacturerId'], $garageVehicle['modelSeriesId'], $garageVehicle['vehicleId']]) }}" class="badge bg-dark" style="width: 24px">A</a>--}}
 {{--                        <a href="{{ route('frontend.garage.vehicle.delete', [$garageVehicle['manufacturerId'], $garageVehicle['modelSeriesId'], $garageVehicle['vehicleId']]) }}" class="badge bg-danger" style="width: 24px">D</a>--}}
-                @endif
 
                 </div>
             </div>
+
             <div class="vehicle-picker__actions">
-                <button type="button" class="btn btn-primary btn-sm" data-to-panel="form">Add A Vehicle</button>
+                <button type="button" class="btn btn-primary btn-sm" data-to-panel="form">
+                    {{ trans('buttons.frontend.account.garage.add_vehicle') }}
+                </button>
             </div>
         </div>
     </div>
+
     <div class="vehicle-picker__panel vehicle-picker__panel--form" data-panel="form">
         <div class="vehicle-picker__panel-body">
             <div class="vehicle-form vehicle-form--layout--search">

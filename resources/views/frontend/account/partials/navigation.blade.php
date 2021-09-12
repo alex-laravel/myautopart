@@ -1,5 +1,5 @@
 <div class="account-nav flex-grow-1">
-    <h4 class="account-nav__title">Navigation</h4>
+    <h4 class="account-nav__title">{{ trans('labels.frontend.sidebar.navigation') }}</h4>
 
     <ul class="account-nav__list">
         <li class="account-nav__item {{ (request()->routeIs('frontend.account.dashboard')) ? 'account-nav__item--active' : '' }}">

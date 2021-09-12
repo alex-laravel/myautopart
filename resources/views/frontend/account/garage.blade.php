@@ -50,13 +50,13 @@
                                             @endforeach
                                         </div>
                                     @else
-                                        <small class="d-block">нет добавленных автомобилей</small>
+                                        <small class="d-block">{{ trans('labels.frontend.account.garage.no_auto') }}</small>
                                     @endif
                                 </div>
 
                                 <div class="mt-4 pt-3">
                                     <a href="{{ route('frontend.auto.index') }}" class="btn btn-sm btn-primary">
-                                        Add A Vehicle
+                                        {{ trans('buttons.frontend.account.garage.add_vehicle') }}
                                     </a>
                                 </div>
                             </div>

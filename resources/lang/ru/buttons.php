@@ -42,6 +42,21 @@ return [
     'frontend' => [
         'shop' => [
             'add_to_cart' => 'Купить'
+        ],
+
+        'account' => [
+            'dashboard' => [
+                'edit_profile' => 'Редиктировать профиль',
+                'edit_address' => 'Изменить адрес',
+            ],
+
+            'garage' => [
+                'add_vehicle' => 'Добавить автомобиль'
+            ],
+
+            'orders' => [],
+            'profile' => [],
+            'password' => [],
         ]
     ]
 ];

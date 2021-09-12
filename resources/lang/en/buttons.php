@@ -40,6 +40,21 @@ return [
     'frontend' => [
         'shop' => [
             'add_to_cart' => 'Add to cart'
+        ],
+
+        'account' => [
+            'dashboard' => [
+                'edit_profile' => 'Edit Profile',
+                'edit_address' => 'Edit Address',
+            ],
+
+            'garage' => [
+                'add_vehicle' => 'Add A Vehicle'
+            ],
+
+            'orders' => [],
+            'profile' => [],
+            'password' => [],
         ]
     ]
 ];

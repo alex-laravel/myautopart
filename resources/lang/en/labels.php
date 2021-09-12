@@ -548,6 +548,10 @@ return [
             'call_us' => 'Call Us'
         ],
 
+        'sidebar' => [
+            'navigation' => 'Navigation'
+        ],
+
         'search' => [
             'title' => 'Find Parts For Your Vehicle',
             'headline' => 'Over hundreds of brands and tens of thousands of parts',
@@ -572,6 +576,22 @@ return [
 
         'product' => [
             'original_number' => 'Original Number'
+        ],
+
+        'account' => [
+            'dashboard' => [
+                'email' => 'Email Address',
+                'phone' => 'Phone Number',
+                'orders' => 'Recent Orders',
+            ],
+
+            'garage' => [
+                'no_auto' => 'You don\'t have any added cars yet'
+            ],
+
+            'orders' => [],
+            'profile' => [],
+            'password' => [],
         ]
     ]
 ];

@@ -17,7 +17,7 @@
                             <div class="dashboard__profile card profile-card">
                                 <div class="card-body profile-card__body">
                                     <div class="profile-card__avatar">
-                                        <img src="images/avatars/avatar-4.jpg" alt="">
+                                        <img src="/images/avatars/avatar-4.jpg" alt="">
                                     </div>
 
                                     <div class="profile-card__name">
@@ -30,7 +30,7 @@
 
                                     <div class="profile-card__edit">
                                         <a href="{{ route('frontend.account.profile') }}" class="btn btn-secondary btn-sm">
-                                            Edit Profile
+                                            {{ trans('buttons.frontend.account.dashboard.edit_profile') }}
                                         </a>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
 
                                     <div class="address-card__row">
                                         <div class="address-card__row-title">
-                                            Email Address
+                                            {{ trans('labels.frontend.account.dashboard.email') }}
                                         </div>
                                         <div class="address-card__row-content">
                                             {{ auth()->user()->email }}
@@ -63,7 +63,7 @@
 
                                     <div class="address-card__row">
                                         <div class="address-card__row-title">
-                                            Phone Number
+                                            {{ trans('labels.frontend.account.dashboard.phone') }}
                                         </div>
 
                                         <div class="address-card__row-content">
@@ -73,7 +73,7 @@
 
                                     <div class="address-card__footer">
                                         <a href="{{ route('frontend.account.profile') }}">
-                                            Edit Address
+                                            {{ trans('buttons.frontend.account.dashboard.edit_address') }}
                                         </a>
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
 
                             <div class="dashboard__orders card">
                                 <div class="card-header">
-                                    <h5>Recent Orders</h5>
+                                    <h5>{{ trans('labels.frontend.account.dashboard.orders') }}</h5>
                                 </div>
                                 <div class="card-divider"></div>
                                 <div class="card-table">
