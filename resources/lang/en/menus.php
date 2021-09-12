@@ -195,7 +195,7 @@ return [
                     'email' => 'Email Address',
                     'phone' => 'Phone Number',
                     'support' => 'Support',
-                    'online_orders ' => 'Online Orders',
+                    'online_orders' => 'Online Orders',
                 ]
             ],
 
