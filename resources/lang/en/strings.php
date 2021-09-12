@@ -36,6 +36,10 @@ return [
         'models' => [
             'no_data' => 'no data',
             'present_time' => 'present time'
-        ]
+        ],
+
+        'product' => [
+            'info' => 'Information on technical characteristics, the delivery set, the country of manufacture and the appearance of the goods is for reference only and is based on the latest information available at the time of publication.',
+        ],
     ]
 ];

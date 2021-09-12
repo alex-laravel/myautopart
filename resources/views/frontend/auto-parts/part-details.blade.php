@@ -100,17 +100,20 @@
 {{--                                        In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.--}}
 {{--                                    </div>--}}
                                     @if($part->immediateAttributs)
-                                    <div class="product__features">
-                                        <div class="product__features-title">Key Features:</div>
-                                        <ul>
-                                            @foreach ($part->immediateAttributs['array'] as $immediateAttribute)
-                                                <li>{{ $immediateAttribute['attrName'] }}: <span>{{ $immediateAttribute['attrValue'] }}</span></li>
-                                            @endforeach
-                                        </ul>
-{{--                                        <div class="product__features-link">--}}
-{{--                                            <a href="">See Full Specification</a>--}}
-{{--                                        </div>--}}
-                                    </div>
+                                        <div class="product__features">
+                                            <div class="product__features-title">
+                                                {{ trans('labels.frontend.product.attributes') }}:
+                                            </div>
+
+                                            <ul>
+                                                @foreach ($part->immediateAttributs['array'] as $immediateAttribute)
+                                                    <li>{{ $immediateAttribute['attrName'] }}: <span>{{ $immediateAttribute['attrValue'] }}</span></li>
+                                                @endforeach
+                                            </ul>
+    {{--                                        <div class="product__features-link">--}}
+    {{--                                            <a href="">See Full Specification</a>--}}
+    {{--                                        </div>--}}
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="product__info">
@@ -433,10 +436,10 @@
                                 </div>
                                 <div class="product__tabs product-tabs product-tabs--layout--full">
                                     <ul class="product-tabs__list">
-                                        <li class="product-tabs__item product-tabs__item--active"><a href="#product-tab-description">Description</a></li>
+                                        <li class="product-tabs__item product-tabs__item--active"><a href="#product-tab-description">{{ trans('labels.frontend.product.description') }}</a></li>
 
                                         @if($part->articleAttributes)
-                                            <li class="product-tabs__item"><a href="#product-tab-specification">Specification</a></li>
+                                            <li class="product-tabs__item"><a href="#product-tab-specification">{{ trans('labels.frontend.product.specification') }}</a></li>
                                         @endif
 
 {{--                                        <li class="product-tabs__item">--}}
@@ -445,7 +448,7 @@
 {{--                                                <span class="product-tabs__item-counter">3</span>--}}
 {{--                                            </a>--}}
 {{--                                        </li>--}}
-                                        <li class="product-tabs__item"><a href="#product-tab-analogs">Analogs</a></li>
+                                        <li class="product-tabs__item"><a href="#product-tab-analogs">{{ trans('labels.frontend.product.analogs') }}</a></li>
                                     </ul>
 
                                     <div class="product-tabs__content">
@@ -481,7 +484,7 @@
                                             @if($part->articleAttributes)
                                                 <div class="spec">
                                                     <div class="spec__section">
-                                                        <h4 class="spec__section-title">General</h4>
+                                                        <h4 class="spec__section-title">{{ trans('labels.frontend.product.general') }}</h4>
                                                         @foreach ($part->articleAttributes['array'] as $articleAttribute)
                                                             <div class="spec__row">
                                                                 <div class="spec__name">{{ $articleAttribute['attrName'] }}</div>
@@ -505,8 +508,7 @@
                                                     {{--                                                    </div>--}}
                                                     {{--                                                </div>--}}
                                                     <div class="spec__disclaimer">
-                                                        Information on technical characteristics, the delivery set, the country of manufacture and the appearance
-                                                        of the goods is for reference only and is based on the latest information available at the time of publication.
+                                                        {{ trans('strings.frontend.product.info') }}
                                                     </div>
                                                 </div>
                                             @endif

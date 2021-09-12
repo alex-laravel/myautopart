@@ -577,6 +577,11 @@ return [
         'product' => [
             'original_number' => 'Original Number',
             'brand' => 'Brand',
+            'attributes' => 'Key Features',
+            'description' => 'Description',
+            'specification' => 'Specification',
+            'analogs' => 'Analogs',
+            'general' => 'General',
             'status' => [
                 'in_stock' => 'In Stock',
                 'out_of_stock' => 'Out of Stock'

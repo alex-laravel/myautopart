@@ -579,6 +579,11 @@ return [
         'product' => [
             'original_number' => 'Оригинальный номер запчасти',
             'brand' => 'Бренд',
+            'attributes' => 'Атрибуты',
+            'description' => 'Описание',
+            'specification' => 'Технические характеристики',
+            'analogs' => 'Аналоги',
+            'general' => 'Общие данные',
             'status' => [
                 'in_stock' => 'в наличии',
                 'out_of_stock' => 'нет в наличии'
