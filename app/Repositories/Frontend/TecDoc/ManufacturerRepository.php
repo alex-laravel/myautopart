@@ -20,9 +20,9 @@ class ManufacturerRepository extends BaseRepository
      */
     public function getManufacturersOnlyIsFavorite()
     {
-        return Cache::remember(self::CACHE_QUERY_KEY_ALL, self::CACHE_TIME, function () {
+//        return Cache::remember(self::CACHE_QUERY_KEY_ALL, self::CACHE_TIME, function () {
             return Manufacturer::onlyIsFavorite()->orderBy('manuName')->get();
-        });
+//        });
     }
 
     /**
@@ -31,8 +31,8 @@ class ManufacturerRepository extends BaseRepository
      */
     public function getManufacturerById($manufacturerId)
     {
-        return Cache::remember(self::CACHE_QUERY_KEY_BY_ID . $manufacturerId, self::CACHE_TIME, function () use ($manufacturerId) {
+//        return Cache::remember(self::CACHE_QUERY_KEY_BY_ID . $manufacturerId, self::CACHE_TIME, function () use ($manufacturerId) {
             return Manufacturer::where('manuId', (int)$manufacturerId)->first();
-        });
+//        });
     }
 }

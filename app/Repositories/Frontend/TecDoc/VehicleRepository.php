@@ -21,9 +21,9 @@ class VehicleRepository extends BaseRepository
      */
     public function getVehiclesByModelId($modelId)
     {
-        return Cache::remember(self::CACHE_QUERY_KEY_ALL, self::CACHE_TIME, function () use ($modelId) {
+//        return Cache::remember(self::CACHE_QUERY_KEY_ALL, self::CACHE_TIME, function () use ($modelId) {
             return Vehicle::where('modelId', (int)$modelId)->orderBy('carName')->get();
-        });
+//        });
     }
 
     /**
@@ -32,8 +32,8 @@ class VehicleRepository extends BaseRepository
      */
     public function getVehicleById($vehicleId)
     {
-        return Cache::remember(self::CACHE_QUERY_KEY_BY_ID . $vehicleId, self::CACHE_TIME, function () use ($vehicleId) {
+//        return Cache::remember(self::CACHE_QUERY_KEY_BY_ID . $vehicleId, self::CACHE_TIME, function () use ($vehicleId) {
             return Vehicle::where('carId', $vehicleId)->first();
-        });
+//        });
     }
 }

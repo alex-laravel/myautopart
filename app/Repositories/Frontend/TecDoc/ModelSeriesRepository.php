@@ -21,9 +21,9 @@ class ModelSeriesRepository extends BaseRepository
      */
     public function getModelSeriesByManufacturerId($manufacturerId)
     {
-        return Cache::remember(self::CACHE_QUERY_KEY_BY_ID . $manufacturerId, self::CACHE_TIME, function () use ($manufacturerId) {
+//        return Cache::remember(self::CACHE_QUERY_KEY_BY_ID . $manufacturerId, self::CACHE_TIME, function () use ($manufacturerId) {
             return ModelSeries::where('manuId', (int)$manufacturerId)->orderBy('modelname')->get();
-        });
+//        });
     }
 
     /**
@@ -32,8 +32,8 @@ class ModelSeriesRepository extends BaseRepository
      */
     public function getModelSeriesById($modelId)
     {
-        return Cache::remember(self::CACHE_QUERY_KEY_BY_ID . $modelId, self::CACHE_TIME, function () use ($modelId) {
+//        return Cache::remember(self::CACHE_QUERY_KEY_BY_ID . $modelId, self::CACHE_TIME, function () use ($modelId) {
             return ModelSeries::where('modelId', (int)$modelId)->first();
-        });
+//        });
     }
 }
