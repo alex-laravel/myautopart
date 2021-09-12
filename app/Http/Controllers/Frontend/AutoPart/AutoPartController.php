@@ -7,6 +7,7 @@ use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
 use App\Models\TecDoc\DirectArticleDetails\DirectArticleDetails;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class AutoPartController extends FrontendController
 {
@@ -121,6 +122,25 @@ class AutoPartController extends FrontendController
 
         return view('frontend.auto-parts.part-details', [
             'part' => $part
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function partSearch(Request $request)
+    {
+        $partNo = (string)$request->input('partOriginalNo');
+
+        $parts = DirectArticle::with('details')
+            ->with('products')
+            ->where('articleNo', $partNo)
+            ->paginate(self::PARTS_PACKAGE_LIMIT);
+
+        return view('frontend.auto-parts.search', [
+            'partNo' => $partNo,
+            'parts' => $parts
         ]);
     }
 }

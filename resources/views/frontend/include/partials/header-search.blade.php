@@ -1,8 +1,9 @@
 <div class="header__search">
     <div class="search">
-        <form action="" class="search__body">
+        <form action="{{ route('frontend.parts.search') }}" class="search__body" method="POST">
+            @csrf
             <div class="search__shadow"></div>
-            <input class="search__input" type="text" placeholder="{{ trans('strings.frontend.general.search') }}">
+            <input class="search__input" name="partOriginalNo" type="text" placeholder="{{ trans('strings.frontend.general.search') }}" value="{{ old('partOriginalNo') }}">
             <button class="search__button search__button--start" type="button">
                                 <span class="search__button-icon"><svg width="20" height="20">
                                         <path d="M6.6,2c2,0,4.8,0,6.8,0c1,0,2.9,0.8,3.6,2.2C17.7,5.7,17.9,7,18.4,7C20,7,20,8,20,8v1h-1v7.5c0,0.8-0.7,1.5-1.5,1.5h-1
