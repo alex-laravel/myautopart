@@ -1,0 +1,135 @@
+<!doctype html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]> <html class="no-js iem7" lang="en"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Hook-type fastening</title>
+
+  <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <meta name="DCSext.wtg_brand" content="Bosch"/>
+<meta name="DCSext.wtg_country" content="GLOBAL"/>
+<meta name="DCSext.wtg_lang" content="en"/>
+<meta name="DCSext.wtg_bsector" content="BBM"/>
+<meta name="DCSext.wtg_division" content="ED"/>
+<meta name="DCSext.wtg_bu" content="EDA-WS/MKW"/>
+<meta name="DCSext.wtg_bth1" content="110"/>
+<meta name="DCSext.wtg_bth2" content="566"/>
+<meta name="DCSext.wtg_bth3" content="566"/>
+  <!-- ######## Webtrends Meta END ######## -->
+
+  <!-- START Dimension Calculation -->
+  <script type="text/javascript" src="../../res/jquery-1.7.js"></script>
+  <script type="text/javascript" src="../../res/dimcalc.js"></script>
+  <!-- END Dimension Calculation -->
+
+  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+  <meta http-equiv="cleartype" content="on">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="../../res/style.css">
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="../../res/mobile-html5-boilerplate/js/libs/modernizr-custom.js"></script>
+</head>
+
+<body>
+  <div id="page">
+    <header id="header">
+      <h1>Wiper Blades</h1>
+
+      <nav>
+        <!--ul id="nav_top" class="nav clearfix">
+          <li><a href="../index.html" class="back-link">Back to Overview</a></li>
+        </ul-->
+      </nav>
+    </header>
+
+
+    <section id="content">
+      <div id="assembling" class="column clearfix">
+        <h2>Special Case</h2>
+
+        <p>Installation</p>
+
+        <iframe class="youtubeVideo" width="290" height="177" src="http://www.youtube.com/embed/kXNRZHPtQS8?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+
+
+    <footer id="footer">
+      <nav>
+        <ul id="nav_bottom" class="nav clearfix">
+          <li><a href="#page">Top of Page</a></li>
+          <li>
+          <a href="../../imprint.html">Imprint |</a>
+          <a href="../../privacy.html">Privacy Statement</a>
+        </li>
+          <li>© Robert Bosch GmbH</li>
+        </ul>
+      </nav>
+
+    </footer>
+  </div>
+
+
+<!-- ######## Webtrends Send-Skript START ######## -->
+
+
+<script type="text/javascript">
+	window.webtrendsAsyncInit=function() {
+		var dcs=new Webtrends.dcs().init({
+		dcsid:"dcs222g0s4htck56sb9450k9p_5t2l"
+		,domain:"statse.webtrendslive.com"
+		,fpcdom:'.' + location.hostname.split('.').slice(-2).join('.')
+		,fpc:'WT_FPC'
+		,FPCConfig: {
+			enabled: true
+		,expires: 31536000000
+		}
+		,TPCConfig: {
+			enabled: true
+			,cfgType: "2"
+		}
+		,timezone:1
+		,i18n:true
+		,adimpressions:true
+		,adsparam:"WT.ac"
+		,offsite:false
+		,onsitedoms:""
+		,download:true
+		,downloadtypes:"xls,doc,pdf,txt,csv,zip,docx,xlsx,rar,gzip"
+		,rightclick:true
+		,javascript:true
+		,anchor:true
+		,paidsearchparams:"gclid,ad_id"
+		,plugins:{
+		}
+	});
+
+	dcs.track({
+		transform:function(dcsObject,multiTrackObject){
+			dcsObject.DCS.dcsipa="1"; }
+	})
+};
+
+	(function(){
+		var s=document.createElement("script");
+		s.async=true; s.src="//s.webtrends.com/js/webtrends.min.js";
+		var s2=document.getElementsByTagName("script")[0];
+		s2.parentNode.insertBefore(s,s2);
+	}());
+
+</script>
+
+
+<!-- ######## Webtrends Send-Skript ENDE ######## -->
+</body>
+</html>

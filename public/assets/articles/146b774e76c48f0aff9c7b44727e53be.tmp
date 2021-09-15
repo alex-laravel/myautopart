@@ -1,0 +1,167 @@
+<!doctype html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]> <html class="no-js iem7" lang="en"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Wiper Blades</title>
+  
+  <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- ######## Webtrends Meta START ######## -->  
+    
+  <meta name="DCSext.wtg_brand" content="Bosch"/>
+<meta name="DCSext.wtg_country" content="GLOBAL"/>
+<meta name="DCSext.wtg_lang" content="en"/>			
+<meta name="DCSext.wtg_bsector" content="BBM"/>			
+<meta name="DCSext.wtg_division" content="ED"/>
+<meta name="DCSext.wtg_bu" content="EDA-WS/MKW"/>
+<meta name="DCSext.wtg_bth1" content="110"/>
+<meta name="DCSext.wtg_bth2" content="566"/>
+<meta name="DCSext.wtg_bth3" content="566"/>
+  <!-- ######## Webtrends Meta END ######## -->
+  
+  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+  <meta http-equiv="cleartype" content="on">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="../res/style.css">
+  
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="../res/mobile-html5-boilerplate/js/libs/modernizr-custom.js"></script>
+</head>
+
+<body>
+  <div id="page">
+    <header id="header">
+      
+      <h1>Wiper Blades</h1>
+      <nav>
+        <ul id="nav_top" class="nav clearfix">
+          <li class="active"><span>Overview</span></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <aside id="keyvisual"></aside>
+    
+    <section id="content">
+      <div id="categories" class="column">
+        <h2>Installation</h2>
+        <article>
+          <figure class="img-wrapper float-left">
+            <img src="pictures/img/schnittstelle.jpg" width="291" alt="">
+          </figure>
+          <div class="category-description">
+            <header>
+              <h3>Installation</h3>
+            </header>
+            <section>
+              <div class="video-icon float-left">
+                <a href="pictures/"><img src="../res/icn_pictures-sm.jpg" alt=""></a>
+                <p>Pictures</p>
+              </div>
+            </section>
+            <div class="footer"></div>
+          </div>
+        </article>
+        
+        
+      </div>
+    </section>
+    
+    <footer id="footer">
+      <nav>
+        <ul id="nav_bottom" class="nav clearfix">
+          <li><a href="#page">Top of Page</a></li>
+          <li>
+          <a href="../imprint.html">Imprint |</a>
+          <a href="../privacy.html">Privacy Statement</a>
+        </li>
+          <li>© Robert Bosch GmbH</li>
+        </ul>
+      </nav>
+      
+    </footer>
+  </div>
+  
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>window.jQuery || document.write("<script src='../res/mobile-html5-boilerplate/js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
+
+  <script src="../res/mobile-html5-boilerplate/js/mylibs/helper.js"></script>
+
+  <script>
+// iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+MBP.scaleFix();
+
+// Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill
+yepnope({
+  test : Modernizr.mq('(min-width)'),
+  nope : ['../res/mobile-html5-boilerplate/js/libs/respond.min.js']
+});
+</script>
+
+<!-- ######## Webtrends Send-Skript START ######## -->
+
+
+<script type="text/javascript">
+	window.webtrendsAsyncInit=function() {
+		var dcs=new Webtrends.dcs().init({
+		dcsid:"dcs222g0s4htck56sb9450k9p_5t2l"
+		,domain:"statse.webtrendslive.com"
+		,fpcdom:'.' + location.hostname.split('.').slice(-2).join('.')
+		,fpc:'WT_FPC'
+		,FPCConfig: {
+			enabled: true
+		,expires: 31536000000
+		}
+		,TPCConfig: {
+			enabled: true
+			,cfgType: "2"
+		}
+		,timezone:1
+		,i18n:true
+		,adimpressions:true
+		,adsparam:"WT.ac"
+		,offsite:false
+		,onsitedoms:""
+		,download:true
+		,downloadtypes:"xls,doc,pdf,txt,csv,zip,docx,xlsx,rar,gzip"
+		,rightclick:true
+		,javascript:true
+		,anchor:true
+		,paidsearchparams:"gclid,ad_id"
+		,plugins:{
+		}
+	});
+
+	dcs.track({
+		transform:function(dcsObject,multiTrackObject){
+			dcsObject.DCS.dcsipa="1"; }
+	})
+};
+
+	(function(){
+		var s=document.createElement("script");
+		s.async=true; s.src="//s.webtrends.com/js/webtrends.min.js";
+		var s2=document.getElementsByTagName("script")[0];
+		s2.parentNode.insertBefore(s,s2);
+	}());
+
+</script>
+
+
+
+  
+  
+  
+  <!-- END OF SmartSource Data Collector TAG -->
+  <!-- ######## Webtrends Send-Skript ENDE ######## -->
+</body>
+</html>

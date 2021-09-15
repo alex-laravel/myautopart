@@ -196,9 +196,9 @@ class DirectArticleDetailsController extends Controller
     {
         ini_set('max_execution_time', 0);
 
-        DirectArticleDocument::truncate();
+//        DirectArticleDocument::truncate();
 
-        DirectArticleDetails::chunk(25, function ($directArticlesDetails) {
+        DirectArticleDetails::where('id', '>', 49683)->chunk(500, function ($directArticlesDetails) {
             foreach ($directArticlesDetails as $directArticleDetails) {
                 $this->parseDirectArticleDocuments($directArticleDetails->articleId, $directArticleDetails->articleThumbnails, true);
                 $this->parseDirectArticleDocuments($directArticleDetails->articleId, $directArticleDetails->articleDocuments);

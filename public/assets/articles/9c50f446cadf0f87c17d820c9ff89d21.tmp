@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7]> <html class="no-js iem7" lang="en"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Wiper Blades</title>
+
+    <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ######## Webtrends Meta START ######## -->
+
+    <meta name="DCSext.wtg_brand" content="Bosch" />
+    <meta name="DCSext.wtg_country" content="GLOBAL" />
+    <meta name="DCSext.wtg_lang" content="en" />
+    <meta name="DCSext.wtg_bsector" content="BBM" />
+    <meta name="DCSext.wtg_division" content="ED" />
+    <meta name="DCSext.wtg_bu" content="EDA-WS/MKW" />
+    <meta name="DCSext.wtg_bth1" content="110" />
+    <meta name="DCSext.wtg_bth2" content="566" />
+    <meta name="DCSext.wtg_bth3" content="566" />
+    <!-- ######## Webtrends Meta END ######## -->
+
+    <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+    <meta http-equiv="cleartype" content="on" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../res/style.css" />
+
+    <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+    <script src="../res/mobile-html5-boilerplate/js/libs/modernizr-custom.js"></script>
+    <style type="text/css">
+      #categories figure {
+        width: 115%;
+      }
+      .icon img {
+        width: 36%;
+        min-width: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="header">
+        <h1>Wiper Blades</h1>
+        <nav>
+          <ul id="nav_top" class="nav clearfix">
+            <li class="active"><span>Overview</span></li>
+          </ul>
+        </nav>
+      </header>
+      <aside id="keyvisual"></aside>
+      <section id="content">
+        <div id="categories" class="column">
+          <!-- <h2>Installation Aerotwin Plus</h2> -->
+          <article>
+            <section class="float-left" style="width: 75%">
+              <figure class="img-wrapper">
+                <a href="../1987435E00_1/"
+                  ><img src="images/1.jpg" style="border: none"
+                /></a>
+              </figure>
+            </section>
+            <section class="float-left" style="width: 20%; margin-top: 2%">
+              <ul style="list-style: none">
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_1/video/"
+                    ><img src="../res/video-icon.jpg" alt=""
+                  /></a>
+                  <p>Video</p>
+                </li>
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_1/pictures/"
+                    ><img src="../res/pics-icon.jpg" alt=""
+                  /></a>
+                  <p>Pictures</p>
+                </li>
+              </ul>
+            </section>
+            <div class="footer"></div>
+          </article>
+          <article>
+            <section class="float-left" style="width: 75%">
+              <figure class="img-wrapper">
+                <a href="../1987435E00_2A/"
+                  ><img src="images/2a.jpg" style="border: none"
+                /></a>
+              </figure>
+            </section>
+            <section class="float-left" style="width: 20%; margin-top: 2%">
+              <ul style="list-style: none">
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_2A/video/"
+                    ><img src="../res/video-icon.jpg" alt=""
+                  /></a>
+                  <p>Video</p>
+                </li>
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_2A/pictures/"
+                    ><img src="../res/pics-icon.jpg" alt=""
+                  /></a>
+                  <p>Pictures</p>
+                </li>
+              </ul>
+            </section>
+            <div class="footer"></div>
+          </article>
+          <article>
+            <section class="float-left" style="width: 75%">
+              <figure class="img-wrapper">
+                <a href="../1987435E00_2B/"
+                  ><img src="images/2b.jpg" style="border: none"
+                /></a>
+              </figure>
+            </section>
+            <section class="float-left" style="width: 20%; margin-top: 2%">
+              <ul style="list-style: none">
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_2B/video/"
+                    ><img src="../res/video-icon.jpg" alt=""
+                  /></a>
+                  <p>Video</p>
+                </li>
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_2B/pictures/"
+                    ><img src="../res/pics-icon.jpg" alt=""
+                  /></a>
+                  <p>Pictures</p>
+                </li>
+              </ul>
+            </section>
+            <div class="footer"></div>
+          </article>
+          <article>
+            <section class="float-left" style="width: 75%">
+              <figure class="img-wrapper">
+                <a href="../1987435E00_2C/"
+                  ><img src="images/2c.jpg" style="border: none"
+                /></a>
+                <p style="margin: 6px 0 0 0; font-size: 11px">
+                  Only for BMW E60, E61, E63, E64
+                </p>
+              </figure>
+            </section>
+            <section class="float-left" style="width: 20%; margin-top: 2%">
+              <ul style="list-style: none">
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_2C/video/"
+                    ><img src="../res/video-icon.jpg" alt=""
+                  /></a>
+                  <p>Video</p>
+                </li>
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_2C/pictures/"
+                    ><img src="../res/pics-icon.jpg" alt=""
+                  /></a>
+                  <p>Pictures</p>
+                </li>
+              </ul>
+            </section>
+            <div class="footer"></div>
+          </article>
+          <article>
+            <section class="float-left" style="width: 75%">
+              <figure class="img-wrapper">
+                <a href="../1987435E00_3/"
+                  ><img src="images/3.jpg" style="border: none"
+                /></a>
+              </figure>
+            </section>
+            <section class="float-left" style="width: 20%; margin-top: 2%">
+              <ul style="list-style: none">
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_3/video/"
+                    ><img src="../res/video-icon.jpg" alt=""
+                  /></a>
+                  <p>Video</p>
+                </li>
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_3/pictures/"
+                    ><img src="../res/pics-icon.jpg" alt=""
+                  /></a>
+                  <p>Pictures</p>
+                </li>
+              </ul>
+            </section>
+            <div class="footer"></div>
+          </article>
+          <article>
+            <section class="float-left" style="width: 75%">
+              <figure class="img-wrapper">
+                <a href="../1987435E00_4/"
+                  ><img src="images/4.jpg" style="border: none"
+                /></a>
+              </figure>
+            </section>
+            <section class="float-left" style="width: 20%; margin-top: 2%">
+              <ul style="list-style: none">
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_4/video/"
+                    ><img src="../res/video-icon.jpg" alt=""
+                  /></a>
+                  <p>Video</p>
+                </li>
+                <li class="icon" style="min-width: 50px; text-align: center">
+                  <a href="../1987435E00_4/pictures/"
+                    ><img src="../res/pics-icon.jpg" alt=""
+                  /></a>
+                  <p>Pictures</p>
+                </li>
+              </ul>
+            </section>
+            <div class="footer"></div>
+          </article>
+        </div>
+      </section>
+      <footer id="footer">
+        <nav>
+          <ul id="nav_bottom" class="nav clearfix">
+            <li>
+              <a href="#page">Top of Page</a>
+            </li>
+            <li>
+              <a href="../imprint.html">Imprint |</a>
+              <a href="../privacy.html">Privacy Statement</a>
+            </li>
+            <li>© Robert Bosch GmbH</li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          "<script src='../res/mobile-html5-boilerplate/js/libs/jquery-1.5.1.min.js'>\x3C/script>"
+        );
+    </script>
+    <script src="../res/mobile-html5-boilerplate/js/mylibs/helper.js"></script>
+    <script>
+      // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+      MBP.scaleFix();
+
+      // Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill
+      yepnope({
+        test: Modernizr.mq("(min-width)"),
+        nope: ["../res/mobile-html5-boilerplate/js/libs/respond.min.js"],
+      });
+    </script>
+
+    <!-- START BOAAMKWMONTAGE-72: redirect if CN -->
+    <script src="http://rb-aa.bosch.com/detectionservice/"></script>
+    <script src="../res/javascript/videodetection/index.js"></script>
+    <script>
+      redirectIfCountry(
+        "http://www.bosch-trading.com.cn/mobile/wiper/hy02/",
+        "CN"
+      );
+    </script>
+    <!-- END BOAAMKWMONTAGE-72 -->
+  </body>
+</html>
