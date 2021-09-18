@@ -198,7 +198,7 @@ class DirectArticleDetailsController extends Controller
 
 //        DirectArticleDocument::truncate();
 
-        DirectArticleDetails::where('id', '>', 49683)->chunk(500, function ($directArticlesDetails) {
+        DirectArticleDetails::where('id', '>', 100238)->chunk(500, function ($directArticlesDetails) {
             foreach ($directArticlesDetails as $directArticleDetails) {
                 $this->parseDirectArticleDocuments($directArticleDetails->articleId, $directArticleDetails->articleThumbnails, true);
                 $this->parseDirectArticleDocuments($directArticleDetails->articleId, $directArticleDetails->articleDocuments);
