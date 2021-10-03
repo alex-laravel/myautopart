@@ -124,6 +124,10 @@ return [
                 'title' => 'Direct Article Details',
             ],
 
+            'direct-article-analogs' => [
+                'title' => 'Direct Article Analogs',
+            ],
+
             'version' => [
                 'title' => 'Version',
             ]

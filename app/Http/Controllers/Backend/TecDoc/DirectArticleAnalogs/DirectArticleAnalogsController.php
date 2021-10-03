@@ -93,7 +93,7 @@ class DirectArticleAnalogsController extends Controller
     {
         ini_set('max_execution_time', 0);
 
-        DirectArticleAnalog::truncate();
+//        DirectArticleAnalog::truncate();
 
         DirectArticleDetails::chunk(500, function ($directArticles) {
             foreach ($directArticles as $directArticle) {

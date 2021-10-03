@@ -118,6 +118,10 @@ return [
                 'title' => 'Детализация Запчастей',
             ],
 
+            'direct-article-analogs' => [
+                'title' => 'Аналоги Запчасти',
+            ],
+
             'version' => [
                 'title' => 'Версия',
             ]

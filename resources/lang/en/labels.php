@@ -356,6 +356,28 @@ return [
             ],
         ],
 
+        'direct-article-analogs' => [
+            'management' => 'Direct Article Analogs Management',
+            'list' => 'List of Direct Article Analogs',
+            'create' => 'Create Direct Article Analog',
+            'edit' => 'Edit Direct Article Analog',
+            'view' => 'View Direct Article Analog',
+            'table' => [
+
+            ],
+            'tabs' => [
+                'titles' => [
+                    'overview' => 'Overview',
+                ],
+
+                'content' => [
+                    'overview' => [
+
+                    ],
+                ],
+            ],
+        ],
+
         'generic-articles' => [
             'management' => 'Generic Articles Management',
             'list' => 'List of Generic Articles',

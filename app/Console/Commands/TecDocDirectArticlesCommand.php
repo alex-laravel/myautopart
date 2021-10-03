@@ -35,7 +35,10 @@ class TecDocDirectArticlesCommand extends TecDocCommand
 
         \Log::debug('CALL COMMAND [tecdoc:direct-articles]');
 
-        $response = Http::withHeaders(['X-Api-Key' => config('tecdoc.api.key')])->post(config('tecdoc.api.url'), [
+        $response = Http::withHeaders([
+            'X-Api-Key' => config('tecdoc.api.key'),
+            'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0'
+        ])->retry(5, 3)->post(config('tecdoc.api.url'), [
             'getArticleIdsWithState' => [
                 'provider' => config('tecdoc.api.provider'),
                 'lang' => config('tecdoc.api.language'),

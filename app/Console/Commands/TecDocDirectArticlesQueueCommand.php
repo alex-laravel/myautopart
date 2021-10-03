@@ -42,7 +42,7 @@ class TecDocDirectArticlesQueueCommand extends Command
 
         $index = 0;
 
-        foreach (array_chunk($vehicleIds, 100) as $vehicleIdsChunk) {
+        foreach (array_chunk($vehicleIds, 500) as $vehicleIdsChunk) {
             foreach ($vehicleIdsChunk as $vehicleId) {
                 DirectArticleJob::dispatch($vehicleId);
 
