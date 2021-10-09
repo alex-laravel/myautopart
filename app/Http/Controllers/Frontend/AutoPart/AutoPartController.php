@@ -96,12 +96,11 @@ class AutoPartController extends FrontendController
             abort(404);
         }
 
-        $parts = DirectArticle::with('details')->where('brandNo', (int)$brandId)->paginate(self::PARTS_PACKAGE_LIMIT);
+        $parts = $this->directArticleRepository->getDirectArticlesByBrandIdPaginated($brand->brandId, self::PARTS_PACKAGE_LIMIT);
 
         return view('frontend.auto-parts.brand', [
             'brand' => $brand,
-            'parts' => $parts,
-            'assemblyGroups' => []
+            'parts' => $parts
         ]);
     }
 

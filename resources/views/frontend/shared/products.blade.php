@@ -1,3 +1,4 @@
+@foreach ($parts as $part)
 <div class="products-list__item">
     <div class="product-card">
 {{--        <div class="product-card__actions-list">--}}
@@ -55,7 +56,7 @@
                     </div>
 
                     <a href="{{ route('frontend.parts.details', $part->id) }}">
-                        {{ $part->details ? $part->details->articleName : '' }}
+                        {{ $part->articleName }}
                     </a>
                 </div>
             </div>
@@ -85,11 +86,12 @@
         <div class="product-card__footer">
             <div class="product-card__prices">
                 <div class="product-card__price product-card__price--current">
-                    @if($part->products)
-                        @foreach ($part->products as $product)
-                            <span>{{ $product['price'] }} {{ trans('strings.general.hrn') }}</span>
-                        @endforeach
-                    @endif
+                    [price]
+{{--                    @if($part->products)--}}
+{{--                        @foreach ($part->products as $product)--}}
+{{--                            <span>{{ $product['price'] }} {{ trans('strings.general.hrn') }}</span>--}}
+{{--                        @endforeach--}}
+{{--                    @endif--}}
                 </div>
             </div>
 
@@ -127,3 +129,4 @@
         </div>
     </div>
 </div>
+@endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\TecDoc\AssemblyGroupRepository;
+use App\Repositories\Frontend\TecDoc\DirectArticleRepository;
 use App\Repositories\Frontend\TecDoc\ManufacturerRepository;
 use App\Repositories\Frontend\TecDoc\ModelSeriesRepository;
 use App\Repositories\Frontend\TecDoc\VehicleRepository;
@@ -33,20 +34,28 @@ class FrontendController extends Controller
     protected $assemblyGroupRepository;
 
     /**
+     * @var DirectArticleRepository
+     */
+    protected $directArticleRepository;
+
+    /**
      * @param ManufacturerRepository $manufacturerRepository
      * @param ModelSeriesRepository $modelSeriesRepository
      * @param VehicleRepository $vehicleRepository
      * @param AssemblyGroupRepository $assemblyGroupRepository
+     * @param DirectArticleRepository $directArticleRepository
      */
     public function __construct(ManufacturerRepository $manufacturerRepository,
                                 ModelSeriesRepository $modelSeriesRepository,
                                 VehicleRepository $vehicleRepository,
-                                AssemblyGroupRepository $assemblyGroupRepository)
+                                AssemblyGroupRepository $assemblyGroupRepository,
+                                DirectArticleRepository $directArticleRepository)
     {
         $this->manufacturerRepository = $manufacturerRepository;
         $this->modelSeriesRepository = $modelSeriesRepository;
         $this->vehicleRepository = $vehicleRepository;
         $this->assemblyGroupRepository = $assemblyGroupRepository;
+        $this->directArticleRepository = $directArticleRepository;
 
         View::share('sharedAssemblyGroups', $this->assemblyGroupRepository->getAssemblyGroupsAsTree());
     }
