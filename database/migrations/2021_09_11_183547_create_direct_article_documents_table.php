@@ -21,7 +21,10 @@ class CreateDirectArticleDocumentsTable extends Migration
             $table->string('assetDocumentName', 36);
             $table->boolean('isThumbnail');
             $table->timestamps();
+            $table->index('articleId');
         });
+
+//        ALTER TABLE `td_direct_article_documents` ADD INDEX `td_direct_article_documents_article_id_index` (`articleId`);
     }
 
     /**

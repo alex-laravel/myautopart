@@ -54,7 +54,11 @@ class CreateDirectArticleDetailsTable extends Migration
             $table->json('replacedByNumber');
             $table->json('replacedNumber');
             $table->timestamps();
+
+            $table->index('articleId');
         });
+
+//        ALTER TABLE `td_direct_article_details` ADD INDEX `td_direct_article_details_article_id_index` (`articleId`);
     }
 
     /**

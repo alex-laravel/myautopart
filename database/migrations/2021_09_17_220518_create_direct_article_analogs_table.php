@@ -26,7 +26,10 @@ class CreateDirectArticleAnalogsTable extends Migration
             $table->string('brandName', 250);
             $table->unsignedBigInteger('genericArticleId');
             $table->unsignedSmallInteger('numberType');
+            $table->index('originalArticleId');
         });
+
+//        ALTER TABLE `td_direct_article_analogs` ADD INDEX `td_direct_article_analogs_original_article_id_index` (`originalArticleId`);
     }
 
     /**
