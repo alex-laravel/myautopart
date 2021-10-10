@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend\AutoPart;
 
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
-use App\Models\TecDoc\DirectArticleDetails\DirectArticleDetails;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -36,7 +35,7 @@ class AutoPartController extends FrontendController
             abort(404);
         }
 
-        $parts = DirectArticle::with('details')->where('carId', $vehicle->carId)->paginate(self::PARTS_PACKAGE_LIMIT);
+        $parts = $this->directArticleRepository->getDirectArticlesByVehicleIdPaginated($vehicle->carId);
 
         return view('frontend.auto-parts.vehicle', [
             'manufacturerId' => $manufacturer->manuId,
@@ -45,8 +44,7 @@ class AutoPartController extends FrontendController
             'modelSeriesName' => $modelSeries->modelname,
             'vehicleId' => $vehicle->carId,
             'vehicleName' => $vehicle->carName,
-            'parts' => $parts,
-            'assemblyGroups' => []
+            'parts' => $parts
         ]);
     }
 
@@ -124,10 +122,7 @@ class AutoPartController extends FrontendController
      */
     public function partDetails($partId)
     {
-        $part = DirectArticleDetails::with('documents')
-            ->with('products')
-            ->where('articleId', (int)$partId)
-            ->first();
+        $part = $this->directArticleRepository->getDirectArticleByIdWithDocumentsWithProducts($partId);
 
         if (!$part) {
             abort(404);
@@ -146,10 +141,7 @@ class AutoPartController extends FrontendController
     {
         $partNo = (string)$request->input('partOriginalNo');
 
-        $parts = DirectArticle::with('details')
-            ->with('products')
-            ->where('articleNo', $partNo)
-            ->paginate(self::PARTS_PACKAGE_LIMIT);
+        $parts = $this->directArticleRepository->getDirectArticleByArticleNoWithDocumentsWithProducts($partNo);
 
         return view('frontend.auto-parts.search', [
             'partNo' => $partNo,

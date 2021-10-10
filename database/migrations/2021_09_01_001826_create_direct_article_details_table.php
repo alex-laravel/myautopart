@@ -56,9 +56,11 @@ class CreateDirectArticleDetailsTable extends Migration
             $table->timestamps();
 
             $table->index('articleId');
+            $table->index('articleNo');
         });
 
-//        ALTER TABLE `td_direct_article_details` ADD INDEX `td_direct_article_details_article_id_index` (`articleId`);
+//    ALTER TABLE `td_direct_article_details` ADD INDEX `td_direct_article_details_article_id_index` (`articleId`);
+//    ALTER TABLE `td_direct_article_details` ADD INDEX `td_direct_article_details_article_no_index` (`articleNo`);
     }
 
     /**
