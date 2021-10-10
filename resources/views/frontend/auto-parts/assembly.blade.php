@@ -950,13 +950,15 @@
                                     </div>
                                 </div>
 
-                                <div class="products-view__pagination">
-                                    {{ $parts->links() }}
+                                @if ($parts->hasPages())
+                                    <div class="products-view__pagination">
+                                        {{ $parts->links() }}
 
-{{--                                    <div class="products-view__pagination-legend">--}}
-{{--                                        Showing 6 of 98 products--}}
-{{--                                    </div>--}}
-                                </div>
+                                        {{--                                    <div class="products-view__pagination-legend">--}}
+                                        {{--                                        Showing 6 of 98 products--}}
+                                        {{--                                    </div>--}}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
