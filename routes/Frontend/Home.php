@@ -22,7 +22,7 @@ Route::get('/parts/category/{categoryId}', [AutoPartController::class, 'byCatego
 Route::get('/parts/assembly/{assemblyId}', [AutoPartController::class, 'byAssembly'])->name('parts.assembly')->where('assemblyId', '[0-9]+');
 Route::get('/parts/brand/{brandId}', [AutoPartController::class, 'byBrand'])->name('parts.brand')->where('brandId', '[0-9]+');
 Route::get('/parts/details/{partId}', [AutoPartController::class, 'partDetails'])->name('parts.details')->where('partId', '[0-9]+');
-Route::post('/parts/search', [AutoPartController::class, 'partSearch'])->name('parts.search');
+Route::post('/parts/search', [AutoPartController::class, 'searchByOriginalNoOrVin'])->name('parts.search');
 
 Route::get('/garage/{manufacturerId}/{modelSeriesId}/{vehicleId}/activate', [GarageController::class, 'vehicleActivate'])->name('garage.vehicle.activate');
 Route::get('/garage/{manufacturerId}/{modelSeriesId}/{vehicleId}/delete', [GarageController::class, 'vehicleDelete'])->name('garage.vehicle.delete');

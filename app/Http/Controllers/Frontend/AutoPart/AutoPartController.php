@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Frontend\AutoPart;
 
+use App\Helpers\VinCodeDecodeHelper;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Models\TecDoc\DirectArticle\DirectArticle;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class AutoPartController extends FrontendController
 {
-    const PARTS_PACKAGE_LIMIT = 10;
-
     /**
      * @param integer $vehicleId
      * @return View
@@ -137,15 +135,51 @@ class AutoPartController extends FrontendController
      * @param Request $request
      * @return View
      */
-    public function partSearch(Request $request)
+    public function searchByOriginalNoOrVin(Request $request)
     {
-        $partNo = (string)$request->input('partOriginalNo');
+        $searchCode = (string)$request->input('searchCode');
 
-        $parts = $this->directArticleRepository->getDirectArticleByArticleNoWithDocumentsWithProducts($partNo);
+        switch (true) {
+            case $this->isVinCode($searchCode):
+                return $this->searchByVin($searchCode);
+            default:
+                return $this->searchByOriginalNo($searchCode);
+        }
+    }
+
+    /**
+     * @param string $partOriginalNo
+     * @return View
+     */
+    private function searchByOriginalNo($partOriginalNo)
+    {
+        $parts = $this->directArticleRepository->getDirectArticleByArticleNoWithDocumentsWithProducts($partOriginalNo);
 
         return view('frontend.auto-parts.search', [
-            'partNo' => $partNo,
+            'partNo' => $partOriginalNo,
             'parts' => $parts
         ]);
+    }
+
+    /**
+     * @param string $vinCode
+     * @return View
+     */
+    private function searchByVin($vinCode)
+    {
+        $vin = new VinCodeDecodeHelper($vinCode);
+
+        $parts = [];
+
+        return view('frontend.auto-parts.search', ['partNo' => $vinCode, 'parts' => $parts]);
+    }
+
+    /**
+     * @param string $searchCode
+     * @return boolean
+     */
+    private function isVinCode($searchCode)
+    {
+        return preg_match('/^(?=.*[0-9])(?=.*[A-z])[0-9A-z-]{17}$/', $searchCode) === 1;
     }
 }
