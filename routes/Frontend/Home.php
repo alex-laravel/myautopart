@@ -17,11 +17,11 @@ Route::get('/auto/{manufacturer}', [AutoController::class, 'manufacturer'])->nam
 Route::get('/auto/{manufacturer}/{model}', [AutoController::class, 'model'])->name('auto.model');
 Route::get('/auto/{manufacturer}/{model}/{vehicle}', [AutoController::class, 'vehicle'])->name('auto.vehicle');
 
-Route::get('/parts/auto/{vehicleId}', [AutoPartController::class, 'byVehicle'])->name('parts.vehicle');
-Route::get('/parts/category/{categoryId}', [AutoPartController::class, 'byCategory'])->name('parts.category');
-Route::get('/parts/assembly/{assemblyId}', [AutoPartController::class, 'byAssembly'])->name('parts.assembly');
-Route::get('/parts/brand/{brandId}', [AutoPartController::class, 'byBrand'])->name('parts.brand');
-Route::get('/parts/details/{partId}', [AutoPartController::class, 'partDetails'])->name('parts.details');
+Route::get('/parts/auto/{vehicleId}', [AutoPartController::class, 'byVehicle'])->name('parts.vehicle')->where('vehicleId', '[0-9]+');
+Route::get('/parts/category/{categoryId}', [AutoPartController::class, 'byCategory'])->name('parts.category')->where('categoryId', '[0-9]+');
+Route::get('/parts/assembly/{assemblyId}', [AutoPartController::class, 'byAssembly'])->name('parts.assembly')->where('assemblyId', '[0-9]+');
+Route::get('/parts/brand/{brandId}', [AutoPartController::class, 'byBrand'])->name('parts.brand')->where('brandId', '[0-9]+');
+Route::get('/parts/details/{partId}', [AutoPartController::class, 'partDetails'])->name('parts.details')->where('partId', '[0-9]+');
 Route::post('/parts/search', [AutoPartController::class, 'partSearch'])->name('parts.search');
 
 Route::get('/garage/{manufacturerId}/{modelSeriesId}/{vehicleId}/activate', [GarageController::class, 'vehicleActivate'])->name('garage.vehicle.activate');

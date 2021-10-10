@@ -16,6 +16,15 @@ class AssemblyGroupRepository extends BaseRepository
     const CACHE_TIME = 60 * 60;
 
     /**
+     * @param integer $assemblyId
+     * @return AssemblyGroup
+     */
+    public function getAssemblyGroupByAssemblyGroupId($assemblyId)
+    {
+        return AssemblyGroup::where('assemblyGroupNodeId', (int)$assemblyId)->first();
+    }
+
+    /**
      * @return array
      */
     public function getAssemblyGroupsAsArray()

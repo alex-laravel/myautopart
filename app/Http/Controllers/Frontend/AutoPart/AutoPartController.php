@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Frontend\AutoPart;
 
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Models\TecDoc\Brand;
 use App\Models\TecDoc\DirectArticle\DirectArticle;
 use App\Models\TecDoc\DirectArticleDetails\DirectArticleDetails;
 use Illuminate\Contracts\View\View;
@@ -52,19 +51,23 @@ class AutoPartController extends FrontendController
     }
 
     /**
-     * @param integer $categoryId
+     * @param integer $shortCutId
      * @return View
      */
-    public function byCategory($categoryId)
+    public function byCategory($shortCutId)
     {
-        $assemblyGroupNodeIds = $this->assemblyGroupRepository->getLowerAssemblyGroupIdsByParentShortCutId($categoryId);
+        $shortCut = $this->shortCutRepository->getShortCutByShortCutId($shortCutId);
 
-        $parts = DirectArticle::with('details')
-            ->with('products')
-            ->whereIn('assemblyGroupNodeId', $assemblyGroupNodeIds)
-            ->paginate(self::PARTS_PACKAGE_LIMIT);
+        if (!$shortCut) {
+            abort(404);
+        }
+
+        $assemblyGroupNodeIds = $this->assemblyGroupRepository->getLowerAssemblyGroupIdsByParentShortCutId($shortCut->shortCutId);
+
+        $parts = $this->directArticleRepository->getDirectArticlesByAssemblyIdsPaginated($assemblyGroupNodeIds);
 
         return view('frontend.auto-parts.category', [
+            'shortCut' => $shortCut,
             'parts' => $parts
         ]);
     }
@@ -75,11 +78,22 @@ class AutoPartController extends FrontendController
      */
     public function byAssembly($assemblyId)
     {
-        $assemblyGroupNodeIds = $this->assemblyGroupRepository->getLowerAssemblyGroupIdsByParentAssemblyGroupId($assemblyId);
+        $assemblyGroup = $this->assemblyGroupRepository->getAssemblyGroupByAssemblyGroupId($assemblyId);
 
-        $parts = DirectArticle::whereIn('assemblyGroupNodeId', $assemblyGroupNodeIds)->paginate(self::PARTS_PACKAGE_LIMIT);
+        if (!$assemblyGroup) {
+            abort(404);
+        }
+
+        $assemblyGroupNodeIds = $assemblyGroup->hasChilds
+            ? $this->assemblyGroupRepository->getLowerAssemblyGroupIdsByParentAssemblyGroupId($assemblyId)
+            : [$assemblyGroup->assemblyGroupNodeId];
+
+        $assemblyGroupNodeIds = array_unique($assemblyGroupNodeIds);
+
+        $parts = $this->directArticleRepository->getDirectArticlesByAssemblyIdsPaginated($assemblyGroupNodeIds);
 
         return view('frontend.auto-parts.assembly', [
+            'assemblyGroup' => $assemblyGroup,
             'parts' => $parts
         ]);
     }
@@ -90,13 +104,13 @@ class AutoPartController extends FrontendController
      */
     public function byBrand($brandId)
     {
-        $brand = Brand::where('brandId', (int)$brandId)->first();
+        $brand = $this->brandRepository->getBrandByBrandId($brandId);
 
         if (!$brand) {
             abort(404);
         }
 
-        $parts = $this->directArticleRepository->getDirectArticlesByBrandIdPaginated($brand->brandId, self::PARTS_PACKAGE_LIMIT);
+        $parts = $this->directArticleRepository->getDirectArticlesByBrandIdPaginated($brand->brandId);
 
         return view('frontend.auto-parts.brand', [
             'brand' => $brand,

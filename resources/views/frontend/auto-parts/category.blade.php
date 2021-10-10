@@ -22,7 +22,7 @@
                     {{--                            <li class="breadcrumb__title-safe-area" role="presentation"></li>--}}
                     {{--                        </ol>--}}
                     {{--                    </nav>--}}
-                    <h1 class="block-header__title">Запчасти по категории</h1>
+                    <h1 class="block-header__title">Запчасти по категории: Категория [{{ $shortCut->shortCutName }}]</h1>
                 </div>
             </div>
         </div>
@@ -946,9 +946,7 @@
                                         <div class="products-list__column products-list__column--price">Price</div>
                                     </div>
                                     <div class="products-list__content">
-                                        @foreach ($parts as $part)
-                                            @include('frontend.shared.product-item', $part)
-                                        @endforeach
+                                        @include('frontend.shared.products', $parts)
                                     </div>
                                 </div>
 
