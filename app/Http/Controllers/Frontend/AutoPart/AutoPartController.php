@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Frontend\AutoPart;
 
-use App\Helpers\VinCodeDecodeHelper;
+use App\Helpers\VinCodeHelper;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class AutoPartController extends FrontendController
 {
@@ -138,6 +139,7 @@ class AutoPartController extends FrontendController
     public function searchByOriginalNoOrVin(Request $request)
     {
         $searchCode = (string)$request->input('searchCode');
+        $searchCode = strtoupper($searchCode);
 
         switch (true) {
             case $this->isVinCode($searchCode):
@@ -167,11 +169,55 @@ class AutoPartController extends FrontendController
      */
     private function searchByVin($vinCode)
     {
-        $vin = new VinCodeDecodeHelper($vinCode);
+        Artisan::call('tecdoc:vin-code-decoding', [
+            'vinCode' => $vinCode
+        ]);
 
-        $parts = [];
+        $output = Artisan::output();
+        $output = json_decode($output, true);
 
-        return view('frontend.auto-parts.search', ['partNo' => $vinCode, 'parts' => $parts]);
+        if (!$this->hasSuccessResponse($output)) {
+            return view('frontend.auto-parts.search', ['partNo' => $vinCode, 'parts' => []]);
+        }
+
+        $output = $this->getResponseData($output);
+
+        if (empty($output)) {
+            return view('frontend.auto-parts.search', ['partNo' => $vinCode, 'parts' => []]);
+        }
+
+        if (!isset($output['matchingManufacturers']['array'][0]['manuId'])) {
+            return view('frontend.auto-parts.search', ['partNo' => $vinCode, 'parts' => []]);
+        }
+
+        $manufacturer = $this->manufacturerRepository->getManufacturerById($output['matchingManufacturers']['array'][0]['manuId']);
+
+        if (!$manufacturer) {
+            return view('frontend.auto-parts.search', ['partNo' => $vinCode, 'parts' => []]);
+        }
+
+        if (!isset($output['matchingModels']['array'][0]['modelId'])) {
+            return view('frontend.auto-parts.search', ['partNo' => $vinCode, 'parts' => []]);
+        }
+
+        $modelSeries = $this->modelSeriesRepository->getModelSeriesById($output['matchingModels']['array'][0]['modelId']);
+
+        if (!$modelSeries) {
+            return view('frontend.auto-parts.search', ['partNo' => $vinCode, 'parts' => []]);
+        }
+
+        if (!isset($output['matchingVehicles']['array']) || !is_array($output['matchingVehicles']['array'])) {
+            return view('frontend.auto-parts.search', ['partNo' => $vinCode, 'parts' => []]);
+        }
+
+        $vehicleIds = array_column($output['matchingVehicles']['array'], 'carId');
+        $vehicles = $this->vehicleRepository->getVehiclesByIds($vehicleIds);
+
+        return view('frontend.auto.model', [
+            'manufacturer' => $manufacturer,
+            'modelSeries' => $modelSeries,
+            'vehicles' => $vehicles,
+        ]);
     }
 
     /**
@@ -180,6 +226,6 @@ class AutoPartController extends FrontendController
      */
     private function isVinCode($searchCode)
     {
-        return preg_match('/^(?=.*[0-9])(?=.*[A-z])[0-9A-z-]{17}$/', $searchCode) === 1;
+        return preg_match(VinCodeHelper::PATTERN, $searchCode) === 1;
     }
 }

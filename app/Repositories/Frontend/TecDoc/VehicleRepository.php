@@ -36,4 +36,15 @@ class VehicleRepository extends BaseRepository
             return Vehicle::where('carId', $vehicleId)->first();
 //        });
     }
+
+    /**
+     * @param array $carIds
+     * @return Collection
+     */
+    public function getVehiclesByIds($carIds)
+    {
+//        return Cache::remember(self::CACHE_QUERY_KEY_ALL, self::CACHE_TIME, function () use ($modelId) {
+        return Vehicle::whereIn('carId', $carIds)->orderBy('carName')->get();
+//        });
+    }
 }

@@ -50,6 +50,15 @@ class Controller extends BaseController
      * @param array $response
      * @return array
      */
+    protected function getResponseData($response)
+    {
+        return is_array($response['data']) ? $response['data'] : [];
+    }
+
+    /**
+     * @param array $response
+     * @return array
+     */
     protected function getResponseDataAsArray($response)
     {
         return is_array($response['data']) && array_key_exists('array', $response['data']) ? $response['data']['array'] : [];
