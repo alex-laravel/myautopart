@@ -50,9 +50,9 @@
                                                 </a>
 
                                                 <div class="categories-list__item-products">
-                                                    {{ $model->yearOfConstrFrom ? $model->yearOfConstrFrom : trans('strings.frontend.models.no_data') }}
+                                                    {{ $model->yearOfConstrFrom ? $model->yearOfConstrFrom : trans('strings.frontend.model.no_data') }}
                                                     -
-                                                    {{ $model->yearOfConstrTo ? $model->yearOfConstrTo : trans('strings.frontend.models.present_time') }}
+                                                    {{ $model->yearOfConstrTo ? $model->yearOfConstrTo : trans('strings.frontend.model.present_time') }}
                                                 </div>
                                             </li>
 
@@ -60,7 +60,9 @@
                                         @endforeach
                                     </ul>
                                 @else
-                                    <small>нет моделей</small>
+                                    <p class="text-center">
+                                        <small>{{ trans('strings.frontend.model.no_data') }}</small>
+                                    </p>
                                 @endif
                             </div>
                         </div>

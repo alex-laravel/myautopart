@@ -33,9 +33,17 @@ return [
             'all_rights_reserved' => 'All Rights Reserved.',
         ],
 
-        'models' => [
+        'manufacturer' => [
+            'no_data' => 'no data',
+        ],
+
+        'model' => [
             'no_data' => 'no data',
             'present_time' => 'present time'
+        ],
+
+        'vehicle' => [
+            'no_data' => 'no data',
         ],
 
         'product' => [

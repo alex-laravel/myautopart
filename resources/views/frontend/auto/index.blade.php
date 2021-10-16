@@ -54,7 +54,9 @@
                                         @endforeach
                                     </ul>
                                 @else
-                                    <small>нет марок</small>
+                                    <p class="text-center">
+                                        <small>{{ trans('strings.frontend.manufacturer.no_data') }}</small>
+                                    </p>
                                 @endif
                             </div>
                         </div>

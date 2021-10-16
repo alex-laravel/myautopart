@@ -58,7 +58,9 @@
                                         @endforeach
                                     </ul>
                                 @else
-                                    <small>нет транспортных средств</small>
+                                    <p class="text-center">
+                                        <small>{{ trans('strings.frontend.vehicle.no_data') }}</small>
+                                    </p>
                                 @endif
                             </div>
                         </div>

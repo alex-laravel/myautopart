@@ -33,9 +33,17 @@ return [
             'all_rights_reserved' => 'Все права защищены.',
         ],
 
-        'models' => [
+        'manufacturer' => [
+            'no_data' => 'нет данных',
+        ],
+
+        'model' => [
             'no_data' => 'нет данных',
             'present_time' => 'настоящее время'
+        ],
+
+        'vehicle' => [
+            'no_data' => 'нет данных',
         ],
 
         'product' => [
