@@ -668,105 +668,51 @@
 {{--                                            </div>--}}
 {{--                                        </div>--}}
                                         <div class="product-tabs__pane" id="product-tab-analogs">
-                                            <table class="analogs-table">
-                                                <thead>
-                                                <tr>
-                                                    <th class="analogs-table__column analogs-table__column--name">Name</th>
-                                                    <th class="analogs-table__column analogs-table__column--rating">Rating</th>
-                                                    <th class="analogs-table__column analogs-table__column--vendor">Vendor</th>
-                                                    <th class="analogs-table__column analogs-table__column--price">Price</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td class="analogs-table__column analogs-table__column--name">
-                                                        <a href="" class="analogs-table__product-name">Sunset Brake Kit</a><br>
-                                                        <div class="analogs-table__sku" data-title="SKU">SSX-780B390-S</div>
-                                                    </td>
-                                                    <td class="analogs-table__column analogs-table__column--rating">
-                                                        <div class="analogs-table__rating">
-                                                            <div class="analogs-table__rating-stars">
-                                                                <div class="rating">
-                                                                    <div class="rating__body">
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="analogs-table__rating-label">
-                                                                10 Reviews
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="analogs-table__column analogs-table__column--vendor" data-title="Vendor">
-                                                        Sunset
-                                                        <div class="analogs-table__country">(Germany)</div>
-                                                    </td>
-                                                    <td class="analogs-table__column analogs-table__column--price">$1259.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="analogs-table__column analogs-table__column--name">
-                                                        <a href="" class="analogs-table__product-name">Specter Brake Kit</a><br>
-                                                        <div class="analogs-table__sku" data-title="SKU">SCT-123A380-S</div>
-                                                    </td>
-                                                    <td class="analogs-table__column analogs-table__column--rating">
-                                                        <div class="analogs-table__rating">
-                                                            <div class="analogs-table__rating-stars">
-                                                                <div class="rating">
-                                                                    <div class="rating__body">
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="analogs-table__rating-label">
-                                                                34 Reviews
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="analogs-table__column analogs-table__column--vendor" data-title="Vendor">
-                                                        Specter
-                                                        <div class="analogs-table__country">(China)</div>
-                                                    </td>
-                                                    <td class="analogs-table__column analogs-table__column--price">$799.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="analogs-table__column analogs-table__column--name">
-                                                        <a href="" class="analogs-table__product-name">Brake Kit</a><br>
-                                                        <div class="analogs-table__sku" data-title="SKU">NNO-120K643-S</div>
-                                                    </td>
-                                                    <td class="analogs-table__column analogs-table__column--rating">
-                                                        <div class="analogs-table__rating">
-                                                            <div class="analogs-table__rating-stars">
-                                                                <div class="rating">
-                                                                    <div class="rating__body">
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star rating__star--active"></div>
-                                                                        <div class="rating__star"></div>
-                                                                        <div class="rating__star"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="analogs-table__rating-label">
-                                                                7 Reviews
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="analogs-table__column analogs-table__column--vendor" data-title="Vendor">
-                                                        No Name
-                                                        <div class="analogs-table__country">(China)</div>
-                                                    </td>
-                                                    <td class="analogs-table__column analogs-table__column--price">$569.00</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                            @if($part->analogs)
+                                                <table class="analogs-table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="analogs-table__column analogs-table__column--name">Name</th>
+{{--                                                        <th class="analogs-table__column analogs-table__column--rating">Rating</th>--}}
+                                                        <th class="analogs-table__column analogs-table__column--vendor">Vendor</th>
+                                                        <th class="analogs-table__column analogs-table__column--price">Price</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach ($part->analogs as $analog)
+                                                        <tr>
+                                                            <td class="analogs-table__column analogs-table__column--name">
+                                                                <a href="" class="analogs-table__product-name">{{ $analog->articleName }}</a><br>
+                                                                <div class="analogs-table__sku" data-title="SKU">{{ $analog->articleNo }}</div>
+                                                            </td>
+{{--                                                            <td class="analogs-table__column analogs-table__column--rating">--}}
+{{--                                                                <div class="analogs-table__rating">--}}
+{{--                                                                    <div class="analogs-table__rating-stars">--}}
+{{--                                                                        <div class="rating">--}}
+{{--                                                                            <div class="rating__body">--}}
+{{--                                                                                <div class="rating__star rating__star--active"></div>--}}
+{{--                                                                                <div class="rating__star rating__star--active"></div>--}}
+{{--                                                                                <div class="rating__star rating__star--active"></div>--}}
+{{--                                                                                <div class="rating__star rating__star--active"></div>--}}
+{{--                                                                                <div class="rating__star"></div>--}}
+{{--                                                                            </div>--}}
+{{--                                                                        </div>--}}
+{{--                                                                    </div>--}}
+{{--                                                                    <div class="analogs-table__rating-label">--}}
+{{--                                                                        10 Reviews--}}
+{{--                                                                    </div>--}}
+{{--                                                                </div>--}}
+{{--                                                            </td>--}}
+                                                            <td class="analogs-table__column analogs-table__column--vendor" data-title="Vendor">
+                                                                <a href="{{ route('frontend.parts.brand', $analog->brandNo) }}">{{ $analog->brandName }}</a>
+{{--                                                                <div class="analogs-table__country">(Germany)</div>--}}
+                                                            </td>
+                                                            <td class="analogs-table__column analogs-table__column--price">$12345.00</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

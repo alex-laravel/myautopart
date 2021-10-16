@@ -20,6 +20,7 @@ class DirectArticleRepository extends BaseRepository
     {
         return DirectArticleDetails::with('documents')
             ->with('products')
+            ->with('analogs')
             ->find((int)$directArticleDetailsId);
     }
 
