@@ -54,7 +54,7 @@
                                                 </a>
                                             </li>
 
-{{--                                            <li class="categories-list__divider"></li>--}}
+                                            <li class="categories-list__divider"></li>
                                         @endforeach
                                     </ul>
                                 @else
