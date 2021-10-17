@@ -17,7 +17,7 @@ class HomeController extends FrontendController
      */
     public function index()
     {
-        $manufacturers = $this->manufacturerRepository->getManufacturersOnlyIsFavorite();
+        $manufacturers = $this->manufacturerRepository->getManufacturersOnlyIsPopular();
 
         $brands = Brand::inRandomOrder()->limit(self::BRANDS_LIMIT)->get();
 

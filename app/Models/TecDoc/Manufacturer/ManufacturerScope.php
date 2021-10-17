@@ -16,4 +16,13 @@ trait ManufacturerScope
     {
         return $query->where('favorFlag', true);
     }
+
+    /**
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeOnlyIsPopular($query)
+    {
+        return $query->where('isPopular', true);
+    }
 }

@@ -18,10 +18,10 @@ class ManufacturerRepository extends BaseRepository
     /**
      * @return Collection
      */
-    public function getManufacturersOnlyIsFavorite()
+    public function getManufacturersOnlyIsPopular()
     {
 //        return Cache::remember(self::CACHE_QUERY_KEY_ALL, self::CACHE_TIME, function () {
-            return Manufacturer::onlyIsFavorite()->orderBy('manuName')->get();
+            return Manufacturer::onlyIsPopular()->orderBy('manuName')->get();
 //        });
     }
 

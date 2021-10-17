@@ -20,7 +20,7 @@ class ApiManufacturerController extends ApiBaseController
             abort(404);
         }
 
-        $manufacturers = $this->manufacturerRepository->getManufacturersOnlyIsFavorite();
+        $manufacturers = $this->manufacturerRepository->getManufacturersOnlyIsPopular();
 
         return Response::success($this->prepareManufacturersResponse($manufacturers));
     }

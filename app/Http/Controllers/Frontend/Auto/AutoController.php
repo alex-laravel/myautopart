@@ -15,7 +15,7 @@ class AutoController extends FrontendController
      */
     public function index()
     {
-        $manufacturers = $this->manufacturerRepository->getManufacturersOnlyIsFavorite();
+        $manufacturers = $this->manufacturerRepository->getManufacturersOnlyIsPopular();
 
         return view('frontend.auto.index', [
             'manufacturers' => $manufacturers,

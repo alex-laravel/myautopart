@@ -22,8 +22,15 @@ class CreateManufacturerTable extends Migration
             $table->boolean('isPopular');
             $table->boolean('isVisible');
             $table->index('manuId');
+            $table->index('slug');
             $table->index('favorFlag');
+            $table->index('isPopular');
+            $table->index('isVisible');
         });
+
+//ALTER TABLE `td_manufacturers` ADD INDEX `td_manufacturers_slug_index` (`slug`);
+//ALTER TABLE `td_manufacturers` ADD INDEX `td_manufacturers_is_popular_index` (`isPopular`);
+//ALTER TABLE `td_manufacturers` ADD INDEX `td_manufacturers_is_visible_index` (`isVisible`);
     }
 
     /**
