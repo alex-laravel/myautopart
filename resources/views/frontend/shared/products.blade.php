@@ -49,11 +49,11 @@
 
             <div class="product-card__name">
                 <div>
-                    <div class="product-card__badges">
-                        <div class="tag-badge tag-badge--sale">sale</div>
-                        <div class="tag-badge tag-badge--new">new</div>
-                        <div class="tag-badge tag-badge--hot">hot</div>
-                    </div>
+{{--                    <div class="product-card__badges">--}}
+{{--                        <div class="tag-badge tag-badge--sale">sale</div>--}}
+{{--                        <div class="tag-badge tag-badge--new">new</div>--}}
+{{--                        <div class="tag-badge tag-badge--hot">hot</div>--}}
+{{--                    </div>--}}
 
                     <a href="{{ route('frontend.parts.details', $part->id) }}">
                         {{ $part->articleName }}
@@ -74,13 +74,23 @@
 {{--                <div class="product-card__rating-label">4 on 3 reviews</div>--}}
 {{--            </div>--}}
             <div class="product-card__features">
-                <ul>
-                    <li>Speed: 750 RPM</li>
-                    <li>Power Source: Cordless-Electric</li>
-                    <li>Battery Cell Type: Lithium</li>
-                    <li>Voltage: 20 Volts</li>
-                    <li>Battery Capacity: 2 Ah</li>
-                </ul>
+                @if(is_array($part->articleAttributes) && array_key_exists('array', $part->articleAttributes))
+                    <ul>
+                        @foreach ($part->articleAttributes['array'] as $articleAttribute)
+                            <li>{{ $articleAttribute['attrName'] }}: {{ $articleAttribute['attrValue'] }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+
+                @if(is_string($part->articleAttributes) && !empty($part->articleAttributes) && $part->articleAttributes != '""')
+                    <ul>
+                        @foreach (json_decode($part->articleAttributes, true) as $articleAttributes)
+                            @foreach ($articleAttributes as $articleAttribute)
+                                <li>{{ $articleAttribute['attrName'] }}: {{ $articleAttribute['attrValue'] }}</li>
+                            @endforeach
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
         <div class="product-card__footer">

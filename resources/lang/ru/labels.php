@@ -599,7 +599,7 @@ return [
         ],
 
         'product' => [
-            'original_number' => 'Оригинальный номер запчасти',
+            'original_number' => 'Оригинальный номер',
             'brand' => 'Бренд',
             'attributes' => 'Атрибуты',
             'description' => 'Описание',

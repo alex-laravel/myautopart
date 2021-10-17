@@ -51,7 +51,8 @@ class DirectArticleRepository extends BaseRepository
                 'td_direct_article_details.articleId',
                 'td_direct_article_details.articleName',
                 'td_direct_article_details.articleNo',
-                'td_direct_article_details.brandNo'
+                'td_direct_article_details.brandNo',
+                'td_direct_article_details.articleAttributes'
             ])
             ->where('td_cross_direct_article_vehicle.carId', (int)$carId)
             ->paginate($packageLimit);
@@ -71,7 +72,8 @@ class DirectArticleRepository extends BaseRepository
                 'td_direct_article_details.articleId',
                 'td_direct_article_details.articleName',
                 'td_direct_article_details.articleNo',
-                'td_direct_article_details.brandNo'
+                'td_direct_article_details.brandNo',
+                'td_direct_article_details.articleAttributes'
             ])
             ->whereIn('td_cross_direct_article_assembly_group.assemblyGroupNodeId', $assemblyGroupNodeIds)
             ->paginate($packageLimit);
@@ -91,7 +93,8 @@ class DirectArticleRepository extends BaseRepository
                 'td_direct_article_details.articleId',
                 'td_direct_article_details.articleName',
                 'td_direct_article_details.articleNo',
-                'td_direct_article_details.brandNo'
+                'td_direct_article_details.brandNo',
+                'td_direct_article_details.articleAttributes'
             ])
             ->where('td_cross_direct_article_brand.brandNo', (int)$brandId)
             ->paginate($packageLimit);
